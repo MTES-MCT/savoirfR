@@ -1,0 +1,1 @@
+Ce package a pour objectif d'être une banque d'exercices pour le parcours de formation à R du pôle ministériel MTES-MCTRCT.
