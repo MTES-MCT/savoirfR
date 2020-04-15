@@ -1,0 +1,14 @@
+Package: exercices
+Title: parcours-r exercices
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Murielle",
+           family = "Lethrosne",
+           role = c("aut", "cre"),
+           email = "murielle.lethrosne@developpement-durable.gouv.fr",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Ce package regroupe l ensemble des exercices des differents modules du parcours de formation parcours-r.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0
