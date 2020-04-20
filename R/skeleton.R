@@ -12,13 +12,16 @@ pkg_file <- function(...) {
 #' get extdata file needed for a module
 #'
 #' @param m module number
-#'
+#' @importFrom utils read.csv2
 #' @return a list of files
 
 module_data <- function(m) {
-    if (m=='m1'){
-      files <- list("Base_synth_territoires.csv","rp_2012.csv")
-    }
+    # if (m=='m1'){
+    #   files <- list("Base_synth_territoires.csv","rp_2012.csv")
+    # }
+  list_data <- file.path(pkg_file('extdata'), 'list_data_module.csv')
+  data <- read.csv2(list_data, colClasses = c("character"))
+  files <- as.list(data[data$module=='m1',]$file)
   return(files)
 }
 

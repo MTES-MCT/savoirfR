@@ -10,6 +10,7 @@ usethis::use_package("utils")
 # Crée un fichier .R dans le dossier R
 usethis::use_r("skeleton.R")
 
+usethis::use_build_ignore("how_to.md")
 
 #creation de la documentation des data
 #usethis::use_r("doc_nomdeladata")
