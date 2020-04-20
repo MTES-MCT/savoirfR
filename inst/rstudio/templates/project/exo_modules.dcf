@@ -1,0 +1,12 @@
+Title: Exercice Parcours R MTES Module 1
+Binding: exo_modules_skeleton
+OpenFiles: scripts/exo1.R
+Icon: m1.png
+
+
+Parameter: module
+Widget: SelectInput
+Label: Selectionner le module
+Fields: m1,m2,m3,m4,m5,m6,m7
+Default: m1
+Position: left

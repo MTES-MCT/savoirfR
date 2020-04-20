@@ -6,7 +6,6 @@ usethis::use_gpl3_license("GPL-3")
 
 # package utile
 usethis::use_package("utils")
-usethis::use_package("xfun")
 
 # Crée un fichier .R dans le dossier R
 usethis::use_r("skeleton.R")

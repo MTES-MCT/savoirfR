@@ -1,37 +1,74 @@
+#' get files from the exercices package
+#
+#' @param ... other params from the systeme.file fonction
+#'
 #' @import stats utils
 
-exo_file = function(...) {
+pkg_file <- function(...) {
   system.file(..., package = 'exercices', mustWork = TRUE)
 }
 
-#' @importFrom xfun read_utf8
-#' @importFrom xfun write_utf8
+
+#' get extdata file needed for a module
+#'
+#' @param m module number
+#'
+#' @return a list of files
+
+module_data <- function(m) {
+    if (m=='m1'){
+      files <- list("Base_synth_territoires.csv","rp_2012.csv")
+    }
+  return(files)
+}
 
 
-exo_skeleton = function(path,...) {
+#' Function to define the project exo_modules
+#'
+#' @param path path where the project is create
+#' @param ...  params define by the user a the project creation
+#'
+#' @return create a project
+
+exo_modules_skeleton = function(path,...) {
   
   # ensure directory exists
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
   dir.create(file.path(path,'extdata'), recursive = TRUE, showWarnings = FALSE)
   dir.create(file.path(path,'scripts'), recursive = TRUE, showWarnings = FALSE)
+  dir.create(file.path(path,'corrections'), recursive = TRUE, showWarnings = FALSE)
+  
+  # get module selected
+  
+  dots <- list(...)
+  m <- dots[[1]]
   
   # copy 'extdata' folder to path
-  resources = exo_file('extdata')
+  files = module_data(m)
+  extdata <- pkg_file('extdata')
+  source <- file.path(extdata, files)
   
-  files = list.files(resources, recursive = TRUE, include.dirs = FALSE)
-  
-  source = file.path(resources, files)
   target = file.path(path,'extdata', files)
   file.copy(source, target)
   
-  # copy 'ressources' folder
+  # copy 'enonces' folder
   
-  resources = exo_file('rstudio', 'templates', 'project', 'ressources')
+  ressources = pkg_file('rstudio', 'templates','project', 'ressources', m, 'enonces')
   
-  files = list.files(resources, recursive = TRUE, include.dirs = FALSE)
+  files = list.files(ressources, recursive = TRUE, include.dirs = FALSE)
   
-  source = file.path(resources, files)
+  source = file.path(ressources, files)
   target = file.path(path,'scripts', files)
+  file.copy(source, target)
+
+  # copy 'corrections' folder
+  
+  ressources = pkg_file('rstudio', 'templates','project', 'ressources', m, 'corrections')
+  
+  files = list.files(ressources, recursive = TRUE, include.dirs = FALSE)
+  
+  source = file.path(ressources, files)
+  target = file.path(path,'corrections', files)
   file.copy(source, target)
   
   
