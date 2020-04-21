@@ -21,7 +21,7 @@ module_data <- function(m) {
     # }
   list_data <- file.path(pkg_file('extdata'), 'list_data_module.csv')
   data <- read.csv2(list_data, colClasses = c("character"))
-  files <- as.list(data[data$module=='m1',]$file)
+  files <- as.list(data[data$module==m,]$file)
   return(files)
 }
 
