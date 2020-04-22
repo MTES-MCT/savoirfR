@@ -17,4 +17,5 @@ usethis::use_build_ignore("how_to.md")
 
 usethis::use_vignette("exercices_module_introduction_a_R")
 usethis::use_pkgdown()
+use_travis()
 usethis::use_pkgdown_travis()
