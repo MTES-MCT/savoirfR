@@ -15,4 +15,6 @@ usethis::use_build_ignore("how_to.md")
 #creation de la documentation des data
 #usethis::use_r("doc_nomdeladata")
 
-
+usethis::use_vignette("exercices_module_introduction_a_R")
+usethis::use_pkgdown()
+usethis::use_pkgdown_travis()

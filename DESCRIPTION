@@ -14,3 +14,7 @@ LazyData: true
 RoxygenNote: 7.1.0
 Imports: 
     utils
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

@@ -3,3 +3,6 @@
 ^devstuff_history\.R$
 ^data-raw$
 ^how_to\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
