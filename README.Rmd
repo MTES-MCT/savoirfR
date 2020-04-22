@@ -31,3 +31,5 @@ remotes::install_github("MTES-MCT/parcours_r_exercices")
 ## Exemple
 
 Pour pratiquer les exercices du module 1
+
+![](man/figures/howto.gif)
