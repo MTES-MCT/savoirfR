@@ -15,3 +15,4 @@ a list of files
 \description{
 get extdata file needed for a module
 }
+\keyword{internal}

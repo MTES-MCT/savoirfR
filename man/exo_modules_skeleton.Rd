@@ -17,3 +17,4 @@ create a project
 \description{
 Function to define the project exo_modules
 }
+\keyword{internal}

@@ -3,7 +3,7 @@
 # Nous allons travailler sur des indicateurs au territoire extrait de l'outil geoidd du ministère et exporté en csv 
 # avec les variables que nous avons calculé à l'exercice précédent
 
-df <- read.csv(file = "data/Base_synth_territoires.csv",
+df <- read.csv(file = "extdata/Base_synth_territoires.csv",
                sep = ";", dec = ",",
                colClasses = c(NA, "NULL", "character", "NULL","NULL","NULL",
                               NA, NA, NA, NA, rep("NULL", 28))) %>% 

@@ -3,6 +3,7 @@
 #' @param ... other params from the systeme.file fonction
 #'
 #' @import stats utils
+#' @keywords internal
 
 pkg_file <- function(...) {
   system.file(..., package = 'exercices', mustWork = TRUE)
@@ -14,6 +15,8 @@ pkg_file <- function(...) {
 #' @param m module number
 #' @importFrom utils read.csv2
 #' @return a list of files
+#' @keywords internal
+
 
 module_data <- function(m) {
     # if (m=='m1'){
@@ -32,6 +35,7 @@ module_data <- function(m) {
 #' @param ...  params define by the user a the project creation
 #'
 #' @return create a project
+#' @keywords internal
 
 exo_modules_skeleton = function(path,...) {
   

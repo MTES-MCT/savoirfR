@@ -12,3 +12,4 @@ pkg_file(...)
 \description{
 get files from the exercices package
 }
+\keyword{internal}

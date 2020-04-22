@@ -4,7 +4,7 @@
 # Veillez à ce que la région soit bien importée comme un facteur et non un entier.
 # Inspecter le dataframe avec les fonctions vues auparavant
 
-df <- read.csv(file = "data/Base_synth_territoires.csv",
+df <- read.csv(file = "extdata/Base_synth_territoires.csv",
                sep = ";", dec = ",",
                colClasses = c(NA, "NULL", "character", "NULL","NULL","NULL",
                               NA, NA, NA, NA, rep("NULL", 28)))
