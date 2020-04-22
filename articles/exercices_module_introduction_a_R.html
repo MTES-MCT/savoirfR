@@ -85,19 +85,25 @@
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">exercices</span>)</pre></body></html></div>
 <div id="premier-exercirce" class="section level1">
 <h1 class="hasAnchor">
-<a href="#premier-exercirce" class="anchor"></a>premier exercirce</h1>
+<a href="#premier-exercirce" class="anchor"></a>Premier exercirce</h1>
 <ul>
-<li>Créer plusieurs variables numériques par assignation a &lt;- 5, b &lt;- 4</li>
+<li>Créer plusieurs variables numériques par assignation <code>a &lt;- 5</code>, <code>b &lt;- 4</code>
+</li>
 <li>Regarder l’onglet Environnement</li>
-<li>Afficher la liste des variables avec la fonction ls()</li>
+<li>Afficher la liste des variables avec la fonction <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code>
+</li>
 <li>Faire un calcul avec ces variables et voir le résultat (a+b) etc.</li>
-<li>Créer une troisième variable à partir des deux premières c &lt;- a+b*3</li>
-<li>Ré-assigner une variable : a&lt;-10 et vérifier l’onglet environnement</li>
-<li>Créer une variable chaîne de caractère (utilisation des simples quotes et des double-quotes) t &lt;- ‘chaine’</li>
-<li>Concaténer a et t avec paste(a,t)</li>
-<li>Expérimenter la casse des noms de variables : créer A &lt;- 15 et B &lt;- 12 et vérifier l’onglet environnement</li>
+<li>Créer une troisième variable à partir des deux premières <code>c &lt;- a+b*3</code>
+</li>
+<li>Ré-assigner une variable : <code>a&lt;-10</code> et vérifier l’onglet environnement</li>
+<li>Créer une variable chaîne de caractère (utilisation des simples quotes et des double-quotes) <code>t &lt;- 'chaine'</code>
+</li>
+<li>Concaténer a et t avec <code><a href="https://rdrr.io/r/base/paste.html">paste(a,t)</a></code>
+</li>
+<li>Expérimenter la casse des noms de variables : créer <code>A &lt;- 15</code> et <code>B &lt;- 12</code> et vérifier l’onglet environnement</li>
 <li>Supprimer les variables A et B avec la fonction rm()</li>
-<li>Aide en ligne ?ls et ?rm</li>
+<li>Aide en ligne <code><a href="https://rdrr.io/r/base/ls.html">?ls</a></code> et <code><a href="https://rdrr.io/r/base/rm.html">?rm</a></code>
+</li>
 <li>Attention : Pour supprimer toutes les variables rm(list = ls())</li>
 </ul>
 </div>
@@ -105,7 +111,7 @@
 <h1 class="hasAnchor">
 <a href="#importer-les-donn%C3%A9es-et-premier-coup-doeil" class="anchor"></a>Importer les données et premier coup d’oeil</h1>
 <p>Nous allons travailler sur des indicateurs au territoire extrait de l’outil geoidd du ministère et exporté en csv</p>
-<p>Utiliser la fonction read.csv() pour importer ce fichier et stocker le dans un objet df.</p>
+<p>Utiliser la fonction <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> pour importer ce fichier et stocker le dans un objet <code>df</code>.</p>
 <p>Veillez à ce que la région soit bien importée comme un facteur et non un entier.</p>
 <p>Inspecter le dataframe avec les fonctions vues auparavant</p>
 </div>
@@ -113,8 +119,8 @@
 <h1 class="hasAnchor">
 <a href="#cr%C3%A9er-filtrer-s%C3%A9lectionner" class="anchor"></a>Créer, filtrer, sélectionner</h1>
 <p>Nous travaillons toujours sur la même tables des indicateurs au territoire</p>
-<p>En utilisant la fonction mutate(), créer une nouvelle variable correspondant à la densité de population (rapport de la population à la superficie de la commune), ainsi que les taux de natalité et de mortalité (en pour mille)</p>
-<p>A l’aide de la fonction select(), créer une nouvelle table en ne conservant que le code commune, le type de commune (ZAU), la région, le département et les variables que vous venez de créer.</p>
+<p>En utilisant la fonction <code>mutate()</code>, créer une nouvelle variable correspondant à la densité de population (rapport de la population à la superficie de la commune), ainsi que les taux de natalité et de mortalité (en pour mille)</p>
+<p>A l’aide de la fonction <code>select()</code>, créer une nouvelle table en ne conservant que le code commune, le type de commune (ZAU), la région, le département et les variables que vous venez de créer.</p>
 <p>Enfin, ne conserver les communes correspondant à votre département de naissance et stocker ce dataframe. Attention au type de la variable département !</p>
 <p>Avec les opérateurs logiques, faire des essais pour sélectionner des échantillons différents.</p>
 </div>
@@ -123,13 +129,12 @@
 <a href="#calcul-de-statistiques" class="anchor"></a>Calcul de statistiques</h1>
 <p>Nous allons travailler sur des indicateurs au territoire extrait de l’outil geoidd du ministère et exporté en csv avec les variables que nous avons calculé à l’exercice précédent</p>
 <ul>
-<li>Utilisez la fonction summary() pour obtenir un résumé de l’ensemble des variables de la table df</li>
-<li>Calculez maintenant les moyenne, médiane, écart-type et variance de la variable de densité de population. Que constatez-vous ?</li>
-<li>Utilisez le paramètre na.rm = T pour gérer les valeurs manquantes</li>
-<li>Calulez à présent les quartiles puis déciles de cette variable</li>
-<li>Calculez la version centrée réduite de la variable de densité.</li>
-<li>Rappel sur la définition de centrer réduire : <a href="https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite" class="uri">https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite</a>
+<li>Utilisez la fonction <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> pour obtenir un résumé de l’ensemble des variables de la table <code>df</code>
 </li>
+<li>Calculez maintenant les moyenne, médiane, écart-type et variance de la variable de densité de population. Que constatez-vous ?</li>
+<li>Utilisez le paramètre <code>na.rm = T</code> pour gérer les valeurs manquantes</li>
+<li>Calulez à présent les quartiles puis déciles de cette variable</li>
+<li>Calculez la version centrée réduite de la variable de densité (Rappel sur la définition de centrer réduire)[<a href="https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite" class="uri">https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite</a>]</li>
 </ul>
 <p>Tableaux croisés :</p>
 <ul>
@@ -146,9 +151,9 @@
 <li>Réaliser un histogramme de la population communale</li>
 <li>Transformer les données avec la fonction log pour y voir plus clair</li>
 <li>Faire un barplot du nombre de communes par type ZAU</li>
-<li>Utiliser le paramètre fill de la fonction aes() pour améliorer le graphique</li>
+<li>Utiliser le paramètre <code>fill</code> de la fonction <code>aes()</code> pour améliorer le graphique</li>
 <li>Réaliser un graphique (nuage de points) croisant la densité de population et le taux de mortalité</li>
-<li>Ajouter une dimension supplémentaire avec la couleur des points (paramètre color de aes())</li>
+<li>Ajouter une dimension supplémentaire avec la couleur des points (paramètre color de <code>aes()</code>)</li>
 </ul>
 </div>
   </div>
