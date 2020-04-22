@@ -1,12 +1,30 @@
 Package: exercices
 Title: parcours-r exercices
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person(given = "Murielle",
            family = "Lethrosne",
            role = c("aut", "cre"),
            email = "murielle.lethrosne@developpement-durable.gouv.fr",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+    person(given = "Maël",
+           family = "Theuliere",
+           role = c("aut"),
+           email = "mael.theuliere@developpement-durable.gouv.fr",
+           comment = c(ORCID = "0000-0002-5146-699X")),
+    person(given = "Marouane",
+           family = "Zellou",
+           role = c("aut"),
+           email = "marouane.zellou@developpement-durable.gouv.fr"),
+    person(given = "Bruno",
+           family = "Terseur",
+           role = c("aut"),
+           email = "bruno.terseur@developpement-durable.gouv.fr"),
+    person(given = "Juliette",
+           family = "Engelaere-Lefebvre",
+           role = c("aut"),
+           email = "juliette.engelaere-Lefebvre@developpement-durable.gouv.fr")
+           )
 Description: Ce package regroupe l ensemble des exercices des differents modules du parcours de formation parcours-r.
 License: GPL-3
 Encoding: UTF-8
