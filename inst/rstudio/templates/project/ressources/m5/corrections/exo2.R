@@ -10,7 +10,10 @@
 # -  modifier la couleur de fond du graphe
 # -  modifier le type de gadrillage (pointillés)
 
-load("extdata/ODD_graphique1")
+library(ggplot2)
+library(tidyverse)
+
+load("extdata/ODD_graphique1.RData")
 
 ggplot(ODD_graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),

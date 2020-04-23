@@ -6,6 +6,10 @@
 #     - et le pourcentage de logement avec un DPE ges de classe A,B ou C;(variable DPE_GES_classe_ABC_pourcent)
 #     - et une couleur différente pour distinguer les epci de la région PDL. (variable epci_2017_52: 1 si l'epci appartient à la région PDL; 0 sinon)
 
+
+library(ggplot2)
+library(tidyverse)
+
 load("extdata/rpls_aggrege_large.RData")
 
 ggplot(data = rpls_aggrege_large  %>%
