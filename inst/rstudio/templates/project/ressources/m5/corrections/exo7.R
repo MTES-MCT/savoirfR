@@ -10,7 +10,7 @@ library(highcharter)
 
 load("extdata/ODD_graphique1.RData")
 
-hchart(graphique1,"scatter",hcaes(x=Gross_Domestic_Product_GDP,
+hchart(ODD_graphique1,"scatter",hcaes(x=Gross_Domestic_Product_GDP,
                                   y=Maternal_mortality_ratio,
                                   color=Continent)) %>%
   hc_plotOptions(series=list(shadow='false')) %>% 
