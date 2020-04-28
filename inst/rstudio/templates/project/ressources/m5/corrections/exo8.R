@@ -3,6 +3,7 @@
 # par départements en région Centre-Val de Loire: 1 ligne par département + 1 ligne avec le total de la région
 
 library(kableExtra)
+library(dplyr)
 
 load("extdata/rpls_aggrege_large.RData")
 

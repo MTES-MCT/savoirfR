@@ -11,7 +11,7 @@
 # -  modifier le type de gadrillage (pointillés)
 
 library(ggplot2)
-library(tidyverse)
+library(dplyr)
 
 load("extdata/ODD_graphique1.RData")
 

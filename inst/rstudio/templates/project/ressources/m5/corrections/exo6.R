@@ -2,7 +2,7 @@
 # la répartition des DPE par classe (en %).
 # Le graphique sera animé par département, uniquement pour ceux de la région Centre-Val de Loire
 
-library(tidyverse)
+library(dplyr)
 library(ggplot2)
 library(gganimate)
 

@@ -10,7 +10,7 @@
 # 
 
 library(ggplot2)
-library(tidyverse)
+library(dplyr)
 library(hrbrthemes)
 
 load("extdata/rpls_aggrege.RData")
