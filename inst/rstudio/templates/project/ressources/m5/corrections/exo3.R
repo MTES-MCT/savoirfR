@@ -6,6 +6,9 @@
 # 
 #  - des libellés (axes et légende) parlant et un titre.
 
+library(dplyr)
+library(ggplot2)
+
 load("extdata/rpls_aggrege_large.Rdata")
 
 ggplot(data = rpls_aggrege_large  %>% 

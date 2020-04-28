@@ -6,6 +6,7 @@
 # de la zone et les données associées
 
 library(highcharter)
+library(dplyr)
 
 
 load("extdata/ODD_graphique1.RData")

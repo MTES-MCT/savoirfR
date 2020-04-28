@@ -2,7 +2,7 @@
 # 
 
 library(ggplot2)
-library(tidyverse)
+library(dplyr)
 library(sf)
 
 load("extdata/rpls_aggrege.RData")
