@@ -23,7 +23,7 @@ Authors@R: c(
     person(given = "Juliette",
            family = "Engelaere-Lefebvre",
            role = c("aut"),
-           email = "juliette.engelaere-Lefebvre@developpement-durable.gouv.fr")
+           email = "juliette.engelaere-lefebvre@developpement-durable.gouv.fr")
            )
 Description: Ce package regroupe l ensemble des exercices des differents modules du parcours de formation parcours-r.
 License: GPL-3
