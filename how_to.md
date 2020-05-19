@@ -21,7 +21,7 @@ Chaque fichier doit avoir comme nom `exoN.R` ou `exoN.Rmd`, comporter l'énoncé
 
 ### testez que tout fonctionne
 
-- faite un check du package
+- faites un check du package
 
 - appuyer sur install & restart
 

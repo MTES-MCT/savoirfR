@@ -10,7 +10,7 @@
 
 # Enfin, ne conserver les communes correspondant à votre département de naissance et stocker ce dataframe. 
 # Attention au type de la variable département !
-  
+
 #  Avec les opérateurs logiques, faire des essais pour sélectionner des échantillons différents.
 
 df <- read.csv(file = "extdata/Base_synth_territoires.csv",

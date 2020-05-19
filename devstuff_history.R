@@ -16,6 +16,7 @@ usethis::use_build_ignore("how_to.md")
 #usethis::use_r("doc_nomdeladata")
 
 usethis::use_vignette("exercices_module_introduction_a_R")
+usethis::use_vignette("exercices_module_datapreparation_R")
 usethis::use_vignette("exercices_module_datavisualisation_R")
 usethis::use_pkgdown()
 usethis::use_github_action("pkgdown")
