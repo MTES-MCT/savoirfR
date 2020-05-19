@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# exercices
+# savoirfR
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -29,7 +29,7 @@ Pour installer le package :
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("MTES-MCT/parcours_r_exercices")
+remotes::install_github("MTES-MCT/savoirfR")
 ```
 
 ## Exemple

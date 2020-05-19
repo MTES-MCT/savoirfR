@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(exercices)
+library(savoirfR)
 ```
 
 # Premier exercirce

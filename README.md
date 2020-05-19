@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# exercices
+# savoirfR
 
 <!-- badges: start -->
 
@@ -25,7 +25,7 @@ Pour installer le package :
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("MTES-MCT/parcours_r_exercices")
+remotes::install_github("MTES-MCT/savoirfR")
 ```
 
 ## Exemple
