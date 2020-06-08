@@ -21,7 +21,7 @@ taux_quantif_annuels <- exercice %>%
   mutate(annee = year(date_prelevement),
          presence = if_else(code_remarque == 1, 1, 0),
          recherchee = if_else(code_remarque %in% c(1, 2, 7, 10), 1, 0)
-  ) %>%
+         ) %>%
   group_by(annee, code_parametre) %>%
   summarise(taux_quantif=sum(presence)/sum(recherchee)*100)
 

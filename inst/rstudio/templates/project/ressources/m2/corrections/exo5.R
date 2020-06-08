@@ -10,13 +10,14 @@ load(file = "extdata/FormationPreparationDesDonnees.RData")
 exercice_recalcul <- analyse %>%
   inner_join(prelevement, by="code_prelevement") %>%
   inner_join(station, by="code_station") %>%
-  mutate (date_creation = as.character(date_creation),
-          annee = year(date_prelevement))
-
+  mutate(date_creation = as.character(date_creation),
+         annee = year(date_prelevement))
+# Vérification :
+identical(exercice, exercice_recalcul)
 
 # - calculer le nombre d’analyses réalisées sur des molécules (code_parametre) présentes dans le référentiel `parametre`  
 # 
-nb_analyses_presentes_dans_referentiel  <- analyse %>% 
+nb_analyses_presentes_dans_referentiel <- analyse %>% 
   inner_join(parametre, by = "code_parametre") %>% 
   select(code_analyse) %>%
   n_distinct()
