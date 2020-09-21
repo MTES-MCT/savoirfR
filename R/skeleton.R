@@ -6,7 +6,7 @@
 #' @keywords internal
 
 pkg_file <- function(...) {
-  system.file(..., package = 'exercices', mustWork = TRUE)
+  system.file(..., package = 'savoirfR', mustWork = TRUE)
 }
 
 
