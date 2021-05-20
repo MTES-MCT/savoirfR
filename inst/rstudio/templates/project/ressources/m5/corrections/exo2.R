@@ -13,7 +13,7 @@
 library(ggplot2)
 library(dplyr)
 
-load("extdata/ODD_graphique1.RData")
+load("extdata/ODD.RData")
 
 ggplot(ODD_graphique1) +
   geom_point(aes(x=log(Gross_Domestic_Product_GDP),
