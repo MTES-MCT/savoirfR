@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -37,12 +39,6 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -91,12 +87,11 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">savoirfR</span>)
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">savoirfR</span><span class="op">)</span></code></pre></div>
 <div id="exercice-1-les-données-mensuelles-sitadel-chap-5-5-2" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercice-1-les-donn%C3%A9es-mensuelles-sitadel-chap-5-5-2" class="anchor"></a>Exercice 1 : Les données mensuelles sitadel (chap 5.5.2)</h1>
+<a href="#exercice-1-les-donn%C3%A9es-mensuelles-sitadel-chap-5-5-2" class="anchor" aria-hidden="true"></a>Exercice 1 : Les données mensuelles sitadel (chap 5.5.2)</h1>
 <p>À partir du fichier sitadel de février 2017 (ROES_201702.xls), produire un dataframe <em>‘sit_pdl_ind’</em> contenant pour la région Pays-de-la-Loire (code région 52), pour chaque mois et pour les logements individuels (definis par la somme des logements individuels purs et individuels groupés : i_AUT = ip_AUT + ig_AUT) :</p>
 <ul>
 <li>le cumul des autorisations sur 12 mois glissants (i_AUT_cum12),<br>
@@ -109,12 +104,12 @@
 </div>
 <div id="exercice-2-chap-5-5-3" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercice-2-chap-5-5-3" class="anchor"></a>Exercice 2 (chap 5.5.3)</h1>
+<a href="#exercice-2-chap-5-5-3" class="anchor" aria-hidden="true"></a>Exercice 2 (chap 5.5.3)</h1>
 <p>Dans la table exercice, convertir les données pertinentes au format date.</p>
 </div>
 <div id="exercice-3-chap-5-10" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercice-3-chap-5-10" class="anchor"></a>Exercice 3 (chap 5.10)</h1>
+<a href="#exercice-3-chap-5-10" class="anchor" aria-hidden="true"></a>Exercice 3 (chap 5.10)</h1>
 <p>A partir des données “sitadel” chargées dans l’exercice 1, effectuer les opérations suivantes en utilisant l’opérateur %&gt;% :</p>
 <ul>
 <li>effectuer les mêmes calculs que ceux réalisés sur la région 52, mais sur chacune des régions <em>–&gt; à stocker dans ‘sit_ind’</em><br>
@@ -125,7 +120,7 @@
 </div>
 <div id="exercice-4-chap-5-11" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercice-4-chap-5-11" class="anchor"></a>Exercice 4 (chap 5.11)</h1>
+<a href="#exercice-4-chap-5-11" class="anchor" aria-hidden="true"></a>Exercice 4 (chap 5.11)</h1>
 <p>Sur les données “FormationPreparationDesDonnées.RData”, table “exercice” :</p>
 <p>1/ calculer le taux de quantification pour chaque molécule et chacune des année : chaque molécule est identifiée par son <code>code_parametre</code>, le taux de quantification est le nombre de fois qu’une molécule est retrouvée (<code>code_remarque</code> = 1) sur le nombre de fois où elle a été cherchée (<code>code_remarque</code> = 1, 2, 7 ou 10). Pour cela :</p>
 <ul>
@@ -144,7 +139,7 @@
 </div>
 <div id="exercice-5-chap-6" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercice-5-chap-6" class="anchor"></a>Exercice 5 (chap 6)</h1>
+<a href="#exercice-5-chap-6" class="anchor" aria-hidden="true"></a>Exercice 5 (chap 6)</h1>
 <ul>
 <li>Reconstituer le dataframe “exercice” à partir des données contenues dans les tables “analyse”, “prelevement” et “station” (jointures) ;</li>
 </ul>
@@ -157,8 +152,8 @@
 </div>
 <div id="exercice-6-chap-8" class="section level1">
 <h1 class="hasAnchor">
-<a href="#exercice-6-chap-8" class="anchor"></a>Exercice 6 (chap 8)</h1>
-<p>Calculer à partir des tables fournies dans le fichier <em>majic.RData</em> issues des <a href="http://piece-jointe-carto.developpement-durable.gouv.fr/NAT004/DTerNP/html3/_ff_descriptif_tables_image.html#pnb10">fichiers fonciers</a> un indicateur d’étalement urbain entre 2009 et 2014 à la commune et à l’EPCI sur la région Pays de la Loire, et catégoriser chaque territoire.</p>
+<a href="#exercice-6-chap-8" class="anchor" aria-hidden="true"></a>Exercice 6 (chap 8)</h1>
+<p>Calculer à partir des tables fournies dans le fichier <em>majic.RData</em> issues des <a href="http://piece-jointe-carto.developpement-durable.gouv.fr/NAT004/DTerNP/html3/_ff_descriptif_tables_image.html#pnb10" class="external-link">fichiers fonciers</a> un indicateur d’étalement urbain entre 2009 et 2014 à la commune et à l’EPCI sur la région Pays de la Loire, et catégoriser chaque territoire.</p>
 <p><strong>Définitions</strong> :</p>
 <ul>
 <li>artificialisation = dcnt07 + dcnt09 + dcnt10 + dcnt11 + dcnt12 + dcnt13</li>
@@ -223,11 +218,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Murielle Lethrosne, Maël Theuliere, Marouane Zellou, Bruno Terseur, Juliette Engelaere-Lefebvre.</p>
+  <p></p>
+<p>Developed by Murielle Lethrosne, Maël Theuliere, Marouane Zellou, Bruno Terseur, Juliette Engelaere-Lefebvre.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>
@@ -235,6 +232,8 @@
 
   
 
+
+  
 
   </body>
 </html>

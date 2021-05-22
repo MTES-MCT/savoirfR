@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -37,12 +39,6 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -91,12 +87,11 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">savoirfR</span>)
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">savoirfR</span><span class="op">)</span></code></pre></div>
 <div id="le-mapping" class="section level1">
 <h1 class="hasAnchor">
-<a href="#le-mapping" class="anchor"></a>Le mapping</h1>
+<a href="#le-mapping" class="anchor" aria-hidden="true"></a>Le mapping</h1>
 <p>A partir des données de la table rpls_aggrege_large (RData), Créer un nuage de point entre:</p>
 <ul>
 <li>le % de parc social de moins de 5 ans;(variable Parc_de_moins_de_5_ans_pourcent)</li>
@@ -106,7 +101,7 @@
 </div>
 <div id="modifier-le-thème" class="section level1">
 <h1 class="hasAnchor">
-<a href="#modifier-le-th%C3%A8me" class="anchor"></a>Modifier le thème</h1>
+<a href="#modifier-le-th%C3%A8me" class="anchor" aria-hidden="true"></a>Modifier le thème</h1>
 <p>A partir des données de la table ODD_graphique1 (RData), reprendre le nuage de point obtenu à partir des données ODD :</p>
 <p>taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)</p>
 <p>En modifier le thème:</p>
@@ -120,7 +115,7 @@
 </div>
 <div id="modifier-les-scales-et-labs" class="section level1">
 <h1 class="hasAnchor">
-<a href="#modifier-les-scales-et-labs" class="anchor"></a>Modifier les scales et labs</h1>
+<a href="#modifier-les-scales-et-labs" class="anchor" aria-hidden="true"></a>Modifier les scales et labs</h1>
 <p>En réutilisant le graphe obtenu à l’exercice 1 (rpls_aggrege_large.RData), y rajouter:</p>
 <ul>
 <li>une palette brewer pour la couleur;</li>
@@ -130,7 +125,7 @@
 </div>
 <div id="les-facettes" class="section level1">
 <h1 class="hasAnchor">
-<a href="#les-facettes" class="anchor"></a>Les facettes</h1>
+<a href="#les-facettes" class="anchor" aria-hidden="true"></a>Les facettes</h1>
 <p>Réaliser un facette sur un diagramme barre avec :</p>
 <ul>
 <li>en variable discrète les régions</li>
@@ -147,25 +142,25 @@
 </div>
 <div id="créer-une-carte-avec-ggplot2" class="section level1">
 <h1 class="hasAnchor">
-<a href="#cr%C3%A9er-une-carte-avec-ggplot2" class="anchor"></a>Créer une carte avec ggplot2</h1>
+<a href="#cr%C3%A9er-une-carte-avec-ggplot2" class="anchor" aria-hidden="true"></a>Créer une carte avec ggplot2</h1>
 <p>Produire une carte du Loiret à l’EPCI du taux de logements collectifs dans le parc locatif social.</p>
 </div>
 <div id="réaliser-un-graphe-animé" class="section level1">
 <h1 class="hasAnchor">
-<a href="#r%C3%A9aliser-un-graphe-anim%C3%A9" class="anchor"></a>Réaliser un graphe animé</h1>
+<a href="#r%C3%A9aliser-un-graphe-anim%C3%A9" class="anchor" aria-hidden="true"></a>Réaliser un graphe animé</h1>
 <p>A partir du fichier rpls_aggrege_large, réaliser un graphique en barre représentant la répartition des DPE par classe (en %).</p>
 <p>Le graphique sera animé par département, uniquement pour ceux de la région Centre-Val de Loire.</p>
 </div>
 <div id="créer-un-graphique-pour-le-web" class="section level1">
 <h1 class="hasAnchor">
-<a href="#cr%C3%A9er-un-graphique-pour-le-web" class="anchor"></a>Créer un graphique pour le web</h1>
+<a href="#cr%C3%A9er-un-graphique-pour-le-web" class="anchor" aria-hidden="true"></a>Créer un graphique pour le web</h1>
 <p>Reprendre le nuage de point obtenu à partir des données ODD :</p>
 <p>taux de mortalité maternelle (Maternal_mortality_ratio) en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)</p>
 <p>Obtenir ce graphique pour le web avec des infos bulles regroupant le nom du continent, de la zone et les données associées</p>
 </div>
 <div id="créer-un-tableau-avec-kable-et-kablextra" class="section level1">
 <h1 class="hasAnchor">
-<a href="#cr%C3%A9er-un-tableau-avec-kable-et-kablextra" class="anchor"></a>Créer un tableau avec kable et kablextra</h1>
+<a href="#cr%C3%A9er-un-tableau-avec-kable-et-kablextra" class="anchor" aria-hidden="true"></a>Créer un tableau avec kable et kablextra</h1>
 <p>A partir de la table rpls_aggrege_large: Produire un tableau du nombre de logements collectifs et individuels (RPLS) par départements en région Centre-Val de Loire: 1 ligne par département + 1 ligne avec le total de la région</p>
 </div>
   </div>
@@ -181,11 +176,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Murielle Lethrosne, Maël Theuliere, Marouane Zellou, Bruno Terseur, Juliette Engelaere-Lefebvre.</p>
+  <p></p>
+<p>Developed by Murielle Lethrosne, Maël Theuliere, Marouane Zellou, Bruno Terseur, Juliette Engelaere-Lefebvre.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>
@@ -193,6 +190,8 @@
 
   
 
+
+  
 
   </body>
 </html>
