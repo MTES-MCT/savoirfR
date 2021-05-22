@@ -1,4 +1,4 @@
-# A partir des données de la table ODD_graphique1, reprendre le nuage de point obtenu à partir des données ODD :
+# A partir des données de la table ODD_graphique1 (dans ODD.RData), reprendre le nuage de point obtenu à partir des données ODD :
 # taux de mortalité maternelle (Maternal_mortality_ratio) 
 # en fonction du produit intérieur brut (Gross_Domestic_Product_GDP) (Chapitre 4.1)
 # 

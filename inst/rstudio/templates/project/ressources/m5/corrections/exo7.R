@@ -9,7 +9,7 @@ library(highcharter)
 library(dplyr)
 
 
-load("extdata/ODD_graphique1.RData")
+load("extdata/ODD.RData")
 
 hchart(ODD_graphique1,"scatter",hcaes(x=Gross_Domestic_Product_GDP,
                                   y=Maternal_mortality_ratio,
