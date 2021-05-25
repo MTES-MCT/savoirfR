@@ -19,8 +19,6 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,6 +37,12 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
+<li>
+  <a href="../index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -88,15 +92,15 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">savoirfR</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">savoirfR</span><span class="op">)</span></code></pre></div>
 <div id="premier-exercirce" class="section level1">
 <h1 class="hasAnchor">
-<a href="#premier-exercirce" class="anchor" aria-hidden="true"></a>Premier exercirce</h1>
+<a href="#premier-exercirce" class="anchor"></a>Premier exercirce</h1>
 <ul>
 <li>Créer plusieurs variables numériques par assignation <code>a &lt;- 5</code>, <code>b &lt;- 4</code>
 </li>
 <li>Regarder l’onglet Environnement</li>
-<li>Afficher la liste des variables avec la fonction <code><a href="https://rdrr.io/r/base/ls.html" class="external-link">ls()</a></code>
+<li>Afficher la liste des variables avec la fonction <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code>
 </li>
 <li>Faire un calcul avec ces variables et voir le résultat (a+b) etc.</li>
 <li>Créer une troisième variable à partir des deux premières <code>c &lt;- a+b*3</code>
@@ -104,26 +108,26 @@
 <li>Ré-assigner une variable : <code>a&lt;-10</code> et vérifier l’onglet environnement</li>
 <li>Créer une variable chaîne de caractère (utilisation des simples quotes et des double-quotes) <code>t &lt;- 'chaine'</code>
 </li>
-<li>Concaténer a et t avec <code>paste(a,t)</code>
+<li>Concaténer a et t avec <code><a href="https://rdrr.io/r/base/paste.html">paste(a,t)</a></code>
 </li>
 <li>Expérimenter la casse des noms de variables : créer <code>A &lt;- 15</code> et <code>B &lt;- 12</code> et vérifier l’onglet environnement</li>
 <li>Supprimer les variables A et B avec la fonction rm()</li>
-<li>Aide en ligne <code><a href="https://rdrr.io/r/base/ls.html" class="external-link">?ls</a></code> et <code><a href="https://rdrr.io/r/base/rm.html" class="external-link">?rm</a></code>
+<li>Aide en ligne <code><a href="https://rdrr.io/r/base/ls.html">?ls</a></code> et <code><a href="https://rdrr.io/r/base/rm.html">?rm</a></code>
 </li>
 <li>Attention : Pour supprimer toutes les variables rm(list = ls())</li>
 </ul>
 </div>
 <div id="importer-les-données-et-premier-coup-doeil" class="section level1">
 <h1 class="hasAnchor">
-<a href="#importer-les-donn%C3%A9es-et-premier-coup-doeil" class="anchor" aria-hidden="true"></a>Importer les données et premier coup d’oeil</h1>
+<a href="#importer-les-donn%C3%A9es-et-premier-coup-doeil" class="anchor"></a>Importer les données et premier coup d’oeil</h1>
 <p>Nous allons travailler sur des indicateurs au territoire extrait de l’outil geoidd du ministère et exporté en csv</p>
-<p>Utiliser la fonction <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code> pour importer ce fichier et stocker le dans un objet <code>df</code>.</p>
+<p>Utiliser la fonction <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> pour importer ce fichier et stocker le dans un objet <code>df</code>.</p>
 <p>Veillez à ce que la région soit bien importée comme un facteur et non un entier.</p>
 <p>Inspecter le dataframe avec les fonctions vues auparavant</p>
 </div>
 <div id="créer-filtrer-sélectionner" class="section level1">
 <h1 class="hasAnchor">
-<a href="#cr%C3%A9er-filtrer-s%C3%A9lectionner" class="anchor" aria-hidden="true"></a>Créer, filtrer, sélectionner</h1>
+<a href="#cr%C3%A9er-filtrer-s%C3%A9lectionner" class="anchor"></a>Créer, filtrer, sélectionner</h1>
 <p>Nous travaillons toujours sur la même tables des indicateurs au territoire</p>
 <p>En utilisant la fonction <code>mutate()</code>, créer une nouvelle variable correspondant à la densité de population (rapport de la population à la superficie de la commune), ainsi que les taux de natalité et de mortalité (en pour mille)</p>
 <p>A l’aide de la fonction <code>select()</code>, créer une nouvelle table en ne conservant que le code commune, le type de commune (ZAU), la région, le département et les variables que vous venez de créer.</p>
@@ -132,15 +136,15 @@
 </div>
 <div id="calcul-de-statistiques" class="section level1">
 <h1 class="hasAnchor">
-<a href="#calcul-de-statistiques" class="anchor" aria-hidden="true"></a>Calcul de statistiques</h1>
+<a href="#calcul-de-statistiques" class="anchor"></a>Calcul de statistiques</h1>
 <p>Nous allons travailler sur des indicateurs au territoire extrait de l’outil geoidd du ministère et exporté en csv avec les variables que nous avons calculé à l’exercice précédent</p>
 <ul>
-<li>Utilisez la fonction <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> pour obtenir un résumé de l’ensemble des variables de la table <code>df</code>
+<li>Utilisez la fonction <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> pour obtenir un résumé de l’ensemble des variables de la table <code>df</code>
 </li>
 <li>Calculez maintenant les moyenne, médiane, écart-type et variance de la variable de densité de population. Que constatez-vous ?</li>
 <li>Utilisez le paramètre <code>na.rm = T</code> pour gérer les valeurs manquantes</li>
 <li>Calulez à présent les quartiles puis déciles de cette variable</li>
-<li>Calculez la version centrée réduite de la variable de densité (Rappel sur la définition de centrer réduire)[<a href="https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite" class="external-link uri">https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite</a>]</li>
+<li>Calculez la version centrée réduite de la variable de densité (Rappel sur la définition de centrer réduire)[<a href="https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite" class="uri">https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite</a>]</li>
 </ul>
 <p>Tableaux croisés :</p>
 <ul>
@@ -150,7 +154,7 @@
 </div>
 <div id="créer-des-graphiques" class="section level1">
 <h1 class="hasAnchor">
-<a href="#cr%C3%A9er-des-graphiques" class="anchor" aria-hidden="true"></a>Créer des graphiques</h1>
+<a href="#cr%C3%A9er-des-graphiques" class="anchor"></a>Créer des graphiques</h1>
 <p>Nous allons travailler sur des indicateurs au territoire extrait de l’outil geoidd du ministère et exporté en csv avec les variables que nous avons calculé à l’exercice précédent</p>
 <p>À l’aide de l’aide mémoire ggplot2 :</p>
 <ul>
@@ -175,13 +179,11 @@
 
 
       <footer><div class="copyright">
-  <p></p>
-<p>Developed by Murielle Lethrosne, Maël Theuliere, Marouane Zellou, Bruno Terseur, Juliette Engelaere-Lefebvre.</p>
+  <p>Developed by Murielle Lethrosne, Maël Theuliere, Marouane Zellou, Bruno Terseur, Juliette Engelaere-Lefebvre.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
@@ -189,8 +191,6 @@
 
   
 
-
-  
 
   </body>
 </html>
