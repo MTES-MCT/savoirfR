@@ -30,7 +30,7 @@ majic_2009 <- bind_rows(majic_2009_com44, majic_2009_com49, majic_2009_com53, ma
   left_join(com2017, by = c("idcom" = "depcom")) %>%
   select(-idcom, -idcomtxt) %>%
   group_by(epci_2017, depcom2017) %>%
-  summarise_all(sum) %>%
+  summarise(across(everything(), sum)) %>%
   ungroup() %>%
   mutate(artif_2009 = dcnt07 + dcnt09 + dcnt10 + dcnt11 + dcnt12 + dcnt13) %>%
   select(-starts_with("dcnt"))
@@ -40,7 +40,7 @@ majic_2014 <- bind_rows(majic_2014_com44, majic_2014_com49, majic_2014_com53, ma
   left_join(com2017, by = c("idcom" = "depcom")) %>%
   select(-idcom, -idcomtxt) %>%
   group_by(epci_2017, depcom2017) %>%
-  summarise_all(sum) %>%
+  summarise(across(everything(), sum))%>%
   ungroup() %>%
   mutate(artif_2014 = dcnt07 + dcnt09 + dcnt10 + dcnt11 + dcnt12 + dcnt13) %>%
   select(-starts_with("dcnt"))

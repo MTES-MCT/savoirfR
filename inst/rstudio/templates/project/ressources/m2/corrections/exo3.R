@@ -15,7 +15,7 @@ library(RcppRoll)
 sitadel <- read_excel("extdata/ROES_201702.xls",
                       sheet = "AUT_REG",
                       col_types = c("text", "text", "numeric", "numeric", "numeric", "numeric")
-)
+                      )
 
 sit_ind <- sitadel %>%
   group_by(REG) %>%
@@ -26,7 +26,7 @@ sit_ind <- sitadel %>%
          i_AUT_cum_evo = (i_AUT_cum12 - i_AUT_cum12_lag12)/i_AUT_cum12_lag12 * 100,
          log_AUT_cum12 = roll_sumr(log_AUT, 12), # création d'une colonne intermédiaire pour calculer le cumul de logements autorisés les 12 derniers mois
          part_i_AU = i_AUT_cum12 / log_AUT_cum12 * 100
-  )
+         )
 
 sit_annuel <- sitadel %>%
   mutate(annee=substr(date, 1, 4)) %>%
