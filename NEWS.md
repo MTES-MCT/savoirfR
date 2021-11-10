@@ -1,3 +1,7 @@
+# savoirfR 0.0.0.9002
+
+* Added table estim-pop-dep-sexe-gca-2019.xls (Module 2)
+
 # savoirfR 0.0.0.9001
 
 * Change exercice 7, using ggiraph
