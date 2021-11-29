@@ -7,6 +7,8 @@
 library(dplyr)
 library(ggplot2)
 library(gganimate)
+library(tidyr)
+library(stringr)
 
 load("extdata/rpls_aggrege_large.RData")
 
