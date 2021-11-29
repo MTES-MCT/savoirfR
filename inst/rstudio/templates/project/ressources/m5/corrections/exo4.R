@@ -19,16 +19,16 @@ load("extdata/rpls_aggrege.RData")
 
 gg <- rpls_aggrege %>%
   filter(TypeZone == "Régions",
-    Indicateur %in% c("3 et 4 pièces_pourcent",
-      "DPE GES classe ABC_pourcent",
-      "DPE énergie classe ABC_pourcent",
-      "Parc de moins de 5 ans_pourcent")) %>%
+         Indicateur %in% c("3 et 4 pièces_pourcent",
+                           "DPE GES classe ABC_pourcent",
+                           "DPE énergie classe ABC_pourcent",
+                           "Parc de moins de 5 ans_pourcent")) %>%
   mutate(Indicateur = fct_recode(Indicateur,
-    `Logements de 3 et 4 pièces` = "3 et 4 pièces_pourcent",
-    `Logements avec DPE énergie de classe A,B,C` = "DPE énergie classe ABC_pourcent",
-    `Logements avec DPE GES de classe A,B,C` = "DPE GES classe ABC_pourcent",
-    `Logements social de moins de 5 ans` = "Parc de moins de 5 ans_pourcent"),
-  r52 = if_else(Reg_2017 == "52", 1, 0.65)) %>%
+                                 `Logements de 3 et 4 pièces` = "3 et 4 pièces_pourcent",
+                                 `Logements avec DPE énergie de classe A,B,C` = "DPE énergie classe ABC_pourcent",
+                                 `Logements avec DPE GES de classe A,B,C` = "DPE GES classe ABC_pourcent",
+                                 `Logements social de moins de 5 ans` = "Parc de moins de 5 ans_pourcent"),
+         r52 = if_else(Reg_2017 == "52", 1, 0.65)) %>%
   ggplot() +
   # On utilise l'indicatrice de la région Pays de la Loire pour mapper la transparence
   geom_col(aes(x = nReg_2017, y = Valeur, fill = Indicateur, alpha = r52)) +
