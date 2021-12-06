@@ -12,6 +12,7 @@
 
 library(ggplot2)
 library(dplyr)
+library(forcats)
 library(hrbrthemes)
 
 load("extdata/rpls_aggrege.RData")
@@ -38,5 +39,5 @@ rpls_aggrege  %>%
   scale_alpha_continuous(range=c(.65,1))+
   facet_wrap(~Indicateur)+
   theme(legend.position="none")+
-  labs(title="mon premier facet",y="En % du parc social",x="")
+  labs(title="mon premier facet", y="En % du parc social", x="")
 
