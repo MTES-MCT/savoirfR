@@ -1,0 +1,110 @@
+
+#' Ressource path
+#'
+#' @param ... 
+#'
+#' @return
+#'
+#' @noRd
+ressources_path <- function(...) {
+  file.path("inst", "rstudio", "templates", "project", "ressources", ...)
+}
+
+#' Vignettes path
+#'
+#' @param ... 
+#'
+#' @return
+#'
+#' @noRd
+vignettes_path <- function(...) {
+  file.path("inst", "vignettes", ...)
+}
+
+
+
+#' rmd_to
+#'
+#' @param module "m1"
+#' @param rmdfile "exo1.rmd"
+#' @param folder corrections ou enonces
+#' @param purl TRUE (pour extraire le code R) ou FALSE pour ignorer le code R
+#' 
+#' @import knitr
+#' @importFrom fs path_ext_set
+#'
+#' @return
+#' @export
+#'
+#' @examples
+rmd_to <- function(module, rmdfile, folder = "corrections", purl = TRUE) {
+  old_purl_opts <- knitr::opts_chunk$get('purl')
+  knitr::opts_chunk$set(purl = purl)
+  rfile <- fs::path_ext_set(rmdfile, "R")
+  path <- ressources_path(module, folder, rfile)
+  knitr::purl(vignettes_path(module, rmdfile),
+              output = path, 
+              documentation = 2)
+  knitr::opts_chunk$set(purl = old_purl_opts)
+  return(path)
+}
+
+#' rmd_to_correction
+#'
+#' @param module 
+#' @param rmdfile 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+rmd_to_correction <- function(module, rmdfile) {
+  out <- rmd_to(module = module,
+         rmdfile = rmdfile,
+         folder = "corrections",
+         purl = TRUE)
+  clean_r(rfile = out)
+  out
+}
+
+#' rmd_to_enonce
+#'
+#' @param module 
+#' @param rmdfile 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+rmd_to_enonce <- function(module, rmdfile) {
+  out <- rmd_to(module = module,
+         rmdfile = rmdfile,
+         folder = "enonces",
+         purl = FALSE)
+  clean_r(rfile = out)
+  out
+}
+
+
+
+#' Clean R correction file
+#'
+#' @param rfile 
+#'
+#' @return
+#' @importFrom dplyr as_tibble filter mutate pull
+#' @importFrom magrittr %>%
+#' @importFrom stringr str_detect str_replace
+#'
+#' @noRd
+clean_r <- function(rfile) {
+  res <- readLines(rfile)
+  res %>% 
+    as_tibble() %>%
+    #remove empty lines and chunk opts
+    filter(! str_detect(value, "(#' $)|(^##)")) %>%
+    #replace #' by #
+    mutate(value = str_replace(value, "#'", '#')) %>% 
+    pull() %>%
+    writeLines(con = rfile)
+}
