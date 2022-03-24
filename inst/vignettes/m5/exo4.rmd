@@ -1,0 +1,59 @@
+## Exercice 4
+
+> A partir de la table rpls_aggrege, réaliser une facette sur un diagramme barre avec :
+>
+> * en variable discrète les régions
+> * en variables continues les indicateurs suivants :
+>     - % de logements de 3 et 4 pièces
+>     - % DPE énergie A,B,C 
+>     - % DPE GES A,B,C
+>     - % de parc de moins de 5 ans
+> * une façon d'identifier la région Pays de la Loire (code region '52')
+Pour avoir la liste des modalités dune variable : 
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+load(system.file("extdata", "rpls_aggrege_large.RData", package = "savoirfR"))
+#load("extdata/rpls_aggrege_large.RData")
+```
+
+- Variables caractères ou factorielles :
+
+```{r  f7_3, eval=F, echo=TRUE}
+unique(rpls_aggrege$Indicateur)
+```
+
+- Variables factorielles :
+
+```{r f7_4, eval=F, echo=TRUE}
+levels(rpls_aggrege$Indicateur)
+```
+
+Résultat attendu
+
+
+```{r  f7_5,,fig.height=8,fig.width=12,message=FALSE, warning=FALSE}
+rpls_aggrege  %>% 
+  filter(TypeZone=="Régions",
+         Indicateur %in% c("3 et 4 pièces_pourcent",
+                           "DPE GES classe ABC_pourcent",
+                           "DPE énergie classe ABC_pourcent",
+                           "Parc de moins de 5 ans_pourcent")) %>% 
+  mutate(Indicateur=fct_recode(Indicateur,
+                               `Logements sociaux de 3 et 4 pièces`="3 et 4 pièces_pourcent",
+                               `Logements sociaux avec DPE énergie de classe A,B,C`="DPE énergie classe ABC_pourcent",
+                               `Logements sociaux avec DPE GES de classe A,B,C`="DPE GES classe ABC_pourcent",
+                               `Logements sociaux de moins de 5 ans`="Parc de moins de 5 ans_pourcent"),
+         r52 = ifelse(Reg_2017 == "52",1,0)) %>% 
+  ggplot() +
+  #On utilise l'indicatrice de la région Pays de la Loire pour mapper la transparence
+  geom_bar(aes(x=nReg_2017,weight=Valeur,fill=Indicateur,alpha=r52))+
+  coord_flip()+
+  theme_minimal()+
+  scale_fill_ipsum()+
+  #On défini les valeurs maximum et minimum de transparence que l'on veut voir
+  scale_alpha_continuous(range=c(0.65, 1))+
+  facet_wrap(~Indicateur)+
+  theme(legend.position="none")+
+  labs(title="mon premier facet", y="En % du parc social",x="")
+```

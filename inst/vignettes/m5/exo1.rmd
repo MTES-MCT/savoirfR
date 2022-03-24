@@ -1,5 +1,5 @@
 ---
-title: "Exercices 1 module 5"
+title: "Exercices 1 -  module 5"
 ---
 
 ## Exercice 1
@@ -19,6 +19,7 @@ load(system.file("extdata", "rpls_aggrege_large.RData", package = "savoirfR"))
 #load("extdata/rpls_aggrege_large.RData")
 ```
 
+Résultat attendu :
 
 ```{r mod5_exo1_solution, message=FALSE, warning=FALSE}
 # Solution
