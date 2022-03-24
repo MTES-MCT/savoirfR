@@ -1,5 +1,5 @@
 # ---
-# title: "Exercices 1 module 5"
+# title: "Exercices 1 -  module 5"
 # ---
 # ## Exercice 1
 #  A partir des données de la table `rpls_aggrege_large` (rpls_aggrege_large.RData), créer un nuage de point entre :
@@ -15,6 +15,7 @@ library(dplyr)
 load(system.file("extdata", "rpls_aggrege_large.RData", package = "savoirfR"))
 #load("extdata/rpls_aggrege_large.RData")
 
+# Résultat attendu :
 # Solution
 ggplot(data = rpls_aggrege_large  %>%
   #on filtre la table sur les données EPCI

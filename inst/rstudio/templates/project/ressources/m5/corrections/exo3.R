@@ -1,14 +1,15 @@
-# Exercice 3
-
-# En réutilisant le graphe obtenu à l’exercice 1 (rpls_aggrege_large.RData), y rajouter :
-#  - une palette brewer pour la couleur ;
-#  - la légende en bas ;
-#  - des libellés (axes et légende) parlant et un titre.
-
-library(dplyr)
-library(ggplot2)
-
-load("extdata/rpls_aggrege_large.Rdata")
+# ## Exercice 3
+# > En réutilisant le graphe obtenu à l'exercice 1 (table rpls_aggrege_large), y rajouter:
+# >
+# > - une palette brewer pour la couleur;
+# >
+# > - la légende en bas;
+# >
+# > - des libellés (axes et légende) parlant et un titre.
+# Le résultat attendu
+library(tidyverse)
+load(system.file("extdata", "rpls_aggrege_large.RData", package = "savoirfR"))
+#load("extdata/rpls_aggrege_large.RData")
 
 ggplot(data = rpls_aggrege_large  %>% 
          filter(TypeZone=="Epci")) + 
@@ -17,8 +18,8 @@ ggplot(data = rpls_aggrege_large  %>%
                  color=epci_2017_52),
              size=.7
   )+
-  scale_color_brewer(type=qual,palette="Paired",
-                     labels=c("Autres Epci","Epci de la région Pays de la Loire"))+
+  scale_color_brewer(type=qual, palette="Paired",
+                     labels = c("Autres Epci","Epci de la région Pays de la Loire"))+
   scale_x_continuous(limits = c(0,40))+
   scale_y_continuous(limits = c(0,80))+
   theme(legend.position = "bottom")+
@@ -26,3 +27,4 @@ ggplot(data = rpls_aggrege_large  %>%
        x="Part du parc de moins de 5 ans",
        y="Part des logements ayant une étiquette A,B,C",
        color="")
+

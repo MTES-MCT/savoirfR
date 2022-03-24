@@ -1,5 +1,5 @@
 # ---
-# title: "Exercices 1 module 5"
+# title: "Exercices 1 -  module 5"
 # ---
 # ## Exercice 1
 #  A partir des données de la table `rpls_aggrege_large` (rpls_aggrege_large.RData), créer un nuage de point entre :
@@ -10,4 +10,5 @@
 #     (la variable `epci_2017_52` vaut 1 si l'EPCI appartient à la région PDL, 0 sinon).
 #     
 
+# Résultat attendu :
 

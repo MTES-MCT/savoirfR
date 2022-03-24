@@ -1,16 +1,11 @@
-# Exercice 6
-
-# A partir du fichier `rpls_aggrege_large.RData`, réaliser un graphique en barre 
-# représentant la répartition des DPE par classe (en %).
+# ## Exercice 6
+# A partir du fichier `rpls_aggrege_large.RData`, réaliser un graphique en barre représentant la répartition des DPE par classe (en %).  
 # Le graphique sera animé par département, uniquement pour ceux de la région Centre-Val de Loire.
-
-library(dplyr)
-library(ggplot2)
+# Le résultat attendu :
+library(tidyverse)
 library(gganimate)
-
-load("extdata/rpls_aggrege_large.RData")
-
-# PREPARATION DE LA TABLE
+load(system.file("extdata", "rpls_aggrege_large.RData", package = "savoirfR"))
+#load("extdata/rpls_aggrege_large.RData")
 
 rpls <- rpls_aggrege_large %>%   
   #Filtre sur la zone de travail souhaitée
@@ -26,8 +21,6 @@ rpls <- rpls_aggrege_large %>%
   #Retravail des intitulés pour ne conserver que la classe d'energie ABC/D/EGF/NA
   mutate(variable=str_remove(pattern = "DPE_energie_classe_",variable),
          variable=str_remove(pattern = "_pourcent",variable))
-
-
 ggplot(data=rpls, aes(x=variable, y=valeur,fill=variable)) +
   geom_bar(stat="identity")+
   #definition des couleurs
@@ -44,3 +37,4 @@ ggplot(data=rpls, aes(x=variable, y=valeur,fill=variable)) +
   transition_states(states=nDep_2017,
                     transition_length = 1,
                     state_length = 5)
+
