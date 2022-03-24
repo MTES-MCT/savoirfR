@@ -23,61 +23,37 @@ library(savoirfR)
  
 # Modifier le thème
 
-A partir des données de la table `ODD_graphique1` (ODD.RData), reprendre le nuage de point obtenu à partir des données ODD :
-
-taux de mortalité maternelle (`Maternal_mortality_ratio`) en fonction du produit intérieur brut (`Gross_Domestic_Product_GDP`) (Chapitre 4.1)
- 
-En modifier le thème :
-
-  -  insérer un titre de couleur, en gras, centré par rapport au graphe, 
-  -  indiquer la source (ODD) et modifier sa taille, 
-  -  changer les titres des axes et leurs tailles,
-  -  modifier la couleur de fond du graphe,
-  -  modifier le type de quadrillage (pointillés).
+```{r mod5_exo2, child=charge_exo("m5", "exo2.rmd"), echo=FALSE}
+```
  
 # Modifier les scales et labs
 
-En réutilisant le graphe obtenu à l’exercice 1 (rpls_aggrege_large.RData), y rajouter :
- 
-  - une palette brewer pour la couleur ;
-  - la légende en bas ;
-  - des libellés (axes et légende) parlant et un titre.
+```{r mod5_exo3, child=charge_exo("m5", "exo3.rmd"), echo=FALSE}
+```
   
 # Les facettes
 
-Réaliser une facette sur un diagramme barre avec :
-
-  - en variable discrète les régions,
-  - en variables continues les indicateurs suivants :
-      - % de logements de 3 et 4 pièces
-      - % DPE énergie A, B, C
-      - % DPE GES A, B, C
-      - % de parc de moins de 5 ans
-  - une façon d’identifier la région Pays de la Loire.
+```{r mod5_exo4, child=charge_exo("m5", "exo4.rmd"), echo=FALSE}
+```
 
 # Créer une carte avec ggplot2
 
-Produire une carte du Loiret à l’EPCI représentant le taux de logements collectifs dans le parc locatif social.
+```{r mod5_exo5, child=charge_exo("m5", "exo5.rmd"), echo=FALSE}
+```
 
 # Réaliser un graphe animé
 
-A partir du fichier `rpls_aggrege_large.RData`, réaliser un graphique en barre représentant la répartition des DPE par classe (en %).
-
-Le graphique sera animé par département, uniquement pour ceux de la région Centre-Val de Loire.
+```{r mod5_exo6, child=charge_exo("m5", "exo6.rmd"), echo=FALSE}
+```
 
 # Créer un graphique pour le web
 
-Reprendre le nuage de point obtenu à partir des données ODD : taux de mortalité maternelle 
-(`Maternal_mortality_ratio`) en fonction du produit intérieur brut (`Gross_Domestic_Product_GDP`) (Chapitre 9)
- 
-Obtenir ce graphique pour le web avec des infos bulles regroupant le nom du continent, 
-de la zone, le PIB et le taux de mortalité maternelle.
-Paramétrer la surbrillance du continent au survol d'élément.
+```{r mod5_exo7, child=charge_exo("m5", "exo7.rmd"), echo=FALSE}
+```
 
 # Créer un tableau avec kable et kablextra
 
-A partir de la table `rpls_aggrege_large`,   
-produire un tableau du nombre de logements collectifs et individuels (RPLS)  
-par départements en région Centre-Val de Loire : 1 ligne par département + 1 ligne avec le total de la région.
+```{r mod5_exo8, child=charge_exo("m5", "exo8.rmd"), echo=FALSE}
+```
 
 

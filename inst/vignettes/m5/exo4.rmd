@@ -13,8 +13,11 @@ Pour avoir la liste des modalités dune variable :
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
+library(hrbrthemes)
 load(system.file("extdata", "rpls_aggrege_large.RData", package = "savoirfR"))
 #load("extdata/rpls_aggrege_large.RData")
+load(system.file("extdata", "rpls_aggrege.RData", package = "savoirfR"))
+#load("extdata/rpls_aggrege.RData")
 ```
 
 - Variables caractères ou factorielles :
