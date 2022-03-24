@@ -15,7 +15,7 @@ load(system.file("extdata", "ODD.RData", package = "savoirfR"))
 #load("extdata/ODD.RData")
 ```
 
-```{r eval=T,message=F,warning=F}
+```{r message=F,warning=F}
 gg<-ggplot(ODD_graphique1) +
   geom_point_interactive(aes(x=log(Gross_Domestic_Product_GDP),
                  y=log(Maternal_mortality_ratio),

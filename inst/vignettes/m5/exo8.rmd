@@ -2,9 +2,16 @@
 
 Produire un tableau du nombre de logements collectifs et individuels (RPLS) par départements en région Centre-Val de Loire.
 
-Le résultat attendu : 
+Le résultat attendu :
 
-```{r kabble_3, eval=T,message=F,warning=F,echo=FALSE}
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(kableExtra)
+load(system.file("extdata", "rpls_aggrege_large.RData", package = "savoirfR"))
+#load("extdata/rpls_aggrege_large.RData")
+```
+
+```{r kabble_3, message=F,warning=F,echo=FALSE}
 rpls_DEP_R24  <- rpls_aggrege_large %>% 
   filter(TypeZone %in% c("Départements","Régions"),nReg_2017=="Centre-Val de Loire") %>% 
   arrange(TypeZone,Zone) %>%
