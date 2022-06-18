@@ -61,7 +61,7 @@ Chaque énoncé/corrigé d'exercice doit figurer :
 
 La procédure proposée permet de tenir les différents supports cohérents entre eux au cours du temps et évite les multiples manipulations de mise à jour.
 
-### Projet d'exercices du satgiaire
+### Projet d'exercices du stagiaire
 Pour propager les vignettes d'exercice écrites précédemment vers le projet du stagiaire, exécuter `extract_r_files(module = Y)` et consignez le dans le devstuff_history.R s'il n'est pas déjà inscrit. 
 
 Vérifier que les fichiers R ont bien été extraits dans les dossiers :
@@ -74,7 +74,8 @@ Vérifier que les fichiers R ont bien été extraits dans les dossiers :
 
 Chaque vignette de module rassemble les consignes des différents exercices et visualise le résultat à obtenir, sans dévoiler la correction.
 
-Pour appeler l'exercice dans la vignette ou dans parcours-r, il faut utiliser un chunk. Par exemple pour l'exercice 1 du module 5 : 
+Pour appeler l'exercice dans la vignette ou dans parcours-r, il faut utiliser un chunk. Par exemple pour l'exercice 1 du module 5 :    
+
 
 \```{r mod5_exo1, child=charge_exo("m5", "exo1.rmd"), echo=FALSE}   
 
@@ -84,14 +85,15 @@ Compiler votre vignette pour la vérifier.
 
 ### Connecter le support de cours aux énoncés et corrigés de savoir fR.
 Ouvrez le projet RStudio dédié au module dont vous venez de mettre à jour les exercices dans {savoirfR}.
-Remplacez y les consignes par :
-\```{r modY_exoX, child=charge_exo("mY", "exoX.rmd"), echo=FALSE}   
+Remplacez y les consignes par :   
 
+\```{r modY_exoX, child=charge_exo("mY", "exoX.rmd"), echo=FALSE}   
+  
 \``` 
 
-Remplacez y les corrigés par :
-\```{r modY_exoX_solution, child=charge_exo("mY", "exoX.rmd"), echo=TRUE}  
-
+Remplacez y les corrigés par :   
+\```{r modY_exoX_solution, child=charge_exo("mY", "exoX.rmd"), echo=TRUE}   
+   
 \``` 
 
 
