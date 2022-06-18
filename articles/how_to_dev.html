@@ -155,7 +155,7 @@ Ce chunk est nommé ‘modY_exo1_solution’; par exemple :</p>
 </ol>
 <p>La procédure proposée permet de tenir les différents supports cohérents entre eux au cours du temps et évite les multiples manipulations de mise à jour.</p>
 <div class="section level3">
-<h3 id="projet-dexercices-du-satgiaire">Projet d’exercices du satgiaire<a class="anchor" aria-label="anchor" href="#projet-dexercices-du-satgiaire"></a>
+<h3 id="projet-dexercices-du-stagiaire">Projet d’exercices du stagiaire<a class="anchor" aria-label="anchor" href="#projet-dexercices-du-stagiaire"></a>
 </h3>
 <p>Pour propager les vignettes d’exercice écrites précédemment vers le projet du stagiaire, exécuter <code>extract_r_files(module = Y)</code> et consignez le dans le devstuff_history.R s’il n’est pas déjà inscrit.</p>
 <p>Vérifier que les fichiers R ont bien été extraits dans les dossiers :</p>
@@ -176,9 +176,11 @@ Ce chunk est nommé ‘modY_exo1_solution’; par exemple :</p>
 <div class="section level3">
 <h3 id="connecter-le-support-de-cours-aux-énoncés-et-corrigés-de-savoir-fr-">Connecter le support de cours aux énoncés et corrigés de savoir fR.<a class="anchor" aria-label="anchor" href="#connecter-le-support-de-cours-aux-%C3%A9nonc%C3%A9s-et-corrig%C3%A9s-de-savoir-fr-"></a>
 </h3>
-<p>Ouvrez le projet RStudio dédié au module dont vous venez de mettre à jour les exercices dans {savoirfR}. Remplacez y les consignes par : ```{r modY_exoX, child=charge_exo(“mY”, “exoX.rmd”), echo=FALSE}</p>
+<p>Ouvrez le projet RStudio dédié au module dont vous venez de mettre à jour les exercices dans {savoirfR}. Remplacez y les consignes par :</p>
+<p>```{r modY_exoX, child=charge_exo(“mY”, “exoX.rmd”), echo=FALSE}</p>
 <p>```</p>
-<p>Remplacez y les corrigés par : ```{r modY_exoX_solution, child=charge_exo(“mY”, “exoX.rmd”), echo=TRUE}</p>
+<p>Remplacez y les corrigés par :<br>
+```{r modY_exoX_solution, child=charge_exo(“mY”, “exoX.rmd”), echo=TRUE}</p>
 <p>```</p>
 </div>
 </div>
