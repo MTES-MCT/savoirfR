@@ -15,9 +15,6 @@ rmd_to(module, rmdfile, folder = "corrections", purl = TRUE)
 
 \item{purl}{TRUE (pour extraire le code R) ou FALSE pour ignorer le code R}
 }
-\value{
-
-}
 \description{
 rmd_to
 }

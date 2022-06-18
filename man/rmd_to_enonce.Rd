@@ -7,12 +7,9 @@
 rmd_to_enonce(module, rmdfile)
 }
 \arguments{
-\item{module}{}
+\item{module}{"m1"}
 
-\item{rmdfile}{}
-}
-\value{
-
+\item{rmdfile}{"exo1.rmd"}
 }
 \description{
 rmd_to_enonce

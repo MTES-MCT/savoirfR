@@ -28,6 +28,17 @@ usethis::use_package("dplyr")
 usethis::use_package("stringr")
 usethis::use_package("magrittr")
 usethis::use_package("rlang")
+  
+usethis::use_package('forcats', type = "Suggests")
+usethis::use_package('gganimate', type = "Suggests")
+usethis::use_package('ggiraph', type = "Suggests")
+usethis::use_package('ggplot2', type = "Suggests")
+usethis::use_package('hrbrthemes', type = "Suggests")
+usethis::use_package('kableExtra', type = "Suggests")
+usethis::use_package('sf', type = "Suggests")
+usethis::use_package('tidyr', type = "Suggests")
+usethis::use_package('class', type = "Suggests")
+
 usethis::use_build_ignore("dev/")
 usethis::use_logo(img = "~/Mes images/savoirfR/hex-savoirfR2.png")
 

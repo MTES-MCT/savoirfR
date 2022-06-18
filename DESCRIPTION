@@ -40,5 +40,14 @@ Imports:
     stringr,
     utils
 Suggests: 
-    rmarkdown
+    gganimate,
+    forcats,
+    rmarkdown,
+    ggiraph,
+    ggplot2,
+    hrbrthemes,
+    kableExtra,
+    sf,
+    tidyr,
+    class
 VignetteBuilder: knitr

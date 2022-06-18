@@ -3,7 +3,6 @@
 #'
 #' @param ... 
 #'
-#' @return
 #'
 #' @noRd
 ressources_path <- function(...) {
@@ -14,13 +13,11 @@ ressources_path <- function(...) {
 #'
 #' @param ... 
 #'
-#' @return
 #'
 #' @noRd
 vignettes_path <- function(...) {
   file.path("inst", "vignettes", ...)
 }
-
 
 
 #' rmd_to
@@ -33,10 +30,6 @@ vignettes_path <- function(...) {
 #' @import knitr
 #' @importFrom fs path_ext_set
 #'
-#' @return
-#' @export
-#'
-#' @examples
 rmd_to <- function(module, rmdfile, folder = "corrections", purl = TRUE) {
   old_purl_opts <- knitr::opts_chunk$get('purl')
   knitr::opts_chunk$set(purl = purl)
@@ -51,13 +44,10 @@ rmd_to <- function(module, rmdfile, folder = "corrections", purl = TRUE) {
 
 #' rmd_to_correction
 #'
-#' @param module 
-#' @param rmdfile 
-#'
-#' @return
+#' @param module "m1"
+#' @param rmdfile "exo1.rmd"
+#' 
 #' @export
-#'
-#' @examples
 rmd_to_correction <- function(module, rmdfile) {
   out <- rmd_to(module = module,
                 rmdfile = rmdfile,
@@ -69,13 +59,10 @@ rmd_to_correction <- function(module, rmdfile) {
 
 #' rmd_to_enonce
 #'
-#' @param module 
-#' @param rmdfile 
+#' @param module "m1"
+#' @param rmdfile "exo1.rmd"
 #'
-#' @return
 #' @export
-#'
-#' @examples
 rmd_to_enonce <- function(module, rmdfile) {
   out <- rmd_to(module = module,
          rmdfile = rmdfile,
@@ -89,15 +76,14 @@ rmd_to_enonce <- function(module, rmdfile) {
 
 #' Clean R correction file
 #'
-#' @param rfile 
+#' @param rfile character
 #'
-#' @return
 #' @importFrom dplyr as_tibble filter mutate pull
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #' @importFrom stringr str_detect str_replace
 #'
-#' @noRd
+#' @export
 clean_r <- function(rfile) {
   res <- readLines(rfile)
   res %>% 
@@ -106,9 +92,9 @@ clean_r <- function(rfile) {
     filter(! str_detect(.data$value, "(#' $)|(^##)|sultat attendu|sultats attendu")) %>%
     #replace #' by #, and replace load with system file by basic load
     mutate(value = str_replace(.data$value, "#'", '#') %>% 
-             gsub("system.file(", "", ., fixed = TRUE) %>% 
-             gsub("\", \"", "/", ., fixed = TRUE) %>% 
-             gsub(", package = \"savoirfR\")", "", ., fixed = TRUE)
+             gsub("system.file(", "", .data, fixed = TRUE) %>% 
+             gsub("\", \"", "/", .data, fixed = TRUE) %>% 
+             gsub(", package = \"savoirfR\")", "", .data, fixed = TRUE)
            ) %>% 
     pull() %>%
     writeLines(con = rfile)

@@ -9,9 +9,6 @@ charge_exo(...)
 \arguments{
 \item{...}{chemin partant de vignettes vers le l'exercice}
 }
-\value{
-
-}
 \description{
 Charger les exos des modules
 }

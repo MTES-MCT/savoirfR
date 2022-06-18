@@ -2,7 +2,6 @@
 #'
 #' @param ... chemin partant de vignettes vers le l'exercice
 #'
-#' @return
 #' @export
 #'
 #' @examples

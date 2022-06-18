@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
   dev = "svg"
 )
 library(sf)
+library(class)
 ```
 
 ```{r setup, message=FALSE, warning=FALSE}
