@@ -1,16 +1,22 @@
-# ## Exercice 3
-# > En réutilisant le graphe obtenu à l'exercice 1 (table rpls_aggrege_large), y rajouter:
-# >
-# > - une palette brewer pour la couleur;
-# >
-# > - la légende en bas;
-# >
-# > - des libellés (axes et légende) parlant et un titre.
-# Le résultat attendu
+## Exercice 3
+
+> En réutilisant le graphe obtenu à l'exercice 1 (table rpls_aggrege_large), y rajouter:
+>
+> - une palette brewer pour la couleur;
+>
+> - la légende en bas;
+>
+> - des libellés (axes et légende) parlant et un titre.
+Le résultat attendu
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
 load(system.file("extdata", "rpls_aggrege_large.RData", package = "savoirfR"))
 #load("extdata/rpls_aggrege_large.RData")
+```
 
+
+```{r  fg8_5, message=FALSE, warning=FALSE}
 ggplot(data = rpls_aggrege_large  %>% 
          filter(TypeZone=="Epci")) + 
   geom_point(aes(x=Parc_de_moins_de_5_ans_pourcent,
@@ -27,4 +33,4 @@ ggplot(data = rpls_aggrege_large  %>%
        x="Part du parc de moins de 5 ans",
        y="Part des logements ayant une étiquette A,B,C",
        color="")
-
+```

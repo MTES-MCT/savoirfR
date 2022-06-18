@@ -1,13 +1,18 @@
-# ## Exercice 5 
-# > Produire une carte du Loiret à l'EPCI du taux de logements collectifs dans le parc locatif social.
-# Résultat attendu
+## Exercice 5 
+
+> Produire une carte du Loiret à l'EPCI du taux de logements collectifs dans le parc locatif social.
+Résultat attendu
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
 library(sf)
 load(system.file("extdata", "rpls_aggrege.RData", package = "savoirfR"))
 #load("extdata/rpls_aggrege.RData")
 load(system.file("extdata", "Carte_EPCI_France.RData", package = "savoirfR"))
 #load("extdata/Carte_EPCI_France.RData")
+```
 
+```{r cart_7,message=F,warning=F}
 tt <- Carte_EPCI_France %>% 
   filter(CODE_DEPT=="45") %>% 
   left_join(rpls_aggrege) %>% 
@@ -19,4 +24,4 @@ ggplot(data=tt) +
     axis.text.x = element_blank(),
     axis.text.y = element_blank(),
     axis.ticks = element_blank())
-
+```

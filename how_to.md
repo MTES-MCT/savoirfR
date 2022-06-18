@@ -11,13 +11,27 @@ Chaque jeu de données doit être limité en taille à quelques centaines de lig
 
 Compléter le fichier `extdata/list_data_modules.csv` en rajoutant une ligne pour chaque dataset du module.
 
-### Rajouter les énoncées dans `inst/rstudio/templates/project/ressources/nom_du_module/enonces`
+### Rajouter les exercices dans `inst/vignettes/nom_du_module/`
 
-Chaque fichier doit avoir comme nom `exoN.R` ou `exoN.Rmd`.
+Chaque fichier doit avoir `exoN.Rmd` ou `exoN.rmd` ou encore `exoN.rmarkdown`
+Knitter la vignette pour vérifier qu'elle compile
+Sourcer le script `dev/extract_r_files.R` pour extraire les enonces et les exercices.
+Vérifier que les fichiers R ont bien été extraits dans les dossiers :
 
-### Rajouter les corrections dans `inst/rstudio/templates/project/ressources/nom_du_module/corrections`
+* `inst/rstudio/templates/project/ressources/nom_du_module/enonces`
 
-Chaque fichier doit avoir comme nom `exoN.R` ou `exoN.Rmd`, comporter l'énoncé et la correction documentée.
+* `inst/rstudio/templates/project/ressources/nom_du_module/corrections`
+
+### Modifier la vignette
+
+Pour appeler l'exercice dans la vignette ou dans parcours-r il faut utiliser un chunk :
+
+Pour afficher l'énoncé seuleument :
+```{r mod5_exo1, child=charge_exo("m5", "exo1.rmd"), echo=FALSE}
+```
+Pour afficher l'énoncé et la correction :
+```{r mod5_exo1_solution, child=charge_exo("m5", "exo1.rmd"), echo=TRUE}
+```
 
 ### testez que tout fonctionne
 
@@ -31,3 +45,4 @@ Chaque fichier doit avoir comme nom `exoN.R` ou `exoN.Rmd`, comporter l'énoncé
 
 - commiter les changements
 - effectuer une merge request de votre branche vers la branche principale
+

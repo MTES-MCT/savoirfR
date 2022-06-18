@@ -1,26 +1,41 @@
-# ## Exercice 4
-# > A partir de la table rpls_aggrege, réaliser une facette sur un diagramme barre avec :
-# >
-# > * en variable discrète les régions
-# > * en variables continues les indicateurs suivants :
-# >     - % de logements de 3 et 4 pièces
-# >     - % DPE énergie A,B,C 
-# >     - % DPE GES A,B,C
-# >     - % de parc de moins de 5 ans
-# > * une façon d'identifier la région Pays de la Loire (code region '52')
-# Pour avoir la liste des modalités dune variable : 
+## Exercice 4
+
+> A partir de la table rpls_aggrege, réaliser une facette sur un diagramme barre avec :
+>
+> * en variable discrète les régions
+> * en variables continues les indicateurs suivants :
+>     - % de logements de 3 et 4 pièces
+>     - % DPE énergie A,B,C 
+>     - % DPE GES A,B,C
+>     - % de parc de moins de 5 ans
+> * une façon d'identifier la région Pays de la Loire (code region '52')
+Pour avoir la liste des modalités dune variable : 
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
 library(hrbrthemes)
 load(system.file("extdata", "rpls_aggrege_large.RData", package = "savoirfR"))
 #load("extdata/rpls_aggrege_large.RData")
 load(system.file("extdata", "rpls_aggrege.RData", package = "savoirfR"))
 #load("extdata/rpls_aggrege.RData")
+```
 
-# - Variables caractères ou factorielles :
+- Variables caractères ou factorielles :
 
-# - Variables factorielles :
+```{r  f7_3, eval=F, echo=TRUE}
+unique(rpls_aggrege$Indicateur)
+```
 
-# Résultat attendu
+- Variables factorielles :
+
+```{r f7_4, eval=F, echo=TRUE}
+levels(rpls_aggrege$Indicateur)
+```
+
+Résultat attendu
+
+
+```{r  f7_5,,fig.height=8,fig.width=12,message=FALSE, warning=FALSE}
 rpls_aggrege  %>% 
   filter(TypeZone=="Régions",
          Indicateur %in% c("3 et 4 pièces_pourcent",
@@ -44,4 +59,4 @@ rpls_aggrege  %>%
   facet_wrap(~Indicateur)+
   theme(legend.position="none")+
   labs(title="mon premier facet", y="En % du parc social",x="")
-
+```

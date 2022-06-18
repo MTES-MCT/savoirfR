@@ -1,12 +1,19 @@
-# ## Exercice 6
-# A partir du fichier `rpls_aggrege_large.RData`, réaliser un graphique en barre représentant la répartition des DPE par classe (en %).  
-# Le graphique sera animé par département, uniquement pour ceux de la région Centre-Val de Loire.
-# Le résultat attendu :
+## Exercice 6
+
+A partir du fichier `rpls_aggrege_large.RData`, réaliser un graphique en barre représentant la répartition des DPE par classe (en %).  
+Le graphique sera animé par département, uniquement pour ceux de la région Centre-Val de Loire.
+
+Le résultat attendu :
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
 library(gganimate)
 load(system.file("extdata", "rpls_aggrege_large.RData", package = "savoirfR"))
 #load("extdata/rpls_aggrege_large.RData")
+```
 
+
+```{r  gganim_6, message=F,warning=F, cache = TRUE}
 rpls <- rpls_aggrege_large %>%   
   #Filtre sur la zone de travail souhaitée
   filter(TypeZone=="Départements" & nReg_2017=="Centre-Val de Loire")%>% 
@@ -37,4 +44,4 @@ ggplot(data=rpls, aes(x=variable, y=valeur,fill=variable)) +
   transition_states(states=nDep_2017,
                     transition_length = 1,
                     state_length = 5)
-
+```

@@ -1,6 +1,10 @@
-# Exercice 3
+# ## Exercice 3
+# > En réutilisant le graphe obtenu à l'exercice 1 (table rpls_aggrege_large), y rajouter:
+# >
+# > - une palette brewer pour la couleur;
+# >
+# > - la légende en bas;
+# >
+# > - des libellés (axes et légende) parlant et un titre.
+# Le résultat attendu
 
-# En réutilisant le graphe obtenu à l’exercice 1 (rpls_aggrege_large.RData), y rajouter :
-#  - une palette brewer pour la couleur ;
-#  - la légende en bas ;
-#  - des libellés (axes et légende) parlant et un titre.
