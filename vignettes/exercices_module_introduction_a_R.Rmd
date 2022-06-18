@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(savoirfR)
 ```
 
-# Premier exercirce
+# Premier exercice
 
 - Créer plusieurs variables numériques par assignation `a <- 5`, `b <- 4`
 - Regarder l’onglet Environnement
