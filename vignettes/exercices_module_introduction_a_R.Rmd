@@ -1,8 +1,8 @@
 ---
-title: "Exercices module introduction à R"
+title: "Exercices parcours R module 1 : introduction à R"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{exercices_module_introduction_a_R}
+  %\VignetteIndexEntry{Exercices parcours R module 1 : introduction à R}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

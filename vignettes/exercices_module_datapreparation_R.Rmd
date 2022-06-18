@@ -2,7 +2,7 @@
 title: "Exercices parcours R module 2 : datapréparation"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{exercices_module_datapreparation_R}
+  %\VignetteIndexEntry{Exercices parcours R module 2 : datapréparation}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

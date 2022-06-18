@@ -60,9 +60,9 @@ rmd_to <- function(module, rmdfile, folder = "corrections", purl = TRUE) {
 #' @examples
 rmd_to_correction <- function(module, rmdfile) {
   out <- rmd_to(module = module,
-         rmdfile = rmdfile,
-         folder = "corrections",
-         purl = TRUE)
+                rmdfile = rmdfile,
+                folder = "corrections",
+                purl = TRUE)
   clean_r(rfile = out)
   out
 }
@@ -94,6 +94,7 @@ rmd_to_enonce <- function(module, rmdfile) {
 #' @return
 #' @importFrom dplyr as_tibble filter mutate pull
 #' @importFrom magrittr %>%
+#' @importFrom rlang .data
 #' @importFrom stringr str_detect str_replace
 #'
 #' @noRd
@@ -101,10 +102,14 @@ clean_r <- function(rfile) {
   res <- readLines(rfile)
   res %>% 
     as_tibble() %>%
-    #remove empty lines and chunk opts
-    filter(! str_detect(value, "(#' $)|(^##)")) %>%
-    #replace #' by #
-    mutate(value = str_replace(value, "#'", '#')) %>% 
+    #remove empty lines and chunk opts and lines 'resultats attendus : '
+    filter(! str_detect(.data$value, "(#' $)|(^##)|sultat attendu|sultats attendu")) %>%
+    #replace #' by #, and replace load with system file by basic load
+    mutate(value = str_replace(.data$value, "#'", '#') %>% 
+             gsub("system.file(", "", ., fixed = TRUE) %>% 
+             gsub("\", \"", "/", ., fixed = TRUE) %>% 
+             gsub(", package = \"savoirfR\")", "", ., fixed = TRUE)
+           ) %>% 
     pull() %>%
     writeLines(con = rfile)
 }

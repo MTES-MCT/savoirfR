@@ -1,4 +1,4 @@
-# premier exercirce
+# premier exercice
 
 # Créer plusieurs variables numériques par assignation a <- 5, b <- 4
 # Regarder l’onglet Environnement

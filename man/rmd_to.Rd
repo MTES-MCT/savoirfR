@@ -2,22 +2,22 @@
 % Please edit documentation in R/rmd_to.R
 \name{rmd_to}
 \alias{rmd_to}
-\title{Title}
+\title{rmd_to}
 \usage{
 rmd_to(module, rmdfile, folder = "corrections", purl = TRUE)
 }
 \arguments{
-\item{module}{}
+\item{module}{"m1"}
 
-\item{rmdfile}{}
+\item{rmdfile}{"exo1.rmd"}
 
-\item{folder}{}
+\item{folder}{corrections ou enonces}
 
-\item{purl}{}
+\item{purl}{TRUE (pour extraire le code R) ou FALSE pour ignorer le code R}
 }
 \value{
 
 }
 \description{
-Title
+rmd_to
 }

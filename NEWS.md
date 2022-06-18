@@ -1,3 +1,11 @@
+# savoirfR 0.0.0.9003
+
+* Fix missing library, change crs, precise exercise instruction  (Module 5)
+* https://github.com/MTES-MCT/savoirfR/pull/24
+* Correct M1 errors
+* Add logo
+* Add metadata Base_synth_territoires.csv
+
 # savoirfR 0.0.0.9002
 
 * Added table estim-pop-dep-sexe-gca-2019.xls (Module 2)

@@ -1,14 +1,11 @@
-# Importer les données et premier coup d’oeil 
+# Importer les données et premier coup d’oeil
 # Nous allons travailler sur des indicateurs au territoire extrait de l'outil geoidd du ministère et exporté en csv
 # Utiliser la fonction read.csv() pour importer ce fichier et stocker le dans un objet df.
 # Veillez à ce que la région soit bien importée comme un facteur et non un entier.
 # Inspecter le dataframe avec les fonctions vues auparavant
 
-df <- read.csv(file = "extdata/Base_synth_territoires.csv",
-               sep = ";", dec = ",",
-               colClasses = c(NA, "NULL", "character", "NULL","NULL","NULL",
-                              NA, NA, NA, NA, rep("NULL", 28)))
-
+df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
+               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)))
 str(df)
 
 # On peut également gérer les problèmes d’encodage de caractères (si on passe de Windows à un système Unix, par exemple).
