@@ -1,11 +1,24 @@
-# ---
-# title: "Exercice 5 -  module 5"
-# ---   
-# Produire une carte du Loiret à l'EPCI représentant le taux de logements collectifs dans le parc locatif social (variable "Logements collectifs_pourcent").   
+---
+title: "Exercice 5 -  module 5"
+---   
+
+Produire une carte du Loiret à l'EPCI représentant le taux de logements collectifs dans le parc locatif social (variable "Logements collectifs_pourcent").   
+
+
+Résultat attendu : 
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+load(system.file("extdata", "rpls_aggrege.RData", package = "savoirfR"))
+load(system.file("extdata", "Carte_EPCI_France.RData", package = "savoirfR"))
+```
+
+
+```{r, eval=FALSE}
 load("extdata/rpls_aggrege.RData")
 load("extdata/Carte_EPCI_France.RData")
+```
 
-
+```{r mod5_exo5_solution, message=FALSE, warning=FALSE}
 
 library(ggplot2)
 library(dplyr)
@@ -27,4 +40,4 @@ ggplot(data = tt) +
     axis.text.x = element_blank(),
     axis.text.y = element_blank(),
     axis.ticks = element_blank())
-
+```

@@ -1,18 +1,30 @@
-# ---
-# title: "Exercice 4 -  module 5"
-# ---  
-# Réaliser une facette sur un diagramme barre avec :       
-#  - en variable discrète les régions,    
-#  - en variables continues les indicateurs suivants :      
-#     - % de logements de 3 et 4 pièces   
-#     - % DPE énergie A, B, C   
-#     - % DPE GES A, B, C   
-#     - % de parc de moins de 5 ans   
-#  - une façon d'identifier la région Pays de la Loire.   
-#  
+---
+title: "Exercice 4 -  module 5"
+---  
+
+
+Réaliser une facette sur un diagramme barre avec :       
+ - en variable discrète les régions,    
+ - en variables continues les indicateurs suivants :      
+    - % de logements de 3 et 4 pièces   
+    - % DPE énergie A, B, C   
+    - % DPE GES A, B, C   
+    - % de parc de moins de 5 ans   
+ - une façon d'identifier la région Pays de la Loire.   
+ 
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+load(system.file("extdata", "rpls_aggrege.RData", package = "savoirfR"))
+```
+
+Résultat attendu : 
+
+
+```{r, eval=FALSE}
 load("extdata/rpls_aggrege.RData")
+```
 
-
+```{r  mod5_exo4_solution,,fig.height=8,fig.width=12,message=FALSE, warning=FALSE}
 
 library(ggplot2)
 library(dplyr)
@@ -57,4 +69,4 @@ gg + scale_alpha_continuous(range = c(.65, 1))
 # solution 3 : On indique via le paramètre rescaler de la fonction scale_alpha_continuous que les valeurs peuvent être utilisées telles quelles
 # gg + scale_alpha_continuous(rescaler = ~.x)
 
-
+```

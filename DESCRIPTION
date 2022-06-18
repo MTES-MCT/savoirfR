@@ -32,8 +32,22 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
 Imports: 
+    dplyr,
+    fs,
+    knitr,
+    magrittr,
+    rlang,
+    stringr,
     utils
 Suggests: 
-    knitr,
-    rmarkdown
+    gganimate,
+    forcats,
+    rmarkdown,
+    ggiraph,
+    ggplot2,
+    hrbrthemes,
+    kableExtra,
+    sf,
+    tidyr,
+    class
 VignetteBuilder: knitr

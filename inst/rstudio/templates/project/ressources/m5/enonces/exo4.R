@@ -1,13 +1,14 @@
-# Exercice 4
+# ---
+# title: "Exercice 4 -  module 5"
+# ---  
+# Réaliser une facette sur un diagramme barre avec :       
+#  - en variable discrète les régions,    
+#  - en variables continues les indicateurs suivants :      
+#     - % de logements de 3 et 4 pièces   
+#     - % DPE énergie A, B, C   
+#     - % DPE GES A, B, C   
+#     - % de parc de moins de 5 ans   
+#  - une façon d'identifier la région Pays de la Loire.   
+#  
 
-# A partir de la table 'rpls_aggrege' réaliser une facette sur un diagramme barre avec :
-#  - en variable discrète, les régions,
-#  - en variables continues, les indicateurs suivants :
-#     - % de logements de 3 et 4 pièces
-#     - % DPE énergie A, B, C
-#     - % DPE GES A, B, C
-#     - % de parc de moins de 5 ans
-#  - une façon d’identifier la région Pays de la Loire.
-# Astuce - Obtenir les modalités d'une variable texte puis facteur :
-# unique(rpls_aggrege$Indicateur)
-# levels(rpls_aggrege$Indicateur)
+

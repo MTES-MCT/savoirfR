@@ -1,6 +1,6 @@
 Title: Exercice Parcours R MTES-MCT
 Binding: exo_modules_skeleton
-OpenFiles: scripts/exo1.R
+OpenFiles: scripts/*.R
 Icon: m1.png
 
 
