@@ -1,4 +1,4 @@
-#permet d'ignorer le fichier, ainsi pas de note lors du check
+# permet d'ignorer le fichier, ainsi pas de note lors du check
 usethis::use_build_ignore("devstuff_history.R")
 
 # Définir une licence
@@ -12,8 +12,8 @@ usethis::use_r("skeleton.R")
 
 usethis::use_build_ignore("how_to.md")
 
-#creation de la documentation des data
-#usethis::use_r("doc_nomdeladata")
+# creation de la documentation des data
+# usethis::use_r("doc_nomdeladata")
 
 usethis::use_vignette("exercices_module_introduction_a_R")
 usethis::use_vignette("exercices_module_datapreparation_R")

@@ -1,16 +1,16 @@
 # Exercice : créer des graphiques
 
-# Nous allons travailler sur des indicateurs au territoire extrait de l'outil geoidd du ministère et exporté en csv 
+# Nous allons travailler sur des indicateurs au territoire extrait de l'outil geoidd du ministère et exporté en csv
 # avec les variables que nous avons calculé à l'exercice précédent
 
 df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
                colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32))) %>% 
   mutate(densite = P14_POP / SUPERF,
-         tx_natal = 1000 * NAISD15 / P14_POP,
-         tx_mort = DECESD15 / P14_POP)
+    tx_natal = 1000 * NAISD15 / P14_POP,
+    tx_mort = DECESD15 / P14_POP)
 
 # À l’aide de l’aide mémoire ggplot2 :
-#   
+#
 # - Réaliser un histogramme de la population communale
 
 ggplot(data = df, aes(x = P14_POP)) +

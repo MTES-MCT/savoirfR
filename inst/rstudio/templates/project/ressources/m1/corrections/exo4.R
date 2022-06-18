@@ -1,12 +1,13 @@
 # Exercice : calcul de statistiques
 
-# Nous allons travailler sur des indicateurs au territoire extrait de l'outil geoidd du ministère et exporté en csv 
+# Nous allons travailler sur des indicateurs au territoire extrait de l'outil geoidd du ministère et exporté en csv
 # avec les variables que nous avons calculé à l'exercice précédent
 df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
                colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32))) %>% 
+
   mutate(densite = P14_POP / SUPERF,
-         tx_natal = 1000 * NAISD15 / P14_POP,
-         tx_mort = DECESD15 / P14_POP)
+    tx_natal = 1000 * NAISD15 / P14_POP,
+    tx_mort = DECESD15 / P14_POP)
 
 # Utilisez la fonction summary() pour obtenir un résumé de l’ensemble des variables de la table df
 
@@ -32,15 +33,15 @@ df %>% pull(densite) %>% quantile(na.rm = T)
 seq(0, 1, 0.1) # vérifier la séquence qu'on souhaite
 df %>% pull(densite) %>% quantile(probs = seq(0, 1, 0.1), na.rm = T)
 
-# Calculez la version centrée réduite de la variable de densité. 
+# Calculez la version centrée réduite de la variable de densité.
 
-df <- df %>% 
+df <- df %>%
   mutate(std_dens = (densite - mean(densite, na.rm = T)) / sd(densite, na.rm = T))
 
 # Rappel sur la définition de centrer réduire : https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite
 
 # Tableaux croisés :
-  
+
 # Calculer le nombre de communes par type d’espace à l’aide de la fonction table, et le pourcentage associé
 t <- table(df$ZAU2)
 t
@@ -51,4 +52,3 @@ t
 t <- table(df$REG, df$ZAU2)
 t
 100 * prop.table(t) %>% round(digits = 4)
-
