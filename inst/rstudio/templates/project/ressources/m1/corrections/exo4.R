@@ -1,7 +1,7 @@
 # Exercice : calcul de statistiques
 
 # Nous allons travailler sur des indicateurs au territoire extrait de l'outil geoidd du ministère et exporté en csv
-# avec les variables que nous avons calculé à l'exercice précédent
+# avec les variables que nous avons calculées à l'exercice précédent
 df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
                colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32))) %>% 
 

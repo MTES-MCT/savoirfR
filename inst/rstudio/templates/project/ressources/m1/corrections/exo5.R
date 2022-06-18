@@ -1,7 +1,7 @@
 # Exercice : créer des graphiques
 
 # Nous allons travailler sur des indicateurs au territoire extrait de l'outil geoidd du ministère et exporté en csv
-# avec les variables que nous avons calculé à l'exercice précédent
+# avec les variables que nous avons calculées à l'exercice précédent
 
 df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
                colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32))) %>% 
@@ -21,7 +21,7 @@ ggplot(data = df, aes(x = P14_POP)) +
 ggplot(data = df, aes(x = log(P14_POP))) +
   geom_histogram()
 
-# - Faire un barplot du nombre de communes par type ZAU
+# - Faire un barplot du nombre de communes par REG
 
 ggplot(data = df, aes(x = REG)) +
   geom_bar()

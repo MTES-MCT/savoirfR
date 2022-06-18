@@ -11,8 +11,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.width = 7.8,
-  dev = "svg"
+  fig.width = 7.8
 )
 library(sf)
 library(class)
@@ -48,7 +47,7 @@ library(savoirfR)
 
 # Exercice 6 - Réaliser un graphe animé
 
-```{r mod5_exo6, child=charge_exo("m5", "exo6.rmd"), echo=FALSE, dev = "png"}
+```{r mod5_exo6, child=charge_exo("m5", "exo6.rmd"), echo=FALSE}
 ```
 
 # Exercice 7 - Créer un graphique pour le web

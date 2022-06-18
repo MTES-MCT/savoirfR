@@ -1,10 +1,10 @@
 Package: savoirfR
 Title: Exercices for mtes-mctrct r course modules
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Authors@R: c(
     person(given = "Murielle",
            family = "Lethrosne",
-           role = c("aut", "cre"),
+           role = c("aut"),
            email = "murielle.lethrosne@developpement-durable.gouv.fr",
            comment = c(ORCID = "YOUR-ORCID-ID")),
     person(given = "Maël",
@@ -20,9 +20,13 @@ Authors@R: c(
            family = "Terseur",
            role = c("aut"),
            email = "bruno.terseur@developpement-durable.gouv.fr"),
+    person(given = "Jean-Daniel",
+           family = "LOMEDE",
+           role = c("aut"),
+           email = "jean-daniel.lomenede@seine-maritime.gouv.fr"),
     person(given = "Juliette",
            family = "Engelaere-Lefebvre",
-           role = c("aut"),
+           role = c("aut", "cre"),
            email = "juliette.engelaere-lefebvre@developpement-durable.gouv.fr")
            )
 Description: Ce package regroupe l ensemble des exercices des differents modules du parcours de formation parcours-r.
