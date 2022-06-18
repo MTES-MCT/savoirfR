@@ -19,16 +19,22 @@
     <loc>/authors.html</loc>
   </url>
   <url>
-    <loc>/how_to.html</loc>
-  </url>
-  <url>
     <loc>/index.html</loc>
   </url>
   <url>
     <loc>/news/index.html</loc>
   </url>
   <url>
+    <loc>/reference/charge_exo.html</loc>
+  </url>
+  <url>
+    <loc>/reference/clean_r.html</loc>
+  </url>
+  <url>
     <loc>/reference/exo_modules_skeleton.html</loc>
+  </url>
+  <url>
+    <loc>/reference/extract_r_files.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
@@ -38,5 +44,14 @@
   </url>
   <url>
     <loc>/reference/pkg_file.html</loc>
+  </url>
+  <url>
+    <loc>/reference/rmd_to.html</loc>
+  </url>
+  <url>
+    <loc>/reference/rmd_to_correction.html</loc>
+  </url>
+  <url>
+    <loc>/reference/rmd_to_enonce.html</loc>
   </url>
 </urlset>
