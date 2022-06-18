@@ -1,0 +1,30 @@
+Variable ; Definition
+LIBGEO ; Libellé de la commune ou de l’arrondissement municipal pour Paris, Lyon et Marseille
+LIBGEO ; Libellé de la commune ou de l’arrondissement municipal pour Paris, Lyon et Marseille
+REG ; Région
+DEP ; Département
+ZAU ; Classe du zonage en aires urbaines
+ZE ; Zone d’emploi
+P14_POP ; Population en 2014
+P09_POP ; Population en 2009
+SUPERF ; Superficie (en km2
+NAIS0914 ; Nombre de naissances entre le 01/01/2009 et le 01/01/2014
+DECE0914 ; Nombre de décès entre le 01/01/2009 et le 01/01/2014
+P14_MEN ; Nombre de ménages en 2014
+NAISD15 ; Nombre de naissances domiciliées en 2015
+DECESD15 ; Nombre de décès domiciliés en 2015
+P14_LOG ; Nombre de logements en 2014
+P14_RP ; Nombre de résidences principales en 2014
+P14_RSECOCC ; Nombre de résidences secondaires et logements occasionnels en 2014
+P14_LOGVAC ; Nombre de logements vacants en 2014
+P14_RP_PROP ; Nombre de résidences principales occupées par propriétaires en 2014
+NBMENFISC14 ; Nombre de ménages fiscaux en 2014
+PIMP14 ; Part des ménages fiscaux imposés en 2014
+MED14 ; Médiane du niveau de vie en 2014
+TP6014 ; Taux de pauvreté en 2014
+P14_EMPLT ; Nombre d’emplois au lieu de travail en 2014
+P15_EMPLT_SAL ; Nombre d’emplois salariés au lieu de travail en 2015
+P09_EMPLT ; Nombre d’emplois au lieu de travail en 2009
+P15_POP1564 ; Nombre de personnes de 15 à 64 ans en 2015
+P15_CHOM1564 ; Nombre de chômeurs de 15 à 64 ans en 2015
+P15_ACT1564 ; Nombre de personnes actives de 15 à 64 ans en 2015

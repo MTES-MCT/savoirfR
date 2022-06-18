@@ -2,10 +2,8 @@
 
 # Nous allons travailler sur des indicateurs au territoire extrait de l'outil geoidd du ministère et exporté en csv 
 # avec les variables que nous avons calculé à l'exercice précédent
-df <- read.csv(file = "extdata/Base_synth_territoires.csv",
-               sep = ";", dec = ",",
-               colClasses = c(NA, "NULL", "character", "NULL","NULL","NULL",
-                              NA, NA, NA, NA, rep("NULL", 28))) %>% 
+df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
+               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32))) %>% 
   mutate(densite = P14_POP / SUPERF,
          tx_natal = 1000 * NAISD15 / P14_POP,
          tx_mort = DECESD15 / P14_POP)
@@ -28,7 +26,7 @@ df %>% pull(densite) %>% sd(na.rm = T)
 df %>% pull(densite) %>% median(na.rm = T)
 df %>% pull(densite) %>% var(na.rm = T)
 
-# Calulez à présent les quartiles puis déciles de cette variable
+# Calculez à présent les quartiles puis déciles de cette variable
 
 df %>% pull(densite) %>% quantile(na.rm = T)
 seq(0, 1, 0.1) # vérifier la séquence qu'on souhaite

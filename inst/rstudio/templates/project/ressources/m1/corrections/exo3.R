@@ -2,10 +2,8 @@
 
 # Nous travaillons toujours sur la même tables des indicateurs au territoire
 
-df <- read.csv(file = "extdata/Base_synth_territoires.csv",
-               sep = ";", dec = ",",
-               colClasses = c(NA, "NULL", "character", "NULL","NULL","NULL",
-                              NA, NA, NA, NA, rep("NULL", 28)))
+df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
+               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)))
 
 # En utilisant la fonction mutate(), créer une nouvelle variable correspondant à la densité de population 
 # (rapport de la population à la superficie de la commune), ainsi que les taux de natalité et de mortalité (en pour mille)

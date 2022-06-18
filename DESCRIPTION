@@ -26,6 +26,7 @@ Authors@R: c(
            email = "juliette.engelaere-lefebvre@developpement-durable.gouv.fr")
            )
 Description: Ce package regroupe l ensemble des exercices des differents modules du parcours de formation parcours-r.
+URL: https://github.com/MTES-MCT/savoirfR
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
