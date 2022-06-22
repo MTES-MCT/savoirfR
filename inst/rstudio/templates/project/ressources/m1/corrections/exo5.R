@@ -4,10 +4,10 @@
 # avec les variables que nous avons calculées à l'exercice précédent
 
 df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
-               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32))) %>% 
+               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)), fileEncoding = 'latin1') %>% 
   mutate(densite = P14_POP / SUPERF,
     tx_natal = 1000 * NAISD15 / P14_POP,
-    tx_mort = DECESD15 / P14_POP)
+    tx_mort = 1000 * DECESD15 / P14_POP)
 
 # À l’aide de l’aide mémoire ggplot2 :
 #

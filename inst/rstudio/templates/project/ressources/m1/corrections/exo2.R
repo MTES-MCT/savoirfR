@@ -5,7 +5,7 @@
 # Inspecter le dataframe avec les fonctions vues auparavant
 
 df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
-               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)))
+               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)), fileEncoding = 'latin1')
 str(df)
 
 # On peut également gérer les problèmes d’encodage de caractères (si on passe de Windows à un système Unix, par exemple).

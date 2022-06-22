@@ -14,4 +14,4 @@
 #  Avec les opérateurs logiques, faire des essais pour sélectionner des échantillons différents.
 
 df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
-               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)))
+               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)), fileEncoding = 'latin1')

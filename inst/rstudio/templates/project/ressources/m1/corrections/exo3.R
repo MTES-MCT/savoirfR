@@ -3,14 +3,14 @@
 # Nous travaillons toujours sur la même tables des indicateurs au territoire
 
 df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
-               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)))
+               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)), fileEncoding = 'latin1')
 
 # En utilisant la fonction mutate(), créer une nouvelle variable correspondant à la densité de population
 # (rapport de la population à la superficie de la commune), ainsi que les taux de natalité et de mortalité (en pour mille)
 
 df <- mutate(df, densite = P14_POP / SUPERF,
   tx_natal = 1000 * NAISD15 / P14_POP,
-  tx_mort = DECESD15 / P14_POP)
+  tx_mort = 1000 * DECESD15 / P14_POP)
 # A l’aide de la fonction select(), créer une nouvelle table en ne conservant que :
 # le code commune, le type de commune (ZAU), la région, le département et les variables que vous venez de créer.
 
