@@ -87,15 +87,14 @@ rmd_to_enonce <- function(module, rmdfile) {
 clean_r <- function(rfile) {
   res <- readLines(rfile)
   res %>% 
-    as_tibble() %>%
+    dplyr::as_tibble() %>%
     #remove empty lines and chunk opts and lines 'resultats attendus : '
-    filter(! str_detect(.data$value, "(#' $)|(^##)|sultat attendu|sultats attendu")) %>%
+    dplyr::filter(!stringr::str_detect(.data$value, "(#' $)|(^##)|sultat attendu|sultats attendu")) %>%
     #replace #' by #, and replace load with system file by basic load
-    mutate(value = str_replace(.data$value, "#'", '#') %>% 
-             gsub("system.file(", "", .data, fixed = TRUE) %>% 
-             gsub("\", \"", "/", .data, fixed = TRUE) %>% 
-             gsub(", package = \"savoirfR\")", "", .data, fixed = TRUE)
-           ) %>% 
-    pull() %>%
+    dplyr::mutate(value = stringr::str_replace(.data$value, "#'", '#')) %>% 
+    dplyr::mutate(value = gsub("system.file(", "", .data$value, fixed = TRUE)) %>% 
+    dplyr::mutate(value = gsub("\", \"", "/", .data$value, fixed = TRUE)) %>% 
+    dplyr::mutate(value = gsub(", package = \"savoirfR\")", "", .data$value, fixed = TRUE)) %>% 
+    dplyr::pull() %>%
     writeLines(con = rfile)
 }
