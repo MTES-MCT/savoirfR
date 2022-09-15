@@ -1,3 +1,6 @@
+# savoirfR 0.0.0.9005
+* Convert M2 exercices to new workflow to share exercices throught directories
+
 # savoirfR 0.0.0.9004
 * Added exercices for https://mtes-mct.github.io/parcours_r_module_statistiques_descriptives/
 * Add workflow to share exercices throught directories

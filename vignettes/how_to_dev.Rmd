@@ -51,6 +51,8 @@ Ce chunk est nommé 'modY_exo1_solution'; par exemple :
 
 Knitter la vignette pour vérifier qu'elle compile.
 
+N'oubliez pas de simuler l'installation du package avec `devtools::load_all(".")` ou lancez un `Install et Restart` pour que les fonctions `system.file()` puissent trouver les fichiers que vous venez d'ajouter dans `inst`.
+
 ## Propagation des exercices (consignes et solutions) aux différents endroits requis
 
 Chaque énoncé/corrigé d'exercice doit figurer :   

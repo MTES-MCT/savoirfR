@@ -1,0 +1,36 @@
+---
+title: "Exercice 2 -  module 2"
+---  
+
+Convertir les colonnes de la table `exercice` au format date (quand c'est pertinent). La table `exercice` est issue de `FormationPreparationDesDonnees.RData`.
+
+
+```{r setup exo2, message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(lubridate)
+load(file = system.file("extdata", "FormationPreparationDesDonnees.RData", package = "savoirfR"))
+
+```
+
+Résultat attendu :   
+
+```{r, eval = FALSE}
+rm(list = ls())
+library(tidyverse)
+library(lubridate)
+
+load(file = "extdata/FormationPreparationDesDonnees.RData")
+```
+
+```{r mod2_exo2_solution, message=FALSE, warning=FALSE}
+
+exercice1 <- mutate(exercice,
+  date_prelevement = ymd(date_prelevement),
+  date_creation = ymd(date_creation),
+  date_formatee = format(date_prelevement, "%d/%m/%Y")) # plus joli, mais en texte 
+
+str(exercice1)
+
+```
+
+
