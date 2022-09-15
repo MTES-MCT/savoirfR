@@ -1,6 +1,6 @@
 Package: savoirfR
 Title: Exercices for mtes-mctrct r course modules
-Version: 0.0.0.9004
+Version: 0.0.0.9005
 Authors@R: c(
     person(given = "Murielle",
            family = "Lethrosne",
@@ -21,7 +21,7 @@ Authors@R: c(
            role = c("aut"),
            email = "bruno.terseur@developpement-durable.gouv.fr"),
     person(given = "Jean-Daniel",
-           family = "LOMEDE",
+           family = "LOMENEDE",
            role = c("aut"),
            email = "jean-daniel.lomenede@seine-maritime.gouv.fr"),
     person(given = "Juliette",
@@ -53,5 +53,9 @@ Suggests:
     kableExtra,
     sf,
     tidyr,
-    class
+    class,
+    RcppRoll,
+    lubridate,
+    readxl,
+    tidyverse
 VignetteBuilder: knitr
