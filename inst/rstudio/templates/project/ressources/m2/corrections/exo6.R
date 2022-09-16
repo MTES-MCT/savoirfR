@@ -26,8 +26,7 @@ majic_2009 <- bind_rows(majic_2009_com44, majic_2009_com49, majic_2009_com53, ma
   left_join(com2017, by = c("idcom" = "depcom")) %>%
   select(-idcom, -idcomtxt) %>%
   group_by(epci_2017, depcom2017) %>%
-  summarise(across(everything(), sum)) %>%
-  ungroup() %>%
+  summarise(across(everything(), sum), .groups = "drop") %>%
   mutate(artif_2009 = dcnt07 + dcnt09 + dcnt10 + dcnt11 + dcnt12 + dcnt13) %>%
   select(-starts_with("dcnt"))
 
@@ -36,8 +35,7 @@ majic_2014 <- bind_rows(majic_2014_com44, majic_2014_com49, majic_2014_com53, ma
   left_join(com2017, by = c("idcom" = "depcom")) %>%
   select(-idcom, -idcomtxt) %>%
   group_by(epci_2017, depcom2017) %>%
-  summarise(across(everything(), sum)) %>%
-  ungroup() %>%
+  summarise(across(everything(), sum), .groups = "drop") %>%
   mutate(artif_2014 = dcnt07 + dcnt09 + dcnt10 + dcnt11 + dcnt12 + dcnt13) %>%
   select(-starts_with("dcnt"))
 
@@ -48,14 +46,13 @@ p_2009 <- population_2009 %>%
   left_join(com2017, by = c("idcom" = "depcom")) %>%
   select(-idcom) %>%
   group_by(epci_2017, depcom2017) %>%
-  summarise(population_2009 = sum(Population)) %>%
-  ungroup()
+  summarise(population_2009 = sum(Population), .groups = "drop") 
+
 p_2014 <- population_2014 %>%
   left_join(com2017, by = c("idcom" = "depcom")) %>%
   select(-idcom) %>%
   group_by(epci_2017, depcom2017) %>%
-  summarise(population_2014 = sum(Population)) %>%
-  ungroup()
+  summarise(population_2014 = sum(Population), .groups = "drop") 
 
 # indicateur à la commune
 # on joint les 4 tables précédentes par commune et on calcule les indicateurs
@@ -88,7 +85,7 @@ etalement_urbain_epci <- majic_2009 %>%
   left_join(p_2014) %>%
   select(-depcom2017) %>%
   group_by(epci_2017) %>%
-  summarise_all(sum) %>%
+  summarise(across(everything(), sum)) %>% 
   mutate(
     evoarti = 100 * artif_2014 / artif_2009 - 100,
     evopop = 100 * population_2014 / population_2009 - 100,
