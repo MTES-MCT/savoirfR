@@ -1,9 +1,7 @@
-#### Exercice 2 (chap 5.5.3)
-#  Convertir les colonnes de la table exercice au format date (quand c'est pertinent).
+# ---
+# title: "Exercice 2 -  module 2"
+# ---  
+# Convertir les colonnes de la table `exercice` au format date (quand c'est pertinent). La table `exercice` est issue de `FormationPreparationDesDonnees.RData`.
 
-rm(list = ls())
-load (file = "extdata/FormationPreparationDesDonnees.RData")
-library(tidyverse)
-library(lubridate)
 
-exercice1 <- 
+
