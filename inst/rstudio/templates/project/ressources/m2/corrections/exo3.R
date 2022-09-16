@@ -1,21 +1,21 @@
-# Exercice 3 (chap 5.9.1)
-#
-# A partir des données “sitadel” chargées dans l'exercice 1, effectuer les opérations suivantes en utilisant l’opérateur %>% :
-#   - effectuer les mêmes calculs que ceux réalisés sur la région 52, mais sur chacune des régions --> à stocker dans 'sit_ind'
-#   - calculer les aggrégations par année civile pour chacune des régions, puis leur taux d’évolution d’une année sur l’autre
-#     (exemple : (val2015-val2014)/val2014) --> à stocker dans 'sit_annuel'
-#
-
-rm(list = ls())
-library(tidyverse)
+# ---
+# title: "Exercice 3 -  module 2"
+# ---  
+# A partir des données “sitadel” chargées dans l'exercice 1, effectuer les opérations suivantes en utilisant l’opérateur `%>%` :  
+#    - effectuer les mêmes calculs que ceux réalisés sur la région 52, mais sur chacune des régions --> à stocker dans 'sit_ind'  
+#    - calculer les agrégations par année civile pour chacune des régions, puis leur taux d’évolution d’une année sur l’autre 
+#      (exemple : (val2015-val2014)/val2014) --> à stocker dans 'sit_annuel'  
 library(readxl)
 library(RcppRoll)
+library(tidyverse)
 
 
 sitadel <- read_excel("extdata/ROES_201702.xls",
   sheet = "AUT_REG",
   col_types = c("text", "text", "numeric", "numeric", "numeric", "numeric")
 )
+
+
 
 sit_ind <- sitadel %>%
   group_by(REG) %>%
@@ -43,3 +43,5 @@ sit_annuel <- sitadel %>%
     evol_an_ig_AUT = (ig_AUT - lag(ig_AUT)) / lag(ig_AUT) * 100,
     evol_an_colres_AUT = (colres_AUT - lag(colres_AUT)) / lag(colres_AUT) * 100
   )
+
+
