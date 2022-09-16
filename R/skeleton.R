@@ -54,9 +54,9 @@ exo_modules_skeleton = function(path, ...) {
   files = module_data(m)
   extdata <- pkg_file('extdata')
   source <- file.path(extdata, files)
-
-  target = file.path(path, 'extdata', files)
-  file.copy(source, target)
+  target = file.path(path, 'extdata')
+  
+  file.copy(source, target, recursive = TRUE)
 
   # copy 'enonces' folder
 

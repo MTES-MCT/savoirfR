@@ -34,8 +34,8 @@ sit_annuel <- sitadel %>%
   summarise(log_AUT = sum(log_AUT, na.rm = TRUE), # le paramètre na.rm = TRUE permet d'ignorer les éventuelles valeusr manquantes
     ip_AUT = sum(ip_AUT, na.rm = TRUE),
     ig_AUT = sum(ig_AUT, na.rm = TRUE),
-    colres_AUT = sum(colres_AUT, na.rm = T)) %>%
-  ungroup() %>%
+    colres_AUT = sum(colres_AUT, na.rm = T),
+    .groups = "drop") %>%
   group_by(REG) %>%
   arrange(annee) %>%
   mutate(evol_an_log_AUT = (log_AUT - lag(log_AUT)) / lag(log_AUT) * 100,
