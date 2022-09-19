@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">savoirfR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9005</span>
       </span>
     </div>
 
@@ -105,13 +105,13 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MTES-MCT/savoirfR" class="external-link">savoirfR</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: replacing previous import 'stats::filter' by 'dplyr::filter' when</span>
-<span class="co">#&gt; loading 'savoirfR'</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MTES-MCT/savoirfR" class="external-link">savoirfR</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: replacing previous import 'stats::filter' by 'dplyr::filter' when</span></span>
+<span><span class="co">#&gt; loading 'savoirfR'</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="exercice-1-les-données-mensuelles-sitadel-chap-5-5-2">Exercice 1 : Les données mensuelles sitadel (chap 5.5.2)<a class="anchor" aria-label="anchor" href="#exercice-1-les-donn%C3%A9es-mensuelles-sitadel-chap-5-5-2"></a>
 </h2>
-<p>À partir du fichier sitadel de février 2017 (ROES_201702.xls), produire un dataframe <em>‘sit_pdl_ind’</em> contenant pour la région Pays-de-la-Loire (code région 52), pour chaque mois et pour les logements individuels (definis par la somme des logements individuels purs et individuels groupés : i_AUT = ip_AUT + ig_AUT) :</p>
+<p>À partir du fichier sitadel de février 2017 (ROES_201702.xls), produire un dataframe ‘sit_pdl_ind’ contenant pour la région Pays-de-la-Loire (code région 52), pour chaque mois et pour les logements individuels (définis par la somme des logements individuels purs et individuels groupés : i_AUT = ip_AUT + ig_AUT) :</p>
 <ul>
 <li>le cumul des autorisations sur 12 mois glissants (i_AUT_cum12),<br>
 </li>
@@ -119,31 +119,60 @@
 </li>
 <li>la part de ce cumul dans celui de l’ensemble des logements autorisés (log_AUT), en pourcentage.</li>
 </ul>
-<p>Aperçu du résultat : <img src="M2_exercice1_enonce_v3.png"></p>
+<p>Résultat attendu :</p>
+<p>solution sans le pipe <code>%&gt;%</code></p>
+<p>solution avec le pipe <code>%&gt;%</code></p>
+<p>Aperçu de la solution <img src="M2_exercice1_enonce_v3.png"></p>
 </div>
 <div class="section level2">
 <h2 id="exercice-2-chap-5-5-3">Exercice 2 (chap 5.5.3)<a class="anchor" aria-label="anchor" href="#exercice-2-chap-5-5-3"></a>
 </h2>
-<p>Dans la table exercice, convertir les données pertinentes au format date.</p>
+<p>Convertir les colonnes de la table <code>exercice</code> au format date (quand c’est pertinent). La table <code>exercice</code> est issue de <code>FormationPreparationDesDonnees.RData</code>.</p>
+<p>Résultat attendu :</p>
+<pre><code><span><span class="co">#&gt; 'data.frame':    153497 obs. of  23 variables:</span></span>
+<span><span class="co">#&gt;  $ code_analyse          : int  5186581 280131 1576225 799894 472800 2767140 4748701 1553898 6257072 4871710 ...</span></span>
+<span><span class="co">#&gt;  $ code_laboratoire      : num  NA 292 NA NA 292 NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ code_prelevement      : int  37593 7715 15517 9566 8332 26792 35625 15378 41898 36326 ...</span></span>
+<span><span class="co">#&gt;  $ code_parametre        : num  1216 1668 1185 1217 1907 ...</span></span>
+<span><span class="co">#&gt;  $ code_fraction_analysee: int  23 23 23 23 23 23 23 23 23 23 ...</span></span>
+<span><span class="co">#&gt;  $ resultat_analyse      : num  0.007 0.05 0.04 0.05 0.26 0.02 0.01 0.02 0.014 0.02 ...</span></span>
+<span><span class="co">#&gt;  $ code_remarque         : int  10 2 2 2 1 10 10 10 10 10 ...</span></span>
+<span><span class="co">#&gt;  $ limite_detection      : num  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ limite_quantification : num  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ code_intervenant      : Factor w/ 9 levels "44","49","53",..: NA 6 NA NA 6 NA NA 3 NA 1 ...</span></span>
+<span><span class="co">#&gt;  $ code_reseau           : Factor w/ 3 levels "ARS","FREDON",..: 3 3 2 3 3 3 3 1 3 1 ...</span></span>
+<span><span class="co">#&gt;  $ code_station          : chr  "04153800" "04130000" "04132500" "04214000" ...</span></span>
+<span><span class="co">#&gt;  $ date_prelevement      : Date, format: "2014-09-16" "2003-08-05" ...</span></span>
+<span><span class="co">#&gt;  $ code_support          : int  NA 3 NA NA 3 NA NA 3 NA 3 ...</span></span>
+<span><span class="co">#&gt;  $ libelle_station       : chr  "MOZEE à CHANTONNAY" "MAYENNE à DAON" "MAYENNE à MONTREUIL-JUIGNE" "CHERE à CHATEAUBRIANT" ...</span></span>
+<span><span class="co">#&gt;  $ date_creation         : Date, format: "1900-01-01" "1900-01-01" ...</span></span>
+<span><span class="co">#&gt;  $ source                : chr  "AELB" "AELB" "AELB" "AELB" ...</span></span>
+<span><span class="co">#&gt;  $ code_masse_eau        : chr  "GR1950" "GR0460c" "GR0460c" "GR0121" ...</span></span>
+<span><span class="co">#&gt;  $ code_entite_hydro     : chr  "N3036200" "M---0090" "M---0090" "J78-0300" ...</span></span>
+<span><span class="co">#&gt;  $ code_troncon_hydro    : chr  "N3036200" "M3620090" "M3910090" "J7800300" ...</span></span>
+<span><span class="co">#&gt;  $ code_commune          : chr  "85051" "53089" "49214" "44036" ...</span></span>
+<span><span class="co">#&gt;  $ annee                 : num  2014 2003 2008 2007 2005 ...</span></span>
+<span><span class="co">#&gt;  $ date_formatee         : chr  "16/09/2014" "05/08/2003" "01/09/2008" "02/05/2007" ...</span></span></code></pre>
 </div>
 <div class="section level2">
-<h2 id="exercice-3-chap-5-10">Exercice 3 (chap 5.10)<a class="anchor" aria-label="anchor" href="#exercice-3-chap-5-10"></a>
+<h2 id="exercice-3-chap-5-9-1">Exercice 3 (chap 5.9.1)<a class="anchor" aria-label="anchor" href="#exercice-3-chap-5-9-1"></a>
 </h2>
-<p>A partir des données “sitadel” chargées dans l’exercice 1, effectuer les opérations suivantes en utilisant l’opérateur %&gt;% :</p>
+<p>A partir des données “sitadel” chargées dans l’exercice 1, effectuer les opérations suivantes en utilisant l’opérateur <code>%&gt;%</code> :</p>
 <ul>
-<li>effectuer les mêmes calculs que ceux réalisés sur la région 52, mais sur chacune des régions <em>–&gt; à stocker dans ‘sit_ind’</em><br>
+<li>effectuer les mêmes calculs que ceux réalisés sur la région 52, mais sur chacune des régions –&gt; à stocker dans ‘sit_ind’<br>
 </li>
-<li>calculer les aggrégations par année civile pour chacune des régions, puis leur taux d’évolution d’une année sur l’autre (exemple : (val2015-val2014)/val2014) <em>–&gt; à stocker dans ‘sit_annuel’</em>
-</li>
+<li>calculer les agrégations par année civile pour chacune des régions, puis leur taux d’évolution d’une année sur l’autre (exemple : (val2015-val2014)/val2014) –&gt; à stocker dans ‘sit_annuel’</li>
 </ul>
+<p>Résultat attendu :</p>
 </div>
 <div class="section level2">
-<h2 id="exercice-4-chap-5-11">Exercice 4 (chap 5.11)<a class="anchor" aria-label="anchor" href="#exercice-4-chap-5-11"></a>
+<h2 id="exercice-4-chap-5-9-2">Exercice 4 (chap 5.9.2)<a class="anchor" aria-label="anchor" href="#exercice-4-chap-5-9-2"></a>
 </h2>
-<p>Sur les données “FormationPreparationDesDonnées.RData”, table “exercice” :</p>
-<p>1/ calculer le taux de quantification pour chaque molécule et chacune des année : chaque molécule est identifiée par son <code>code_parametre</code>, le taux de quantification est le nombre de fois qu’une molécule est retrouvée (<code>code_remarque</code> = 1) sur le nombre de fois où elle a été cherchée (<code>code_remarque</code> = 1, 2, 7 ou 10). Pour cela :</p>
+<p>Sur les données <code>FormationPreparationDesDonnees.RData</code>, table <code>exercice</code> :</p>
+<p>1/ calculer le taux de quantification pour chaque molécule et chacune des années : chaque molécule est identifiée par son <code>code_parametre</code>, le taux de quantification est le nombre de fois qu’une molécule est retrouvée (càd si <code>code_remarque</code> = 1) sur le nombre de fois où elle a été cherchée (càd si <code>code_remarque</code> = 1, 2, 7 ou 10). Pour cela :</p>
 <ul>
-<li>créer la variable “annee”</li>
+<li>créer la variable <code>annee</code>
+</li>
 <li>créer la variable de comptage des présences pour chaque analyse (1=présent, 0=absent)</li>
 <li>créer la variable de comptage des recherches pour chaque analyse (1=recherchée, 0=non recherchée)</li>
 <li>pour chaque combinaison <code>annee</code> x <code>code_parametre</code>, calculer le taux de quantification</li>
@@ -155,74 +184,54 @@
 </li>
 <li>ne conserver que le prélèvement avec le concentration maximale</li>
 </ul>
+<p>Résultat attendu :</p>
 </div>
 <div class="section level2">
-<h2 id="exercice-5-chap-6">Exercice 5 (chap 6)<a class="anchor" aria-label="anchor" href="#exercice-5-chap-6"></a>
+<h2 id="exercice-5-chap-6-1">Exercice 5 (chap 6.1)<a class="anchor" aria-label="anchor" href="#exercice-5-chap-6-1"></a>
 </h2>
-<ul>
-<li>Reconstituer le dataframe “exercice” à partir des données contenues dans les tables “analyse”, “prelevement” et “station” (jointures) ;</li>
-</ul>
 <p><img src="MCD_pesticides.png"></p>
+<p>Dans les données <code>FormationPreparationDesDonnees.RData</code>, chaque analyse est effectuée à partir d’un prélèvement, lui-même réalisé au niveau d’une station.</p>
 <ul>
-<li><p>calculer le nombre d’analyses réalisées sur des molécules (code_parametre) présentes dans le référentiel <code>parametre</code> ;</p></li>
-<li><p>produire une liste des <strong>code_parametre</strong> associés à des analyses mais absents du référentiel ;</p></li>
-<li><p>produire une table des analyses “orphelines”, c’est-à-dire qui ne correspondent pas à un prélèvement.</p></li>
+<li><p>Reconstituer le dataframe <code>exercice</code> qui rassemble les données contenues dans les tables <code>analyse</code>, <code>prelevement</code> et <code>station</code> grâce à des jointures.</p></li>
+<li><p>calculer le nombre d’analyses réalisées sur des molécules (identifiables par leur <code>code_parametre</code>) et décrites dans le référentiel <code>parametre</code> ;</p></li>
+<li><p>produire une liste des <code>code_parametre</code> associés à des analyses mais absents du référentiel ;</p></li>
+<li><p>produire une table des analyses “orphelines”, c’est-à-dire qui correspondent à aucun prélèvement.</p></li>
 </ul>
+<p>Résultat attendu :</p>
+<pre><code><span><span class="co">#&gt; [1] TRUE</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="exercice-6-chap-8">Exercice 6 (chap 8)<a class="anchor" aria-label="anchor" href="#exercice-6-chap-8"></a>
 </h2>
-<p>Calculer à partir des tables fournies dans le fichier <em>majic.RData</em> issues des <a href="http://piece-jointe-carto.developpement-durable.gouv.fr/NAT004/DTerNP/html3/_ff_descriptif_tables_image.html#pnb10" class="external-link">fichiers fonciers</a> un indicateur d’étalement urbain entre 2009 et 2014 à la commune et à l’EPCI sur la région Pays de la Loire, et catégoriser chaque territoire.</p>
-<p><strong>Définitions</strong> :</p>
+<p>Calculer à partir des tables fournies dans le fichier <code>majic.RData</code> issues des fichiers fonciers (cf. <a href="http://piece-jointe-carto.developpement-durable.gouv.fr/NAT004/DTerNP/html3/_ff_descriptif_tables_image.html#pnb10" class="external-link uri">http://piece-jointe-carto.developpement-durable.gouv.fr/NAT004/DTerNP/html3/_ff_descriptif_tables_image.html#pnb10</a>) un indicateur d’étalement urbain entre 2009 et 2014 à la commune et à l’EPCI sur la région Pays de la Loire, et catégoriser chaque territoire.</p>
+<p>Définitions :</p>
 <ul>
-<li>artificialisation = dcnt07 + dcnt09 + dcnt10 + dcnt11 + dcnt12 + dcnt13</li>
-<li>indicateur_etalement_simple = évolution de l’artificialisation / évolution de la population</li>
-<li>indicateur_etalement_avance :</li>
+<li>artificialisation = dcnt07 + dcnt09 + dcnt10 + dcnt11 + dcnt12 + dcnt13<br>
+</li>
+<li>indicateur_etalement_simple = évolution de l’artificialisation / évolution de la population<br>
+</li>
+<li>indicateur_etalement_avance, indicateur catégoriel qui vaut :
+<ul>
+<li>1 si la population progresse ou reste stable alors que l’artificialisation recule ;<br>
+</li>
+<li>2a si la population et l’artificialisation progressent ou sont stables et l’étalement urbain est inférieur ou égal à 1 (ou pop stable) ;<br>
+</li>
+<li>2b si la population et l’artificialisation reculent et l’indicateur d’étalement urbain est supéreur à 1 ;<br>
+</li>
+<li>2c si la population recule et l’indicateur d’étalement est compris entre 0 et 1 (inclus) ;<br>
+</li>
+<li>3 si la population progresse, l’artificialisation progresse plus vite que la population, tout en restant inférieure ou égale à 4,9 m² ;<br>
+</li>
+<li>4 si la population progresse, l’artificialisation est supérieure à 4,9 m², elle progresse plus vite que la population mais au plus 2 fois plus vite ;<br>
+</li>
+<li>5 si la population progresse, l’artificialisation progresse plus de 2 fois plus vite que la population et est supérieure à 4,9 m² ;<br>
+</li>
+<li>6 si la population recule et l’indicateur d’étalement urbain est négatif.</li>
 </ul>
-<table class="table">
-<colgroup>
-<col width="28%">
-<col width="71%">
-</colgroup>
-<thead><tr class="header">
-<th>type</th>
-<th>definition</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><strong>1</strong></td>
-<td>la population progresse ou reste stable alors que l’artificialisation recule</td>
-</tr>
-<tr class="even">
-<td><strong>2a</strong></td>
-<td>la population et l’artificialisation progressent ou sont stables et l’étalement urbain est inférieur ou égal à 1 (ou pop stable)</td>
-</tr>
-<tr class="odd">
-<td><strong>2b</strong></td>
-<td>la population et l’artificialisation reculent et l’indicateur d’étalement urbain est supéreur à 1</td>
-</tr>
-<tr class="even">
-<td><strong>2c</strong></td>
-<td>la population recule et l’indicateur d’étalement est compris entre 0 et 1 (inclus)</td>
-</tr>
-<tr class="odd">
-<td><strong>3</strong></td>
-<td>la population progresse, l’artificialisation progresse plus vite que la population, tout en restant inférieure ou égale à 4,9 m²</td>
-</tr>
-<tr class="even">
-<td><strong>4</strong></td>
-<td>la population progresse, l’artificialisation est supérieure à 4,9 m², elle progresse plus vite que la population mais au plus 2 fois plus vite</td>
-</tr>
-<tr class="odd">
-<td><strong>5</strong></td>
-<td>la population progresse, l’artificialisation progresse plus de 2 fois plus vite que la population et est supérieure à 4,9 m²</td>
-</tr>
-<tr class="even">
-<td><strong>6</strong></td>
-<td>la population recule et l’indicateur d’étalement urbain est négatif</td>
-</tr>
-</tbody>
-</table>
+</li>
+</ul>
+<p>Résultat attendu :</p>
+<p><img src="exercices_module_datapreparation_R_files/figure-html/mod2_exo6_solution-1.png" width="700"><img src="exercices_module_datapreparation_R_files/figure-html/mod2_exo6_solution-2.png" width="700"></p>
 </div>
   </div>
 
@@ -238,12 +247,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Murielle Lethrosne, Maël Theuliere, Marouane Zellou, Bruno Terseur, Jean-Daniel LOMEDE, Juliette Engelaere-Lefebvre.</p>
+<p>Developed by Murielle Lethrosne, Maël Theuliere, Marouane Zellou, Bruno Terseur, Jean-Daniel LOMENEDE, Juliette Engelaere-Lefebvre.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
