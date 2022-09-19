@@ -20,85 +20,44 @@ library(savoirfR)
 
 # Exercice 1 : Les données mensuelles sitadel (chap 5.5.2)
 
-À partir du fichier sitadel de février 2017 (ROES_201702.xls), produire un dataframe _'sit_pdl_ind'_ contenant 
-pour la région Pays-de-la-Loire (code région 52), pour chaque mois et pour les logements individuels (definis par la somme des logements individuels purs et individuels groupés : i_AUT = ip_AUT + ig_AUT) :  
+```{r mod2_exo1, child=charge_exo("m2", "exo1.rmd"), echo=FALSE}
+```
 
-   - le cumul des autorisations sur 12 mois glissants (i_AUT_cum12),  
-   - le taux d’évolution du cumul sur 12 mois (i_AUT_cum_evo, en %),  
-   - la part de ce cumul dans celui de l’ensemble des logements autorisés (log_AUT), en pourcentage.  
-
-Aperçu du résultat : 
+Aperçu de la solution
 ![](M2_exercice1_enonce_v3.png) 
 
 # Exercice 2 (chap 5.5.3)
 
-Dans la table exercice, convertir les données pertinentes au format date.  
+```{r mod2_exo2, child=charge_exo("m2", "exo2.rmd"), echo=FALSE}
+```
 
-
-# Exercice 3 (chap 5.10)
+# Exercice 3 (chap 5.9.1)
  
-A partir des données “sitadel” chargées dans l'exercice 1, effectuer les opérations suivantes en utilisant l’opérateur %>% :  
-
-   - effectuer les mêmes calculs que ceux réalisés sur la région 52, mais sur chacune des régions _--> à stocker dans 'sit_ind'_  
-   - calculer les aggrégations par année civile pour chacune des régions, puis leur taux d’évolution d’une année sur l’autre 
-     (exemple : (val2015-val2014)/val2014) _--> à stocker dans 'sit_annuel'_  
+```{r mod2_exo3, child=charge_exo("m2", "exo3.rmd"), echo=FALSE}
+```
      
 
-# Exercice 4 (chap 5.11)
+# Exercice 4 (chap 5.9.2)
 
-Sur les données “FormationPreparationDesDonnées.RData”, table “exercice” :
-
-1/ calculer le taux de quantification pour chaque molécule et chacune des année : chaque molécule est identifiée par son `code_parametre`,
-le taux de quantification est le nombre de fois qu'une molécule est retrouvée (`code_remarque` = 1) sur le nombre de fois où elle a été
-cherchée (`code_remarque` = 1, 2, 7 ou 10). Pour cela :
-
- - créer la variable “annee”
- - créer la variable de comptage des présences pour chaque analyse (1=présent, 0=absent)
- - créer la variable de comptage des recherches pour chaque analyse (1=recherchée, 0=non recherchée)
- - pour chaque combinaison `annee` x `code_parametre`, calculer le taux de quantification
+```{r mod2_exo4, child=charge_exo("m2", "exo4.rmd"), echo=FALSE}
+```
 
 
-2/ trouver pour chaque station, sur l’année 2016, le prélèvement pour lequel la concentration cumulée, toutes substances confondues,
-est la plus élevée (~ le prélèvement le plus pollué). Pour cela :
 
- - filtrer les concentrations quantifiées (`code_remarque`=1) et l’année 2016
- - sommer les concentrations (`resultat_analyse`) par combinaison `code_station` x `code_prelevement`
- - ne conserver que le prélèvement avec le concentration maximale
-
-
-# Exercice 5 (chap 6)
-
-- Reconstituer le dataframe "exercice" à partir des données contenues dans les tables "analyse", "prelevement" et "station" (jointures) ;  
+# Exercice 5 (chap 6.1)
 
 ![](MCD_pesticides.png)
 
-- calculer le nombre d’analyses réalisées sur des molécules (code_parametre) présentes dans le référentiel `parametre` ;  
-
-- produire une liste des **code_parametre** associés à des analyses mais absents du référentiel ;  
-
-- produire une table des analyses "orphelines", c'est-à-dire qui ne correspondent pas à un prélèvement.  
+```{r mod2_exo5, child=charge_exo("m2", "exo5.rmd"), echo=FALSE}
+```
 
 
 # Exercice 6 (chap 8)
 
-Calculer à partir des tables fournies dans le fichier *majic.RData* issues des [fichiers fonciers](http://piece-jointe-carto.developpement-durable.gouv.fr/NAT004/DTerNP/html3/_ff_descriptif_tables_image.html#pnb10) un indicateur d'étalement urbain entre 2009 et 2014 à la commune et à l'EPCI sur la région Pays de la Loire, et catégoriser chaque territoire.
+```{r mod2_exo6, child=charge_exo("m2", "exo6.rmd"), echo=FALSE}
+```
 
-**Définitions** :   
 
- - artificialisation = dcnt07 + dcnt09 + dcnt10 + dcnt11 + dcnt12 + dcnt13
- - indicateur_etalement_simple = évolution de l'artificialisation / évolution de la population
- - indicateur_etalement_avance :  
- 
- 
- | type | definition |
- | ---- | ---------- |
- |   **1**  | la population progresse ou reste stable alors que l'artificialisation recule |  
- |  **2a**  | la population et l'artificialisation progressent ou sont stables et l'étalement urbain est inférieur ou égal à 1 (ou pop stable) |  
- |  **2b**  | la population et l'artificialisation reculent et l'indicateur d'étalement urbain est supéreur à 1 |  
- |  **2c**  | la population recule et l'indicateur d'étalement est compris entre 0 et 1 (inclus) |  
- |   **3**  | la population progresse, l'artificialisation progresse plus vite que la population, tout en restant inférieure ou égale à 4,9 m² |  
- |   **4**  | la population progresse, l'artificialisation est supérieure à 4,9 m², elle progresse plus vite que la population mais au plus 2 fois plus vite |   
- |   **5**  | la population progresse, l'artificialisation progresse plus de 2 fois plus vite que la population et est supérieure à 4,9 m² |  
- |   **6**  |  la population recule et l'indicateur d'étalement urbain est négatif |  
           
- 
+
+

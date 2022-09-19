@@ -92,9 +92,8 @@ clean_r <- function(rfile) {
     dplyr::filter(!stringr::str_detect(.data$value, "(#' $)|(^##)|sultat attendu|sultats attendu")) %>%
     #replace #' by #, and replace load with system file by basic load
     dplyr::mutate(value = stringr::str_replace(.data$value, "#'", '#')) %>% 
-    dplyr::mutate(value = gsub("system.file(", "", .data$value, fixed = TRUE)) %>% 
-    dplyr::mutate(value = gsub("\", \"", "/", .data$value, fixed = TRUE)) %>% 
-    dplyr::mutate(value = gsub(", package = \"savoirfR\")", "", .data$value, fixed = TRUE)) %>% 
+    dplyr::mutate(value = gsub('system.file("extdata", "', '"extdata/', .data$value, fixed = TRUE)) %>%
+    dplyr::mutate(value = gsub(', package = "savoirfR")', '', .data$value, fixed = TRUE)) %>%
     dplyr::pull() %>%
     writeLines(con = rfile)
 }

@@ -38,10 +38,14 @@ usethis::use_package('kableExtra', type = "Suggests")
 usethis::use_package('sf', type = "Suggests")
 usethis::use_package('tidyr', type = "Suggests")
 usethis::use_package('class', type = "Suggests")
+usethis::use_package('RcppRoll', type = "Suggests")
+usethis::use_package('lubridate', type = "Suggests")
+usethis::use_package('readxl', type = "Suggests")
+usethis::use_package('tidyverse', type = "Suggests")
 
 usethis::use_build_ignore("dev/")
 usethis::use_logo(img = "~/Mes images/savoirfR/hex-savoirfR2.png")
 
 
 extract_r_files(module = 5)
-
+extract_r_files(module = 2)

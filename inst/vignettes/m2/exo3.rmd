@@ -1,22 +1,41 @@
-# ---
-# title: "Exercice 3 -  module 2"
-# ---  
-# A partir des données “sitadel” chargées dans l'exercice 1, effectuer les opérations suivantes en utilisant l’opérateur `%>%` :  
-#    - effectuer les mêmes calculs que ceux réalisés sur la région 52, mais sur chacune des régions --> à stocker dans 'sit_ind'  
-#    - calculer les agrégations par année civile pour chacune des régions, puis leur taux d’évolution d’une année sur l’autre 
-#      (exemple : (val2015-val2014)/val2014) --> à stocker dans 'sit_annuel'  
+---
+title: "Exercice 3 -  module 2"
+---  
+
+A partir des données “sitadel” chargées dans l'exercice 1, effectuer les opérations suivantes en utilisant l’opérateur `%>%` :  
+
+   - effectuer les mêmes calculs que ceux réalisés sur la région 52, mais sur chacune des régions --> à stocker dans 'sit_ind'  
+   - calculer les agrégations par année civile pour chacune des régions, puis leur taux d’évolution d’une année sur l’autre 
+     (exemple : (val2015-val2014)/val2014) --> à stocker dans 'sit_annuel'  
+
+```{r setup exo3, message=FALSE, warning=FALSE, include=FALSE}
 library(readxl)
 library(RcppRoll)
 library(tidyverse)
 
 
-sitadel <- read_excel("extdata/ROES_201702.xls",
+sitadel <- read_excel(system.file("extdata", "ROES_201702.xls", package = "savoirfR"),
   sheet = "AUT_REG",
   col_types = c("text", "text", "numeric", "numeric", "numeric", "numeric")
 )
 
+```
 
+Résultat attendu :   
 
+```{r, eval = FALSE}
+rm(list = ls())
+library(readxl)
+library(RcppRoll)
+library(tidyverse)
+
+sitadel <- read_excel("extdata/ROES_201702.xls",
+  sheet = "AUT_REG",
+  col_types = c("text", "text", "numeric", "numeric", "numeric", "numeric")
+)
+```
+
+```{r mod2_exo3_solution, message=FALSE, warning=FALSE}
 sit_ind <- sitadel %>%
   group_by(REG) %>%
   arrange(date) %>%
@@ -43,5 +62,7 @@ sit_annuel <- sitadel %>%
     evol_an_ig_AUT = (ig_AUT - lag(ig_AUT)) / lag(ig_AUT) * 100,
     evol_an_colres_AUT = (colres_AUT - lag(colres_AUT)) / lag(colres_AUT) * 100
   )
+
+```
 
 
