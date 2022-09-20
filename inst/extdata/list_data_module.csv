@@ -5,7 +5,12 @@ m2;FormationPreparationDesDonnees.RData
 m2;ROES_201702.xls
 m2;majic.RData
 m2;estim-pop-dep-sexe-gca-2019.xls
-m2;refgeo/
+m2;com_mayotte.cpg
+m2;com_mayotte.dbf
+m2;com_mayotte.shp
+m2;com_mayotte.shp
+m2;com_mayotte.shp
+m2;communes2017.geojson
 m3;Base_synth_territoires.csv
 m5;rpls_aggrege_large.RData
 m5;rpls_aggrege.RData
