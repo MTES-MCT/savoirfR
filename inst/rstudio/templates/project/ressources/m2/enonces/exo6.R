@@ -1,5 +1,5 @@
 # ---
-# title: "Exercice 5 -  module 2"
+# title: "Exercice 6 -  module 2"
 # ---  
 # Calculer à partir des tables fournies dans le fichier `majic.RData` issues des fichiers fonciers (cf. http://piece-jointe-carto.developpement-durable.gouv.fr/NAT004/DTerNP/html3/_ff_descriptif_tables_image.html#pnb10) un indicateur d'étalement urbain entre 2009 et 2014 à la commune et à l'EPCI sur la région Pays de la Loire, et catégoriser chaque territoire.
 # Définitions :  
