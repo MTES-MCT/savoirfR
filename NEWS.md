@@ -1,3 +1,6 @@
+# savoirfR 0.0.0.9006
+* bug fix extdata files list for M2
+
 # savoirfR 0.0.0.9005
 * Convert M2 exercices to new workflow to share exercices throught directories
 
