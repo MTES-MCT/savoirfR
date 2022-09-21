@@ -57,5 +57,8 @@ Suggests:
     RcppRoll,
     lubridate,
     readxl,
-    tidyverse
+    tidyverse,
+    COGiter (>= 0.0.9)
 VignetteBuilder: knitr
+Remotes:  
+    maeltheuliere/COGiter

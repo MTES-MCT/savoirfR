@@ -42,6 +42,7 @@ usethis::use_package('RcppRoll', type = "Suggests")
 usethis::use_package('lubridate', type = "Suggests")
 usethis::use_package('readxl', type = "Suggests")
 usethis::use_package('tidyverse', type = "Suggests")
+usethis::use_dev_package('COGiter', type = "Suggests")
 
 usethis::use_build_ignore("dev/")
 usethis::use_logo(img = "~/Mes images/savoirfR/hex-savoirfR2.png")
