@@ -50,3 +50,5 @@ usethis::use_logo(img = "~/Mes images/savoirfR/hex-savoirfR2.png")
 
 extract_r_files(module = 5)
 extract_r_files(module = 2)
+extract_r_files(module = 7)
+

@@ -1,0 +1,63 @@
+---
+title: "Exercices parcours R module 5 : datavisualisation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Exercices parcours R module 5 : datavisualisation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7.8
+)
+library(sf)
+library(class)
+```
+
+```{r setup, message=FALSE, warning=FALSE}
+library(savoirfR) 
+```
+
+# Exercice 1
+```{r mod5_exo1, child=charge_exo("m5", "exo1.rmd"), echo=FALSE}
+```
+ 
+# Exercice 2 - Modifier le thème
+
+```{r mod5_exo2, child=charge_exo("m5", "exo2.rmd"), echo=FALSE}
+```
+ 
+# Exercice 3 - Modifier les scales et labs
+
+```{r mod5_exo3, child=charge_exo("m5", "exo3.rmd"), echo=FALSE}
+```
+
+# Exercice 4 - Les facettes
+
+```{r mod5_exo4, child=charge_exo("m5", "exo4.rmd"), echo=FALSE}
+```
+
+# Exercice 5 - Créer une carte avec ggplot2
+
+```{r mod5_exo5, child=charge_exo("m5", "exo5.rmd"), echo=FALSE}
+```
+
+# Exercice 6 - Réaliser un graphe animé
+
+```{r mod5_exo6, child=charge_exo("m5", "exo6.rmd"), echo=FALSE}
+```
+
+# Exercice 7 - Créer un graphique pour le web
+
+```{r mod5_exo7, child=charge_exo("m5", "exo7.rmd"), echo=FALSE}
+```
+
+# Exercice 8 - Créer un tableau avec kable et kablextra
+
+```{r mod5_exo8, child=charge_exo("m5", "exo8.rmd"), echo=FALSE}
+```
+
+
