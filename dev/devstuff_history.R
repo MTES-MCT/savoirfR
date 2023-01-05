@@ -43,6 +43,9 @@ usethis::use_package('lubridate', type = "Suggests")
 usethis::use_package('readxl', type = "Suggests")
 usethis::use_package('tidyverse', type = "Suggests")
 usethis::use_dev_package('COGiter', type = "Suggests")
+usethis::use_package('gouvdown')
+usethis::use_package('gouvdown.fonts')
+usethis::use_package('mapfactory')
 
 usethis::use_build_ignore("dev/")
 usethis::use_logo(img = "~/Mes images/savoirfR/hex-savoirfR2.png")
@@ -50,3 +53,5 @@ usethis::use_logo(img = "~/Mes images/savoirfR/hex-savoirfR2.png")
 
 extract_r_files(module = 5)
 extract_r_files(module = 2)
+extract_r_files(module = 7)
+

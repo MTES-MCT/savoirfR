@@ -1,0 +1,103 @@
+# ---
+# title: "Exercice 6 -  module 7"
+# ---
+# Faire une carte à de ronds proportionnels à partir des données sur les ODD
+#   - En taille des ronds : le taux de mortalité des mères à naissance
+#   - En couleur : l'évolution de la mortalité des mères à la naissance entre 2000 et 2015
+# y 
+#   - Rajouter deux zooms sur les continents Africain et Sud Américain
+# Source :
+#  - les données : `sdg_indicators` du package `variousdata` 
+#  - le fond de carte : la table `World` du package `tmap`
+# ### Chargement des données et datapréparation
+library(tidyverse)
+library(tmap)
+library(variousdata)
+library(sf)
+library(cowplot)
+data("World")
+data("sdg_indicators")
+World_centroid <- st_centroid(World, of_largest_polygon = T)
+sdg_indicators_sf_centroid <- World_centroid %>%
+  left_join(sdg_indicators)
+
+sdf_indicators_evo_2000_2015_sf <- sdg_indicators_sf_centroid %>%
+  filter(timeperiod %in% c("2000", "2015"), !is.na(sh_sta_mmr)) %>%
+  group_by(iso_a3) %>%
+  mutate(evo_sh_sta_mmr = 100 * (sh_sta_mmr / lag(sh_sta_mmr) - 1)) %>%
+  select(timeperiod, iso_a3, geoareaname, sh_sta_mmr, evo_sh_sta_mmr) %>%
+  ungroup() %>%
+  filter(timeperiod == "2015")
+
+sdf_indicators_evo_2000_2015_sf %>%
+  glimpse()
+
+# ### Datavisualisation
+# ### Carte monde
+# Résultat intermédiaire :
+map1 <- ggplot(data = sdf_indicators_evo_2000_2015_sf) +
+  geom_sf(data = World, fill = "white") +
+  geom_sf(aes(color = evo_sh_sta_mmr, size = sh_sta_mmr)) +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "light blue"),
+    legend.position = "right"
+  ) +
+  guides(size = F) +
+  scale_color_gradient2() +
+  labs(
+    title = "Evolution de la mortalité de la mère à la naissance",
+    subtitle = "Entre 2000 et 2015",
+    color = "Evolution\nen %"
+  )
+map1
+
+# ### Zoom sur les deux continents
+# On va utiliser la bbox pour définir les bornes de notre carte zoomée.
+# Résultat intermédiaire : 
+bbox_south_america <- World %>%
+  filter(continent == "South America") %>%
+  st_bbox()
+
+map2 <- ggplot(data = sdf_indicators_evo_2000_2015_sf) +
+  geom_sf(data = World, fill = "white") +
+  geom_sf(aes(color = evo_sh_sta_mmr, size = sh_sta_mmr)) +
+  coord_sf(
+    xlim = c(bbox_south_america[1], bbox_south_america[3]),
+    ylim = c(bbox_south_america[2], bbox_south_america[4])
+  ) +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill = "light blue"),
+    legend.position = "none"
+  ) +
+  scale_color_gradient2()
+map2
+
+
+# Résultat intermédiaire : 
+bbox_africa <- World %>%
+  filter(continent == "Africa") %>%
+  st_bbox()
+map3 <- ggplot(data = sdf_indicators_evo_2000_2015_sf) +
+  geom_sf(data = World, fill = "white") +
+  geom_sf(aes(color = evo_sh_sta_mmr, size = sh_sta_mmr)) +
+  coord_sf(
+    xlim = c(bbox_africa[1], bbox_africa[3]),
+    ylim = c(bbox_africa[2], bbox_africa[4])
+  ) +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill = "light blue"),
+    legend.position = "none"
+  ) +
+  scale_color_gradient2()
+map3
+
+
+# ### Assemblage
+ggdraw() +
+  draw_plot(map1, x = 0, y = .45, width = 1, height = .55) +
+  draw_plot(map2, x = 0.2, y = 0, width = .25, height = .45) +
+  draw_plot(map3, x = 0.45, y = 0, width = .25, height = .45)
+

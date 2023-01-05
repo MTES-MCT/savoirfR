@@ -1,0 +1,42 @@
+---
+title: "Exercices parcours R module 7 : analyse spatiale"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Exercices parcours R module 7 : analyse spatiale}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7.8
+)
+library(sf)
+library(class)
+```
+
+```{r setup, message=FALSE, warning=FALSE}
+library(savoirfR) 
+```
+
+# Exercice 1 - manipuler des objets sf
+```{r mod7_exo1, child=charge_exo("m7", "exo1.rmd"), echo=FALSE}
+```
+
+# Exercice 2 : exploitation des données DVF en API
+```{r mod7_exo2, child=charge_exo("m7", "exo2.rmd"), echo=FALSE}
+```
+
+# Exercice 3 ggplot chap 10 : Visualisation des données DVF en API
+```{r mod7_exo3, child=charge_exo("m7", "exo3.rmd"), echo=FALSE}
+```
+
+# Exercice 4 : Assemblage de cartes sur dvf
+```{r mod7_exo4, child=charge_exo("m7", "exo4.rmd"), echo=FALSE}
+```
+
+# Exercice 5 : cartes pour le web
+```{r mod7_exo5, child=charge_exo("m7", "exo5.rmd"), echo=FALSE}
+```

@@ -1,0 +1,125 @@
+---
+title: "Exercice 2 -  module 7"
+---  
+
+Le but de cet exercice va être d'exploiter les données *DVF* sur les transactions immobilières dans l'ancien et la carte des quartiers de Nantes pour obtenir des indicateurs des transactions par quartier.  
+On va utiliser pour DVF l'API mise en place par Christian Quest : http://api.cquest.org/dvf
+
+```r
+## Activation des packages
+library(httr)
+library(jsonlite)
+library(sf)
+library(tidyverse)
+get_dvf <- GET("http://api.cquest.org/dvf?code_commune=44109")
+dvf_content <- content(get_dvf, "text", encoding = "UTF-8")
+dvf_json <- fromJSON(dvf_content)$resultats %>%
+  # On ne garde que les données avec une géolocalisation valide, un prix et une surface renseignés.
+  filter(!is.na(lon), !is.na(lat), !is.na(valeur_fonciere), !is.na(surface_relle_bati))
+dvf <- st_as_sf(dvf_json, coords = c("lon", "lat"), crs = 4326)
+```
+
+```{r lecture donnees ex 2 dvf, eval = FALSE}
+## Activation des packages
+library(httr)
+library(jsonlite)
+library(sf)
+library(tidyverse)
+get_dvf <- GET("http://api.cquest.org/dvf?code_commune=44109")
+dvf_content <- content(get_dvf, "text", encoding = "UTF-8")
+dvf_json <- fromJSON(dvf_content)$resultats %>%
+  # On ne garde que les données avec une géolocalisation valide, un prix et une surface renseignés.
+  filter(!is.na(lon), !is.na(lat), !is.na(valeur_fonciere), !is.na(surface_relle_bati))
+dvf <- st_as_sf(dvf_json, coords = c("lon", "lat"), crs = 4326)
+```
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+load(system.file("extdata", "dvf.RData", package = "savoirfR"))
+```
+
+
+- Contour des quartiers de Nantes, ils proviennent de Nantes Métropole Open Data :https://data.nantesmetropole.fr
+
+```r
+quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr")
+```
+
+```{r lecture donnees ex 2 quartiers, eval = FALSE}
+quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr")
+```
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr", quiet = TRUE)
+```
+
+On veut produire les infos suivantes par quartier et année :  
+
+- Volume de ventes (nb)   
+- Pourcentage de maisons dans les ventes  
+- Prix moyen au m2 par type de bien  
+
+## Datapréparation
+
+### Jointure spatiale pour récupérer les ventes par quartiers
+
+```{r mod7_exo2_part02, message=FALSE, warning=FALSE}
+dvf_avec_quartier <- st_join(dvf, quartier_nantes %>% select(nom)) %>%
+  rename(quartier = nom)
+```
+
+### Calculs
+
+Calcul par quartier et année de la transaction du nombre de ventes, de leur montant et surface total par type de bien et tout bien confondu
+
+```{r mod7_exo2_part03, message=FALSE, warning=FALSE}
+library(lubridate)
+dvf_filtre <- dvf_avec_quartier %>%
+  st_drop_geometry() %>%
+  filter(
+    nature_mutation == "Vente",
+    type_local %in% c("Appartement", "Maison")
+  ) %>%
+  mutate(
+    date_mutation = ymd(date_mutation),
+    annee_mutation = year(date_mutation),
+    nb_ventes = 1
+  ) 
+stat1 <- dvf_filtre %>%
+  group_by(quartier, type_local, annee_mutation) %>%
+  summarise(across(c(nb_ventes, valeur_fonciere, surface_relle_bati), sum, na.rm = TRUE), .groups = "drop")
+stat2 <- dvf_filtre %>%
+  group_by(quartier, annee_mutation) %>%
+  summarise(across(c(nb_ventes, valeur_fonciere, surface_relle_bati), sum, na.rm = TRUE), .groups = "drop") %>% 
+  mutate(type_local = "Ensemble") 
+stat <- bind_rows(stat1, stat2)
+```
+
+Calcul des indicateurs demandés
+
+Résultat attendu : 
+```{r mod7_exo2_part04, message=FALSE, warning=FALSE}
+# Volume des ventes
+indicateurs1 <- stat %>%
+  filter(type_local == "Ensemble") %>%
+  select(quartier, annee_mutation, nb_ventes)
+# Pourcentage de maison dans les ventes
+indicateurs2 <- stat %>%
+  select(quartier, annee_mutation, type_local, nb_ventes) %>%
+  pivot_wider(names_from = type_local, values_from = nb_ventes, values_fill = 0) %>%
+  mutate(pourcentage_maison = 100 * Maison / Ensemble) %>%
+  select(quartier, annee_mutation, pourcentage_maison)
+indicateurs3 <- stat %>%
+  select(quartier, annee_mutation, type_local, valeur_fonciere, surface_relle_bati) %>%
+  mutate(prix_m2 = valeur_fonciere / surface_relle_bati) %>%
+  select(quartier, annee_mutation, type_local, prix_m2) %>%
+  pivot_wider(names_from = type_local, values_from = prix_m2) %>%
+  rename_with(.cols = c(Appartement, Maison, Ensemble), .fn = ~paste0("prix_m2_", tolower(.x)))
+indicateurs <- reduce(list(indicateurs1, indicateurs2, indicateurs3), left_join)
+indicateurs <- quartier_nantes %>%
+  select(quartier = nom) %>%
+  left_join(indicateurs)
+  
+indicateurs %>%
+glimpse()
+```
+
