@@ -1,32 +1,24 @@
 # ---
 # title: "Exercice 1 -  module 7"
-# ---  
-# Le but de cet exercice va être d’exploiter les données DVF sur les transactions immobilières dans l’ancien et la carte des quartiers de Nantes pour obtenir un prix moyen des transactions par quartier. On va utiliser pour DVF l’API mise en place par Christian Quest.
-# - Données DVF : http://api.cquest.org/dvf (http://api.cquest.org/dvf?code_commune=44109 pour récupérer les données de Nantes)
-# - Contour des quartiers de Nantes : https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&timezone=Europe/Berlin&lang=fr
-# On veut produire les infos suivantes par quartier et annee :
-# - Volume de ventes
-# - Pourcentage de maison dans les ventes
-# - Prix moyen au m2 par type de bien
-#     
-# ## Chargements des données
-# ### DVF
-# Résultat intermédiaire :
-
-# ### Récupération de la carte des quartiers
-# Résultat intermédiaire :
-
-# ## Datapréparation
-# ### Jointure spatiale pour récupérer les ventes par quartiers
-
-# ### Calculs
-# Calcul par quartier et année de la transaction du nombre de ventes, de leur montant et surface total par type de bien et tout bien confondu
-
-# Calcul des indicateurs demandés 
-# Résultat intermédiaire : 
-
-# ## Datavisualisation
-# Carte du nombre de ventes en 2018
-
-# Carte du prix au m²  en 2018
+# ---
+# - Créer un objet contenant les points de p qui intersectent le polygone a.
+# - (Facultatif) Tracer le polygone, les lignes, les points avec les couleurs appropriées en mettant en valeur les points de p
+# qui intersectent le polygone a
+# A partir du code suivant :
+# ```r
+# library(sf)
+# library(tidyverse)
+# library(ggplot2)
+# # polygone (a - orange)
+# a_poly <- st_polygon(list(rbind(c(-1, -1), c(1, -1), c(1, 1), c(-1, -1))))
+# a <- st_sfc(a_poly)
+# # lignes (l - bleues)
+# l1 <- st_multilinestring(list(rbind(c(0.5, -1), c(-0.5, 1))))
+# l2 <- st_multilinestring(list(rbind(c(.9, -.9), c(.5, 0))))
+# l <- st_sfc(l1, l2)
+# # multi-points (p - noirs)
+# p_matrix <- matrix(c(0.5, 1, -1, 0, 0, 1, 0.5, 1), ncol = 2)
+# p_multi <- st_multipoint(x = p_matrix)
+# p <- st_cast(st_sfc(p_multi), "POINT")
+# ```
 
