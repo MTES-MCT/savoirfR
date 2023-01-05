@@ -24,7 +24,7 @@ load("extdata/dvf.RData")
 # quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr")
 # ```
 
-quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr", quiet = TRUE)
+load("extdata/quartier_nantes.RData")
 
 # On veut produire les infos suivantes par quartier et année :  
 # - Volume de ventes (nb)   
