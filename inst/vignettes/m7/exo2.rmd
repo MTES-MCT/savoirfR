@@ -21,10 +21,10 @@ dvf <- st_as_sf(dvf_json, coords = c("lon", "lat"), crs = 4326)
 
 ```{r  eval = FALSE}
 ## Activation des packages
+library(tidyverse)
 library(httr)
 library(jsonlite)
 library(sf)
-library(tidyverse)
 get_dvf <- GET("http://api.cquest.org/dvf?code_commune=44109")
 dvf_content <- content(get_dvf, "text", encoding = "UTF-8")
 dvf_json <- fromJSON(dvf_content)$resultats %>%
@@ -34,6 +34,10 @@ dvf <- st_as_sf(dvf_json, coords = c("lon", "lat"), crs = 4326)
 ```
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(httr)
+library(jsonlite)
+library(sf)
 load(system.file("extdata", "dvf.RData", package = "savoirfR"))
 ```
 
@@ -42,10 +46,12 @@ load(system.file("extdata", "dvf.RData", package = "savoirfR"))
 
 ```r
 quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr")
+quartier_nantes <- st_set_crs(quartier_nantes, 4326)
 ```
 
 ```{r  eval = FALSE}
 quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr")
+quartier_nantes <- st_set_crs(quartier_nantes, 4326)
 ```
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}

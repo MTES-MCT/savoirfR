@@ -21,6 +21,7 @@
 # - Contour des quartiers de Nantes, ils proviennent de Nantes Métropole Open Data :https://data.nantesmetropole.fr
 # ```r
 # quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr")
+# quartier_nantes <- st_set_crs(quartier_nantes, 4326)
 # ```
 
 
