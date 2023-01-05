@@ -1,3 +1,6 @@
+# savoirfR 0.0.0.9007
+* ajout M7 exercices
+
 # savoirfR 0.0.0.9006
 * bug fix extdata files list for M2
 
