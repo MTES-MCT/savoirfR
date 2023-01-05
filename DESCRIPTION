@@ -68,7 +68,7 @@ Suggests:
     tidyverse
 VignetteBuilder: knitr
 Remotes: 
-    maeltheuliere/COGiter
+    maeltheuliere/COGiter,
     MaelTheuliere/variousdata,
     spyrales/gouvdown,
     spyrales/gouvdown.fonts,
