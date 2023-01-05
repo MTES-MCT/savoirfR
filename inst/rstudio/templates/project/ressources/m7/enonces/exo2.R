@@ -31,7 +31,6 @@
 
 # ### Calculs
 # Calcul par quartier et année de la transaction du nombre de ventes, de leur montant et surface total par type de bien et tout bien confondu
-# Résultat intermédiaire : 
 
 # Calcul des indicateurs demandés
 

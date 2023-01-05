@@ -26,7 +26,7 @@ load("extdata/dvf.RData")
 
 
 # -   Contour des quartiers de Nantes, ils proviennent de Nantes Métropole Open Data : <https://data.nantesmetropole.fr>
-quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr")
+quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr", quiet = TRUE)
 
 # On veut produire les infos suivantes par quartier et année :  
 # - Volume de ventes (nb)  
@@ -36,12 +36,9 @@ quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/2444
 # ### Jointure spatiale pour récupérer les ventes par quartiers
 dvf_avec_quartier <- st_join(dvf, quartier_nantes %>% select(nom)) %>%
   rename(quartier = nom)
-dvf_avec_quartier %>%
-  glimpse()
 
 # ### Calculs
 # Calcul par quartier et année de la transaction du nombre de ventes, de leur montant et surface total par type de bien et tout bien confondu
-# Résultat intermédiaire : 
 library(lubridate)
 dvf_filtre <- dvf_avec_quartier %>%
   st_drop_geometry() %>%

@@ -37,19 +37,21 @@ p_multi <- st_multipoint(x = p_matrix)
 p <- st_cast(st_sfc(p_multi), "POINT")
 
 # solution st_filter
-st_sf(p) %>% 
+res <- st_sf(p) %>% 
   st_filter(a)
 # solution tidyverse
-st_sf(p) %>% 
+res <- st_sf(p) %>% 
   filter(st_intersects(., a, sparse = FALSE))
 # solution crochets
-st_sf(p)[a, , op = st_intersects]
+res <- st_sf(p)[a, , op = st_intersects]
+
+res
 
 # graphique
 ggplot() + 
   geom_sf(data = a, color = "orange") + 
   geom_sf(data = p) + 
   geom_sf(data = l, color = "blue") +
-  geom_sf(data = st_sf(p) %>% st_filter(a), color = "cyan") +
+  geom_sf(data = res, color = "cyan") +
   theme_minimal()
 

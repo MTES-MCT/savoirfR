@@ -1,0 +1,171 @@
+---
+title: "Exercice 4 -  module 7"
+---  
+
+A partir des données dvf 2014 et 2017 de la région Pays de la Loire contenues dans le package `{variousdata}` et les fonds de carte de `{COGiter}`, produire :
+
+- une carte régionale à l'EPCI comprenant :  
+  - un dégrade de couleur sur l'évolution des prix au m2 des maisons entre 2014 et 2017,  
+  - un rond sur le volume des prix au m2 des maisons,  
+- un zoom sur les communes des principaux EPCI, c'est à dire une carte à la commune par EPCI de type Métropole (ME) ou Communauté urbaine (CU).  
+
+Puis, assembler ces différentes cartes sur un même graphique.
+
+
+```{r mod7_exo4_part01_solution, message=FALSE, warning=FALSE}
+## Activation des packages
+library(tidyverse)
+library(sf)
+library(lubridate)
+library(variousdata) 
+library(cowplot)
+library(stringr)
+library(COGiter)
+library(gouvdown)
+
+## Préparation des données
+
+### Fonds de carte
+epci_geo_r52 <- epci_geo %>%
+  left_join(epci, by = "EPCI") %>% 
+  filter(grepl("52", REGIONS_DE_L_EPCI))
+epci_ppaux_r52 <- filter(epci_geo_r52, NATURE_EPCI %in% c('ME', "CU")) %>% 
+  pull(EPCI)
+# communes des EPCI principaux 
+com_epci_ppaux_r52 <- communes_geo %>% 
+  left_join(communes, by = "DEPCOM") %>% 
+  filter(EPCI %in% epci_ppaux_r52)
+
+### dvf
+
+data("dvf_r52")
+dvf_r52 <- dvf_r52 %>% 
+  select(-c(NOM_DEPCOM:NOM_REG)) %>% 
+  passer_au_cog_a_jour(code_commune = DEPCOM, garder_info_supra = TRUE, aggrege = FALSE)
+
+# On ne conserve que les données valides de ventes de maisons, et on les tronque, en filtrant les données à 98% pour lisser les moyennes
+
+dvf_r52_maisons <- dvf_r52 %>%
+  filter(nature_mutation == "Vente", type_local == "Maison") %>%
+  filter(!is.na(valeur_fonciere), !is.na(surface_reelle_bati)) %>%
+  mutate(prix_m2 = valeur_fonciere / surface_reelle_bati) %>%
+  arrange(prix_m2) %>%
+  filter(between(row_number(), n() * .01, n() * .99)) %>%
+  select(-prix_m2)
+
+```
+
+### Calcul de l'évolution des prix et du nombre de ventes
+
+#### A l'EPCI
+
+```{r mod7_exo4_part02_solution, message=FALSE, warning=FALSE}
+prix_m2_maisons_epci <- dvf_r52_maisons %>%
+  select(EPCI, NOM_EPCI, date_mutation, valeur_fonciere, surface_reelle_bati) %>%
+  mutate(
+    n = 1,
+    annee = year(date_mutation)
+  ) %>%
+  select(-date_mutation) %>%
+  group_by(EPCI, NOM_EPCI, annee) %>%
+  summarise(across(everything(), sum), .groups = "drop") %>%
+  group_by(EPCI, NOM_EPCI) %>%
+  mutate(
+    prix_m2 = valeur_fonciere / surface_reelle_bati,
+    evo_prix_m2 = 100 * prix_m2 / lag(prix_m2) - 100
+  ) %>%
+  filter(annee == 2017) %>%
+  ungroup()
+```
+
+#### A la commune
+
+```{r mod7_exo4_part03_solution, message=FALSE, warning=FALSE}
+prix_m2_maisons_com <- dvf_r52_maisons %>%
+  select(EPCI, DEPCOM, date_mutation, valeur_fonciere, surface_reelle_bati) %>%
+  mutate(
+    n = 1,
+    annee = year(date_mutation)
+  ) %>%
+  select(-date_mutation) %>%
+  group_by(EPCI, DEPCOM, annee) %>%
+  summarise(across(everything(), sum), .groups = "drop") %>%
+  group_by(EPCI, DEPCOM) %>%
+  mutate(
+    prix_m2 = valeur_fonciere / surface_reelle_bati,
+    evo_prix_m2 = 100 * prix_m2 / lag(prix_m2) - 100
+  ) %>%
+  filter(annee == 2017) %>%
+  ungroup()
+```
+
+#### Intégration des données aux fonds de carte
+
+```{r mod7_exo4_part04_solution, message=FALSE, warning=FALSE}
+prix_m2_maisons_epci_sf <- epci_geo_r52 %>% 
+  left_join(prix_m2_maisons_epci, by = c("EPCI", "NOM_EPCI")) %>%
+  mutate(n = coalesce(n, 0))
+prix_m2_maisons_com_sf <- com_epci_ppaux_r52 %>% 
+  left_join(prix_m2_maisons_com, by = c("DEPCOM", "EPCI")) %>%
+  mutate(n = coalesce(n, 0)) %>% 
+  filter()
+```
+
+## Datavisualisation
+
+### Carte à l'EPCI de la région
+
+```{r mod7_exo4_part05_solution, message=FALSE, warning=FALSE}
+p <- ggplot(prix_m2_maisons_epci_sf) +
+  geom_sf(aes(fill = evo_prix_m2)) +
+  scale_fill_gouv_continuous(palette = "pal_gouv_div1") +
+  stat_sf_coordinates(aes(size = n), alpha = .5) +
+  theme_gouv_map(plot_title_size = 16, subtitle_size = 12, plot_margin = margin(0, 0, 0, 0), 
+                 plot_title_margin = 1, caption_margin = 1, subtitle_margin = 0) +
+  guides(size = "none") +
+  labs(
+    fill = "En %", title = "Evolution du prix des maisons neuves en euros par m2",
+    subtitle = "Entre 2014 et 2017",
+    caption = "source : DVF"
+  )
+p
+```
+
+### zoom à la commune
+
+Création des cartes zoom EPCI avec une fonction
+
+```{r mod7_exo4_part06_solution, message=FALSE, warning=FALSE}
+creer_zoom <- function(code_epci = "244400404") {
+  
+  nom_epci <- filter(epci_geo_r52, EPCI == code_epci) %>% 
+    pull(NOM_EPCI) %>% 
+    str_wrap(20)
+  
+  prix_m2_maisons_com_sf %>% 
+    filter(EPCI == code_epci) %>% 
+    ggplot() +
+    geom_sf(aes(fill = evo_prix_m2)) +
+    scale_fill_gouv_continuous(palette = "pal_gouv_div1") +
+    stat_sf_coordinates(aes(size = n), alpha = .5) +
+    theme_gouv_map(plot_title_size = 11, plot_margin = margin(0, 0, 0, 0), plot_title_margin = 1, caption_margin = 1, subtitle_margin = 0) +
+    guides(size = "none", fill = "none") +
+    labs(title = nom_epci)
+  
+  }
+```
+
+Réalisation des zooms
+
+```{r mod7_exo4_part07_solution, message=FALSE, warning=FALSE}
+zooms <- map(.x = epci_ppaux_r52, .f = creer_zoom)
+zooms[[1]]
+```
+
+### Assemblage
+
+```{r mod7_exo4_part08_solution, message=FALSE, warning=FALSE}
+plot_grid(p, plot_grid(zooms[[1]], zooms[[2]], zooms[[4]], nrow = 2, ncol = 3), 
+          nrow = 2)
+  
+```

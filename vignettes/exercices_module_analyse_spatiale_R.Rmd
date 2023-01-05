@@ -1,8 +1,8 @@
 ---
-title: "Exercices parcours R module 5 : datavisualisation"
+title: "Exercices parcours R module 7 : analyse spatiale"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Exercices parcours R module 5 : datavisualisation}
+  %\VignetteIndexEntry{Exercices parcours R module 7 : analyse spatiale}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,43 +21,22 @@ library(class)
 library(savoirfR) 
 ```
 
-# Exercice 1
-```{r mod5_exo1, child=charge_exo("m5", "exo1.rmd"), echo=FALSE}
-```
- 
-# Exercice 2 - Modifier le thème
-
-```{r mod5_exo2, child=charge_exo("m5", "exo2.rmd"), echo=FALSE}
-```
- 
-# Exercice 3 - Modifier les scales et labs
-
-```{r mod5_exo3, child=charge_exo("m5", "exo3.rmd"), echo=FALSE}
+# Exercice 1 - manipuler des objets sf
+```{r mod7_exo1, child=charge_exo("m7", "exo1.rmd"), echo=FALSE}
 ```
 
-# Exercice 4 - Les facettes
-
-```{r mod5_exo4, child=charge_exo("m5", "exo4.rmd"), echo=FALSE}
+# Exercice 2 : exploitation des données DVF en API
+```{r mod7_exo2, child=charge_exo("m7", "exo2.rmd"), echo=FALSE}
 ```
 
-# Exercice 5 - Créer une carte avec ggplot2
-
-```{r mod5_exo5, child=charge_exo("m5", "exo5.rmd"), echo=FALSE}
+# Exercice 3 ggplot chap 10 : Visualisation des données DVF en API
+```{r mod7_exo3, child=charge_exo("m7", "exo3.rmd"), echo=FALSE}
 ```
 
-# Exercice 6 - Réaliser un graphe animé
-
-```{r mod5_exo6, child=charge_exo("m5", "exo6.rmd"), echo=FALSE}
+# Exercice 4 : Assemblage de cartes sur dvf
+```{r mod7_exo4, child=charge_exo("m7", "exo4.rmd"), echo=FALSE}
 ```
 
-# Exercice 7 - Créer un graphique pour le web
-
-```{r mod5_exo7, child=charge_exo("m5", "exo7.rmd"), echo=FALSE}
+# Exercice 5 : cartes pour le web
+```{r mod7_exo5, child=charge_exo("m7", "exo5.rmd"), echo=FALSE}
 ```
-
-# Exercice 8 - Créer un tableau avec kable et kablextra
-
-```{r mod5_exo8, child=charge_exo("m5", "exo8.rmd"), echo=FALSE}
-```
-
-

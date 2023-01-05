@@ -34,7 +34,6 @@ sdf_indicators_evo_2000_2015_sf %>%
 
 # ### Datavisualisation
 # ### Carte monde
-# Résultat intermédiaire :
 map1 <- ggplot(data = sdf_indicators_evo_2000_2015_sf) +
   geom_sf(data = World, fill = "white") +
   geom_sf(aes(color = evo_sh_sta_mmr, size = sh_sta_mmr)) +
@@ -54,7 +53,6 @@ map1
 
 # ### Zoom sur les deux continents
 # On va utiliser la bbox pour définir les bornes de notre carte zoomée.
-# Résultat intermédiaire : 
 bbox_south_america <- World %>%
   filter(continent == "South America") %>%
   st_bbox()
@@ -75,7 +73,6 @@ map2 <- ggplot(data = sdf_indicators_evo_2000_2015_sf) +
 map2
 
 
-# Résultat intermédiaire : 
 bbox_africa <- World %>%
   filter(continent == "Africa") %>%
   st_bbox()

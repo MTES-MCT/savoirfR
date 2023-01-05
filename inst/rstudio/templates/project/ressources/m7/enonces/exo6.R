@@ -13,12 +13,9 @@
 
 # ### Datavisualisation
 # ### Carte monde
-# Résultat intermédiaire :
 
 # ### Zoom sur les deux continents
 # On va utiliser la bbox pour définir les bornes de notre carte zoomée.
-# Résultat intermédiaire : 
 
-# Résultat intermédiaire : 
 
 # ### Assemblage
