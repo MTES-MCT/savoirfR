@@ -89,12 +89,11 @@ clean_r <- function(rfile) {
   res %>% 
     dplyr::as_tibble() %>%
     #remove empty lines and chunk opts and lines 'resultats attendus : '
-    dplyr::filter(!stringr::str_detect(.data$value, "(#' $)|(^##)|sultat attendu|sultats attendus|sultat intermédiaire|sultats intermédiaires")) %>%
+    dplyr::filter(!stringr::str_detect(.data$value, "(#' $)|(^##)|sultat attendu|sultats attendu")) %>%
     #replace #' by #, and replace load with system file by basic load
     dplyr::mutate(value = stringr::str_replace(.data$value, "#'", '#')) %>% 
     dplyr::mutate(value = gsub('system.file("extdata", "', '"extdata/', .data$value, fixed = TRUE)) %>%
     dplyr::mutate(value = gsub(', package = "savoirfR")', '', .data$value, fixed = TRUE)) %>%
-    dplyr::mutate(value = gsub('(.*)knitr::knit_child\\(savoirfR::charge_exo\\((.*)', '', .data$value, perl = TRUE)) %>%
     dplyr::pull() %>%
-    writeLines(con = rfile   )
+    writeLines(con = rfile)
 }
