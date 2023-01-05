@@ -1,7 +1,6 @@
 # ---
-# title: "Exercice 2 -  module 7"
+# title: "Exercice 6 -  module 7"
 # ---
-# ## Exercice 2 : Faire un assemblage de cartes
 # Faire une carte à de ronds proportionnels à partir des données sur les ODD
 #   - En taille des ronds : le taux de mortalité des mères à naissance
 #   - En couleur : l'évolution de la mortalité des mères à la naissance entre 2000 et 2015

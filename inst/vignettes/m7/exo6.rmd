@@ -1,8 +1,6 @@
 ---
-title: "Exercice 2 -  module 7"
+title: "Exercice 6 -  module 7"
 ---
-
-## Exercice 2 : Faire un assemblage de cartes
 
 Faire une carte à de ronds proportionnels à partir des données sur les ODD
 
