@@ -7,7 +7,7 @@ Adapter la carte régionale à l'EPCI de l'exercice 4, pour le web :
 - au survol d'un EPCI, afficher son nom, le prix au m2 et son évolution 2014-2017,  
 - au survol du rond d'un EPCI, afficher son nom, le nb de ventes 2017.  
 
-```{r mod7_exo5_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(ggiraph)
 library(mapfactory)
 p_web <- prix_m2_maisons_epci_sf %>% 

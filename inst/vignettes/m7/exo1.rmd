@@ -25,7 +25,7 @@ p_multi <- st_multipoint(x = p_matrix)
 p <- st_cast(st_sfc(p_multi), "POINT")
 ```
 
-```{r exo1-consigne, message=FALSE, warning=FALSE}
+```{r  message=FALSE, warning=FALSE}
 library(sf)
 library(tidyverse)
 library(ggplot2)
@@ -43,7 +43,7 @@ p <- st_cast(st_sfc(p_multi), "POINT")
 ```
 
 Résultat attendu : 
-```{r mod7_exo1_part01, message=FALSE, warning=FALSE}
+```{r  message=FALSE, warning=FALSE}
 # solution st_filter
 res <- st_sf(p) %>% 
   st_filter(a)
@@ -57,7 +57,7 @@ res
 ```
 
 Résultat attendu :
-```{r mod7_exo1_part02, message=FALSE, warning=FALSE}
+```{r  message=FALSE, warning=FALSE}
 # graphique
 ggplot() + 
   geom_sf(data = a, color = "orange") + 

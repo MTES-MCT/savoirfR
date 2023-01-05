@@ -19,7 +19,7 @@ dvf_json <- fromJSON(dvf_content)$resultats %>%
 dvf <- st_as_sf(dvf_json, coords = c("lon", "lat"), crs = 4326)
 ```
 
-```{r lecture donnees ex 2 dvf, eval = FALSE}
+```{r  eval = FALSE}
 ## Activation des packages
 library(httr)
 library(jsonlite)
@@ -44,12 +44,12 @@ load(system.file("extdata", "dvf.RData", package = "savoirfR"))
 quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr")
 ```
 
-```{r lecture donnees ex 2 quartiers, eval = FALSE}
+```{r  eval = FALSE}
 quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr")
 ```
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
-quartier_nantes <- st_read("https://data.nantesmetropole.fr/explore/dataset/244400404_quartiers-communes-nantes-metropole/download/?format=geojson&disjunctive.libcom=true&refine.libcom=Nantes&timezone=Europe/Berlin&lang=fr", quiet = TRUE)
+load(system.file("extdata", "quartier_nantes.RData", package = "savoirfR"))
 ```
 
 On veut produire les infos suivantes par quartier et année :  
@@ -62,7 +62,7 @@ On veut produire les infos suivantes par quartier et année :
 
 ### Jointure spatiale pour récupérer les ventes par quartiers
 
-```{r mod7_exo2_part02, message=FALSE, warning=FALSE}
+```{r  message=FALSE, warning=FALSE}
 dvf_avec_quartier <- st_join(dvf, quartier_nantes %>% select(nom)) %>%
   rename(quartier = nom)
 ```
@@ -71,7 +71,7 @@ dvf_avec_quartier <- st_join(dvf, quartier_nantes %>% select(nom)) %>%
 
 Calcul par quartier et année de la transaction du nombre de ventes, de leur montant et surface total par type de bien et tout bien confondu
 
-```{r mod7_exo2_part03, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(lubridate)
 dvf_filtre <- dvf_avec_quartier %>%
   st_drop_geometry() %>%
@@ -97,7 +97,7 @@ stat <- bind_rows(stat1, stat2)
 Calcul des indicateurs demandés
 
 Résultat attendu : 
-```{r mod7_exo2_part04, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 # Volume des ventes
 indicateurs1 <- stat %>%
   filter(type_local == "Ensemble") %>%

@@ -6,7 +6,7 @@ Avec les résultats de l'exercice 2, produire les cartes du nombre de ventes et 
 
 Résultats attendus :
 
-```{r mod7_exo3_part01_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(gouvdown)
 ggplot() +
@@ -19,7 +19,7 @@ ggplot() +
   scale_fill_gouv_continuous()
 ```
 
-```{r mod7_exo3_part02_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 ggplot() +
   geom_sf(
     data = indicateurs %>%

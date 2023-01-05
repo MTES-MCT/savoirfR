@@ -12,7 +12,7 @@ A partir des données dvf 2014 et 2017 de la région Pays de la Loire contenues 
 Puis, assembler ces différentes cartes sur un même graphique.
 
 
-```{r mod7_exo4_part01_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 ## Activation des packages
 library(tidyverse)
 library(sf)
@@ -26,14 +26,14 @@ library(gouvdown)
 ## Préparation des données
 
 ### Fonds de carte
-epci_geo_r52 <- epci_geo %>%
-  left_join(epci, by = "EPCI") %>% 
+epci_geo_r52 <- COGiter::epci_geo %>%
+  left_join(COGiter::epci, by = "EPCI") %>% 
   filter(grepl("52", REGIONS_DE_L_EPCI))
 epci_ppaux_r52 <- filter(epci_geo_r52, NATURE_EPCI %in% c('ME', "CU")) %>% 
   pull(EPCI)
 # communes des EPCI principaux 
-com_epci_ppaux_r52 <- communes_geo %>% 
-  left_join(communes, by = "DEPCOM") %>% 
+com_epci_ppaux_r52 <- COGiter::communes_geo %>% 
+  left_join(COGiter::communes, by = "DEPCOM") %>% 
   filter(EPCI %in% epci_ppaux_r52)
 
 ### dvf
@@ -59,7 +59,7 @@ dvf_r52_maisons <- dvf_r52 %>%
 
 #### A l'EPCI
 
-```{r mod7_exo4_part02_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 prix_m2_maisons_epci <- dvf_r52_maisons %>%
   select(EPCI, NOM_EPCI, date_mutation, valeur_fonciere, surface_reelle_bati) %>%
   mutate(
@@ -80,7 +80,7 @@ prix_m2_maisons_epci <- dvf_r52_maisons %>%
 
 #### A la commune
 
-```{r mod7_exo4_part03_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 prix_m2_maisons_com <- dvf_r52_maisons %>%
   select(EPCI, DEPCOM, date_mutation, valeur_fonciere, surface_reelle_bati) %>%
   mutate(
@@ -101,7 +101,7 @@ prix_m2_maisons_com <- dvf_r52_maisons %>%
 
 #### Intégration des données aux fonds de carte
 
-```{r mod7_exo4_part04_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 prix_m2_maisons_epci_sf <- epci_geo_r52 %>% 
   left_join(prix_m2_maisons_epci, by = c("EPCI", "NOM_EPCI")) %>%
   mutate(n = coalesce(n, 0))
@@ -115,7 +115,7 @@ prix_m2_maisons_com_sf <- com_epci_ppaux_r52 %>%
 
 ### Carte à l'EPCI de la région
 
-```{r mod7_exo4_part05_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 p <- ggplot(prix_m2_maisons_epci_sf) +
   geom_sf(aes(fill = evo_prix_m2)) +
   scale_fill_gouv_continuous(palette = "pal_gouv_div1") +
@@ -135,7 +135,7 @@ p
 
 Création des cartes zoom EPCI avec une fonction
 
-```{r mod7_exo4_part06_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 creer_zoom <- function(code_epci = "244400404") {
   
   nom_epci <- filter(epci_geo_r52, EPCI == code_epci) %>% 
@@ -157,14 +157,14 @@ creer_zoom <- function(code_epci = "244400404") {
 
 Réalisation des zooms
 
-```{r mod7_exo4_part07_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 zooms <- map(.x = epci_ppaux_r52, .f = creer_zoom)
 zooms[[1]]
 ```
 
 ### Assemblage
 
-```{r mod7_exo4_part08_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 plot_grid(p, plot_grid(zooms[[1]], zooms[[2]], zooms[[4]], nrow = 2, ncol = 3), 
           nrow = 2)
   

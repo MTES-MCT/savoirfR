@@ -17,7 +17,7 @@ Source :
 
 ### Chargement des données et datapréparation
 
-```{r mod7_exo6_part01_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(tmap)
 library(variousdata)
@@ -47,7 +47,7 @@ sdf_indicators_evo_2000_2015_sf %>%
 
 Résultat intermédiaire :
 
-```{r mod7_exo6_part02_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 map1 <- ggplot(data = sdf_indicators_evo_2000_2015_sf) +
   geom_sf(data = World, fill = "white") +
   geom_sf(aes(color = evo_sh_sta_mmr, size = sh_sta_mmr)) +
@@ -72,7 +72,7 @@ On va utiliser la bbox pour définir les bornes de notre carte zoomée.
 
 Résultat intermédiaire : 
 
-```{r mod7_exo6_part03_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 bbox_south_america <- World %>%
   filter(continent == "South America") %>%
   st_bbox()
@@ -96,7 +96,7 @@ map2
 
 Résultat intermédiaire : 
 
-```{r mod7_exo6_part04_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 bbox_africa <- World %>%
   filter(continent == "Africa") %>%
   st_bbox()
@@ -121,7 +121,7 @@ map3
 
 Résultat attendu :
 
-```{r mod7_exo6_part05_solution, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 ggdraw() +
   draw_plot(map1, x = 0, y = .45, width = 1, height = .55) +
   draw_plot(map2, x = 0.2, y = 0, width = .25, height = .45) +
