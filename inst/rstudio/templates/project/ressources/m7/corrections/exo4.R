@@ -17,14 +17,14 @@ library(COGiter)
 library(gouvdown)
 
 
-epci_geo_r52 <- epci_geo %>%
-  left_join(epci, by = "EPCI") %>% 
+epci_geo_r52 <- COGiter::epci_geo %>%
+  left_join(COGiter::epci, by = "EPCI") %>% 
   filter(grepl("52", REGIONS_DE_L_EPCI))
 epci_ppaux_r52 <- filter(epci_geo_r52, NATURE_EPCI %in% c('ME', "CU")) %>% 
   pull(EPCI)
 # communes des EPCI principaux 
-com_epci_ppaux_r52 <- communes_geo %>% 
-  left_join(communes, by = "DEPCOM") %>% 
+com_epci_ppaux_r52 <- COGiter::communes_geo %>% 
+  left_join(COGiter::communes, by = "DEPCOM") %>% 
   filter(EPCI %in% epci_ppaux_r52)
 
 
