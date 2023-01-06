@@ -2,7 +2,7 @@
 # title: "Exercice 2 -  module 7"
 # ---  
 # Le but de cet exercice va être d'exploiter les données *DVF* sur les transactions immobilières dans l'ancien et la carte des quartiers de Nantes pour obtenir des indicateurs des transactions par quartier.  
-# On va utiliser pour DVF l'API mise en place par Christian Quest : http://api.cquest.org/dvf
+# On va utiliser pour DVF l'API mise en place par Christian Quest : http://api.cquest.org/dvf.  
 # ```r
 # ## Activation des packages
 # library(httr)
@@ -35,13 +35,12 @@ load("extdata/quartier_nantes.RData")
 # - Volume de ventes (nb)   
 # - Pourcentage de maisons dans les ventes  
 # - Prix moyen au m2 par type de bien  
-# ## Datapréparation
-# ### Jointure spatiale pour récupérer les ventes par quartiers
+
+# Jointure spatiale pour récupérer les ventes par quartiers ---- 
 dvf_avec_quartier <- st_join(dvf, quartier_nantes %>% select(nom)) %>%
   rename(quartier = nom)
 
-# ### Calculs
-# Calcul par quartier et année de la transaction du nombre de ventes, de leur montant et surface total par type de bien et tout bien confondu
+# Calcul indicateurs----
 library(lubridate)
 dvf_filtre <- dvf_avec_quartier %>%
   st_drop_geometry() %>%
@@ -54,33 +53,45 @@ dvf_filtre <- dvf_avec_quartier %>%
     annee_mutation = year(date_mutation),
     nb_ventes = 1
   ) 
+
+# Calculs volumes, surfaces, prix totaux par quartier, par type de bien et par année 
 stat1 <- dvf_filtre %>%
   group_by(quartier, type_local, annee_mutation) %>%
   summarise(across(c(nb_ventes, valeur_fonciere, surface_relle_bati), sum, na.rm = TRUE), .groups = "drop")
+
+# Calculs volumes, surfaces, prix totaux par quartier et par année, ensemble maisons + appartements
 stat2 <- dvf_filtre %>%
   group_by(quartier, annee_mutation) %>%
   summarise(across(c(nb_ventes, valeur_fonciere, surface_relle_bati), sum, na.rm = TRUE), .groups = "drop") %>% 
   mutate(type_local = "Ensemble") 
+
 stat <- bind_rows(stat1, stat2)
 
-# Calcul des indicateurs demandés
-# Volume des ventes
+
+# Calcul volume des ventes
 indicateurs1 <- stat %>%
   filter(type_local == "Ensemble") %>%
   select(quartier, annee_mutation, nb_ventes)
-# Pourcentage de maison dans les ventes
+
+# Calcul pourcentage de maison dans les ventes
 indicateurs2 <- stat %>%
   select(quartier, annee_mutation, type_local, nb_ventes) %>%
   pivot_wider(names_from = type_local, values_from = nb_ventes, values_fill = 0) %>%
   mutate(pourcentage_maison = 100 * Maison / Ensemble) %>%
   select(quartier, annee_mutation, pourcentage_maison)
+
+# Calcul des prix au m2
 indicateurs3 <- stat %>%
   select(quartier, annee_mutation, type_local, valeur_fonciere, surface_relle_bati) %>%
   mutate(prix_m2 = valeur_fonciere / surface_relle_bati) %>%
   select(quartier, annee_mutation, type_local, prix_m2) %>%
   pivot_wider(names_from = type_local, values_from = prix_m2) %>%
   rename_with(.cols = c(Appartement, Maison, Ensemble), .fn = ~paste0("prix_m2_", tolower(.x)))
+
+# Assemblage des tables d'indicateurs
 indicateurs <- reduce(list(indicateurs1, indicateurs2, indicateurs3), left_join)
+
+# Réintroduction géométries
 indicateurs <- quartier_nantes %>%
   select(quartier = nom) %>%
   left_join(indicateurs)

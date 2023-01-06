@@ -2,7 +2,7 @@
 title: "How to : comment contribuer à savoirfR"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{How to : Comment contribuer à savoirfR}
+  %\VignetteIndexEntry{How to : comment contribuer à savoirfR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

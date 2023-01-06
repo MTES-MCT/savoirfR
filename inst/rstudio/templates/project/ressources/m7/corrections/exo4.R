@@ -44,8 +44,9 @@ dvf_r52_maisons <- dvf_r52 %>%
   select(-prix_m2)
 
 
-# ### Calcul de l'évolution des prix et du nombre de ventes
-# #### A l'EPCI
+# Il faut comme toujours procéder par étape.   
+# Etape 1 : Calcul de l'évolution des prix et du nombre de ventes  
+# * A l'EPCI 
 prix_m2_maisons_epci <- dvf_r52_maisons %>%
   select(EPCI, NOM_EPCI, date_mutation, valeur_fonciere, surface_reelle_bati) %>%
   mutate(
@@ -63,7 +64,7 @@ prix_m2_maisons_epci <- dvf_r52_maisons %>%
   filter(annee == 2017) %>%
   ungroup()
 
-# #### A la commune
+# * A la commune  
 prix_m2_maisons_com <- dvf_r52_maisons %>%
   select(EPCI, DEPCOM, date_mutation, valeur_fonciere, surface_reelle_bati) %>%
   mutate(
@@ -81,7 +82,7 @@ prix_m2_maisons_com <- dvf_r52_maisons %>%
   filter(annee == 2017) %>%
   ungroup()
 
-# #### Intégration des données aux fonds de carte
+# * Intégration des données calculées aux fonds de carte  
 prix_m2_maisons_epci_sf <- epci_geo_r52 %>% 
   left_join(prix_m2_maisons_epci, by = c("EPCI", "NOM_EPCI")) %>%
   mutate(n = coalesce(n, 0))
@@ -90,8 +91,8 @@ prix_m2_maisons_com_sf <- com_epci_ppaux_r52 %>%
   mutate(n = coalesce(n, 0)) %>% 
   filter()
 
-# ## Datavisualisation
-# ### Carte à l'EPCI de la région
+# Etape 2 : Datavisualisation  
+# * Carte à l'EPCI de la région  
 p <- ggplot(prix_m2_maisons_epci_sf) +
   geom_sf(aes(fill = evo_prix_m2)) +
   scale_fill_gouv_continuous(palette = "pal_gouv_div1") +
@@ -106,8 +107,10 @@ p <- ggplot(prix_m2_maisons_epci_sf) +
   )
 p
 
-# ### zoom à la commune
+# * Zooms à la commune  
+
 # Création des cartes zoom EPCI avec une fonction
+
 creer_zoom <- function(code_epci = "244400404") {
   
   nom_epci <- filter(epci_geo_r52, EPCI == code_epci) %>% 
@@ -127,11 +130,11 @@ creer_zoom <- function(code_epci = "244400404") {
   }
 
 # Réalisation des zooms
+
 zooms <- map(.x = epci_ppaux_r52, .f = creer_zoom)
 zooms[[1]]
 
-# ### Assemblage
+# * Assemblage  
 plot_grid(p, plot_grid(zooms[[1]], zooms[[2]], zooms[[4]], nrow = 2, ncol = 3), 
           nrow = 2)
-  
 

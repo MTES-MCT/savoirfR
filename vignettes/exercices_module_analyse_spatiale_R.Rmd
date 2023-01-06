@@ -34,9 +34,9 @@ library(savoirfR)
 ```
 
 # Exercice 4 : Assemblage de cartes sur dvf
-```{r mod7_exo4, child=charge_exo("m7", "exo4.rmd"), echo=FALSE}
+```{r mod7_exo4, child=charge_exo("m7", "exo4.rmd"), echo=FALSE, fig.asp=1}
 ```
 
 # Exercice 5 : cartes pour le web
-```{r mod7_exo5, child=charge_exo("m7", "exo5.rmd"), echo=FALSE}
+```{r mod7_exo5, child=charge_exo("m7", "exo5.rmd"), echo=FALSE, fig.asp=1}
 ```

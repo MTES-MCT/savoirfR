@@ -8,19 +8,18 @@
 # - un zoom sur les communes des principaux EPCI, c'est à dire une carte à la commune par EPCI de type Métropole (ME) ou Communauté urbaine (CU).  
 # Puis, assembler ces différentes cartes sur un même graphique.
 
-# ### Calcul de l'évolution des prix et du nombre de ventes
-# #### A l'EPCI
+# Il faut comme toujours procéder par étape.   
+# Etape 1 : Calcul de l'évolution des prix et du nombre de ventes  
+# * A l'EPCI 
 
-# #### A la commune
+# * A la commune  
 
-# #### Intégration des données aux fonds de carte
+# * Intégration des données calculées aux fonds de carte  
 
-# ## Datavisualisation
-# ### Carte à l'EPCI de la région
+# Etape 2 : Datavisualisation  
+# * Carte à l'EPCI de la région  
 
-# ### zoom à la commune
-# Création des cartes zoom EPCI avec une fonction
+# * Zooms à la commune  
 
-# Réalisation des zooms
 
-# ### Assemblage
+# * Assemblage  
