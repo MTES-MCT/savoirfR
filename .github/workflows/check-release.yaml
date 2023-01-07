@@ -22,7 +22,7 @@ jobs:
         with:
           use-public-rspm: true
       
-     - name: Install dependencies
+      - name: Install dependencies
         run: |
           install.packages("remotes")
           remotes::install_deps(dependencies = TRUE)
