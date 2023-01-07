@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">savoirfR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9006</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9007</span>
       </span>
     </div>
 
@@ -57,6 +57,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/exercices_module_analyse_spatiale_R.html">Exercices parcours R module 7 : analyse spatiale</a>
+    </li>
+    <li>
       <a href="../articles/exercices_module_datapreparation_R.html">Exercices parcours R module 2 : datapréparation</a>
     </li>
     <li>
@@ -91,7 +94,7 @@
 
       
 
-      </header><script src="how_to_dev_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>How to : comment contribuer à savoirfR</h1>
@@ -115,13 +118,17 @@
 <div class="section level3">
 <h3 id="rajouter-les-données-manquantes-dans-instextdata">Rajouter les données manquantes dans <code>inst/extdata</code><a class="anchor" aria-label="anchor" href="#rajouter-les-donn%C3%A9es-manquantes-dans-instextdata"></a>
 </h3>
-<p>Chaque jeu de données doit être limité en taille à quelques centaines de lignes et quelques colonnes.</p>
-<p>Compléter le fichier <code>extdata/list_data_modules.csv</code> en rajoutant une ligne pour chaque dataset du module.</p>
+<p>Chaque jeu de données doit être limité en taille à quelques centaines
+de lignes et quelques colonnes.</p>
+<p>Compléter le fichier <code>extdata/list_data_modules.csv</code> en
+rajoutant une ligne pour chaque dataset du module.</p>
 </div>
 <div class="section level3">
-<h3 id="ajouter-les-exercices-dans-instvignettesnom_du_module">Ajouter les exercices dans <code>inst/vignettes/nom_du_module/</code><a class="anchor" aria-label="anchor" href="#ajouter-les-exercices-dans-instvignettesnom_du_module"></a>
+<h3 id="ajouter-les-exercices-dans-instvignettesnom_du_module">Ajouter les exercices dans
+<code>inst/vignettes/nom_du_module/</code><a class="anchor" aria-label="anchor" href="#ajouter-les-exercices-dans-instvignettesnom_du_module"></a>
 </h3>
-<p>Chaque fichier d’exercice doit être nommé <code>exoN.Rmd</code> ou <code>exoN.rmd</code> ou encore <code>exoN.rmarkdown</code>.</p>
+<p>Chaque fichier d’exercice doit être nommé <code>exoN.Rmd</code> ou
+<code>exoN.rmd</code> ou encore <code>exoN.rmarkdown</code>.</p>
 <p>Il commence par :<br>
 -–<br>
 title: “Exercices X - module Y”<br>
@@ -131,7 +138,9 @@ où X est le numéro de l’exercice et Y le numéro du module.</p>
 <ul>
 <li>les consignes de l’exercice,<br>
 </li>
-<li>un éventuel chunk de setup (library, données à charger…) qui ne sera pas visible dans la correction ni dans la vignette du module, mais sera exécuté,<br>
+<li>un éventuel chunk de setup (library, données à charger…) qui ne sera
+pas visible dans la correction ni dans la vignette du module, mais sera
+exécuté,<br>
 </li>
 <li>la solution.</li>
 </ul>
@@ -141,25 +150,38 @@ Commence ensuite le chunk contenant les lignes de corrigé.<br>
 Ce chunk est nommé ‘modY_exo1_solution’; par exemple :</p>
 <p> ```{r mod5_exo1_solution, message=FALSE, warning=FALSE}</p>
 <p>Knitter la vignette pour vérifier qu’elle compile.</p>
-<p>N’oubliez pas de simuler l’installation du package avec <code>devtools::load_all(".")</code> ou lancez un <code>Install et Restart</code> pour que les fonctions <code><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file()</a></code> puissent trouver les fichiers que vous venez d’ajouter dans <code>inst</code>.</p>
+<p>N’oubliez pas de simuler l’installation du package avec
+<code>devtools::load_all(".")</code> ou lancez un
+<code>Install et Restart</code> pour que les fonctions
+<code><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file()</a></code> puissent trouver les fichiers que vous venez
+d’ajouter dans <code>inst</code>.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="propagation-des-exercices-consignes-et-solutions-aux-différents-endroits-requis">Propagation des exercices (consignes et solutions) aux différents endroits requis<a class="anchor" aria-label="anchor" href="#propagation-des-exercices-consignes-et-solutions-aux-diff%C3%A9rents-endroits-requis"></a>
+<h2 id="propagation-des-exercices-consignes-et-solutions-aux-différents-endroits-requis">Propagation des exercices (consignes et solutions) aux différents
+endroits requis<a class="anchor" aria-label="anchor" href="#propagation-des-exercices-consignes-et-solutions-aux-diff%C3%A9rents-endroits-requis"></a>
 </h2>
 <p>Chaque énoncé/corrigé d’exercice doit figurer :</p>
 <ol style="list-style-type: decimal">
-<li>dans le projet d’exercices du stagiaire (dossier <code>/inst/rstudio/templates/project/ressource</code>)</li>
-<li>dans la vignette relative au module du package savoirfR (dossier <code>vignette</code>)<br>
+<li>dans le projet d’exercices du stagiaire (dossier
+<code>/inst/rstudio/templates/project/ressource</code>)</li>
+<li>dans la vignette relative au module du package savoirfR (dossier
+<code>vignette</code>)<br>
 </li>
 <li>dans le support de cours du module.</li>
 </ol>
-<p>La procédure proposée permet de tenir les différents supports cohérents entre eux au cours du temps et évite les multiples manipulations de mise à jour.</p>
+<p>La procédure proposée permet de tenir les différents supports
+cohérents entre eux au cours du temps et évite les multiples
+manipulations de mise à jour.</p>
 <div class="section level3">
 <h3 id="projet-dexercices-du-stagiaire">Projet d’exercices du stagiaire<a class="anchor" aria-label="anchor" href="#projet-dexercices-du-stagiaire"></a>
 </h3>
-<p>Pour propager les vignettes d’exercice écrites précédemment vers le projet du stagiaire, exécuter <code>extract_r_files(module = Y)</code> et consignez le dans le devstuff_history.R s’il n’est pas déjà inscrit.</p>
-<p>Vérifier que les fichiers R ont bien été extraits dans les dossiers :</p>
+<p>Pour propager les vignettes d’exercice écrites précédemment vers le
+projet du stagiaire, exécuter <code>extract_r_files(module = Y)</code>
+et consignez le dans le devstuff_history.R s’il n’est pas déjà
+inscrit.</p>
+<p>Vérifier que les fichiers R ont bien été extraits dans les dossiers
+:</p>
 <ul>
 <li><p><code>inst/rstudio/templates/project/ressources/mY/enonces</code></p></li>
 <li><p><code>inst/rstudio/templates/project/ressources/mY/corrections</code></p></li>
@@ -168,20 +190,26 @@ Ce chunk est nommé ‘modY_exo1_solution’; par exemple :</p>
 <div class="section level3">
 <h3 id="créer-ou-modifier-la-vignette-du-module-">Créer ou modifier la vignette du module.<a class="anchor" aria-label="anchor" href="#cr%C3%A9er-ou-modifier-la-vignette-du-module-"></a>
 </h3>
-<p>Chaque vignette de module rassemble les consignes des différents exercices et visualise le résultat à obtenir, sans dévoiler la correction.</p>
-<p>Pour appeler l’exercice dans la vignette ou dans parcours-r, il faut utiliser un chunk. Par exemple pour l’exercice 1 du module 5 :</p>
+<p>Chaque vignette de module rassemble les consignes des différents
+exercices et visualise le résultat à obtenir, sans dévoiler la
+correction.</p>
+<p>Pour appeler l’exercice dans la vignette ou dans parcours-r, il faut
+utiliser un chunk. Par exemple pour l’exercice 1 du module 5 :</p>
 <p>```{r mod5_exo1, child=charge_exo(“m5”, “exo1.rmd”), echo=FALSE}</p>
 <p>```</p>
 <p>Compiler votre vignette pour la vérifier.</p>
 </div>
 <div class="section level3">
-<h3 id="connecter-le-support-de-cours-aux-énoncés-et-corrigés-de-savoir-fr-">Connecter le support de cours aux énoncés et corrigés de savoir fR.<a class="anchor" aria-label="anchor" href="#connecter-le-support-de-cours-aux-%C3%A9nonc%C3%A9s-et-corrig%C3%A9s-de-savoir-fr-"></a>
+<h3 id="connecter-le-support-de-cours-aux-énoncés-et-corrigés-de-savoir-fr-">Connecter le support de cours aux énoncés et corrigés de savoir
+fR.<a class="anchor" aria-label="anchor" href="#connecter-le-support-de-cours-aux-%C3%A9nonc%C3%A9s-et-corrig%C3%A9s-de-savoir-fr-"></a>
 </h3>
-<p>Ouvrez le projet RStudio dédié au module dont vous venez de mettre à jour les exercices dans {savoirfR}. Remplacez y les consignes par :</p>
+<p>Ouvrez le projet RStudio dédié au module dont vous venez de mettre à
+jour les exercices dans {savoirfR}. Remplacez y les consignes par :</p>
 <p>```{r modY_exoX, child=charge_exo(“mY”, “exoX.rmd”), echo=FALSE}</p>
 <p>```</p>
 <p>Remplacez y les corrigés par :<br>
-```{r modY_exoX_solution, child=charge_exo(“mY”, “exoX.rmd”), echo=TRUE}</p>
+```{r modY_exoX_solution, child=charge_exo(“mY”, “exoX.rmd”),
+echo=TRUE}</p>
 <p>```</p>
 </div>
 </div>
@@ -191,7 +219,8 @@ Ce chunk est nommé ‘modY_exo1_solution’; par exemple :</p>
 <ul>
 <li><p>faites un check du package</p></li>
 <li><p>appuyer sur install &amp; restart</p></li>
-<li><p>mettez-vous à la place du stagiaire en créant un projet d’exercices avec {savoirfR} du module mis à jour.</p></li>
+<li><p>mettez-vous à la place du stagiaire en créant un projet
+d’exercices avec {savoirfR} du module mis à jour.</p></li>
 </ul>
 </div>
 <div class="section level2">
@@ -202,18 +231,22 @@ Ce chunk est nommé ‘modY_exo1_solution’; par exemple :</p>
 </h3>
 <ul>
 <li>commiter les changements de savoirfR</li>
-<li>effectuer une demande de merge request de votre branche vers la branche principale</li>
+<li>effectuer une demande de merge request de votre branche vers la
+branche principale</li>
 </ul>
-<p>Une fois la branche master à jour de vos modifications, constatez les améliorations que vous avez apportées sur <a href="https://mtes-mct.github.io/savoirfR/index.html" class="external-link uri">https://mtes-mct.github.io/savoirfR/index.html</a>.</p>
+<p>Une fois la branche master à jour de vos modifications, constatez les
+améliorations que vous avez apportées sur <a href="https://mtes-mct.github.io/savoirfR/index.html" class="external-link uri">https://mtes-mct.github.io/savoirfR/index.html</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="support-de-cours">Support de cours<a class="anchor" aria-label="anchor" href="#support-de-cours"></a>
 </h3>
 <ul>
 <li>commiter les changements du support de cours</li>
-<li>effectuer une demande de merge request de votre branche vers la branche principale</li>
+<li>effectuer une demande de merge request de votre branche vers la
+branche principale</li>
 </ul>
-<p>Une fois la branche master à jour de vos modifications, constatez les améliorations que vous avez apportées sur le support à partir de <a href="https://mtes-mct.github.io/parcours-r/" class="external-link uri">https://mtes-mct.github.io/parcours-r/</a> .</p>
+<p>Une fois la branche master à jour de vos modifications, constatez les
+améliorations que vous avez apportées sur le support à partir de <a href="https://mtes-mct.github.io/parcours-r/" class="external-link uri">https://mtes-mct.github.io/parcours-r/</a> .</p>
 </div>
 </div>
   </div>
@@ -235,7 +268,7 @@ Ce chunk est nommé ‘modY_exo1_solution’; par exemple :</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
