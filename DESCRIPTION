@@ -65,6 +65,7 @@ Suggests:
     sf,
     tidyr,
     tidyverse,
+    units,
     variousdata
 VignetteBuilder: knitr
 Remotes: 
