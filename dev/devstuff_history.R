@@ -55,3 +55,4 @@ extract_r_files(module = 5)
 extract_r_files(module = 2)
 extract_r_files(module = 7)
 
+usethis::use_github_action("check-release")

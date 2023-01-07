@@ -34,6 +34,9 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           install.packages("pkgdown")
         shell: Rscript {0}
+    
+      - name: Install units on Linux
+        run: sudo apt-get update -y && sudo apt-get install -y libudunits2
         
       - name: Install package
         run: R CMD INSTALL .
