@@ -29,12 +29,17 @@ majic_2009 <- bind_rows(majic_2009_com44, majic_2009_com49, majic_2009_com53, ma
   mutate(artif_2009 = dcnt07 + dcnt09 + dcnt10 + dcnt11 + dcnt12 + dcnt13) %>%
   select(-starts_with("dcnt"))
 
-
 majic_2014 <- bind_rows(majic_2014_com44, majic_2014_com49, majic_2014_com53, majic_2014_com72, majic_2014_com85) %>%
   select(-idcomtxt) %>%
   cogifier(code_commune = "idcom", communes = TRUE, epci = TRUE, departements = FALSE, regions = FALSE) %>%
   mutate(artif_2014 = dcnt07 + dcnt09 + dcnt10 + dcnt11 + dcnt12 + dcnt13) %>%
   select(-starts_with("dcnt"))
+
+majic_2009 %>%
+  glimpse()
+
+majic_2014 %>%
+  glimpse()
 
 # on passe également les données de population sur la nouvelle carte des territoires
 
@@ -55,29 +60,38 @@ etalement_urbain <- majic_2009 %>%
   mutate(
     evoarti = 100 * artif_2014 / artif_2009 - 100,
     evopop = 100 * pop_2014 / pop_2009 - 100,
-    indicateur_etalement_simple = evoarti / evopop,
+    #indicateur_etalement_simple nommé ies
+    ies = evoarti / evopop,
     indicateur_etalement_avance = case_when(
       evoarti < 0 & evopop >= 0 ~ "1",
-      evoarti >= 0 & evopop >= 0 & (evoarti / evopop <= 1 | evopop == 0) ~ "2a",
-      evoarti < 0 & evopop < 0 & evoarti / evopop > 1 ~ "2b",
-      evopop < 0 & evoarti / evopop >= 0 & evoarti / evopop <= 1 ~ "2c",
-      evopop > 0 & evoarti > 0 & evoarti <= 4.9 & evoarti / evopop > 1 ~ "3",
-      evopop > 0 & evoarti > 4.9 & evoarti / evopop > 1 & evoarti / evopop <= 2 ~ "4",
-      evopop > 0 & evoarti > 4.9 & evoarti / evopop > 2 ~ "5",
-      evopop < 0 & evoarti / evopop < 0 ~ "6"
+      evoarti >= 0 & evopop >= 0 & (ies <= 1 | evopop == 0) ~ "2a",
+      evoarti < 0 & evopop < 0 & ies > 1 ~ "2b",
+      evopop < 0 & ies >= 0 & ies <= 1 ~ "2c",
+      evopop > 0 & evoarti > 0 & evoarti <= 4.9 & ies > 1 ~ "3",
+      evopop > 0 & evoarti > 4.9 & ies > 1 & ies <= 2 ~ "4",
+      evopop > 0 & evoarti > 4.9 & ies > 2 ~ "5",
+      evopop < 0 & ies < 0 ~ "6"
     )
   )
+etalement_urbain %>%
+  glimpse()
 
-# Indicateur à l'EPCI
+# Indicateur à la commune
 # on filtre la table précédente pour ne garder que les lignes communales
 
 etalement_urbain_commune <- etalement_urbain %>% 
   filter(TypeZone == 'Communes')
 
+etalement_urbain_commune %>%
+  glimpse()
+
 # Indicateur à l'EPCI
 # on filtre la table précédente pour ne garder que les lignes EPCI
 etalement_urbain_epci <- etalement_urbain %>% 
   filter(TypeZone == 'Epci')
+
+etalement_urbain_epci %>%
+  glimpse()
 
 # Deux graphiques de visualisation de notre indicateur
 ggplot(data = etalement_urbain_epci) +

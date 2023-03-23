@@ -28,7 +28,7 @@ load(file = system.file("extdata", "FormationPreparationDesDonnees.RData", packa
 
 ```
 
-Résultat attendu :   
+Résultats attendus :   
 
 ```{r, eval = FALSE}
 rm(list = ls())
@@ -38,7 +38,9 @@ library(lubridate)
 load(file = "extdata/FormationPreparationDesDonnees.RData")
 ```
 
-```{r mod2_exo4_solution, message=FALSE, warning=FALSE}
+Résultat attendu pour *le taux de quantification par molécule et année* :
+
+```{r , message=FALSE, warning=FALSE}
 
 # 1/ taux de quantification par molécule et année
 taux_quantif_annuels <- exercice %>%
@@ -48,8 +50,11 @@ taux_quantif_annuels <- exercice %>%
   ) %>%
   group_by(annee, code_parametre) %>%
   summarise(taux_quantif = sum(presence) / sum(recherchee) * 100, .groups = "drop")
+taux_quantif_annuels
+```
 
-
+Résultat attendu pour *prélèvement le plus pollué de chaque station en 2016* :
+```{r , message=FALSE, warning=FALSE}
 # 2/ prélèvement le plus pollué de chaque station en 2016
 
 prelvmt_plus_pollue_2016 <- exercice %>%
@@ -68,6 +73,7 @@ prelvmt_plus_pollue_2016 <- exercice %>%
   filter(concentration_cumulee == max(concentration_cumulee)) %>%
   ungroup()
 
+prelvmt_plus_pollue_2016
 ```
 
 

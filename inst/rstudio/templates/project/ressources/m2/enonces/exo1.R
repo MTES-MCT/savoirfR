@@ -10,5 +10,7 @@
 #    - la part de ce cumul dans celui de l’ensemble des logements autorisés (log_AUT), en pourcentage.  
 
 
+# solution sans le pipe (apercu des premières lignes) `%>%`
 
+# solution avec le pipe (apercu des premières lignes) `%>%`
 
