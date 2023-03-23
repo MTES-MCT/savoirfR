@@ -4,22 +4,22 @@
     <loc>/404.html</loc>
   </url>
   <url>
-    <loc>/articles/exercices_module_analyse_spatiale_R.html</loc>
-  </url>
-  <url>
-    <loc>/articles/exercices_module_datapreparation_R.html</loc>
-  </url>
-  <url>
-    <loc>/articles/exercices_module_datavisualisation_R.html</loc>
-  </url>
-  <url>
-    <loc>/articles/exercices_module_introduction_a_R.html</loc>
-  </url>
-  <url>
     <loc>/articles/how_to_dev.html</loc>
   </url>
   <url>
     <loc>/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>/articles/m01_exercices_module_introduction_a_R.html</loc>
+  </url>
+  <url>
+    <loc>/articles/m02_exercices_module_datapreparation_R.html</loc>
+  </url>
+  <url>
+    <loc>/articles/m05_exercices_module_datavisualisation_R.html</loc>
+  </url>
+  <url>
+    <loc>/articles/m07_exercices_module_analyse_spatiale_R.html</loc>
   </url>
   <url>
     <loc>/authors.html</loc>
