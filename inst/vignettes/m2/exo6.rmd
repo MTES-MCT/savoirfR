@@ -68,7 +68,13 @@ p_2009 <- population_2009 %>%
 
 p_2014 <- population_2014 %>%
   cogifier(code_commune = "idcom", communes = TRUE, epci = TRUE, departements = FALSE, regions = FALSE) %>% 
-  rename(pop_2014 = Population) 
+  rename(pop_2014 = Population)
+
+p_2009 %>%
+  glimpse()
+
+p_2014 %>%
+  glimpse()
 ```
 
 Résultat attendu : jointude implicite sur `idcom` et création de l'`indicateur d'étalement urbain`(solution COGiter) :

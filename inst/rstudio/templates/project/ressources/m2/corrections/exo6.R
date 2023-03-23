@@ -49,7 +49,13 @@ p_2009 <- population_2009 %>%
 
 p_2014 <- population_2014 %>%
   cogifier(code_commune = "idcom", communes = TRUE, epci = TRUE, departements = FALSE, regions = FALSE) %>% 
-  rename(pop_2014 = Population) 
+  rename(pop_2014 = Population)
+
+p_2009 %>%
+  glimpse()
+
+p_2014 %>%
+  glimpse()
 
 # indicateurs à la commune et à l'EPCI
 # on joint les 4 tables précédentes par commune et on calcule les indicateurs
