@@ -29,7 +29,7 @@ taux_quantif_annuels <- exercice %>%
   ) %>%
   group_by(annee, code_parametre) %>%
   summarise(taux_quantif = sum(presence) / sum(recherchee) * 100, .groups = "drop")
-
+taux_quantif_annuels
 
 # 2/ prélèvement le plus pollué de chaque station en 2016
 
@@ -49,4 +49,5 @@ prelvmt_plus_pollue_2016 <- exercice %>%
   filter(concentration_cumulee == max(concentration_cumulee)) %>%
   ungroup()
 
+prelvmt_plus_pollue_2016
 

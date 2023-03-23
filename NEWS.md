@@ -1,3 +1,6 @@
+# savoirfR 0.0.0.9008
+* ajout rendu M2 exercices
+
 # savoirfR 0.0.0.9007
 * ajout M7 exercices
 

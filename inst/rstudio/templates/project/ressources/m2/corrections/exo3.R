@@ -26,7 +26,11 @@ sit_ind <- sitadel %>%
     i_AUT_cum_evo = (i_AUT_cum12 - i_AUT_cum12_lag12) / i_AUT_cum12_lag12 * 100,
     log_AUT_cum12 = roll_sumr(log_AUT, 12), # création d'une colonne intermédiaire pour calculer le cumul de logements autorisés les 12 derniers mois
     part_i_AU = i_AUT_cum12 / log_AUT_cum12 * 100
-  )
+  ) %>%
+  ungroup()
+
+sit_ind
+
 
 sit_annuel <- sitadel %>%
   mutate(annee = substr(date, 1, 4)) %>%
@@ -41,6 +45,8 @@ sit_annuel <- sitadel %>%
     evol_an_ip_AUT = (ip_AUT - lag(ip_AUT)) / lag(ip_AUT) * 100,
     evol_an_ig_AUT = (ig_AUT - lag(ig_AUT)) / lag(ig_AUT) * 100,
     evol_an_colres_AUT = (colres_AUT - lag(colres_AUT)) / lag(colres_AUT) * 100
-  )
+  ) %>%
+  ungroup()
 
+sit_annuel
 

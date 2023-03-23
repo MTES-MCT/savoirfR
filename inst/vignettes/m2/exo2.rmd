@@ -29,7 +29,7 @@ exercice1 <- mutate(exercice,
   date_creation = ymd(date_creation),
   date_formatee = format(date_prelevement, "%d/%m/%Y")) # plus joli, mais en texte 
 
-str(exercice1)
+glimpse(exercice1)
 
 ```
 
