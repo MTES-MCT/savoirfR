@@ -1,22 +1,15 @@
-# Exercice : calcul de statistiques
+# ---
+# title: "Exercice 4 -  module 1"
+# ---  
+# Nous continuons de travailler sur les indicateurs au territoire `df` avec les variables que nous avons calculées à l'exercice 3.
+# 1- Utilisez la fonction `summary()` pour obtenir un résumé de l’ensemble des variables de la table `df`  
+# 2- Calculez maintenant les moyenne, médiane, écart-type et variance de la variable de densité de population. Que constatez-vous ?  
+# 3- Utilisez le paramètre `na.rm = T` pour gérer les valeurs manquantes  
+# 4- Calculez à présent les quartiles puis déciles de cette variable  
+# 5- Optionnel : calculez la version centrée réduite de la variable de densité [Rappel sur la définition de centrer réduire](https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite). Avantage des variables centrées réduites : on élimine les effets d'unité (d'ordre de grandeur), et on peut donc comparer les distributions de deux variables qui ont des unités différentes (voir module 3).
+# 6- Tableaux croisés :
+#   
+# - Calculez le nombre de communes par type d’espace à l’aide de la fonction table, et le pourcentage associé  
+# - Calculez le nombre de communes par région et type d’espace, et les pourcentages associés  
 
-# Nous allons travailler sur des indicateurs au territoire extrait de l'outil geoidd du ministère et exporté en csv
-# avec les variables que nous avons calculées à l'exercice précédent
 
-df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
-               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)), fileEncoding = 'latin1') %>% 
-  mutate(densite = P14_POP / SUPERF,
-    tx_natal = 1000 * NAISD15 / P14_POP,
-    tx_mort = 1000 * DECESD15 / P14_POP)
-
-# Utilisez la fonction summary() pour obtenir un résumé de l’ensemble des variables de la table df
-# Calculez maintenant les moyenne, médiane, écart-type et variance de la variable de densité de population. Que constatez-vous ?
-#   Utilisez le paramètre na.rm = T pour gérer les valeurs manquantes
-# Calculez à présent les quartiles puis déciles de cette variable
-# Calculez la version centrée réduite de la variable de densité. 
-# Rappel sur la définition de centrer réduite : https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite
-
-# Tableaux croisés :
-
-# Calculer le nombre de communes par type d’espace à l’aide de la fonction table, et le pourcentage associé
-# Calculer le nombre de communes par région et type d’espace, et les pourcentages associés

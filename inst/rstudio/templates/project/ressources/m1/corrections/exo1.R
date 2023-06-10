@@ -12,4 +12,23 @@
 # * Pour plus de renseignements sur la fonction `paste()`, pensez à utiliser l'aide de R avec `help(paste)`.
 # * Créez maintenant les variables `A <- 15` et `B <- 12`. Que voyez-vous dans la panneau Environement ?
 # * Vous pouvez supprimer la variables A et B en utilisant la fonction `rm()` (utilisez l'aide de R pour avoir plus de renseignements sur la fonction `rm`).
+a <- 5 
+a
+b <- 4
+b
+a + b     
+a * b
+c <- a + 3 * b
+c
+ls()
+a <- 10
+c
+t <- 'texte'
+t
+paste(a, t)
+help(paste)
+A <- 15  
+B <- 12
+rm(A, B)
+
 

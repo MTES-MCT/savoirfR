@@ -1,54 +1,63 @@
-# Exercice : calcul de statistiques
-
-# Nous allons travailler sur des indicateurs au territoire extrait de l'outil geoidd du ministère et exporté en csv
-# avec les variables que nous avons calculées à l'exercice précédent
-df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
-               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)), fileEncoding = 'latin1') %>% 
-
+# ---
+# title: "Exercice 4 -  module 1"
+# ---  
+# Nous continuons de travailler sur les indicateurs au territoire `df` avec les variables que nous avons calculées à l'exercice 3.
+# 1- Utilisez la fonction `summary()` pour obtenir un résumé de l’ensemble des variables de la table `df`  
+# 2- Calculez maintenant les moyenne, médiane, écart-type et variance de la variable de densité de population. Que constatez-vous ?  
+# 3- Utilisez le paramètre `na.rm = T` pour gérer les valeurs manquantes  
+# 4- Calculez à présent les quartiles puis déciles de cette variable  
+# 5- Optionnel : calculez la version centrée réduite de la variable de densité [Rappel sur la définition de centrer réduire](https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite). Avantage des variables centrées réduites : on élimine les effets d'unité (d'ordre de grandeur), et on peut donc comparer les distributions de deux variables qui ont des unités différentes (voir module 3).
+# 6- Tableaux croisés :
+#   
+# - Calculez le nombre de communes par type d’espace à l’aide de la fonction table, et le pourcentage associé  
+# - Calculez le nombre de communes par région et type d’espace, et les pourcentages associés  
+library(dplyr)
+df <- read.csv(file = "extdata/Base_synth_territoires.csv",
+               header = TRUE, sep = ";", dec = ",",
+               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32))) %>% 
   mutate(densite = P14_POP / SUPERF,
-    tx_natal = 1000 * NAISD15 / P14_POP,
-    tx_mort = 1000 * DECESD15 / P14_POP)
+         tx_natal = 1000 * NAISD15 / P14_POP,
+         tx_mort = 1000 * DECESD15 / P14_POP)
 
-# Utilisez la fonction summary() pour obtenir un résumé de l’ensemble des variables de la table df
 
+library(dplyr)
+
+# 1  
 summary(df)
 
-# Calculez maintenant les moyenne, médiane, écart-type et variance de la variable de densité de population. Que constatez-vous ?
+# 2
+vect_densite <- df %>% pull(densite)
+mean(vect_densite)
+sd(vect_densite)
+median(vect_densite)
+var(vect_densite)
 
-df %>% pull(densite) %>% mean()
-df %>% pull(densite) %>% sd()
-df %>% pull(densite) %>% median()
-df %>% pull(densite) %>% var()
+# 3
+mean(vect_densite, na.rm = T)
+sd(vect_densite, na.rm = T)
+median(vect_densite, na.rm = T)
+var(vect_densite, na.rm = T)
 
-# Utilisez le paramètre na.rm = T pour gérer les valeurs manquantes
-
-df %>% pull(densite) %>% mean(na.rm = T)
-df %>% pull(densite) %>% sd(na.rm = T)
-df %>% pull(densite) %>% median(na.rm = T)
-df %>% pull(densite) %>% var(na.rm = T)
-
-# Calculez à présent les quartiles puis déciles de cette variable
-
-df %>% pull(densite) %>% quantile(na.rm = T)
+# 4
+quantile(vect_densite, na.rm = T)
 seq(0, 1, 0.1) # vérifier la séquence qu'on souhaite
-df %>% pull(densite) %>% quantile(probs = seq(0, 1, 0.1), na.rm = T)
+quantile(vect_densite, probs = seq(0, 1, 0.1), na.rm = T)
 
-# Calculez la version centrée réduite de la variable de densité.
-
-df <- df %>%
+# 5
+df <- df %>% 
   mutate(std_dens = (densite - mean(densite, na.rm = T)) / sd(densite, na.rm = T))
 
-# Rappel sur la définition de centrer réduite : https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite
-
-# Tableaux croisés :
-
-# Calculer le nombre de communes par type d’espace à l’aide de la fonction table, et le pourcentage associé
-t <- table(df$ZAU2)
+#6 
+# une variable
+t <- select(df, ZAU) %>% 
+  table()
 t
 100 * prop.table(t) %>% round(digits = 4)
 
-# Calculer le nombre de communes par région et type d’espace, et les pourcentages associés
-
-t <- table(df$REG, df$ZAU)
+# deux variables
+t <- select(df, REG, ZAU) %>% 
+  table()
 t
 100 * prop.table(t) %>% round(digits = 4)
+
+

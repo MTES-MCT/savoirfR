@@ -1,0 +1,57 @@
+---
+title: "Exercice 3 -  module 1"
+---  
+
+Nous travaillons toujours sur la même table des indicateurs au territoire, "extdata/Base_synth_territoires.csv".
+
+A- En utilisant la fonction `mutate()`, créer une nouvelle variable correspondant à la densité de population (rapport de la population `P14_POP` à la superficie de la commune `SUPERF`), ainsi que les taux de natalité et de mortalité (en pour mille)
+
+B- A l’aide de la fonction `select()`, créer une nouvelle table en ne conservant que le code commune, le type de commune (ZAU), la région, le département et les variables que vous venez de créer.
+
+C-Enfin, ne conserver les communes correspondant à votre département de naissance et stocker ce dataframe. 
+Attention au type de la variable département !
+  
+D- Avec les opérateurs logiques, faire des essais pour sélectionner des échantillons différents.
+
+```{r setup exo3, message=FALSE, warning=FALSE, include=FALSE}
+df <- read.csv(file = system.file("extdata", "Base_synth_territoires.csv", package = "savoirfR"),
+               header = TRUE, sep = ";", dec = ",",
+               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)))
+```
+
+Résultat attendu :   
+
+```{r, eval = FALSE}
+df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep = ";", dec = ",",
+               colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)))
+
+```
+
+```{r mod1_exo3_solution, message=FALSE, warning=FALSE}
+
+library(dplyr)
+
+# A
+df <- df %>% 
+  mutate(densite = P14_POP / SUPERF,
+         tx_natal = 1000 * NAISD15 / P14_POP,
+         tx_mort = 1000 * DECESD15 / P14_POP)
+
+# B
+selection <- df %>% 
+  select(CODGEO, ZAU, REG, DEP, densite, tx_natal, tx_mort)
+
+# C
+S0 <- filter(selection, DEP == "62")
+
+# D
+S1 <- filter(selection, DEP != "62") # tout sauf le 62 :(
+S2 <- filter(selection, DEP %in% c("59", "62")) # L'ancien NPdC :)
+S3 <- filter(selection, !(DEP %in% c("59", "62"))) # Le "sud" de la France
+S4 <- filter(selection, densite > 100) # l'urbain
+S5 <- filter(selection, DEP == "62" & densite > 100) # le PdC urbain
+S6 <- filter(selection, DEP == "62" | densite > 100) # le PdC et l'urbain
+
+```
+
+

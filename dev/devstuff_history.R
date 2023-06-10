@@ -50,9 +50,9 @@ usethis::use_package('mapfactory')
 usethis::use_build_ignore("dev/")
 usethis::use_logo(img = "~/Mes images/savoirfR/hex-savoirfR2.png")
 
-
-extract_r_files(module = 5)
+extract_r_files(module = 1)
 extract_r_files(module = 2)
+extract_r_files(module = 5)
 extract_r_files(module = 7)
 
 usethis::use_github_action("check-release")
