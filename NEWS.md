@@ -1,5 +1,6 @@
 # savoirfR 0.0.0.9008
 * Add M1 files to share exercices throught directories
+* ajout rendu M2 exercices
 
 # savoirfR 0.0.0.9007
 * ajout M7 exercices

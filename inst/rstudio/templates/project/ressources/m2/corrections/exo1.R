@@ -18,7 +18,7 @@ sitadel <- read_excel("extdata/ROES_201702.xls",
 )
 
 
-# solution sans le pipe `%>%`
+# solution sans le pipe (apercu des premières lignes) `%>%`
 sit_52_ind <- filter(sitadel, REG == "52")
 sit_52_ind <- arrange(sit_52_ind, date)
 sit_52_ind <- mutate(sit_52_ind,
@@ -28,8 +28,9 @@ sit_52_ind <- mutate(sit_52_ind,
   i_AUT_cum_evo = (i_AUT_cum12 - i_AUT_cum12_lag12) / i_AUT_cum12_lag12 * 100,
   log_AUT_cum12 = roll_sumr(log_AUT, 12),
   part_i_AU = i_AUT_cum12 / log_AUT_cum12 * 100)
+head(sit_52_ind)
 
-# solution avec le pipe `%>%`
+# solution avec le pipe (apercu des premières lignes) `%>%`
 
 sit_52_ind <- sitadel %>%
   filter(REG == "52") %>%
@@ -41,5 +42,6 @@ sit_52_ind <- sitadel %>%
     log_AUT_cum12 = roll_sumr(log_AUT, 12), # création d'une colonne intermédiaire pour calculer le cumul de logements autorisés les 12 derniers mois
     part_i_AU = i_AUT_cum12 / log_AUT_cum12 * 100
   )
-
+sit_52_ind %>%
+  head()
 
