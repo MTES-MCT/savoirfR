@@ -109,93 +109,260 @@ R</h1>
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MTES-MCT/savoirfR" class="external-link">savoirfR</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: replacing previous import 'stats::filter' by 'dplyr::filter' when</span></span>
-<span><span class="co">#&gt; loading 'savoirfR'</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MTES-MCT/savoirfR" class="external-link">savoirfR</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="premier-exercice">Premier exercice<a class="anchor" aria-label="anchor" href="#premier-exercice"></a>
 </h2>
 <ul>
-<li>Créer plusieurs variables numériques par assignation
-<code>a &lt;- 5</code>, <code>b &lt;- 4</code>
+<li>Dans la console, créer deux variables numériques a et b de valeur 5
+et 4 par assignation : <code>a &lt;- 5</code> et
+<code>b &lt;- 4</code><br>
 </li>
-<li>Regarder l’onglet Environnement</li>
-<li>Afficher la liste des variables avec la fonction
-<code><a href="https://rdrr.io/r/base/ls.html" class="external-link">ls()</a></code>
+<li>Que se passe-t-il dans le panneau Environnement (en haut à
+droite) ?<br>
 </li>
-<li>Faire un calcul avec ces variables et voir le résultat (a+b)
-etc.</li>
-<li>Créer une troisième variable à partir des deux premières
-<code>c &lt;- a+b*3</code>
+<li>Faites maintenant un calcul avec ces variables comme
+<code>a+b</code> et <code>a*b</code>.<br>
 </li>
-<li>Ré-assigner une variable : <code>a&lt;-10</code> et vérifier
-l’onglet environnement</li>
-<li>Créer une variable chaîne de caractère (utilisation des simples
-quotes et des double-quotes) <code>t &lt;- 'chaine'</code>
+<li>Vous allez ensuite créer une troisième variable à partir d’un calcul
+sur les deux premières : <code>c &lt;- a + 3 * b</code><br>
 </li>
-<li>Concaténer a et t avec <code>paste(a,t)</code>
+<li>Vous pouvez afficher la liste des variables avec la fonction
+<code><a href="https://rdrr.io/r/base/ls.html" class="external-link">ls()</a></code>.<br>
 </li>
-<li>Expérimenter la casse des noms de variables : créer
-<code>A &lt;- 15</code> et <code>B &lt;- 12</code> et vérifier l’onglet
-environnement</li>
-<li>Supprimer les variables A et B avec la fonction rm()</li>
-<li>Aide en ligne <code><a href="https://rdrr.io/r/base/ls.html" class="external-link">?ls</a></code> et <code><a href="https://rdrr.io/r/base/rm.html" class="external-link">?rm</a></code>
+<li>Modifiez maintenant la valeur de <code>a</code> en lui donnant la
+valeur 10. Vérifiez votre ré-assignation dans la panneau
+Environement.<br>
 </li>
-<li>Attention : Pour supprimer toutes les variables rm(list = ls())</li>
+<li>Créez une variable chaîne de caractère :
+<code>t &lt;- 'texte'</code> (vous pouvez également utiliser les doubles
+quotes comme “texte” mais ne les mélangez pas).</li>
+<li>Concaténez (mettez bout à bout) <code>a</code> et <code>t</code>
+avec la fonction <code>paste(a, t)</code>. Que constatez-vous ?</li>
+<li>Pour plus de renseignements sur la fonction <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste()</a></code>,
+pensez à utiliser l’aide de R avec <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">help(paste)</a></code>.</li>
+<li>Créez maintenant les variables <code>A &lt;- 15</code> et
+<code>B &lt;- 12</code>. Que voyez-vous dans la panneau
+Environement ?</li>
+<li>Vous pouvez supprimer la variables A et B en utilisant la fonction
+<code><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm()</a></code> (utilisez l’aide de R pour avoir plus de
+renseignements sur la fonction <code>rm</code>).</li>
 </ul>
+<p>Résultat attendu :</p>
+<pre><code><span><span class="co">#&gt; [1] 5</span></span>
+<span><span class="co">#&gt; [1] 4</span></span>
+<span><span class="co">#&gt; [1] 9</span></span>
+<span><span class="co">#&gt; [1] 20</span></span>
+<span><span class="co">#&gt; [1] 17</span></span>
+<span><span class="co">#&gt; [1] "a" "b" "c"</span></span>
+<span><span class="co">#&gt; [1] 17</span></span>
+<span><span class="co">#&gt; [1] "texte"</span></span>
+<span><span class="co">#&gt; [1] "10 texte"</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="importer-les-données-et-premier-coup-doeil">Importer les données et premier coup d’oeil<a class="anchor" aria-label="anchor" href="#importer-les-donn%C3%A9es-et-premier-coup-doeil"></a>
 </h2>
-<p>Nous allons travailler sur des indicateurs au territoire extrait de
-l’outil geoidd du ministère et exporté en csv</p>
-<p>Utiliser la fonction <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code> pour importer ce fichier
-et stocker le dans un objet <code>df</code>.</p>
-<p>Veillez à ce que la région soit bien importée comme un facteur et non
-un entier.</p>
-<p>Inspecter le dataframe avec les fonctions vues auparavant</p>
+<p>Nous travaillons sur des indicateurs au territoire :
+“extdata/Base_synth_territoires.csv”, extraits de l’outil GEOIDD du
+ministère et exportés en csv.</p>
+<ul>
+<li><p>Utiliser la fonction <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code> pour importer ce
+fichier et le stocker dans un objet <code>df</code>.</p></li>
+<li><p>Veillez à ce que la région soit bien importée comme un facteur et
+non un entier.</p></li>
+</ul>
+<p>Inspecter le dataframe avec les fonctions vues auparavant.</p>
+<p>Résultat attendu :</p>
+<pre><code><span><span class="co">#&gt; 'data.frame':    36689 obs. of  38 variables:</span></span>
+<span><span class="co">#&gt;  $ CODGEO       : chr  "01001" "01002" "01004" "01005" ...</span></span>
+<span><span class="co">#&gt;  $ LIBGEO       : chr  "L'Abergement-Cl\xe9menciat" "L'Abergement-de-Varey" "Amb\xe9rieu-en-Bugey" "Amb\xe9rieux-en-Dombes" ...</span></span>
+<span><span class="co">#&gt;  $ REG          : Factor w/ 17 levels "01","02","03",..: 15 15 15 15 15 15 15 15 15 15 ...</span></span>
+<span><span class="co">#&gt;  $ DEP          : Factor w/ 100 levels "01","02","03",..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ ZAU          : Factor w/ 9 levels "111 - Grand p\xf4le (plus de 10 000 emplois)",..: 3 2 2 2 8 2 2 5 8 2 ...</span></span>
+<span><span class="co">#&gt;  $ ZE           : Factor w/ 321 levels "0050 - Mont-de-Marsan",..: 260 248 248 260 263 248 248 263 266 250 ...</span></span>
+<span><span class="co">#&gt;  $ P14_POP      : int  767 239 14022 1627 109 2570 743 338 1142 397 ...</span></span>
+<span><span class="co">#&gt;  $ P09_POP      : int  787 207 13350 1592 120 2328 660 336 960 352 ...</span></span>
+<span><span class="co">#&gt;  $ SUPERF       : num  15.95 9.15 24.6 15.92 5.88 ...</span></span>
+<span><span class="co">#&gt;  $ NAIS0914     : int  40 16 1051 117 8 175 59 12 56 25 ...</span></span>
+<span><span class="co">#&gt;  $ DECE0914     : int  25 7 551 41 3 78 20 11 32 10 ...</span></span>
+<span><span class="co">#&gt;  $ P14_MEN      : num  306 99.3 6161.1 621.1 52.5 ...</span></span>
+<span><span class="co">#&gt;  $ NAISD15      : int  13 5 222 15 2 21 11 2 18 4 ...</span></span>
+<span><span class="co">#&gt;  $ DECESD15     : int  5 1 121 7 2 9 3 3 5 0 ...</span></span>
+<span><span class="co">#&gt;  $ P14_LOG      : num  342.7 161.2 6838.4 661.8 71.5 ...</span></span>
+<span><span class="co">#&gt;  $ P14_RP       : num  306 99.3 6161.1 621.1 52.5 ...</span></span>
+<span><span class="co">#&gt;  $ P14_RSECOCC  : num  14 47.3 121.6 10.9 10.9 ...</span></span>
+<span><span class="co">#&gt;  $ P14_LOGVAC   : num  22.74 14.55 555.64 29.85 8.14 ...</span></span>
+<span><span class="co">#&gt;  $ P14_RP_PROP  : num  260 84.6 2769 473.3 37.7 ...</span></span>
+<span><span class="co">#&gt;  $ NBMENFISC13  : int  297 99 6034 617 47 1014 299 140 431 137 ...</span></span>
+<span><span class="co">#&gt;  $ PIMP13       : num  NA NA 57.4 NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MED13        : num  22130 23213 19554 22388 21872 ...</span></span>
+<span><span class="co">#&gt;  $ TP6013       : num  NA NA 15.1 NA NA ...</span></span>
+<span><span class="co">#&gt;  $ P14_EMPLT    : num  85.16 12.81 7452.93 280.57 5.95 ...</span></span>
+<span><span class="co">#&gt;  $ P14_EMPLT_SAL: num  52.19 4.95 6743.37 206.38 3.96 ...</span></span>
+<span><span class="co">#&gt;  $ P09_EMPLT    : num  65.57 17.64 7551.68 286.61 5.29 ...</span></span>
+<span><span class="co">#&gt;  $ P14_POP1564  : num  463 141.6 8962.8 1043.1 71.3 ...</span></span>
+<span><span class="co">#&gt;  $ P14_CHOM1564 : num  33 9.84 1059.73 66.33 7.93 ...</span></span>
+<span><span class="co">#&gt;  $ P14_ACT1564  : num  376 121 6681.9 842.1 57.5 ...</span></span>
+<span><span class="co">#&gt;  $ ETTOT14      : int  47 22 1316 141 7 203 66 39 54 36 ...</span></span>
+<span><span class="co">#&gt;  $ ETAZ14       : int  9 1 7 14 0 21 2 5 5 6 ...</span></span>
+<span><span class="co">#&gt;  $ ETBE14       : int  2 3 60 7 0 18 0 2 6 4 ...</span></span>
+<span><span class="co">#&gt;  $ ETFZ14       : int  5 1 131 19 0 21 9 1 13 3 ...</span></span>
+<span><span class="co">#&gt;  $ ETGU14       : int  25 14 892 85 5 114 45 27 24 18 ...</span></span>
+<span><span class="co">#&gt;  $ ETGZ14       : int  6 4 283 19 1 28 16 6 9 7 ...</span></span>
+<span><span class="co">#&gt;  $ ETOQ14       : int  6 3 226 16 2 29 10 4 6 5 ...</span></span>
+<span><span class="co">#&gt;  $ ETTEF114     : int  9 2 385 27 0 38 17 6 9 7 ...</span></span>
+<span><span class="co">#&gt;  $ ETTEFP1014   : int  0 0 109 5 0 15 2 0 3 0 ...</span></span>
+<span><span class="co">#&gt;   CODGEO                     LIBGEO REG DEP</span></span>
+<span><span class="co">#&gt; 1  01001 L'Abergement-Cl\xe9menciat  84  01</span></span>
+<span><span class="co">#&gt; 2  01002      L'Abergement-de-Varey  84  01</span></span>
+<span><span class="co">#&gt; 3  01004       Amb\xe9rieu-en-Bugey  84  01</span></span>
+<span><span class="co">#&gt; 4  01005     Amb\xe9rieux-en-Dombes  84  01</span></span>
+<span><span class="co">#&gt; 5  01006                 Ambl\xe9on  84  01</span></span>
+<span><span class="co">#&gt; 6  01007                   Ambronay  84  01</span></span>
+<span><span class="co">#&gt;                                                  ZAU</span></span>
+<span><span class="co">#&gt; 1 120 - Multipolaris\xe9e des grandes aires urbaines</span></span>
+<span><span class="co">#&gt; 2                  112 - Couronne d'un grand p\xf4le</span></span>
+<span><span class="co">#&gt; 3                  112 - Couronne d'un grand p\xf4le</span></span>
+<span><span class="co">#&gt; 4                  112 - Couronne d'un grand p\xf4le</span></span>
+<span><span class="co">#&gt; 5              300 - Autre commune multipolaris\xe9e</span></span>
+<span><span class="co">#&gt; 6                  112 - Couronne d'un grand p\xf4le</span></span>
+<span><span class="co">#&gt;                                 ZE P14_POP P09_POP SUPERF NAIS0914 DECE0914</span></span>
+<span><span class="co">#&gt; 1 8213 - Villefranche-sur-Sa\xf4ne     767     787  15.95       40       25</span></span>
+<span><span class="co">#&gt; 2      8201 - Amb\xe9rieu-en-Bugey     239     207   9.15       16        7</span></span>
+<span><span class="co">#&gt; 3      8201 - Amb\xe9rieu-en-Bugey   14022   13350  24.60     1051      551</span></span>
+<span><span class="co">#&gt; 4 8213 - Villefranche-sur-Sa\xf4ne    1627    1592  15.92      117       41</span></span>
+<span><span class="co">#&gt; 5               8216 - Chamb\xe9ry     109     120   5.88        8        3</span></span>
+<span><span class="co">#&gt; 6      8201 - Amb\xe9rieu-en-Bugey    2570    2328  33.55      175       78</span></span>
+<span><span class="co">#&gt;      P14_MEN NAISD15 DECESD15    P14_LOG     P14_RP P14_RSECOCC P14_LOGVAC</span></span>
+<span><span class="co">#&gt; 1  306.00000      13        5  342.73473  306.00000    13.99418  22.740550</span></span>
+<span><span class="co">#&gt; 2   99.33745       5        1  161.16023   99.33745    47.27625  14.546538</span></span>
+<span><span class="co">#&gt; 3 6161.06200     222      121 6838.35437 6161.06200   121.64795 555.644416</span></span>
+<span><span class="co">#&gt; 4  621.05374      15        7  661.76017  621.05374    10.85505  29.851387</span></span>
+<span><span class="co">#&gt; 5   52.51818       2        2   71.51818   52.51818    10.85714   8.142857</span></span>
+<span><span class="co">#&gt; 6 1028.00000      21        9 1160.00000 1028.00000    56.00000  76.000000</span></span>
+<span><span class="co">#&gt;   P14_RP_PROP NBMENFISC13   PIMP13    MED13   TP6013   P14_EMPLT P14_EMPLT_SAL</span></span>
+<span><span class="co">#&gt; 1   260.00000         297       NA 22130.00       NA   85.157286     52.191539</span></span>
+<span><span class="co">#&gt; 2    84.58436          99       NA 23213.00       NA   12.814642      4.946329</span></span>
+<span><span class="co">#&gt; 3  2769.00170        6034 57.41294 19554.00 15.11508 7452.926728   6743.374287</span></span>
+<span><span class="co">#&gt; 4   473.32736         617       NA 22387.62       NA  280.569953    206.382233</span></span>
+<span><span class="co">#&gt; 5    37.65455          47       NA 21871.67       NA    5.945455      3.963636</span></span>
+<span><span class="co">#&gt; 6   779.00000        1014 62.35178 21650.67       NA  487.730918    372.758450</span></span>
+<span><span class="co">#&gt;     P09_EMPLT P14_POP1564 P14_CHOM1564 P14_ACT1564 ETTOT14 ETAZ14 ETBE14 ETFZ14</span></span>
+<span><span class="co">#&gt; 1   65.566193   463.00000    33.000000   376.00000      47      9      2      5</span></span>
+<span><span class="co">#&gt; 2   17.644456   141.62963     9.835391   120.97531      22      1      3      1</span></span>
+<span><span class="co">#&gt; 3 7551.682296  8962.84216  1059.728437  6681.86216    1316      7     60    131</span></span>
+<span><span class="co">#&gt; 4  286.611037  1043.12909    66.326127   842.14083     141     14      7     19</span></span>
+<span><span class="co">#&gt; 5    5.285714    71.34545     7.927273    57.47273       7      0      0      0</span></span>
+<span><span class="co">#&gt; 6  491.138876  1614.00000   108.000000  1267.00000     203     21     18     21</span></span>
+<span><span class="co">#&gt;   ETGU14 ETGZ14 ETOQ14 ETTEF114 ETTEFP1014</span></span>
+<span><span class="co">#&gt; 1     25      6      6        9          0</span></span>
+<span><span class="co">#&gt; 2     14      4      3        2          0</span></span>
+<span><span class="co">#&gt; 3    892    283    226      385        109</span></span>
+<span><span class="co">#&gt; 4     85     19     16       27          5</span></span>
+<span><span class="co">#&gt; 5      5      1      2        0          0</span></span>
+<span><span class="co">#&gt; 6    114     28     29       38         15</span></span>
+<span><span class="co">#&gt;       CODGEO            LIBGEO REG DEP</span></span>
+<span><span class="co">#&gt; 36684  97419       Sainte-Rose  04 974</span></span>
+<span><span class="co">#&gt; 36685  97420    Sainte-Suzanne  04 974</span></span>
+<span><span class="co">#&gt; 36686  97421           Salazie  04 974</span></span>
+<span><span class="co">#&gt; 36687  97422         Le Tampon  04 974</span></span>
+<span><span class="co">#&gt; 36688  97423 Les Trois-Bassins  04 974</span></span>
+<span><span class="co">#&gt; 36689  97424            Cilaos  04 974</span></span>
+<span><span class="co">#&gt;                                                       ZAU             ZE</span></span>
+<span><span class="co">#&gt; 36684 400 - Commune isol\xe9e hors influence des p\xf4les   0401 - L'Est</span></span>
+<span><span class="co">#&gt; 36685                   112 - Couronne d'un grand p\xf4le 0402 - Le Nord</span></span>
+<span><span class="co">#&gt; 36686 400 - Commune isol\xe9e hors influence des p\xf4les   0401 - L'Est</span></span>
+<span><span class="co">#&gt; 36687        111 - Grand p\xf4le (plus de 10 000 emplois)  0404 - Le Sud</span></span>
+<span><span class="co">#&gt; 36688                   112 - Couronne d'un grand p\xf4le 0403 - L'Ouest</span></span>
+<span><span class="co">#&gt; 36689 400 - Commune isol\xe9e hors influence des p\xf4les  0404 - Le Sud</span></span>
+<span><span class="co">#&gt;       P14_POP P09_POP SUPERF NAIS0914 DECE0914   P14_MEN NAISD15 DECESD15</span></span>
+<span><span class="co">#&gt; 36684    6722    6822 177.60      519      186  2322.000      94       43</span></span>
+<span><span class="co">#&gt; 36685   22406   22437  57.84     1963      508  7686.912     358      100</span></span>
+<span><span class="co">#&gt; 36686    7132    7406 103.82      661      235  2420.000     111       46</span></span>
+<span><span class="co">#&gt; 36687   76796   72658 165.43     6663     2004 29662.460    1339      420</span></span>
+<span><span class="co">#&gt; 36688    7198    7057  42.58      531      217  2484.887     104       54</span></span>
+<span><span class="co">#&gt; 36689    5295    5989  84.40      430      186  2016.000      87       38</span></span>
+<span><span class="co">#&gt;         P14_LOG    P14_RP P14_RSECOCC P14_LOGVAC P14_RP_PROP NBMENFISC13 PIMP13</span></span>
+<span><span class="co">#&gt; 36684  2542.478  2322.000    28.58054   191.8979    1799.954          NA     NA</span></span>
+<span><span class="co">#&gt; 36685  8328.616  7686.912    50.94097   590.7629    4450.648          NA     NA</span></span>
+<span><span class="co">#&gt; 36686  2987.000  2420.000   174.00000   393.0000    1849.000          NA     NA</span></span>
+<span><span class="co">#&gt; 36687 32710.091 29662.460  1004.31703  2043.3140   15372.921          NA     NA</span></span>
+<span><span class="co">#&gt; 36688  2890.404  2484.887    67.58626   337.9313    1773.765          NA     NA</span></span>
+<span><span class="co">#&gt; 36689  2732.690  2016.000   239.56501   477.1253    1522.480          NA     NA</span></span>
+<span><span class="co">#&gt;       MED13 TP6013 P14_EMPLT P14_EMPLT_SAL P09_EMPLT P14_POP1564 P14_CHOM1564</span></span>
+<span><span class="co">#&gt; 36684    NA     NA  1272.841      920.0617  1269.573    4306.217     1250.516</span></span>
+<span><span class="co">#&gt; 36685    NA     NA  4296.362     3618.1538  4185.015   14821.042     3712.486</span></span>
+<span><span class="co">#&gt; 36686    NA     NA  1519.306     1090.0856  1533.305    4650.000     1369.000</span></span>
+<span><span class="co">#&gt; 36687    NA     NA 16145.620    12486.5465 14807.249   50316.640    12783.137</span></span>
+<span><span class="co">#&gt; 36688    NA     NA  1273.858      994.3469  1202.079    4850.570     1360.617</span></span>
+<span><span class="co">#&gt; 36689    NA     NA  1194.383      993.1546  1314.121    3461.457     1122.361</span></span>
+<span><span class="co">#&gt;       P14_ACT1564 ETTOT14 ETAZ14 ETBE14 ETFZ14 ETGU14 ETGZ14 ETOQ14 ETTEF114</span></span>
+<span><span class="co">#&gt; 36684    2850.155     414    125     44     31    159     59     55       82</span></span>
+<span><span class="co">#&gt; 36685   10456.196    1323    136    139    190    694    249    164      267</span></span>
+<span><span class="co">#&gt; 36686    3108.000     490    148     29     43    214     73     56       95</span></span>
+<span><span class="co">#&gt; 36687   34446.789    5476    565    398    665   3025    999    823     1032</span></span>
+<span><span class="co">#&gt; 36688    3524.287     456     42     39     61    223     76     91       59</span></span>
+<span><span class="co">#&gt; 36689    2415.666     360     49     17     35    193     49     66       65</span></span>
+<span><span class="co">#&gt;       ETTEFP1014</span></span>
+<span><span class="co">#&gt; 36684          8</span></span>
+<span><span class="co">#&gt; 36685         66</span></span>
+<span><span class="co">#&gt; 36686         11</span></span>
+<span><span class="co">#&gt; 36687        204</span></span>
+<span><span class="co">#&gt; 36688         20</span></span>
+<span><span class="co">#&gt; 36689         26</span></span>
+<span><span class="co">#&gt;  [1] "CODGEO"        "LIBGEO"        "REG"           "DEP"          </span></span>
+<span><span class="co">#&gt;  [5] "ZAU"           "ZE"            "P14_POP"       "P09_POP"      </span></span>
+<span><span class="co">#&gt;  [9] "SUPERF"        "NAIS0914"      "DECE0914"      "P14_MEN"      </span></span>
+<span><span class="co">#&gt; [13] "NAISD15"       "DECESD15"      "P14_LOG"       "P14_RP"       </span></span>
+<span><span class="co">#&gt; [17] "P14_RSECOCC"   "P14_LOGVAC"    "P14_RP_PROP"   "NBMENFISC13"  </span></span>
+<span><span class="co">#&gt; [21] "PIMP13"        "MED13"         "TP6013"        "P14_EMPLT"    </span></span>
+<span><span class="co">#&gt; [25] "P14_EMPLT_SAL" "P09_EMPLT"     "P14_POP1564"   "P14_CHOM1564" </span></span>
+<span><span class="co">#&gt; [29] "P14_ACT1564"   "ETTOT14"       "ETAZ14"        "ETBE14"       </span></span>
+<span><span class="co">#&gt; [33] "ETFZ14"        "ETGU14"        "ETGZ14"        "ETOQ14"       </span></span>
+<span><span class="co">#&gt; [37] "ETTEF114"      "ETTEFP1014"</span></span>
+<span><span class="co">#&gt; [1] "data.frame"</span></span>
+<span><span class="co">#&gt; [1] "list"</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="créer-filtrer-sélectionner">Créer, filtrer, sélectionner<a class="anchor" aria-label="anchor" href="#cr%C3%A9er-filtrer-s%C3%A9lectionner"></a>
 </h2>
-<p>Nous travaillons toujours sur la même tables des indicateurs au
-territoire</p>
-<p>En utilisant la fonction <code>mutate()</code>, créer une nouvelle
+<p>Nous travaillons toujours sur la même table des indicateurs au
+territoire, “extdata/Base_synth_territoires.csv”.</p>
+<p>A- En utilisant la fonction <code>mutate()</code>, créer une nouvelle
 variable correspondant à la densité de population (rapport de la
-population à la superficie de la commune), ainsi que les taux de
-natalité et de mortalité (en pour mille)</p>
-<p>A l’aide de la fonction <code>select()</code>, créer une nouvelle
+population <code>P14_POP</code> à la superficie de la commune
+<code>SUPERF</code>), ainsi que les taux de natalité et de mortalité (en
+pour mille)</p>
+<p>B- A l’aide de la fonction <code>select()</code>, créer une nouvelle
 table en ne conservant que le code commune, le type de commune (ZAU), la
 région, le département et les variables que vous venez de créer.</p>
-<p>Enfin, ne conserver les communes correspondant à votre département de
-naissance et stocker ce dataframe. Attention au type de la variable
+<p>C-Enfin, ne conserver les communes correspondant à votre département
+de naissance et stocker ce dataframe. Attention au type de la variable
 département !</p>
-<p>Avec les opérateurs logiques, faire des essais pour sélectionner des
-échantillons différents.</p>
+<p>D- Avec les opérateurs logiques, faire des essais pour sélectionner
+des échantillons différents.</p>
+<p>Résultat attendu :</p>
 </div>
 <div class="section level2">
 <h2 id="calcul-de-statistiques">Calcul de statistiques<a class="anchor" aria-label="anchor" href="#calcul-de-statistiques"></a>
 </h2>
-<p>Nous allons travailler sur des indicateurs au territoire extrait de
-l’outil geoidd du ministère et exporté en csv avec les variables que
-nous avons calculées à l’exercice précédent</p>
-<ul>
-<li>Utilisez la fonction <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> pour obtenir un résumé
+<p>Nous continuons de travailler sur les indicateurs au territoire
+<code>df</code> avec les variables que nous avons calculées à l’exercice
+3.</p>
+<p>1- Utilisez la fonction <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> pour obtenir un résumé
 de l’ensemble des variables de la table <code>df</code><br>
-</li>
-<li>Calculez maintenant les moyenne, médiane, écart-type et variance de
+2- Calculez maintenant les moyenne, médiane, écart-type et variance de
 la variable de densité de population. Que constatez-vous ?<br>
-</li>
-<li>Utilisez le paramètre <code>na.rm = T</code> pour gérer les valeurs
+3- Utilisez le paramètre <code>na.rm = T</code> pour gérer les valeurs
 manquantes<br>
-</li>
-<li>Calculez à présent les quartiles puis déciles de cette
-variable<br>
-</li>
-<li>Calculez la version centrée réduite de la variable de densité
-(Rappel sur la définition de centrer réduire)[<a href="https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite" class="external-link uri">https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite</a>]</li>
-</ul>
-<p>Tableaux croisés :</p>
+4- Calculez à présent les quartiles puis déciles de cette variable<br>
+5- Optionnel : calculez la version centrée réduite de la variable de
+densité <a href="https://fr.wikipedia.org/wiki/Variable_centr%C3%A9e_r%C3%A9duite" class="external-link">Rappel
+sur la définition de centrer réduire</a>. Avantage des variables
+centrées réduites : on élimine les effets d’unité (d’ordre de grandeur),
+et on peut donc comparer les distributions de deux variables qui ont des
+unités différentes (voir module 3).</p>
+<p>6- Tableaux croisés :</p>
 <ul>
 <li>Calculez le nombre de communes par type d’espace à l’aide de la
 fonction table, et le pourcentage associé<br>
@@ -203,26 +370,487 @@ fonction table, et le pourcentage associé<br>
 <li>Calculez le nombre de communes par région et type d’espace, et les
 pourcentages associés</li>
 </ul>
+<p>Résultat attendu :</p>
+<pre><code><span><span class="co">#&gt;     CODGEO             LIBGEO               REG             DEP       </span></span>
+<span><span class="co">#&gt;  Length:36689       Length:36689       44     : 5198   62     :  895  </span></span>
+<span><span class="co">#&gt;  Class :character   Class :character   76     : 4565   02     :  816  </span></span>
+<span><span class="co">#&gt;  Mode  :character   Mode  :character   75     : 4505   80     :  782  </span></span>
+<span><span class="co">#&gt;                                        84     : 4189   76     :  745  </span></span>
+<span><span class="co">#&gt;                                        32     : 3838   57     :  730  </span></span>
+<span><span class="co">#&gt;                                        27     : 3831   14     :  707  </span></span>
+<span><span class="co">#&gt;                                        (Other):10563   (Other):32014  </span></span>
+<span><span class="co">#&gt;    ZAU                                                      </span></span>
+<span><span class="co">#&gt;  112 - Couronne d'un grand p\xf4le                  :12297  </span></span>
+<span><span class="co">#&gt;  400 - Commune isol\xe9e hors influence des p\xf4les: 7383  </span></span>
+<span><span class="co">#&gt;  300 - Autre commune multipolaris\xe9e              : 7021  </span></span>
+<span><span class="co">#&gt;  120 - Multipolaris\xe9e des grandes aires urbaines : 3962  </span></span>
+<span><span class="co">#&gt;  111 - Grand p\xf4le (plus de 10 000 emplois)       : 3285  </span></span>
+<span><span class="co">#&gt;  221 - Petit p\xf4le (de 1 500 \xe0 5 000 emplois)  :  888  </span></span>
+<span><span class="co">#&gt;  (Other)                                            : 1853  </span></span>
+<span><span class="co">#&gt;                        ZE           P14_POP           P09_POP       </span></span>
+<span><span class="co">#&gt;  0061 - Toulouse        :  717   Min.   :      0   Min.   :      0  </span></span>
+<span><span class="co">#&gt;  2307 - Rouen           :  501   1st Qu.:    197   1st Qu.:    193  </span></span>
+<span><span class="co">#&gt;  2210 - Amiens          :  479   Median :    444   Median :    431  </span></span>
+<span><span class="co">#&gt;  7310 - Tarbes - Lourdes:  455   Mean   :   1838   Mean   :   1793  </span></span>
+<span><span class="co">#&gt;  2102 - Troyes          :  452   3rd Qu.:   1110   3rd Qu.:   1072  </span></span>
+<span><span class="co">#&gt;  2603 - Dijon           :  448   Max.   :2220445   Max.   :2234105  </span></span>
+<span><span class="co">#&gt;  (Other)                :33637   NA's   :821       NA's   :821      </span></span>
+<span><span class="co">#&gt;      SUPERF            NAIS0914           DECE0914           P14_MEN         </span></span>
+<span><span class="co">#&gt;  Min.   :    0.04   Min.   :     0.0   Min.   :    0.00   Min.   :      0.0  </span></span>
+<span><span class="co">#&gt;  1st Qu.:    6.44   1st Qu.:     9.0   1st Qu.:    8.00   1st Qu.:     83.8  </span></span>
+<span><span class="co">#&gt;  Median :   10.81   Median :    23.0   Median :   17.00   Median :    183.2  </span></span>
+<span><span class="co">#&gt;  Mean   :   17.64   Mean   :   114.4   Mean   :   77.35   Mean   :    802.0  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:   18.58   3rd Qu.:    60.0   3rd Qu.:   43.00   3rd Qu.:    454.9  </span></span>
+<span><span class="co">#&gt;  Max.   :18360.00   Max.   :150843.0   Max.   :69907.00   Max.   :1147990.9  </span></span>
+<span><span class="co">#&gt;  NA's   :821        NA's   :821        NA's   :821        NA's   :821        </span></span>
+<span><span class="co">#&gt;     NAISD15            DECESD15           P14_LOG              P14_RP         </span></span>
+<span><span class="co">#&gt;  Min.   :    0.00   Min.   :    0.00   Min.   :      0.0   Min.   :      0.0  </span></span>
+<span><span class="co">#&gt;  1st Qu.:    1.00   1st Qu.:    1.00   1st Qu.:    115.0   1st Qu.:     83.8  </span></span>
+<span><span class="co">#&gt;  Median :    4.00   Median :    3.00   Median :    239.1   Median :    183.2  </span></span>
+<span><span class="co">#&gt;  Mean   :   21.96   Mean   :   16.47   Mean   :    970.2   Mean   :    802.0  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:   11.00   3rd Qu.:    9.00   3rd Qu.:    565.0   3rd Qu.:    454.9  </span></span>
+<span><span class="co">#&gt;  Max.   :28267.00   Max.   :13997.00   Max.   :1362181.9   Max.   :1147990.9  </span></span>
+<span><span class="co">#&gt;  NA's   :821        NA's   :821        NA's   :821         NA's   :821        </span></span>
+<span><span class="co">#&gt;   P14_RSECOCC          P14_LOGVAC         P14_RP_PROP        NBMENFISC13       </span></span>
+<span><span class="co">#&gt;  Min.   :     0.00   Min.   :     0.00   Min.   :     0.0   Min.   :     32.0  </span></span>
+<span><span class="co">#&gt;  1st Qu.:     7.00   1st Qu.:     8.00   1st Qu.:    68.4   1st Qu.:    102.0  </span></span>
+<span><span class="co">#&gt;  Median :    19.00   Median :    18.00   Median :   148.0   Median :    205.0  </span></span>
+<span><span class="co">#&gt;  Mean   :    91.63   Mean   :    76.60   Mean   :   462.2   Mean   :    809.7  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:    49.29   3rd Qu.:    43.75   3rd Qu.:   349.2   3rd Qu.:    484.0  </span></span>
+<span><span class="co">#&gt;  Max.   :107061.99   Max.   :107129.02   Max.   :381934.3   Max.   :1038789.0  </span></span>
+<span><span class="co">#&gt;  NA's   :821         NA's   :821         NA's   :821        NA's   :3793       </span></span>
+<span><span class="co">#&gt;      PIMP13          MED13           TP6013        P14_EMPLT        </span></span>
+<span><span class="co">#&gt;  Min.   :24.46   Min.   :10021   Min.   : 5.00   Min.   :      0.0  </span></span>
+<span><span class="co">#&gt;  1st Qu.:50.57   1st Qu.:18452   1st Qu.: 8.73   1st Qu.:     26.0  </span></span>
+<span><span class="co">#&gt;  Median :58.40   Median :19844   Median :11.97   Median :     66.8  </span></span>
+<span><span class="co">#&gt;  Mean   :58.98   Mean   :20250   Mean   :13.35   Mean   :    733.9  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:67.19   3rd Qu.:21563   3rd Qu.:16.80   3rd Qu.:    229.5  </span></span>
+<span><span class="co">#&gt;  Max.   :89.38   Max.   :46251   Max.   :44.84   Max.   :1801865.8  </span></span>
+<span><span class="co">#&gt;  NA's   :31598   NA's   :3793    NA's   :32531   NA's   :821        </span></span>
+<span><span class="co">#&gt;  P14_EMPLT_SAL         P09_EMPLT          P14_POP1564       </span></span>
+<span><span class="co">#&gt;  Min.   :      0.0   Min.   :      0.0   Min.   :      0.0  </span></span>
+<span><span class="co">#&gt;  1st Qu.:     13.0   1st Qu.:     26.1   1st Qu.:    120.3  </span></span>
+<span><span class="co">#&gt;  Median :     42.0   Median :     65.2   Median :    275.0  </span></span>
+<span><span class="co">#&gt;  Mean   :    637.8   Mean   :    716.4   Mean   :   1165.0  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:    173.4   3rd Qu.:    220.6   3rd Qu.:    684.8  </span></span>
+<span><span class="co">#&gt;  Max.   :1562078.5   Max.   :1805470.4   Max.   :1554076.1  </span></span>
+<span><span class="co">#&gt;  NA's   :821         NA's   :9           NA's   :821        </span></span>
+<span><span class="co">#&gt;   P14_CHOM1564        P14_ACT1564           ETTOT14             ETAZ14      </span></span>
+<span><span class="co">#&gt;  Min.   :     0.00   Min.   :      0.0   Min.   :     0.0   Min.   :  0.00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:     8.85   1st Qu.:     90.5   1st Qu.:    19.0   1st Qu.:  4.00  </span></span>
+<span><span class="co">#&gt;  Median :    20.45   Median :    208.3   Median :    38.0   Median :  7.00  </span></span>
+<span><span class="co">#&gt;  Mean   :   119.75   Mean   :    855.8   Mean   :   179.3   Mean   : 11.36  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:    51.78   3rd Qu.:    518.0   3rd Qu.:    92.0   3rd Qu.: 14.00  </span></span>
+<span><span class="co">#&gt;  Max.   :144515.41   Max.   :1202565.3   Max.   :551952.0   Max.   :587.00  </span></span>
+<span><span class="co">#&gt;  NA's   :821         NA's   :821         NA's   :25         NA's   :25      </span></span>
+<span><span class="co">#&gt;      ETBE14              ETFZ14             ETGU14             ETGZ14        </span></span>
+<span><span class="co">#&gt;  Min.   :    0.000   Min.   :    0.00   Min.   :     0.0   Min.   :    0.00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:    1.000   1st Qu.:    2.00   1st Qu.:     7.0   1st Qu.:    1.00  </span></span>
+<span><span class="co">#&gt;  Median :    3.000   Median :    5.00   Median :    17.0   Median :    4.00  </span></span>
+<span><span class="co">#&gt;  Mean   :    9.417   Mean   :   18.18   Mean   :   116.1   Mean   :   28.73  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:    7.000   3rd Qu.:   12.00   3rd Qu.:    47.0   3rd Qu.:   13.00  </span></span>
+<span><span class="co">#&gt;  Max.   :15181.000   Max.   :24528.00   Max.   :462763.0   Max.   :65004.00  </span></span>
+<span><span class="co">#&gt;  NA's   :25          NA's   :25         NA's   :25         NA's   :25        </span></span>
+<span><span class="co">#&gt;      ETOQ14            ETTEF114           ETTEFP1014          densite        </span></span>
+<span><span class="co">#&gt;  Min.   :    0.00   Min.   :     0.00   Min.   :    0.00   Min.   :    0.00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:    2.00   1st Qu.:     4.00   1st Qu.:    0.00   1st Qu.:   18.59  </span></span>
+<span><span class="co">#&gt;  Median :    4.00   Median :     8.00   Median :    1.00   Median :   40.35  </span></span>
+<span><span class="co">#&gt;  Mean   :   24.22   Mean   :    41.33   Mean   :   10.28   Mean   :  160.15  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:   10.00   3rd Qu.:    19.00   3rd Qu.:    4.00   3rd Qu.:   94.57  </span></span>
+<span><span class="co">#&gt;  Max.   :48893.00   Max.   :124131.00   Max.   :24527.00   Max.   :27126.14  </span></span>
+<span><span class="co">#&gt;  NA's   :25         NA's   :25          NA's   :25         NA's   :821       </span></span>
+<span><span class="co">#&gt;     tx_natal          tx_mort       </span></span>
+<span><span class="co">#&gt;  Min.   :  0.000   Min.   :  0.000  </span></span>
+<span><span class="co">#&gt;  1st Qu.:  5.679   1st Qu.:  4.448  </span></span>
+<span><span class="co">#&gt;  Median :  9.264   Median :  7.874  </span></span>
+<span><span class="co">#&gt;  Mean   :  9.699   Mean   :  9.328  </span></span>
+<span><span class="co">#&gt;  3rd Qu.: 12.931   3rd Qu.: 12.389  </span></span>
+<span><span class="co">#&gt;  Max.   :111.111   Max.   :157.738  </span></span>
+<span><span class="co">#&gt;  NA's   :827       NA's   :827</span></span>
+<span><span class="co">#&gt; [1] NA</span></span>
+<span><span class="co">#&gt; [1] NA</span></span>
+<span><span class="co">#&gt; [1] NA</span></span>
+<span><span class="co">#&gt; [1] NA</span></span>
+<span><span class="co">#&gt; [1] 160.151</span></span>
+<span><span class="co">#&gt; [1] 722.799</span></span>
+<span><span class="co">#&gt; [1] 40.35457</span></span>
+<span><span class="co">#&gt; [1] 522438.4</span></span>
+<span><span class="co">#&gt;          0%         25%         50%         75%        100% </span></span>
+<span><span class="co">#&gt;     0.00000    18.59047    40.35457    94.57430 27126.14108</span></span>
+<span><span class="co">#&gt;  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</span></span>
+<span><span class="co">#&gt;          0%         10%         20%         30%         40%         50% </span></span>
+<span><span class="co">#&gt;     0.00000    10.03439    15.65357    21.84208    29.76144    40.35457 </span></span>
+<span><span class="co">#&gt;         60%         70%         80%         90%        100% </span></span>
+<span><span class="co">#&gt;    54.82089    77.65199   119.08740   240.40789 27126.14108</span></span>
+<span><span class="co">#&gt; ZAU</span></span>
+<span><span class="co">#&gt;        111 - Grand p\xf4le (plus de 10 000 emplois) </span></span>
+<span><span class="co">#&gt;                                                3285 </span></span>
+<span><span class="co">#&gt;                   112 - Couronne d'un grand p\xf4le </span></span>
+<span><span class="co">#&gt;                                               12297 </span></span>
+<span><span class="co">#&gt;  120 - Multipolaris\xe9e des grandes aires urbaines </span></span>
+<span><span class="co">#&gt;                                                3962 </span></span>
+<span><span class="co">#&gt;     211 - Moyen p\xf4le (5 000 \xe0 10 000 emplois) </span></span>
+<span><span class="co">#&gt;                                                 456 </span></span>
+<span><span class="co">#&gt;                   212 - Couronne d'un moyen p\xf4le </span></span>
+<span><span class="co">#&gt;                                                 815 </span></span>
+<span><span class="co">#&gt;   221 - Petit p\xf4le (de 1 500 \xe0 5 000 emplois) </span></span>
+<span><span class="co">#&gt;                                                 888 </span></span>
+<span><span class="co">#&gt;                   222 - Couronne d'un petit p\xf4le </span></span>
+<span><span class="co">#&gt;                                                 582 </span></span>
+<span><span class="co">#&gt;               300 - Autre commune multipolaris\xe9e </span></span>
+<span><span class="co">#&gt;                                                7021 </span></span>
+<span><span class="co">#&gt; 400 - Commune isol\xe9e hors influence des p\xf4les </span></span>
+<span><span class="co">#&gt;                                                7383</span></span>
+<span><span class="co">#&gt; ZAU</span></span>
+<span><span class="co">#&gt;        111 - Grand p\xf4le (plus de 10 000 emplois) </span></span>
+<span><span class="co">#&gt;                                                8.95 </span></span>
+<span><span class="co">#&gt;                   112 - Couronne d'un grand p\xf4le </span></span>
+<span><span class="co">#&gt;                                               33.52 </span></span>
+<span><span class="co">#&gt;  120 - Multipolaris\xe9e des grandes aires urbaines </span></span>
+<span><span class="co">#&gt;                                               10.80 </span></span>
+<span><span class="co">#&gt;     211 - Moyen p\xf4le (5 000 \xe0 10 000 emplois) </span></span>
+<span><span class="co">#&gt;                                                1.24 </span></span>
+<span><span class="co">#&gt;                   212 - Couronne d'un moyen p\xf4le </span></span>
+<span><span class="co">#&gt;                                                2.22 </span></span>
+<span><span class="co">#&gt;   221 - Petit p\xf4le (de 1 500 \xe0 5 000 emplois) </span></span>
+<span><span class="co">#&gt;                                                2.42 </span></span>
+<span><span class="co">#&gt;                   222 - Couronne d'un petit p\xf4le </span></span>
+<span><span class="co">#&gt;                                                1.59 </span></span>
+<span><span class="co">#&gt;               300 - Autre commune multipolaris\xe9e </span></span>
+<span><span class="co">#&gt;                                               19.14 </span></span>
+<span><span class="co">#&gt; 400 - Commune isol\xe9e hors influence des p\xf4les </span></span>
+<span><span class="co">#&gt;                                               20.12</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  111 - Grand p\xf4le (plus de 10 000 emplois)</span></span>
+<span><span class="co">#&gt;   01                                           17</span></span>
+<span><span class="co">#&gt;   02                                           16</span></span>
+<span><span class="co">#&gt;   03                                            3</span></span>
+<span><span class="co">#&gt;   04                                           10</span></span>
+<span><span class="co">#&gt;   11                                          413</span></span>
+<span><span class="co">#&gt;   24                                          103</span></span>
+<span><span class="co">#&gt;   27                                          140</span></span>
+<span><span class="co">#&gt;   28                                          216</span></span>
+<span><span class="co">#&gt;   32                                          481</span></span>
+<span><span class="co">#&gt;   44                                          322</span></span>
+<span><span class="co">#&gt;   52                                          108</span></span>
+<span><span class="co">#&gt;   53                                           89</span></span>
+<span><span class="co">#&gt;   75                                          333</span></span>
+<span><span class="co">#&gt;   76                                          258</span></span>
+<span><span class="co">#&gt;   84                                          548</span></span>
+<span><span class="co">#&gt;   93                                          220</span></span>
+<span><span class="co">#&gt;   94                                            8</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  112 - Couronne d'un grand p\xf4le</span></span>
+<span><span class="co">#&gt;   01                                 6</span></span>
+<span><span class="co">#&gt;   02                                 0</span></span>
+<span><span class="co">#&gt;   03                                 3</span></span>
+<span><span class="co">#&gt;   04                                 3</span></span>
+<span><span class="co">#&gt;   11                               853</span></span>
+<span><span class="co">#&gt;   24                               734</span></span>
+<span><span class="co">#&gt;   27                              1299</span></span>
+<span><span class="co">#&gt;   28                              1126</span></span>
+<span><span class="co">#&gt;   32                              1505</span></span>
+<span><span class="co">#&gt;   44                              1721</span></span>
+<span><span class="co">#&gt;   52                               535</span></span>
+<span><span class="co">#&gt;   53                               415</span></span>
+<span><span class="co">#&gt;   75                              1161</span></span>
+<span><span class="co">#&gt;   76                              1124</span></span>
+<span><span class="co">#&gt;   84                              1484</span></span>
+<span><span class="co">#&gt;   93                               229</span></span>
+<span><span class="co">#&gt;   94                                99</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  120 - Multipolaris\xe9e des grandes aires urbaines</span></span>
+<span><span class="co">#&gt;   01                                                  1</span></span>
+<span><span class="co">#&gt;   02                                                  4</span></span>
+<span><span class="co">#&gt;   03                                                  0</span></span>
+<span><span class="co">#&gt;   04                                                  4</span></span>
+<span><span class="co">#&gt;   11                                                  3</span></span>
+<span><span class="co">#&gt;   24                                                188</span></span>
+<span><span class="co">#&gt;   27                                                336</span></span>
+<span><span class="co">#&gt;   28                                                488</span></span>
+<span><span class="co">#&gt;   32                                                729</span></span>
+<span><span class="co">#&gt;   44                                                822</span></span>
+<span><span class="co">#&gt;   52                                                186</span></span>
+<span><span class="co">#&gt;   53                                                152</span></span>
+<span><span class="co">#&gt;   75                                                254</span></span>
+<span><span class="co">#&gt;   76                                                333</span></span>
+<span><span class="co">#&gt;   84                                                390</span></span>
+<span><span class="co">#&gt;   93                                                 69</span></span>
+<span><span class="co">#&gt;   94                                                  3</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  211 - Moyen p\xf4le (5 000 \xe0 10 000 emplois)</span></span>
+<span><span class="co">#&gt;   01                                               0</span></span>
+<span><span class="co">#&gt;   02                                               3</span></span>
+<span><span class="co">#&gt;   03                                               2</span></span>
+<span><span class="co">#&gt;   04                                               2</span></span>
+<span><span class="co">#&gt;   11                                               3</span></span>
+<span><span class="co">#&gt;   24                                              30</span></span>
+<span><span class="co">#&gt;   27                                              31</span></span>
+<span><span class="co">#&gt;   28                                              34</span></span>
+<span><span class="co">#&gt;   32                                              33</span></span>
+<span><span class="co">#&gt;   44                                              54</span></span>
+<span><span class="co">#&gt;   52                                              23</span></span>
+<span><span class="co">#&gt;   53                                              47</span></span>
+<span><span class="co">#&gt;   75                                              51</span></span>
+<span><span class="co">#&gt;   76                                              79</span></span>
+<span><span class="co">#&gt;   84                                              43</span></span>
+<span><span class="co">#&gt;   93                                              20</span></span>
+<span><span class="co">#&gt;   94                                               1</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  212 - Couronne d'un moyen p\xf4le</span></span>
+<span><span class="co">#&gt;   01                                 0</span></span>
+<span><span class="co">#&gt;   02                                 0</span></span>
+<span><span class="co">#&gt;   03                                 0</span></span>
+<span><span class="co">#&gt;   04                                 0</span></span>
+<span><span class="co">#&gt;   11                                 2</span></span>
+<span><span class="co">#&gt;   24                                72</span></span>
+<span><span class="co">#&gt;   27                               122</span></span>
+<span><span class="co">#&gt;   28                               104</span></span>
+<span><span class="co">#&gt;   32                                18</span></span>
+<span><span class="co">#&gt;   44                               102</span></span>
+<span><span class="co">#&gt;   52                                44</span></span>
+<span><span class="co">#&gt;   53                                18</span></span>
+<span><span class="co">#&gt;   75                                81</span></span>
+<span><span class="co">#&gt;   76                               155</span></span>
+<span><span class="co">#&gt;   84                                84</span></span>
+<span><span class="co">#&gt;   93                                11</span></span>
+<span><span class="co">#&gt;   94                                 2</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  221 - Petit p\xf4le (de 1 500 \xe0 5 000 emplois)</span></span>
+<span><span class="co">#&gt;   01                                                 3</span></span>
+<span><span class="co">#&gt;   02                                                 2</span></span>
+<span><span class="co">#&gt;   03                                                 1</span></span>
+<span><span class="co">#&gt;   04                                                 0</span></span>
+<span><span class="co">#&gt;   11                                                 0</span></span>
+<span><span class="co">#&gt;   24                                                46</span></span>
+<span><span class="co">#&gt;   27                                                60</span></span>
+<span><span class="co">#&gt;   28                                                78</span></span>
+<span><span class="co">#&gt;   32                                                54</span></span>
+<span><span class="co">#&gt;   44                                                89</span></span>
+<span><span class="co">#&gt;   52                                                69</span></span>
+<span><span class="co">#&gt;   53                                                42</span></span>
+<span><span class="co">#&gt;   75                                               163</span></span>
+<span><span class="co">#&gt;   76                                               123</span></span>
+<span><span class="co">#&gt;   84                                               113</span></span>
+<span><span class="co">#&gt;   93                                                32</span></span>
+<span><span class="co">#&gt;   94                                                13</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  222 - Couronne d'un petit p\xf4le 300 - Autre commune multipolaris\xe9e</span></span>
+<span><span class="co">#&gt;   01                                 0                                     2</span></span>
+<span><span class="co">#&gt;   02                                 0                                     4</span></span>
+<span><span class="co">#&gt;   03                                 0                                     0</span></span>
+<span><span class="co">#&gt;   04                                 0                                     1</span></span>
+<span><span class="co">#&gt;   11                                 0                                     7</span></span>
+<span><span class="co">#&gt;   24                                19                                   375</span></span>
+<span><span class="co">#&gt;   27                               137                                   737</span></span>
+<span><span class="co">#&gt;   28                                29                                   762</span></span>
+<span><span class="co">#&gt;   32                                18                                   711</span></span>
+<span><span class="co">#&gt;   44                               118                                  1155</span></span>
+<span><span class="co">#&gt;   52                                 8                                   386</span></span>
+<span><span class="co">#&gt;   53                                 1                                   325</span></span>
+<span><span class="co">#&gt;   75                                81                                  1002</span></span>
+<span><span class="co">#&gt;   76                                89                                   877</span></span>
+<span><span class="co">#&gt;   84                                47                                   517</span></span>
+<span><span class="co">#&gt;   93                                 6                                   107</span></span>
+<span><span class="co">#&gt;   94                                29                                    53</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  400 - Commune isol\xe9e hors influence des p\xf4les</span></span>
+<span><span class="co">#&gt;   01                                                   3</span></span>
+<span><span class="co">#&gt;   02                                                   5</span></span>
+<span><span class="co">#&gt;   03                                                  13</span></span>
+<span><span class="co">#&gt;   04                                                   4</span></span>
+<span><span class="co">#&gt;   11                                                   0</span></span>
+<span><span class="co">#&gt;   24                                                 275</span></span>
+<span><span class="co">#&gt;   27                                                 969</span></span>
+<span><span class="co">#&gt;   28                                                 396</span></span>
+<span><span class="co">#&gt;   32                                                 289</span></span>
+<span><span class="co">#&gt;   44                                                 815</span></span>
+<span><span class="co">#&gt;   52                                                 143</span></span>
+<span><span class="co">#&gt;   53                                                 181</span></span>
+<span><span class="co">#&gt;   75                                                1379</span></span>
+<span><span class="co">#&gt;   76                                                1527</span></span>
+<span><span class="co">#&gt;   84                                                 963</span></span>
+<span><span class="co">#&gt;   93                                                 269</span></span>
+<span><span class="co">#&gt;   94                                                 152</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  111 - Grand p\xf4le (plus de 10 000 emplois)</span></span>
+<span><span class="co">#&gt;   01                                         0.05</span></span>
+<span><span class="co">#&gt;   02                                         0.04</span></span>
+<span><span class="co">#&gt;   03                                         0.01</span></span>
+<span><span class="co">#&gt;   04                                         0.03</span></span>
+<span><span class="co">#&gt;   11                                         1.13</span></span>
+<span><span class="co">#&gt;   24                                         0.28</span></span>
+<span><span class="co">#&gt;   27                                         0.38</span></span>
+<span><span class="co">#&gt;   28                                         0.59</span></span>
+<span><span class="co">#&gt;   32                                         1.31</span></span>
+<span><span class="co">#&gt;   44                                         0.88</span></span>
+<span><span class="co">#&gt;   52                                         0.29</span></span>
+<span><span class="co">#&gt;   53                                         0.24</span></span>
+<span><span class="co">#&gt;   75                                         0.91</span></span>
+<span><span class="co">#&gt;   76                                         0.70</span></span>
+<span><span class="co">#&gt;   84                                         1.49</span></span>
+<span><span class="co">#&gt;   93                                         0.60</span></span>
+<span><span class="co">#&gt;   94                                         0.02</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  112 - Couronne d'un grand p\xf4le</span></span>
+<span><span class="co">#&gt;   01                              0.02</span></span>
+<span><span class="co">#&gt;   02                              0.00</span></span>
+<span><span class="co">#&gt;   03                              0.01</span></span>
+<span><span class="co">#&gt;   04                              0.01</span></span>
+<span><span class="co">#&gt;   11                              2.32</span></span>
+<span><span class="co">#&gt;   24                              2.00</span></span>
+<span><span class="co">#&gt;   27                              3.54</span></span>
+<span><span class="co">#&gt;   28                              3.07</span></span>
+<span><span class="co">#&gt;   32                              4.10</span></span>
+<span><span class="co">#&gt;   44                              4.69</span></span>
+<span><span class="co">#&gt;   52                              1.46</span></span>
+<span><span class="co">#&gt;   53                              1.13</span></span>
+<span><span class="co">#&gt;   75                              3.16</span></span>
+<span><span class="co">#&gt;   76                              3.06</span></span>
+<span><span class="co">#&gt;   84                              4.04</span></span>
+<span><span class="co">#&gt;   93                              0.62</span></span>
+<span><span class="co">#&gt;   94                              0.27</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  120 - Multipolaris\xe9e des grandes aires urbaines</span></span>
+<span><span class="co">#&gt;   01                                               0.00</span></span>
+<span><span class="co">#&gt;   02                                               0.01</span></span>
+<span><span class="co">#&gt;   03                                               0.00</span></span>
+<span><span class="co">#&gt;   04                                               0.01</span></span>
+<span><span class="co">#&gt;   11                                               0.01</span></span>
+<span><span class="co">#&gt;   24                                               0.51</span></span>
+<span><span class="co">#&gt;   27                                               0.92</span></span>
+<span><span class="co">#&gt;   28                                               1.33</span></span>
+<span><span class="co">#&gt;   32                                               1.99</span></span>
+<span><span class="co">#&gt;   44                                               2.24</span></span>
+<span><span class="co">#&gt;   52                                               0.51</span></span>
+<span><span class="co">#&gt;   53                                               0.41</span></span>
+<span><span class="co">#&gt;   75                                               0.69</span></span>
+<span><span class="co">#&gt;   76                                               0.91</span></span>
+<span><span class="co">#&gt;   84                                               1.06</span></span>
+<span><span class="co">#&gt;   93                                               0.19</span></span>
+<span><span class="co">#&gt;   94                                               0.01</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  211 - Moyen p\xf4le (5 000 \xe0 10 000 emplois)</span></span>
+<span><span class="co">#&gt;   01                                            0.00</span></span>
+<span><span class="co">#&gt;   02                                            0.01</span></span>
+<span><span class="co">#&gt;   03                                            0.01</span></span>
+<span><span class="co">#&gt;   04                                            0.01</span></span>
+<span><span class="co">#&gt;   11                                            0.01</span></span>
+<span><span class="co">#&gt;   24                                            0.08</span></span>
+<span><span class="co">#&gt;   27                                            0.08</span></span>
+<span><span class="co">#&gt;   28                                            0.09</span></span>
+<span><span class="co">#&gt;   32                                            0.09</span></span>
+<span><span class="co">#&gt;   44                                            0.15</span></span>
+<span><span class="co">#&gt;   52                                            0.06</span></span>
+<span><span class="co">#&gt;   53                                            0.13</span></span>
+<span><span class="co">#&gt;   75                                            0.14</span></span>
+<span><span class="co">#&gt;   76                                            0.22</span></span>
+<span><span class="co">#&gt;   84                                            0.12</span></span>
+<span><span class="co">#&gt;   93                                            0.05</span></span>
+<span><span class="co">#&gt;   94                                            0.00</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  212 - Couronne d'un moyen p\xf4le</span></span>
+<span><span class="co">#&gt;   01                              0.00</span></span>
+<span><span class="co">#&gt;   02                              0.00</span></span>
+<span><span class="co">#&gt;   03                              0.00</span></span>
+<span><span class="co">#&gt;   04                              0.00</span></span>
+<span><span class="co">#&gt;   11                              0.01</span></span>
+<span><span class="co">#&gt;   24                              0.20</span></span>
+<span><span class="co">#&gt;   27                              0.33</span></span>
+<span><span class="co">#&gt;   28                              0.28</span></span>
+<span><span class="co">#&gt;   32                              0.05</span></span>
+<span><span class="co">#&gt;   44                              0.28</span></span>
+<span><span class="co">#&gt;   52                              0.12</span></span>
+<span><span class="co">#&gt;   53                              0.05</span></span>
+<span><span class="co">#&gt;   75                              0.22</span></span>
+<span><span class="co">#&gt;   76                              0.42</span></span>
+<span><span class="co">#&gt;   84                              0.23</span></span>
+<span><span class="co">#&gt;   93                              0.03</span></span>
+<span><span class="co">#&gt;   94                              0.01</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  221 - Petit p\xf4le (de 1 500 \xe0 5 000 emplois)</span></span>
+<span><span class="co">#&gt;   01                                              0.01</span></span>
+<span><span class="co">#&gt;   02                                              0.01</span></span>
+<span><span class="co">#&gt;   03                                              0.00</span></span>
+<span><span class="co">#&gt;   04                                              0.00</span></span>
+<span><span class="co">#&gt;   11                                              0.00</span></span>
+<span><span class="co">#&gt;   24                                              0.13</span></span>
+<span><span class="co">#&gt;   27                                              0.16</span></span>
+<span><span class="co">#&gt;   28                                              0.21</span></span>
+<span><span class="co">#&gt;   32                                              0.15</span></span>
+<span><span class="co">#&gt;   44                                              0.24</span></span>
+<span><span class="co">#&gt;   52                                              0.19</span></span>
+<span><span class="co">#&gt;   53                                              0.11</span></span>
+<span><span class="co">#&gt;   75                                              0.44</span></span>
+<span><span class="co">#&gt;   76                                              0.34</span></span>
+<span><span class="co">#&gt;   84                                              0.31</span></span>
+<span><span class="co">#&gt;   93                                              0.09</span></span>
+<span><span class="co">#&gt;   94                                              0.04</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  222 - Couronne d'un petit p\xf4le 300 - Autre commune multipolaris\xe9e</span></span>
+<span><span class="co">#&gt;   01                              0.00                                  0.01</span></span>
+<span><span class="co">#&gt;   02                              0.00                                  0.01</span></span>
+<span><span class="co">#&gt;   03                              0.00                                  0.00</span></span>
+<span><span class="co">#&gt;   04                              0.00                                  0.00</span></span>
+<span><span class="co">#&gt;   11                              0.00                                  0.02</span></span>
+<span><span class="co">#&gt;   24                              0.05                                  1.02</span></span>
+<span><span class="co">#&gt;   27                              0.37                                  2.01</span></span>
+<span><span class="co">#&gt;   28                              0.08                                  2.08</span></span>
+<span><span class="co">#&gt;   32                              0.05                                  1.94</span></span>
+<span><span class="co">#&gt;   44                              0.32                                  3.15</span></span>
+<span><span class="co">#&gt;   52                              0.02                                  1.05</span></span>
+<span><span class="co">#&gt;   53                              0.00                                  0.89</span></span>
+<span><span class="co">#&gt;   75                              0.22                                  2.73</span></span>
+<span><span class="co">#&gt;   76                              0.24                                  2.39</span></span>
+<span><span class="co">#&gt;   84                              0.13                                  1.41</span></span>
+<span><span class="co">#&gt;   93                              0.02                                  0.29</span></span>
+<span><span class="co">#&gt;   94                              0.08                                  0.14</span></span>
+<span><span class="co">#&gt;     ZAU</span></span>
+<span><span class="co">#&gt; REG  400 - Commune isol\xe9e hors influence des p\xf4les</span></span>
+<span><span class="co">#&gt;   01                                                0.01</span></span>
+<span><span class="co">#&gt;   02                                                0.01</span></span>
+<span><span class="co">#&gt;   03                                                0.04</span></span>
+<span><span class="co">#&gt;   04                                                0.01</span></span>
+<span><span class="co">#&gt;   11                                                0.00</span></span>
+<span><span class="co">#&gt;   24                                                0.75</span></span>
+<span><span class="co">#&gt;   27                                                2.64</span></span>
+<span><span class="co">#&gt;   28                                                1.08</span></span>
+<span><span class="co">#&gt;   32                                                0.79</span></span>
+<span><span class="co">#&gt;   44                                                2.22</span></span>
+<span><span class="co">#&gt;   52                                                0.39</span></span>
+<span><span class="co">#&gt;   53                                                0.49</span></span>
+<span><span class="co">#&gt;   75                                                3.76</span></span>
+<span><span class="co">#&gt;   76                                                4.16</span></span>
+<span><span class="co">#&gt;   84                                                2.62</span></span>
+<span><span class="co">#&gt;   93                                                0.73</span></span>
+<span><span class="co">#&gt;   94                                                0.41</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="créer-des-graphiques">Créer des graphiques<a class="anchor" aria-label="anchor" href="#cr%C3%A9er-des-graphiques"></a>
 </h2>
-<p>Nous allons travailler sur des indicateurs au territoire extrait de
-l’outil geoidd du ministère et exporté en csv avec les variables que
-nous avons calculées à l’exercice précédent</p>
+<p>Nous travaillons toujours sur le dataset <code>df</code> calculé à
+l’exercice précédent.</p>
 <p>À l’aide de l’aide mémoire ggplot2 :</p>
 <ul>
-<li>Réaliser un histogramme de la population communale</li>
+<li>Réaliser un histogramme de la population communale<br>
+</li>
 <li>Transformer les données avec la fonction log pour y voir plus
-clair</li>
-<li>Faire un barplot du nombre de communes par REG</li>
+clair<br>
+</li>
+<li>Faire un barplot (qui n’est pas un histogramme !!!!) du nombre de
+communes par REG.<br>
+</li>
 <li>Utiliser le paramètre <code>fill</code> de la fonction
-<code>aes()</code> pour améliorer le graphique</li>
+<code>aes()</code> pour améliorer le graphique<br>
+</li>
 <li>Réaliser un graphique (nuage de points) croisant la densité de
-population et le taux de mortalité</li>
+population et le taux de mortalité<br>
+</li>
 <li>Ajouter une dimension supplémentaire avec la couleur des points
 (paramètre color de <code>aes()</code>)</li>
 </ul>
+<p>Résultat attendu :</p>
+<p><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-13-1.png" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-13-2.png" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-13-3.png" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-13-4.png" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-13-5.png" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-13-6.png" width="700"></p>
 </div>
   </div>
 
