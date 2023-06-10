@@ -14,7 +14,7 @@ Nous travaillons toujours sur le dataset `df` calculé à l'exercice précédent
 - Ajouter une dimension supplémentaire avec la couleur des points (paramètre color de `aes()`)  
 
 
-```{r setup exo5, message=FALSE, warning=FALSE, include=FALSE}
+```{r, message=FALSE, warning=FALSE, include=FALSE}
 library(dplyr)
 df <- read.csv(file = system.file("extdata", "Base_synth_territoires.csv", package = "savoirfR"),
                header = TRUE, sep = ";", dec = ",",
@@ -38,7 +38,7 @@ df <- read.csv(file = system.file("extdata", "Base_synth_territoires.csv", packa
 
 ```
 
-```{r mod1_exo5_solution, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(ggplot2)
 ggplot(data = df, aes(x = P14_POP)) +
   geom_histogram()

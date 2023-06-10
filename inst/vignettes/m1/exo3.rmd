@@ -13,7 +13,7 @@ Attention au type de la variable département !
   
 D- Avec les opérateurs logiques, faire des essais pour sélectionner des échantillons différents.
 
-```{r setup exo3, message=FALSE, warning=FALSE, include=FALSE}
+```{r, message=FALSE, warning=FALSE, include=FALSE}
 df <- read.csv(file = system.file("extdata", "Base_synth_territoires.csv", package = "savoirfR"),
                header = TRUE, sep = ";", dec = ",",
                colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)))
@@ -27,7 +27,7 @@ df <- read.csv(file = "extdata/Base_synth_territoires.csv", header = TRUE, sep =
 
 ```
 
-```{r mod1_exo3_solution, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 
 library(dplyr)
 

@@ -16,7 +16,7 @@ Nous continuons de travailler sur les indicateurs au territoire `df` avec les va
 - Calculez le nombre de communes par type d’espace à l’aide de la fonction table, et le pourcentage associé  
 - Calculez le nombre de communes par région et type d’espace, et les pourcentages associés  
 
-```{r setup exo4, message=FALSE, warning=FALSE, include=FALSE}
+```{r, message=FALSE, warning=FALSE, include=FALSE}
 library(dplyr)
 df <- read.csv(file = system.file("extdata", "Base_synth_territoires.csv", package = "savoirfR"),
                header = TRUE, sep = ";", dec = ",",
@@ -29,7 +29,7 @@ df <- read.csv(file = system.file("extdata", "Base_synth_territoires.csv", packa
 
 Résultat attendu :   
 
-```{r mod1_exo4_solution, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(dplyr)
 
 # 1  

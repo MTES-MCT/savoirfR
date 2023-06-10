@@ -18,7 +18,7 @@ title: "Exercice 1 -  module 1"
 
 Résultat attendu :   
 
-```{r mod1_exo1_solution, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 a <- 5 
 a
 b <- 4
