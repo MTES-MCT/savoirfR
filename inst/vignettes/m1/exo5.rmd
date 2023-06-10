@@ -17,7 +17,7 @@ Nous travaillons toujours sur le dataset `df` calculé à l'exercice précédent
 ```{r, message=FALSE, warning=FALSE, include=FALSE}
 library(dplyr)
 df <- read.csv(file = system.file("extdata", "Base_synth_territoires.csv", package = "savoirfR"),
-               header = TRUE, sep = ";", dec = ",",
+               header = TRUE, sep = ";", dec = ",", fileEncoding = "latin1",
                colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32))) %>% 
   mutate(densite = P14_POP / SUPERF,
          tx_natal = 1000 * NAISD15 / P14_POP,

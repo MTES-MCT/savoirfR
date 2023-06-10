@@ -12,7 +12,7 @@ Inspecter le dataframe avec les fonctions vues auparavant.
 
 ```{r, message=FALSE, warning=FALSE, include=FALSE}
 df <- read.csv(file = system.file("extdata", "Base_synth_territoires.csv", package = "savoirfR"),
-               header = TRUE, sep = ";", dec = ",",
+               header = TRUE, sep = ";", dec = ",", fileEncoding = "latin1",
                colClasses = c(rep("character", 2), rep("factor", 4) , rep(NA, 32)))
 ```
 
