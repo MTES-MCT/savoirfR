@@ -7,6 +7,7 @@ Le graphique sera animé par département, uniquement pour ceux de la région Ce
 
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
+
 load(system.file("extdata", "rpls_aggrege_large.RData", package = "savoirfR"))
 ```   
 
@@ -18,12 +19,12 @@ load("extdata/rpls_aggrege_large.Rdata")
 ```
 
 ```{r mod5_exo6_solution, message=FALSE, warning=FALSE}
-
 library(dplyr)
 library(ggplot2)
 library(gganimate)
 library(tidyr)
 library(stringr)
+library(forcats)
 
 # PREPARATION DE LA TABLE
 rpls <- rpls_aggrege_large %>%
@@ -58,5 +59,5 @@ ggplot(data = rpls, aes(x = variable, y = valeur, fill = variable)) +
   transition_states(states = nDep_2017,
                     transition_length = 1,
                     state_length = 5)
-
 ```
+

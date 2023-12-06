@@ -11,10 +11,9 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.width = 7.8
+  fig.width = 7.8,
+  gganimate = list(nframes = 50)
 )
-library(sf)
-library(class)
 ```
 
 ```{r setup, message=FALSE, warning=FALSE}
@@ -49,6 +48,7 @@ library(savoirfR)
 
 ```{r mod5_exo6, child=charge_exo("m5", "exo6.rmd"), echo=FALSE}
 ```
+
 
 # Exercice 7 - Créer un graphique pour le web
 
