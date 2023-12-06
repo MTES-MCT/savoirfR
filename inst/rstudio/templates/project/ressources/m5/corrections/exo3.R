@@ -19,7 +19,7 @@ ggplot(data = rpls_aggrege_large %>%
              size = .7
   ) +
   scale_color_brewer(type = "qual", palette = "Paired",
-                     labels = c("Autres Epci/Epci de la région Pays de la Loire")) +
+                     labels = c("Autres Epci", "Epci de la région Pays de la Loire")) +
   scale_x_continuous(limits = c(0, 40)) +
   scale_y_continuous(limits = c(0, 80)) +
   theme(legend.position = "bottom") +
