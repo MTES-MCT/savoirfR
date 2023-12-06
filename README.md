@@ -1,10 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# savoirfR
+# savoirfR <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 Ce package a pour objectif d’être une banque d’exercices pour le
