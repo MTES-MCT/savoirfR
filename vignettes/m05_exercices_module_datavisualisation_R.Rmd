@@ -12,13 +12,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.width = 7.8,
-  gganimate = list(
-    nframes = 50
-  ),
-  out.width = '100%'
+  gganimate = list(nframes = 50)
 )
-library(sf)
-library(class)
 ```
 
 ```{r setup, message=FALSE, warning=FALSE}
