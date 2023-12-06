@@ -41,11 +41,11 @@ jobs:
       - name: Build site
         run: |
           pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
-          cat("correction du bug d'affichage dans avec gganimate, cf https://github.com/r-lib/pkgdown/issues/2334")"
+          cat("correction du bug d'affichage dans avec gganimate, cf https://github.com/r-lib/pkgdown/issues/2334")
           vignette_m5 <- readLines("docs/articles/m05_exercices_module_datavisualisation_R.html")
           vignette_m5_cor <- gsub("../docs/", "../", vignette_m5)
           vignette_m5 <- writeLines(vignette_m5_cor, "docs/articles/m05_exercices_module_datavisualisation_R.html")
-          cat("Mise du rmd du chap 5 dans l'artifact pour comprendre pourquoi le resultat attendu est NULL")"
+          cat("Mise du rmd du chap 5 dans l'artifact pour comprendre pourquoi le resultat attendu est NULL")
           file.copy("vignettes/m05_exercices_module_datavisualisation_R.Rmd", to = "docs/articles/vign_M5.Rmd")
         shell: Rscript {0}
 
