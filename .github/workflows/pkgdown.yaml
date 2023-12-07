@@ -30,7 +30,9 @@ jobs:
 
       - name: Install av on Linux
         if: runner.os == 'Linux'
-        run: sudo apt-get update -y && sudo apt-get install -y libavfilter-dev gifski libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+        run: |
+          sudo apt-get update -y && sudo apt-get install -y libavfilter-dev libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+          sudo snap install gifski
 
       - name: Install dependencies
         run: |
