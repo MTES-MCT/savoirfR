@@ -32,7 +32,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update -y && sudo apt-get install -y libavfilter-dev
-          sudo apt-get -y update && apt-get install -y libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+          sudo apt-get -y update && sudo apt-get install -y libudunits2-dev libgdal-dev libgeos-dev libproj-dev
 
       - name: Install dependencies
         run: |
