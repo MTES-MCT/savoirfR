@@ -30,7 +30,9 @@ jobs:
 
       - name: Install av on Linux
         if: runner.os == 'Linux'
-        run: sudo apt-get update -y && sudo apt-get install -y libavfilter-dev
+        run: |
+          sudo apt-get update -y && sudo apt-get install -y libavfilter-dev
+          sudo apt-get install libudunits2-dev
 
       - name: Install dependencies
         run: |
