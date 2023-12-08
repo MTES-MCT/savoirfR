@@ -19,12 +19,8 @@ load("extdata/rpls_aggrege_large.Rdata")
 ```
 
 ```{r mod5_exo6_solution, message=FALSE, warning=FALSE}
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
 library(gganimate)
-library(tidyr)
-library(stringr)
-library(forcats)
 library(gifski)
 
 # PREPARATION DE LA TABLE
