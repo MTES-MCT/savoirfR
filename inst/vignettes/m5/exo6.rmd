@@ -25,6 +25,7 @@ library(gganimate)
 library(tidyr)
 library(stringr)
 library(forcats)
+library(gifski)
 
 # PREPARATION DE LA TABLE
 rpls <- rpls_aggrege_large %>%
@@ -61,3 +62,7 @@ ggplot(data = rpls, aes(x = variable, y = valeur, fill = variable)) +
                     state_length = 5)
 ```
 
+```{r message=FALSE, warning=FALSE, include=FALSE, echo=FALSE}
+##  un patch pour le pb de rendu avec bookdown
+## anim_save(filename = "mod5_exo6_solution-1.gif", path = "vignettes")
+```

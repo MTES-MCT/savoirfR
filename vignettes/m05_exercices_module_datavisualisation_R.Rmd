@@ -50,6 +50,8 @@ library(savoirfR)
 ```
 
 
+![](vignettes/mod5_exo6_solution-1.gif)
+
 # Exercice 7 - Créer un graphique pour le web
 
 ```{r mod5_exo7, child=charge_exo("m5", "exo7.rmd"), echo=FALSE}

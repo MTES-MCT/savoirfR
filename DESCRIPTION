@@ -50,6 +50,7 @@ Suggests:
     forcats,
     gganimate,
     ggiraph,
+    gifski,
     ggplot2,
     gouvdown,
     gouvdown.fonts,

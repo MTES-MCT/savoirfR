@@ -13,6 +13,7 @@ library(gganimate)
 library(tidyr)
 library(stringr)
 library(forcats)
+library(gifski)
 
 # PREPARATION DE LA TABLE
 rpls <- rpls_aggrege_large %>%
@@ -47,4 +48,5 @@ ggplot(data = rpls, aes(x = variable, y = valeur, fill = variable)) +
   transition_states(states = nDep_2017,
                     transition_length = 1,
                     state_length = 5)
+
 
