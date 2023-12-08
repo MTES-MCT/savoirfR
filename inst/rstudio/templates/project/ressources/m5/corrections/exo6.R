@@ -7,12 +7,8 @@
 load("extdata/rpls_aggrege_large.RData")
 
 
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
 library(gganimate)
-library(tidyr)
-library(stringr)
-library(forcats)
 library(gifski)
 
 # PREPARATION DE LA TABLE
