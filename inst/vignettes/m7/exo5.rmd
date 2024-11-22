@@ -29,5 +29,5 @@ p_web <- prix_m2_maisons_epci_sf %>%
     subtitle = "Entre 2014 et 2017",
     caption = "source : DVF"
   )
-ggiraph(ggobj = p_web)
+girafe(ggobj = p_web)
 ```
