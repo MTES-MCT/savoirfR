@@ -7,9 +7,19 @@ Adapter la carte régionale à l'EPCI de l'exercice 4, pour le web :
 - au survol d'un EPCI, afficher son nom, le prix au m2 et son évolution 2014-2017,  
 - au survol du rond d'un EPCI, afficher son nom, le nb de ventes 2017.  
 
-```{r message=FALSE, warning=FALSE}
+```{r message=TRUE, warning=TRUE}
 library(ggiraph)
 library(mapfactory)
+
+# On vérifie que la police Marianne est correctement installée.
+gouvdown::check_fonts_in_r(fonts = "Marianne")
+systemfonts::register_font(name = "Marianne light", 
+                           system.file("resources/fonts/marianne/truetype/Marianne-Light.ttf", 
+                                       package = "gouvdown.fonts")) 
+systemfonts::register_font(name = "Marianne", 
+                           system.file("resources/fonts/marianne/truetype/Marianne-Regular.ttf", 
+                                       package = "gouvdown.fonts")) 
+
 p_web <- prix_m2_maisons_epci_sf %>% 
   mutate(
     sign_evol = if_else(evo_prix_m2 >=0, "+", ""),
@@ -29,5 +39,5 @@ p_web <- prix_m2_maisons_epci_sf %>%
     subtitle = "Entre 2014 et 2017",
     caption = "source : DVF"
   )
-ggiraph(ggobj = p_web)
+girafe(ggobj = p_web)
 ```

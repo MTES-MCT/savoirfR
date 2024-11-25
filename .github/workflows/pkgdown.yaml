@@ -40,6 +40,15 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           install.packages("pkgdown")
         shell: Rscript {0}
+
+      - name: Install police Marianne
+        run: |
+          systemfonts::register_font(name = "Marianne extrabold", system.file("resources/fonts/marianne/truetype/Marianne-ExtraBold.ttf", package = "gouvdown.fonts")) 
+          systemfonts::register_font(name = "Marianne", system.file("resources/fonts/marianne/truetype/Marianne-Regular.ttf", package = "gouvdown.fonts")) 
+          systemfonts::register_font(name = "Marianne light", system.file("resources/fonts/marianne/truetype/Marianne-Light.ttf", package = "gouvdown.fonts")) 
+          systemfonts::register_font(name = "Marianne bold", system.file("resources/fonts/marianne/truetype/Marianne-Bold.ttf", package = "gouvdown.fonts")) 
+          gouvdown::check_fonts_in_r()
+        shell: Rscript {0}
     
       - name: Install package
         run: R CMD INSTALL .
