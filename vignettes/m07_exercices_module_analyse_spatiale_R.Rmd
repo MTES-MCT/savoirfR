@@ -18,6 +18,7 @@ library(class)
 systemfonts::register_font(name = "Marianne light", 
                            system.file("resources/fonts/marianne/truetype/Marianne-Light.ttf", 
                                        package = "gouvdown.fonts")) 
+gouvdown::check_fonts_in_r(fonts = "Marianne")
 ```
 
 ```{r setup, message=FALSE, warning=FALSE}
