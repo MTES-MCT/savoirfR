@@ -15,6 +15,9 @@ knitr::opts_chunk$set(
 )
 library(sf)
 library(class)
+systemfonts::register_font(name = "Marianne light", 
+                           system.file("resources/fonts/marianne/truetype/Marianne-Light.ttf", 
+                                       package = "gouvdown.fonts")) 
 ```
 
 ```{r setup, message=FALSE, warning=FALSE}
