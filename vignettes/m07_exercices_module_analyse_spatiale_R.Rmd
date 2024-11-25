@@ -20,13 +20,6 @@ systemfonts::register_font(name = "Marianne light",
                                        package = "gouvdown.fonts")) 
 ```
 
-On vérifie que la police Marianne est correctement installée.
-
-```{r}
-gouvdown::check_fonts_in_r(fonts = c("Marianne"))
-```
-
-
 ```{r setup, message=FALSE, warning=FALSE}
 library(savoirfR) 
 ```
