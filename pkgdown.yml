@@ -1,5 +1,5 @@
-pandoc: 2.19.2
-pkgdown: 2.0.7
+pandoc: 3.1.11
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   how_to_dev: how_to_dev.html
@@ -7,5 +7,4 @@ articles:
   m02_exercices_module_datapreparation_R: m02_exercices_module_datapreparation_R.html
   m05_exercices_module_datavisualisation_R: m05_exercices_module_datavisualisation_R.html
   m07_exercices_module_analyse_spatiale_R: m07_exercices_module_analyse_spatiale_R.html
-last_built: 2023-12-08T19:00Z
-
+last_built: 2024-11-25T21:19Z

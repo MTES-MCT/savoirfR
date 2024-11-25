@@ -1,63 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/articles/how_to_dev.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/m01_exercices_module_introduction_a_R.html</loc>
-  </url>
-  <url>
-    <loc>/articles/m02_exercices_module_datapreparation_R.html</loc>
-  </url>
-  <url>
-    <loc>/articles/m05_exercices_module_datavisualisation_R.html</loc>
-  </url>
-  <url>
-    <loc>/articles/m07_exercices_module_analyse_spatiale_R.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/charge_exo.html</loc>
-  </url>
-  <url>
-    <loc>/reference/clean_r.html</loc>
-  </url>
-  <url>
-    <loc>/reference/exo_modules_skeleton.html</loc>
-  </url>
-  <url>
-    <loc>/reference/extract_r_files.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/module_data.html</loc>
-  </url>
-  <url>
-    <loc>/reference/pkg_file.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmd_to.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmd_to_correction.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmd_to_enonce.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/articles/how_to_dev.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/m01_exercices_module_introduction_a_R.html</loc></url>
+<url><loc>/articles/m02_exercices_module_datapreparation_R.html</loc></url>
+<url><loc>/articles/m05_exercices_module_datavisualisation_R.html</loc></url>
+<url><loc>/articles/m07_exercices_module_analyse_spatiale_R.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/charge_exo.html</loc></url>
+<url><loc>/reference/clean_r.html</loc></url>
+<url><loc>/reference/exo_modules_skeleton.html</loc></url>
+<url><loc>/reference/extract_r_files.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/module_data.html</loc></url>
+<url><loc>/reference/pkg_file.html</loc></url>
+<url><loc>/reference/rmd_to.html</loc></url>
+<url><loc>/reference/rmd_to_correction.html</loc></url>
+<url><loc>/reference/rmd_to_enonce.html</loc></url>
 </urlset>
+
