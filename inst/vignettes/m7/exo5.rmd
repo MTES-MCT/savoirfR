@@ -22,7 +22,6 @@ if(!verif_marianne_ok) {
                                          package = "gouvdown.fonts")) 
 }
 
-
 p_web <- prix_m2_maisons_epci_sf %>% 
   mutate(
     sign_evol = if_else(evo_prix_m2 >=0, "+", ""),
