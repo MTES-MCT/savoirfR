@@ -6,6 +6,19 @@
 # - au survol du rond d'un EPCI, afficher son nom, le nb de ventes 2017.  
 library(ggiraph)
 library(mapfactory)
+
+# On vérifie que la police Marianne est correctement installée.
+verif_marianne_ok <- gouvdown::check_fonts_in_r(fonts = "Marianne")
+if(verif_marianne_ok) {
+  systemfonts::register_font(name = "Marianne light", 
+                             system.file("resources/fonts/marianne/truetype/Marianne-Light.ttf", 
+                                         package = "gouvdown.fonts")) 
+  systemfonts::register_font(name = "Marianne", 
+                             system.file("resources/fonts/marianne/truetype/Marianne-Regular.ttf", 
+                                         package = "gouvdown.fonts")) 
+}
+
+
 p_web <- prix_m2_maisons_epci_sf %>% 
   mutate(
     sign_evol = if_else(evo_prix_m2 >=0, "+", ""),
@@ -25,5 +38,5 @@ p_web <- prix_m2_maisons_epci_sf %>%
     subtitle = "Entre 2014 et 2017",
     caption = "source : DVF"
   )
-ggiraph(ggobj = p_web)
+girafe(ggobj = p_web)
 

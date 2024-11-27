@@ -29,6 +29,10 @@ vignettes_path <- function(...) {
 #' 
 #' @import knitr
 #' @importFrom fs path_ext_set
+#' @examples
+#' \dontrun{
+#' rmd_to(module = "m7", rmdfile = "exo2.rmd")
+#' }
 #'
 rmd_to <- function(module, rmdfile, folder = "corrections", purl = TRUE) {
   old_purl_opts <- knitr::opts_chunk$get('purl')
@@ -76,7 +80,8 @@ rmd_to_enonce <- function(module, rmdfile) {
 
 #' Clean R correction file
 #'
-#' @param rfile character
+#' @param rfile character l'adresse du fichier a nettoyer par exemple : 
+#'  "inst/rstudio/templates/project/ressources/m7/corrections/exo2.R"
 #'
 #' @importFrom dplyr as_tibble filter mutate pull
 #' @importFrom magrittr %>%
@@ -89,7 +94,7 @@ clean_r <- function(rfile) {
   res %>% 
     dplyr::as_tibble() %>%
     #remove empty lines and chunk opts and lines 'resultats attendus : '
-    dplyr::filter(!stringr::str_detect(.data$value, "(#' $)|(^##)|sultat attendu|sultats attendu")) %>%
+    dplyr::filter(!stringr::str_detect(.data$value, "(#' $)|(^##)|sultat attendu|sultats attendu|^#' ```")) %>%
     #replace #' by #, and replace load with system file by basic load
     dplyr::mutate(value = stringr::str_replace(.data$value, "#'", '#')) %>% 
     dplyr::mutate(value = gsub('system.file("extdata", "', '"extdata/', .data$value, fixed = TRUE)) %>%

@@ -18,3 +18,9 @@ rmd_to(module, rmdfile, folder = "corrections", purl = TRUE)
 \description{
 rmd_to
 }
+\examples{
+\dontrun{
+rmd_to(module = "m7", rmdfile = "exo2.rmd")
+}
+
+}
