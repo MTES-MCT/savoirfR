@@ -7,7 +7,8 @@
 clean_r(rfile)
 }
 \arguments{
-\item{rfile}{character}
+\item{rfile}{character l'adresse du fichier a nettoyer par exemple : 
+"inst/rstudio/templates/project/ressources/m7/corrections/exo2.R"}
 }
 \description{
 Clean R correction file

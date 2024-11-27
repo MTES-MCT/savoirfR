@@ -1,4 +1,5 @@
-#' Liste les rmd dans le dossiers inst/vignettes du module et les place dans les dossiers t Extrait les enonces et les corrections des rmd et les place dans les dossiers
+#' Liste les exercices d'un module au format rmd, presents dans le dossiers inst/vignettes du module, puis en extrait/nettoie/colle le contenu  dans des scripts R d'enonces et de corrections, rendus accessibles aux stagiaires utilisant le package savoirFr pour réaliser les exercices, au niveau du dossier inst/rstudio/templates/project/ressources du module. N'impacte que le package savoirfR.
+#' 
 #'
 #' @param module le numero du dossier
 #'

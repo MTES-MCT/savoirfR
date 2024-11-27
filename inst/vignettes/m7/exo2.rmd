@@ -2,7 +2,7 @@
 title: "Exercice 2 -  module 7"
 ---  
 
-Le but de cet exercice va être d'exploiter les données *DVF* sur les transactions immobilières dans l'ancien et la carte des quartiers de Nantes pour obtenir des indicateurs des transactions par quartier.  
+Le but de cet exercice va être d'exploiter les données *DVF* sur les transactions immobilières dans l'ancien et la carte des quartiers de Nantes pour obtenir des indicateurs des transactions de logements par quartier.  
 On va utiliser pour DVF l'API mise en place par Christian Quest : http://api.cquest.org/dvf.  
 
 ```r
@@ -58,7 +58,7 @@ quartier_nantes <- st_set_crs(quartier_nantes, 4326)
 load(system.file("extdata", "quartier_nantes.RData", package = "savoirfR"))
 ```
 
-On veut produire les infos suivantes par quartier et année :  
+On veut produire les infos suivantes par quartier et année pour les ventes de logements (maisons et d'appartements) :  
 
 - Volume de ventes (nb)   
 - Pourcentage de maisons dans les ventes  
