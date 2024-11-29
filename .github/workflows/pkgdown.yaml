@@ -49,7 +49,7 @@ jobs:
           systemfonts::register_font(name = "Marianne bold", system.file("resources/fonts/marianne/truetype/Marianne-Bold.ttf", package = "gouvdown.fonts")) 
           gouvdown::check_fonts_in_r()
         shell: Rscript {0}
-    
+
       - name: Install package
         run: R CMD INSTALL .
         
