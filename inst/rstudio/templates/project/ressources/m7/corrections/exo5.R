@@ -9,7 +9,7 @@ library(mapfactory)
 
 # On vérifie que la police Marianne est correctement installée.
 verif_marianne_ok <- gouvdown::check_fonts_in_r(fonts = "Marianne")
-if(verif_marianne_ok) {
+if(!verif_marianne_ok) {
   systemfonts::register_font(name = "Marianne light", 
                              system.file("resources/fonts/marianne/truetype/Marianne-Light.ttf", 
                                          package = "gouvdown.fonts")) 
@@ -17,7 +17,6 @@ if(verif_marianne_ok) {
                              system.file("resources/fonts/marianne/truetype/Marianne-Regular.ttf", 
                                          package = "gouvdown.fonts")) 
 }
-
 
 p_web <- prix_m2_maisons_epci_sf %>% 
   mutate(

@@ -4,10 +4,10 @@
 # Faire une carte à de ronds proportionnels à partir des données sur les ODD
 #   - En taille des ronds : le taux de mortalité des mères à naissance
 #   - En couleur : l'évolution de la mortalité des mères à la naissance entre 2000 et 2015
-#   - Rajouter deux zooms sur les continents Africain et Sud Américain
+#   - Ajouter deux zooms sur les continents Africain et Sud Américain
 # Source :
-#  - les données : `sdg_indicators` du package `variousdata` 
-#  - le fond de carte : la table `World` du package `tmap`
+#  - les données : `sdg_indicators` du package `variousdata` (`data("sdg_indicators")`)
+#  - le fond de carte : la table `World` du package `tmap` (`data("World")`)
 # ### Chargement des données et datapréparation
 library(tidyverse)
 library(tmap)
