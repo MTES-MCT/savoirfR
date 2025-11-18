@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exercices parcours R module 1 : introduction à R • savoirfR</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -38,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">savoirfR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9009</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9010</span>
       </span>
     </div>
 
@@ -99,7 +98,7 @@
 R</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/MTES-MCT/savoirfR/blob/v0.0.0.90009/vignettes/m01_exercices_module_introduction_a_R.Rmd" class="external-link"><code>vignettes/m01_exercices_module_introduction_a_R.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/MTES-MCT/savoirfR/blob/master/vignettes/m01_exercices_module_introduction_a_R.Rmd" class="external-link"><code>vignettes/m01_exercices_module_introduction_a_R.Rmd</code></a></small>
       <div class="hidden name"><code>m01_exercices_module_introduction_a_R.Rmd</code></div>
 
     </div>
@@ -389,63 +388,63 @@ pourcentages associés</li>
 <span><span class="co">#&gt;  0061 - Toulouse        :  717   Min.   :      0   Min.   :      0  </span></span>
 <span><span class="co">#&gt;  2307 - Rouen           :  501   1st Qu.:    197   1st Qu.:    193  </span></span>
 <span><span class="co">#&gt;  2210 - Amiens          :  479   Median :    444   Median :    431  </span></span>
-<span><span class="co">#&gt;  7310 - Tarbes - Lourdes:  455   Mean   :   1838   Mean   :   1793  </span></span>
+<span><span class="co">#&gt;  7310 - Tarbes - Lourdes:  455   Mean   :   1837   Mean   :   1793  </span></span>
 <span><span class="co">#&gt;  2102 - Troyes          :  452   3rd Qu.:   1110   3rd Qu.:   1072  </span></span>
 <span><span class="co">#&gt;  2603 - Dijon           :  448   Max.   :2220445   Max.   :2234105  </span></span>
 <span><span class="co">#&gt;  (Other)                :33637   NA's   :821       NA's   :821      </span></span>
 <span><span class="co">#&gt;      SUPERF            NAIS0914           DECE0914           P14_MEN         </span></span>
-<span><span class="co">#&gt;  Min.   :    0.04   Min.   :     0.0   Min.   :    0.00   Min.   :      0.0  </span></span>
-<span><span class="co">#&gt;  1st Qu.:    6.44   1st Qu.:     9.0   1st Qu.:    8.00   1st Qu.:     83.8  </span></span>
-<span><span class="co">#&gt;  Median :   10.81   Median :    23.0   Median :   17.00   Median :    183.2  </span></span>
-<span><span class="co">#&gt;  Mean   :   17.64   Mean   :   114.4   Mean   :   77.35   Mean   :    802.0  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:   18.58   3rd Qu.:    60.0   3rd Qu.:   43.00   3rd Qu.:    454.9  </span></span>
-<span><span class="co">#&gt;  Max.   :18360.00   Max.   :150843.0   Max.   :69907.00   Max.   :1147990.9  </span></span>
+<span><span class="co">#&gt;  Min.   :    0.04   Min.   :     0.0   Min.   :    0.00   Min.   :0.000e+00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:    6.44   1st Qu.:     9.0   1st Qu.:    8.00   1st Qu.:8.381e+01  </span></span>
+<span><span class="co">#&gt;  Median :   10.81   Median :    23.0   Median :   17.00   Median :1.832e+02  </span></span>
+<span><span class="co">#&gt;  Mean   :   17.64   Mean   :   114.4   Mean   :   77.35   Mean   :8.020e+02  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:   18.58   3rd Qu.:    60.0   3rd Qu.:   43.00   3rd Qu.:4.549e+02  </span></span>
+<span><span class="co">#&gt;  Max.   :18360.00   Max.   :150843.0   Max.   :69907.00   Max.   :1.148e+06  </span></span>
 <span><span class="co">#&gt;  NA's   :821        NA's   :821        NA's   :821        NA's   :821        </span></span>
 <span><span class="co">#&gt;     NAISD15            DECESD15           P14_LOG              P14_RP         </span></span>
-<span><span class="co">#&gt;  Min.   :    0.00   Min.   :    0.00   Min.   :      0.0   Min.   :      0.0  </span></span>
-<span><span class="co">#&gt;  1st Qu.:    1.00   1st Qu.:    1.00   1st Qu.:    115.0   1st Qu.:     83.8  </span></span>
-<span><span class="co">#&gt;  Median :    4.00   Median :    3.00   Median :    239.1   Median :    183.2  </span></span>
-<span><span class="co">#&gt;  Mean   :   21.96   Mean   :   16.47   Mean   :    970.2   Mean   :    802.0  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:   11.00   3rd Qu.:    9.00   3rd Qu.:    565.0   3rd Qu.:    454.9  </span></span>
-<span><span class="co">#&gt;  Max.   :28267.00   Max.   :13997.00   Max.   :1362181.9   Max.   :1147990.9  </span></span>
+<span><span class="co">#&gt;  Min.   :    0.00   Min.   :    0.00   Min.   :      0.0   Min.   :0.000e+00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:    1.00   1st Qu.:    1.00   1st Qu.:    115.0   1st Qu.:8.381e+01  </span></span>
+<span><span class="co">#&gt;  Median :    4.00   Median :    3.00   Median :    239.1   Median :1.832e+02  </span></span>
+<span><span class="co">#&gt;  Mean   :   21.97   Mean   :   16.47   Mean   :    970.2   Mean   :8.020e+02  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:   11.00   3rd Qu.:    9.00   3rd Qu.:    565.0   3rd Qu.:4.549e+02  </span></span>
+<span><span class="co">#&gt;  Max.   :28267.00   Max.   :13997.00   Max.   :1362181.9   Max.   :1.148e+06  </span></span>
 <span><span class="co">#&gt;  NA's   :821        NA's   :821        NA's   :821         NA's   :821        </span></span>
 <span><span class="co">#&gt;   P14_RSECOCC          P14_LOGVAC         P14_RP_PROP        NBMENFISC13       </span></span>
 <span><span class="co">#&gt;  Min.   :     0.00   Min.   :     0.00   Min.   :     0.0   Min.   :     32.0  </span></span>
 <span><span class="co">#&gt;  1st Qu.:     7.00   1st Qu.:     8.00   1st Qu.:    68.4   1st Qu.:    102.0  </span></span>
 <span><span class="co">#&gt;  Median :    19.00   Median :    18.00   Median :   148.0   Median :    205.0  </span></span>
-<span><span class="co">#&gt;  Mean   :    91.63   Mean   :    76.60   Mean   :   462.2   Mean   :    809.7  </span></span>
+<span><span class="co">#&gt;  Mean   :    91.64   Mean   :    76.60   Mean   :   462.2   Mean   :    809.7  </span></span>
 <span><span class="co">#&gt;  3rd Qu.:    49.29   3rd Qu.:    43.75   3rd Qu.:   349.2   3rd Qu.:    484.0  </span></span>
 <span><span class="co">#&gt;  Max.   :107061.99   Max.   :107129.02   Max.   :381934.3   Max.   :1038789.0  </span></span>
 <span><span class="co">#&gt;  NA's   :821         NA's   :821         NA's   :821        NA's   :3793       </span></span>
-<span><span class="co">#&gt;      PIMP13          MED13           TP6013        P14_EMPLT        </span></span>
-<span><span class="co">#&gt;  Min.   :24.46   Min.   :10021   Min.   : 5.00   Min.   :      0.0  </span></span>
-<span><span class="co">#&gt;  1st Qu.:50.57   1st Qu.:18452   1st Qu.: 8.73   1st Qu.:     26.0  </span></span>
-<span><span class="co">#&gt;  Median :58.40   Median :19844   Median :11.97   Median :     66.8  </span></span>
-<span><span class="co">#&gt;  Mean   :58.98   Mean   :20250   Mean   :13.35   Mean   :    733.9  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:67.19   3rd Qu.:21563   3rd Qu.:16.80   3rd Qu.:    229.5  </span></span>
-<span><span class="co">#&gt;  Max.   :89.38   Max.   :46251   Max.   :44.84   Max.   :1801865.8  </span></span>
-<span><span class="co">#&gt;  NA's   :31598   NA's   :3793    NA's   :32531   NA's   :821        </span></span>
+<span><span class="co">#&gt;      PIMP13          MED13           TP6013         P14_EMPLT        </span></span>
+<span><span class="co">#&gt;  Min.   :24.46   Min.   :10021   Min.   : 5.000   Min.   :0.000e+00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:50.57   1st Qu.:18452   1st Qu.: 8.734   1st Qu.:2.604e+01  </span></span>
+<span><span class="co">#&gt;  Median :58.40   Median :19844   Median :11.970   Median :6.675e+01  </span></span>
+<span><span class="co">#&gt;  Mean   :58.98   Mean   :20250   Mean   :13.354   Mean   :7.339e+02  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:67.19   3rd Qu.:21563   3rd Qu.:16.797   3rd Qu.:2.295e+02  </span></span>
+<span><span class="co">#&gt;  Max.   :89.38   Max.   :46251   Max.   :44.836   Max.   :1.802e+06  </span></span>
+<span><span class="co">#&gt;  NA's   :31598   NA's   :3793    NA's   :32531    NA's   :821        </span></span>
 <span><span class="co">#&gt;  P14_EMPLT_SAL         P09_EMPLT          P14_POP1564       </span></span>
-<span><span class="co">#&gt;  Min.   :      0.0   Min.   :      0.0   Min.   :      0.0  </span></span>
-<span><span class="co">#&gt;  1st Qu.:     13.0   1st Qu.:     26.1   1st Qu.:    120.3  </span></span>
-<span><span class="co">#&gt;  Median :     42.0   Median :     65.2   Median :    275.0  </span></span>
-<span><span class="co">#&gt;  Mean   :    637.8   Mean   :    716.4   Mean   :   1165.0  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:    173.4   3rd Qu.:    220.6   3rd Qu.:    684.8  </span></span>
-<span><span class="co">#&gt;  Max.   :1562078.5   Max.   :1805470.4   Max.   :1554076.1  </span></span>
+<span><span class="co">#&gt;  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :      0.0  </span></span>
+<span><span class="co">#&gt;  1st Qu.:1.299e+01   1st Qu.:2.608e+01   1st Qu.:    120.3  </span></span>
+<span><span class="co">#&gt;  Median :4.199e+01   Median :6.518e+01   Median :    275.0  </span></span>
+<span><span class="co">#&gt;  Mean   :6.378e+02   Mean   :7.164e+02   Mean   :   1165.0  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:1.734e+02   3rd Qu.:2.206e+02   3rd Qu.:    684.8  </span></span>
+<span><span class="co">#&gt;  Max.   :1.562e+06   Max.   :1.805e+06   Max.   :1554076.1  </span></span>
 <span><span class="co">#&gt;  NA's   :821         NA's   :9           NA's   :821        </span></span>
 <span><span class="co">#&gt;   P14_CHOM1564        P14_ACT1564           ETTOT14             ETAZ14      </span></span>
-<span><span class="co">#&gt;  Min.   :     0.00   Min.   :      0.0   Min.   :     0.0   Min.   :  0.00  </span></span>
-<span><span class="co">#&gt;  1st Qu.:     8.85   1st Qu.:     90.5   1st Qu.:    19.0   1st Qu.:  4.00  </span></span>
-<span><span class="co">#&gt;  Median :    20.45   Median :    208.3   Median :    38.0   Median :  7.00  </span></span>
-<span><span class="co">#&gt;  Mean   :   119.75   Mean   :    855.8   Mean   :   179.3   Mean   : 11.36  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:    51.78   3rd Qu.:    518.0   3rd Qu.:    92.0   3rd Qu.: 14.00  </span></span>
-<span><span class="co">#&gt;  Max.   :144515.41   Max.   :1202565.3   Max.   :551952.0   Max.   :587.00  </span></span>
+<span><span class="co">#&gt;  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :     0.0   Min.   :  0.00  </span></span>
+<span><span class="co">#&gt;  1st Qu.:8.846e+00   1st Qu.:9.047e+01   1st Qu.:    19.0   1st Qu.:  4.00  </span></span>
+<span><span class="co">#&gt;  Median :2.045e+01   Median :2.083e+02   Median :    38.0   Median :  7.00  </span></span>
+<span><span class="co">#&gt;  Mean   :1.197e+02   Mean   :8.558e+02   Mean   :   179.3   Mean   : 11.36  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:5.178e+01   3rd Qu.:5.180e+02   3rd Qu.:    92.0   3rd Qu.: 14.00  </span></span>
+<span><span class="co">#&gt;  Max.   :1.445e+05   Max.   :1.203e+06   Max.   :551952.0   Max.   :587.00  </span></span>
 <span><span class="co">#&gt;  NA's   :821         NA's   :821         NA's   :25         NA's   :25      </span></span>
 <span><span class="co">#&gt;      ETBE14              ETFZ14             ETGU14             ETGZ14        </span></span>
 <span><span class="co">#&gt;  Min.   :    0.000   Min.   :    0.00   Min.   :     0.0   Min.   :    0.00  </span></span>
 <span><span class="co">#&gt;  1st Qu.:    1.000   1st Qu.:    2.00   1st Qu.:     7.0   1st Qu.:    1.00  </span></span>
 <span><span class="co">#&gt;  Median :    3.000   Median :    5.00   Median :    17.0   Median :    4.00  </span></span>
-<span><span class="co">#&gt;  Mean   :    9.417   Mean   :   18.18   Mean   :   116.1   Mean   :   28.73  </span></span>
+<span><span class="co">#&gt;  Mean   :    9.418   Mean   :   18.19   Mean   :   116.1   Mean   :   28.73  </span></span>
 <span><span class="co">#&gt;  3rd Qu.:    7.000   3rd Qu.:   12.00   3rd Qu.:    47.0   3rd Qu.:   13.00  </span></span>
 <span><span class="co">#&gt;  Max.   :15181.000   Max.   :24528.00   Max.   :462763.0   Max.   :65004.00  </span></span>
 <span><span class="co">#&gt;  NA's   :25          NA's   :25         NA's   :25         NA's   :25        </span></span>
@@ -772,7 +771,7 @@ population et le taux de mortalité<br>
 (paramètre color de <code>aes()</code>)</li>
 </ul>
 <p>Résultat attendu :</p>
-<p><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-33-1.png" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-33-2.png" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-33-3.png" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-33-4.png" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-33-5.png" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-33-6.png" width="700"></p>
+<p><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-33-1.png" class="r-plt" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-33-2.png" class="r-plt" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-33-3.png" class="r-plt" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-33-4.png" class="r-plt" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-33-5.png" class="r-plt" width="700"><img src="m01_exercices_module_introduction_a_R_files/figure-html/unnamed-chunk-33-6.png" class="r-plt" width="700"></p>
 </div>
   </div>
 
@@ -791,7 +790,7 @@ population et le taux de mortalité<br>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>
