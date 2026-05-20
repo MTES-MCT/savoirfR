@@ -1,0 +1,8 @@
+---
+title: "Infographie de fromagerie, camemberts interdits !!"
+author: "Nicolas Torterotot"
+date: "`r Sys.Date()`"
+output:
+  html_document :
+    theme: flatly
+---

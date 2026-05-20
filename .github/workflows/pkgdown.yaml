@@ -39,6 +39,7 @@ jobs:
           install.packages("remotes")
           remotes::install_deps(dependencies = TRUE)
           install.packages("pkgdown")
+          install.packages("fs")
         shell: Rscript {0}
 
       - name: Install police Marianne
@@ -62,6 +63,9 @@ jobs:
           writeLines(vignette_m5_cor, "docs/articles/m05_exercices_module_datavisualisation_R.html")
           cat("Mise du rmd du chap 5 dans l'artifact pour comprendre pourquoi le resultat attendu est NULL")
           file.copy("vignettes/m05_exercices_module_datavisualisation_R.Rmd", to = "docs/articles/vign_M5.Rmd")
+          cat("rendu specifique pour le M6 R Markdown")
+          rmarkdown::render_site(input = "inst/rstudio/templates/project/ressources/m6/corrections/")
+          fs::dir_copy(path = "inst/rstudio/templates/project/ressources/m6/corrections/cheesedown", "docs/cheesedown")
         shell: Rscript {0}
 
       - name: Deploy to GitHub pages 🚀

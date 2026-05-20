@@ -56,3 +56,5 @@ extract_r_files(module = 5)
 extract_r_files(module = 7)
 
 usethis::use_github_action("check-release")
+
+rmarkdown::render_site(input = "inst/rstudio/templates/project/ressources/m6/corrections/")

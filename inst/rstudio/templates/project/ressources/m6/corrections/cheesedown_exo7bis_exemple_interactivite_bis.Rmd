@@ -1,0 +1,267 @@
+---
+title: "Infographie de fromagerie, camemberts interdits !!"
+author: "Nicolas Torterotot"
+date: "`r Sys.Date()`"
+output:
+  html_document :
+    theme: flatly
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+<br>
+
+::: {style="display: table; margin: auto;"}
+<img src="img/Quels-sont-les-fromages-a-deguster-en-automne.webp" width="435"/>
+
+<p style="font-size: 0.75em; color: #666; margin-top: 4px;">
+
+© Olga Yastremska / iStock images
+
+</p>
+:::
+
+<br>
+
+La présente infographie se veut être un exemple parfaitement inutile de ce qu'on peut produire à l'aide du format Rmarkdown.
+
+On y présentera :
+
+- les possibilités rédactionnelles et de mise en page pour mettre en valeur le **fromage** ;
+- l'intégration d'images, graphiques et cartes pour mieux voir le ![](img/small_cheese.png){width="30" height="24"} ;
+- les possibilité de génération automatique à partir d'une série de paramètres pour toujours plus de fromage ;
+- un peu d'interactivité pour du fromage 2.0.
+
+### 1. Au début était le lait
+
+Pour commencer, il nous faut récupérer de la donnée. Nous allons travailler sur les informations du site [www.cheese.com](https://www.cheese.com/). Nous nous appuyons pour cela sur l'exemple proposé pour l'évènement [tidytuesday du 4 juin 2024](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-06-04/readme.md).
+
+```{r, include=FALSE}
+
+library(tidyverse)
+library(tidytuesdayR)
+
+tuesdata <- tidytuesdayR::tt_load('2024-06-04')
+
+data_fromage <- tuesdata$cheeses
+
+```
+
+### 2. Premières observations
+
+Notre jeu de données contient des informations sur **`r nrow(data_fromage)` fromages**.
+
+On constate tout de suite une grande infamie, **un biais terrible**, [**un crime de lèse fromajesté**]{style="font-size: 2rem;"} :
+
+```{r}
+data_FRomage <- data_fromage %>% 
+  mutate(origine = if_else(country == "France", "FR", "non FR")) %>% 
+  filter(!is.na(origine))
+```
+
+```{r, fig.align = 'center'}
+library(gouvdown)
+library(ggpattern)
+
+ggplot(data_FRomage) +
+  geom_bar(aes(x = origine, fill = origine)) +
+  geom_bar_pattern(data = data_FRomage[data_FRomage$origine == "FR",],
+                   aes(x = origine),
+                   pattern = 'image',
+                   pattern_filename = 'img/Flag_of_France.svg',
+                   fill = 'gold',
+                   width = 0.8,
+                   height = 0.8) +
+  geom_hline(yintercept = 1200, color = 'red') +
+  annotate('label', x = 'non FR', y = 1280,
+           label = "Nombre de fromages français selon le Centre\n National Interprofessionnel de l'Économie Laitière",
+           color = 'red',
+           size = 3) +
+  scale_fill_manual(values = c("FR" = 'gold', "non FR" = '#AB8763', 'NA' = 'darkgrey'))+
+  scale_y_continuous(breaks = seq(0, 1200, 200))+
+  labs(title = "Nombre de fromages référencés sur cheese.com par origine") +
+  theme_gouv(plot_title_size = 12) +
+  theme(legend.position = 'none',
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major.y = element_blank())+
+  coord_cartesian(clip = 'off')
+
+
+```
+
+### 3. Fromage 2.0
+
+#### a - Widget html
+
+```{r}
+fata_fromage <- tuesdata$cheeses %>% 
+  filter_out(when_any(is.na(fat_content),
+                      is.na(type))) %>% 
+  mutate(type = replace_when(type,
+                             str_detect(type, 'soft') ~ 'molle',
+                             str_detect(type, 'firm') ~ 'ferme',
+                             str_detect(type, 'hard') ~ 'dure')) %>%
+  mutate(fat_content = as.numeric(str_extract(fat_content, "^\\d+(\\.\\d+)?")))
+
+```
+
+```{r}
+library(ggiraph)
+
+mgg <- ggplot(fata_fromage) +
+  geom_violin(aes(x = type,
+                  y = fat_content,
+                  fill = type)) +
+  geom_jitter_interactive(aes(x = type,
+                              y = fat_content,
+                              color = country,
+                              tooltip = paste(cheese,"-", country),
+                              data_id = cheese),
+                          height = 0,
+                          width = 0.2
+  )+
+  scale_fill_manual(values = c("dure" = "#EEDC82", "ferme" = "#FFFACD", "molle" = "#FFFAF0")) +
+  theme_gouv(plot_title_size = 12,
+             subtitle_size = 12) +
+  labs(title = "% de matière grasse par type de pâte de fromage",
+       subtitle = "Monde entier",
+       x = "Type de pâte",
+       y = "% de matière grasse") +
+  theme(legend.position = 'none')
+
+
+girafe(mgg,
+       options = list(opts_hover(css = "cursor:grab;stroke:red;")))
+
+
+```
+
+#### b - Crosstalk, de la datafromage à partager
+
+```{r}
+library(crosstalk)
+
+
+fromage_partage <- SharedData$new(fata_fromage)
+
+```
+
+```{r}
+library(plotly)
+
+filter_select(id = "filtre_pays", label = "Choisissez un pays", sharedData = fromage_partage, group = ~country)
+
+mgg_partage <- ggplot() +
+  geom_violin(data = fromage_partage,
+              aes(x = "",
+                  y = fat_content)) +
+  geom_jitter(data = fromage_partage,
+              aes(x = "",
+                  y = fat_content,
+                  color = country),
+              height = 0,
+              width = 0.2
+  )+
+  theme_gouv(plot_title_size = 12,
+             subtitle_size = 12) +
+  labs(title = "% de matière grasse dans les fromage",
+       subtitle = fromage_partage$country[1],
+       y = "% de matière grasse") +
+  theme(legend.position = 'none')
+
+ggplotly(mgg_partage)
+
+
+
+plot_ly(fromage_partage,
+        y = ~fat_content,
+        type = "violin",
+        box = list(visible = TRUE),
+        points = "all",
+        jitter = 0.3,
+        pointpos = 0) |>
+  layout(title = "% de matière grasse dans les fromages",
+         yaxis = list(title = "% de matière grasse"),
+         showlegend = FALSE)
+
+
+```
+
+#### c - Shiny et JavaScript pour aller ~~plus~~ **trop** loin
+
+<br>
+
+```{r}
+library(shiny)
+
+
+addResourcePath("www", "www")
+
+
+radioButtons("party", label = NULL,
+             choices = c("keep it professional" = FALSE, "let's party" = TRUE),
+             selected = FALSE)
+
+renderUI({
+  req(input$party ==  TRUE)
+  tags$audio(src = "www/muzika_loop.mp3", type = "audio/mp3", autoplay = TRUE, controls = NA, style="display:none;", loop = TRUE)
+})
+
+renderUI({
+  req(input$party ==  TRUE)
+  tags$head(
+    tags$style(
+      HTML("
+  .h1, .h2, .h3, .h4, .h5, .h6, .p, h1, h2, h3, h4, h5, h6, p, li, .control-label, .selectize-input, .main-svg, .ggiraph-svg-rootg {
+  animation: blinker 0.2s linear infinite;
+  color: #9400D3;
+  }
+
+  @keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+  }
+  body {
+  background-color: #52b788;
+  }
+                  ")
+    )
+  )
+})
+
+renderUI({
+  req(input$party ==  FALSE)
+  tags$head(
+    tags$style(
+      HTML("
+  .h1, .h2, .h3, .h4, .h5, .h6, .p, h1, h2, h3, h4, h5, h6, p, li, .shiny-plot-output, .control-label, .selectize-input, .main-svg, .ggiraph-svg-rootg{
+  color: #000000;
+  animation: none;
+  }
+  body {
+  background-color: #ffffff;
+  }
+                  ")
+    )
+  )
+})
+
+renderUI({
+  req(input$party ==  TRUE)
+  fixedPanel(
+    div(img(src = "www/jb.gif", align = "center"), style="text-align: center;"),
+    left = "10vw",
+    top = "10vw"
+  )})
+
+```

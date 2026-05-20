@@ -1,0 +1,19 @@
+name: "cheesedown"
+output_dir: cheesedown
+navbar:
+  title: "Cheesedown - Rendu des exercices M6 savoirfR"
+  left:
+    - text: "Exercice 1"
+      href: cheesedown_exo1.html
+    - text: "Exercice 2"
+      href: cheesedown_exo2.html
+    - text: "Exercice 3"
+      href: cheesedown_exo3.html    
+    - text: "Exercice 4"
+      href: cheesedown_exo4.html   # mettre un menu pour le cheesedown_exo4.odt et le cheesedown_exo4.pdf
+    - text: "Exercice 5"
+      href: cheesedown_exo5_params.html   
+    - text: "Exercice 7"           # regrouper en sous menu 7 et 7 variante
+      href: cheesedown_exo7_interactivite.html   
+    - text: "Exercice 7 variante"
+      href: cheesedown_exo7bis_exemple_interactivite_bis.html  
