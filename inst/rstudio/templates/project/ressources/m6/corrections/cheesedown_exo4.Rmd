@@ -24,6 +24,11 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+xfun::session_info('rmarkdown')
+```
+
 <br>
 
 ::: {style="display: table; margin: auto;"}
