@@ -37,6 +37,8 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages("remotes")
+          cat("Installation de santoku depuis github, temporaire, le temps que santoku retourne sur le CRAN")
+          remotes::install_github("hughjonesd/santoku") 
           remotes::install_deps(dependencies = TRUE)
           install.packages("pkgdown")
           install.packages("fs")
