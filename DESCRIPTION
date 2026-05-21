@@ -76,7 +76,6 @@ Suggests:
     variousdata
 VignetteBuilder: knitr
 Remotes: 
-    hrbrmstr/hrbrthemes,
     maeltheuliere/COGiter,
     MaelTheuliere/variousdata,
     spyrales/gouvdown,

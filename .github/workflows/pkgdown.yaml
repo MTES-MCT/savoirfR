@@ -32,7 +32,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update -y && sudo apt-get install -y libavfilter-dev libudunits2-dev libgdal-dev libgeos-dev libproj-dev
-          sudo snap install gifski
+          sudo apt-get install -y gifski
 
       - name: Install dependencies
         run: |
