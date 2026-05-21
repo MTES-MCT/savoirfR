@@ -13,7 +13,7 @@ name: pkgdown
 
 jobs:
   pkgdown:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04 # repasser en ubuntu-22.04 quand le package {magick} sera compatible avec la version ImageMagick 7 + libmagick++‑7.q16‑dev délivré par la dernière version de ubuntu
     # Only restrict concurrency for non-PR jobs
     concurrency:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
@@ -32,7 +32,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update -y && sudo apt-get install -y libavfilter-dev libudunits2-dev libgdal-dev libgeos-dev libproj-dev
-          sudo apt install imagemagick 
+          sudo apt-get install imagemagick 
           sudo apt-get install -y cargo libavif-dev libpng-dev pkg-config
           cargo install gifski
 
