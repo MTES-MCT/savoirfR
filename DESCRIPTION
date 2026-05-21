@@ -61,6 +61,7 @@ Suggests:
     jsonlite,
     kableExtra,
     lubridate,
+    magick,
     mapfactory,
     plotly,
     RcppRoll,
