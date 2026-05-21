@@ -2,7 +2,7 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, 8-bascule-exercices-m6]
   pull_request:
     branches: [main, master]
   release:
@@ -32,14 +32,16 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update -y && sudo apt-get install -y libavfilter-dev libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+          sudo apt-get install -y libmagick++-dev
           sudo apt-get install -y cargo libavif-dev libpng-dev pkg-config
           cargo install gifski
 
       - name: Install dependencies
         run: |
           install.packages("remotes")
-          cat("Installation de santoku depuis github, temporaire, le temps que santoku retourne sur le CRAN")
+          cat("Installation de santoku + magick depuis github, temporaire, le temps que santoku retourne sur le CRAN et que magick version CRAN soit compatible avec ubuntu 24.04 qui fournit ImageMagick 7")
           remotes::install_github("hughjonesd/santoku") 
+          remotes::install_github("ropensci/magick")
           remotes::install_deps(dependencies = TRUE)
           install.packages("pkgdown")
           install.packages("fs")
