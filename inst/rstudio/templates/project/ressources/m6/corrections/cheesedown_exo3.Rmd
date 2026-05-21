@@ -14,6 +14,10 @@ knitr::opts_chunk$set(
   message = FALSE,
   warning = FALSE
 )
+
+library(gouvdown)
+library(ggpattern)
+library(magick)
 ```
 
 <br>
@@ -43,7 +47,7 @@ On y présentera :
 
 Pour commencer, il nous faut récupérer de la donnée. Nous allons travailler sur les informations du site [www.cheese.com](https://www.cheese.com/). Nous nous appuyons pour cela sur l'exemple proposé pour l'évènement [tidytuesday du 4 juin 2024](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-06-04/readme.md).
 
-```{r, include=FALSE}
+```{r read_data_exo3, include=FALSE}
 
 library(tidyverse)
 library(tidytuesdayR)
@@ -60,15 +64,13 @@ Notre jeu de données contient des informations sur **`r nrow(data_fromage)` fro
 
 On constate tout de suite une grande infamie, **un biais terrible**, [**un crime de lèse fromajesté**]{style="font-size: 2rem;"} :
 
-```{r}
+```{r prep_data_exo3}
 data_FRomage <- data_fromage %>% 
   mutate(origine = if_else(country == "France", "FR", "non FR")) %>% 
   filter(!is.na(origine))
 ```
 
-```{r, fig.align = 'center'}
-library(gouvdown)
-library(ggpattern)
+```{r plot_data_exo3, fig.align = 'center'}
 
 ggplot(data_FRomage) +
   geom_bar(aes(x = origine, fill = origine)) +
