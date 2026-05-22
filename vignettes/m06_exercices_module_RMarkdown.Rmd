@@ -58,13 +58,9 @@ Les résultats des exercice sont à consulter sur <https://mtes-mct.github.io/sa
 ```{r mod6_exo7, child=charge_exo("m6", "exo7.rmd"), echo=FALSE}
 ```
 
-### Exercice 7 : tester l'interactivité, variante 
-
-```{r mod7_exo7, child=charge_exo("m6", "exo7bis.rmd"), echo=FALSE}
-```
 
 ## Exercice 8 facultatif : gitlab
 
-```{r mod7_exo7, child=charge_exo("m6", "exo7bis.rmd"), echo=FALSE}
+```{r mod7_exo7, child=charge_exo("m6", "exo8.rmd"), echo=FALSE}
 ```
 
