@@ -51,9 +51,9 @@ jobs:
           path: |
             ~/.TinyTeX
             ~/.cargo
-          key: ${{ runner.os }}-tex-cargo
-            restore-keys: |
-              ${{ runner.os }}-tex-
+          key: ${{ runner.os }}-tex-cargo 
+          restore-keys: |
+            ${{ runner.os }}-tex-
 
       # deps 4 packages R - installation et cache 
       # Note : installation de magick depuis github, le temps que magick version CRAN soit compatible avec ubuntu 24.04 qui fournit ImageMagick 7
