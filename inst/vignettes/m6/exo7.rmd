@@ -13,12 +13,12 @@ title: "Exercice 7 -  module 6"
 Résultat attendu : 
 
 ```{r, echo=FALSE}
-knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7_interactivite.html")
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7.html")
 ```
 
 
 Résultat attendu variante : 
 
 ```{r, echo=FALSE}
-knitr::include_url(url = "cheesedown_exo7bis_exemple_interactivite_bis.html")
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7bis.html")
 ```

@@ -45,5 +45,5 @@ ggplot(data_fromage) +
 Résultat attendu : 
 
 ```{r, echo=FALSE}
-knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo5_params.html")
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo5.html")
 ```
