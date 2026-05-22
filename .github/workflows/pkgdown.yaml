@@ -42,9 +42,22 @@ jobs:
       - name: Install linux libraries (deps 2)
         run: |
           sudo apt-get update
-          sudo apt-get install -y $(cat apt-packages.txt)
+          sudo apt-get install -y $(cat apt-packages.txt)  
+          
+      # deps 3 : packages système Linux - Cache TinyTeX et cargo
+      - name: Cache TinyTeX et cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.TinyTeX
+            ~/.cargo
+          key: ${{ runner.os }}-tex-cargo
+            restore-keys: |
+              ${{ runner.os }}-tex-
 
-      # deps 3 packages R - installation et cache 
+      # deps 4 packages R - installation et cache 
+      # Note : installation de magick depuis github, le temps que magick version CRAN soit compatible avec ubuntu 24.04 qui fournit ImageMagick 7
+      # Note : installation de santoku temporaire, le temps que santoku retourne sur le CRAN 			
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           cache-version: 2
@@ -52,21 +65,18 @@ jobs:
             pkgdown
             remotes
             tinytex
-            ropensci/magick     # Installation de magick depuis github, le temps que magick version CRAN soit compatible avec ubuntu 24.04 qui fournit ImageMagick 7
-            hughjonesd/santoku  # Installation de santoku temporaire, le temps que santoku retourne sur le CRAN 			
-          cache-extra: |
-            ~/.TinyTeX
-            ~/.cargo
+            ropensci/magick     
+            hughjonesd/santoku  
           needs: website	  
 
-      # deps 4 packages système Linux autre qu'APT, installation 
+      # deps 5 packages système Linux autre qu'APT, installation 
       - name: Install gifski et tinytex (deps 4)
         run: |
           cargo install gifski
           echo "$HOME/.cargo/bin" >> $GITHUB_PATH  # écrit le chemin ~/.cargo/bin dans la variable d’environnement PATH du runner.
           Rscript -e 'tinytex::install_tinytex()'
       
-      # deps 5  installation Marianne
+      # deps 6  installation Marianne
       - name: Install police Marianne (deps 5)
         run: |
           systemfonts::register_font(name = "Marianne extrabold", system.file("resources/fonts/marianne/truetype/Marianne-ExtraBold.ttf", package = "gouvdown.fonts")) 
