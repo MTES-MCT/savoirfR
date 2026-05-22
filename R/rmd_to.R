@@ -1,5 +1,5 @@
 
-#' Ressource path
+#' Ressource path : chemin vers les projets des stagiaires
 #'
 #' @param ... 
 #'
@@ -9,7 +9,7 @@ ressources_path <- function(...) {
   file.path("inst", "rstudio", "templates", "project", "ressources", ...)
 }
 
-#' Vignettes path
+#' Vignettes path : chemin vers les Rmd où sont saisis les exercices
 #'
 #' @param ... 
 #'
@@ -69,9 +69,9 @@ rmd_to_correction <- function(module, rmdfile) {
 #' @export
 rmd_to_enonce <- function(module, rmdfile) {
   out <- rmd_to(module = module,
-         rmdfile = rmdfile,
-         folder = "enonces",
-         purl = FALSE)
+                rmdfile = rmdfile,
+                folder = "enonces",
+                purl = FALSE)
   clean_r(rfile = out)
   out
 }
