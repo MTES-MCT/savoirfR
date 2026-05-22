@@ -6,4 +6,5 @@ inst/doc
 docs/
 *.html
 doc/
-**/cheesedown/**
+**/cheesedown/
+**/cheesedown_exo4_files/
