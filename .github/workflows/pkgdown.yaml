@@ -19,8 +19,9 @@ jobs:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -28,26 +29,45 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Install av on Linux
-        if: runner.os == 'Linux'
+      # deps 1 : packages système Linux - cache APT
+      - name: Cache deps linux (deps 1)
+        uses: actions/cache@v4
+        with:
+          path: /var/cache/apt/archives
+          key: ${{ runner.os }}-apt-${{ hashFiles('**/apt-packages.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-apt-   
+
+      # deps 2 : packages système Linux - installation
+      - name: Install linux libraries (deps 2)
         run: |
-          sudo apt-get update -y && sudo apt-get install -y libavfilter-dev libudunits2-dev libgdal-dev libgeos-dev libproj-dev
-          sudo apt-get install -y libmagick++-6.q16-dev 
-          sudo apt-get install -y cargo libavif-dev libpng-dev pkg-config
+          sudo apt-get update
+          sudo apt-get install -y $(cat apt-packages.txt)
+
+      # deps 3 packages R - installation et cache 
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 2
+          extra-packages: |
+            pkgdown
+            remotes
+            tinytex
+            ropensci/magick     # Installation de magick depuis github, le temps que magick version CRAN soit compatible avec ubuntu 24.04 qui fournit ImageMagick 7
+            hughjonesd/santoku  # Installation de santoku temporaire, le temps que santoku retourne sur le CRAN 			
+          cache-extra: |
+            ~/.TinyTeX
+            ~/.cargo
+          needs: website	  
+	  
+      # deps 4 packages système Linux autre qu'APT, installation 
+      - name: Install gifski et tinytex (deps 4)
+        run: |
           cargo install gifski
-
-      - name: Install dependencies
-        run: |
-          install.packages("remotes")
-          cat("Installation de santoku + magick depuis github, temporaire, le temps que santoku retourne sur le CRAN et que magick version CRAN soit compatible avec ubuntu 24.04 qui fournit ImageMagick 7")
-          remotes::install_github("hughjonesd/santoku") 
-          remotes::install_github("ropensci/magick")
-          remotes::install_deps(dependencies = TRUE)
-          install.packages("pkgdown")
-          install.packages("fs")
-        shell: Rscript {0}
-
-      - name: Install police Marianne
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH  # écrit le chemin ~/.cargo/bin dans la variable d’environnement PATH du runner.
+          Rscript -e 'tinytex::install_tinytex()'
+      
+      # deps 5  installation Marianne
+      - name: Install police Marianne (deps 5)
         run: |
           systemfonts::register_font(name = "Marianne extrabold", system.file("resources/fonts/marianne/truetype/Marianne-ExtraBold.ttf", package = "gouvdown.fonts")) 
           systemfonts::register_font(name = "Marianne", system.file("resources/fonts/marianne/truetype/Marianne-Regular.ttf", package = "gouvdown.fonts")) 
