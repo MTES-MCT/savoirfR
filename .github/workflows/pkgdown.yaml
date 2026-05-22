@@ -58,7 +58,7 @@ jobs:
             ~/.TinyTeX
             ~/.cargo
           needs: website	  
-	  
+
       # deps 4 packages système Linux autre qu'APT, installation 
       - name: Install gifski et tinytex (deps 4)
         run: |
