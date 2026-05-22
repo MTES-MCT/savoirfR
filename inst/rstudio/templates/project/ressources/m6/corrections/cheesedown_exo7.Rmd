@@ -5,7 +5,6 @@ date: "`r Sys.Date()`"
 output:
   html_document :
     theme: flatly
-runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -20,7 +19,7 @@ knitr::opts_chunk$set(
 <br>
 
 ::: {style="display: table; margin: auto;"}
-<img src="img/Quels-sont-les-fromages-a-deguster-en-automne.webp" width="435"/>
+<img src="img/fromage-automne.webp" width="435"/>
 
 <p style="font-size: 0.75em; color: #666; margin-top: 4px;">
 
@@ -35,7 +34,7 @@ La présente infographie se veut être un exemple parfaitement inutile de ce qu'
 
 On y présentera :
 
-- les possibilités rédactionnelles et de mise en page pour mettre en valeur le **fromage** ;
+- les possibilités rédactionnelles et de mise en page pour mettre en valeur le ***fromage*** ;
 - l'intégration d'images, graphiques et cartes pour mieux voir le ![](img/small_cheese.png){width="30" height="24"} ;
 - les possibilité de génération automatique à partir d'une série de paramètres pour toujours plus de fromage ;
 - un peu d'interactivité pour du fromage 2.0.
@@ -193,75 +192,5 @@ plot_ly(fromage_partage,
          yaxis = list(title = "% de matière grasse"),
          showlegend = FALSE)
 
-
-```
-
-#### c - Shiny et JavaScript pour aller ~~plus~~ **trop** loin
-
-<br>
-
-```{r}
-library(shiny)
-
-
-addResourcePath("www", "www")
-
-
-radioButtons("party", label = NULL,
-             choices = c("keep it professional" = FALSE, "let's party" = TRUE),
-             selected = FALSE)
-
-renderUI({
-  req(input$party ==  TRUE)
-  tags$audio(src = "www/muzika_loop.mp3", type = "audio/mp3", autoplay = TRUE, controls = NA, style="display:none;", loop = TRUE)
-})
-
-renderUI({
-  req(input$party ==  TRUE)
-  tags$head(
-    tags$style(
-      HTML("
-  .h1, .h2, .h3, .h4, .h5, .h6, .p, h1, h2, h3, h4, h5, h6, p, li, .control-label, .selectize-input, .main-svg, .ggiraph-svg-rootg {
-  animation: blinker 0.2s linear infinite;
-  color: #9400D3;
-  }
-
-  @keyframes blinker {
-  50% {
-    opacity: 0;
-  }
-  }
-  body {
-  background-color: #52b788;
-  }
-                  ")
-    )
-  )
-})
-
-renderUI({
-  req(input$party ==  FALSE)
-  tags$head(
-    tags$style(
-      HTML("
-  .h1, .h2, .h3, .h4, .h5, .h6, .p, h1, h2, h3, h4, h5, h6, p, li, .shiny-plot-output, .control-label, .selectize-input, .main-svg, .ggiraph-svg-rootg{
-  color: #000000;
-  animation: none;
-  }
-  body {
-  background-color: #ffffff;
-  }
-                  ")
-    )
-  )
-})
-
-renderUI({
-  req(input$party ==  TRUE)
-  fixedPanel(
-    div(img(src = "www/jb.gif", align = "center"), style="text-align: center;"),
-    left = "10vw",
-    top = "10vw"
-  )})
 
 ```

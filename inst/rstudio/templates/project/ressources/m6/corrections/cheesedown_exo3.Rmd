@@ -23,7 +23,7 @@ library(magick)
 <br>
 
 ::: {style="display: table; margin: auto;"}
-<img src="img/Quels-sont-les-fromages-a-deguster-en-automne.webp" width="435"/>
+<img src="img/fromage-automne.webp" width="435"/>
 
 <p style="font-size: 0.75em; color: #666; margin-top: 4px;">
 

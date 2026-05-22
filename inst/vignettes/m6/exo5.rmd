@@ -13,7 +13,7 @@ title: "Exercice 5 -  module 6"
 Par exemple, on peut regrouper les fromages par type simplifié et représenter le pourcentage de matières grasses par type.
 C'est l'occasion de découvrir ou re-découvrir certaines nouvelles fonctions de dplyr apparues en 2026 :
 
-```{r setup exo5, eval=FALSE, echo=TRUE}
+```{r setup M6_exo5, eval=FALSE, echo=TRUE}
 data_fromage <- tuesdata$cheeses %>% 
   filter_out(when_any(is.na(fat_content),
                       is.na(type))) %>% 
