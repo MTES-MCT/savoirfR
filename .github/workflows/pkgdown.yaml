@@ -74,7 +74,7 @@ jobs:
         run: |
           cargo install gifski
           echo "$HOME/.cargo/bin" >> $GITHUB_PATH  # écrit le chemin ~/.cargo/bin dans la variable d’environnement PATH du runner.
-          Rscript -e 'tinytex::install_tinytex()'
+          Rscript -e 'if(length(tinytex::tinytex_root(error = FALSE)) > 0) tinytex::install_tinytex()'
       
       # deps 6  installation Marianne
       - name: Install police Marianne (deps 5)
