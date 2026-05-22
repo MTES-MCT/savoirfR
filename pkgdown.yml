@@ -1,4 +1,4 @@
-pandoc: 3.1.11
+pandoc: 3.8.3
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
@@ -6,5 +6,6 @@ articles:
   m01_exercices_module_introduction_a_R: m01_exercices_module_introduction_a_R.html
   m02_exercices_module_datapreparation_R: m02_exercices_module_datapreparation_R.html
   m05_exercices_module_datavisualisation_R: m05_exercices_module_datavisualisation_R.html
+  m06_exercices_module_RMarkdown: m06_exercices_module_RMarkdown.html
   m07_exercices_module_analyse_spatiale_R: m07_exercices_module_analyse_spatiale_R.html
-last_built: 2025-11-18T12:08Z
+last_built: 2026-05-22T16:30Z
