@@ -9,16 +9,20 @@ title: "Exercice 7 -  module 6"
   - Créer une dataframe partagée à l'aide du package crosstalk
   - Utiliser cette dataframe partagée pour créer un filtre crosstalk sur la colonne country
   - Créer un widget interactif à partir de cette dataframe partagée
+  
+```{r, setup H exo7, eval=TRUE, echo=FALSE}
+H <- 2400
+```
 
 Résultat attendu : 
 
 ```{r, echo=FALSE}
-knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7.html")
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7.html", height = H)
 ```
 
 
 Résultat attendu variante : 
 
-```{r, echo=FALSE}
-knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7bis.html")
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7bis.html", height = H)
 ```

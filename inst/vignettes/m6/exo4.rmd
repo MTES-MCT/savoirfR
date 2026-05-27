@@ -9,9 +9,14 @@ En repartant du fichier .Rmd de l'exercice précédent :
   - Générer le document 
   - Ajouter un format de sortie à l'entête pour qu'il génère un document PDF et un document odt en plus du HTML. Rappel : il est important de vérifier la compatibilité des éléments produits par le code avec ce nouveau format.  
   
+```{r, setup H exo4, eval=TRUE, echo=FALSE}
+H <- 1800
+```
+
+
 Résultat attendu : 
 
-```{r, echo=FALSE}
-knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo4.html")
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo4.html", height = H)
 ```
 

@@ -73,6 +73,7 @@ Suggests:
     tidyr,
     tidyverse,
     tidytuesdayR,
+    tinytex,
     units,
     variousdata
 VignetteBuilder: knitr

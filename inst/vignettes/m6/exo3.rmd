@@ -8,7 +8,7 @@ title: "Exercice 3 -  module 6"
 - Créer un nouveau chapitre qui aura pour objet la présentation de quelques observations du jeu de données
 - Ajouter un chunk pour stocker les données utilisées dans une dataframe. Ni la dataframe, ni le code ne doivent s'afficher dans le document final. Pour récupérer les données tidytuesday :
 
-```{r setup exo3, eval=FALSE, echo=TRUE}
+```{r setup m6exo3, eval=FALSE, echo=TRUE}
 tuesdata <- tidytuesdayR::tt_load('2024-06-04')
 
 data_fromage <- tuesdata$cheeses
@@ -24,8 +24,12 @@ data_fromage <- tuesdata$cheeses
 
 - Générer le document
 
+```{r, setup H exo3, eval=TRUE, echo=FALSE}
+H <- 1600
+```
+
 Résultat attendu : 
 
-```{r, echo=FALSE}
-knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo3.html")
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo3.html", height = H)
 ```

@@ -1,6 +1,7 @@
 ---
 title: "Infographie de fromagerie, camemberts interdits !!"
 author: "Nicolas Torterotot"
+subtitle: "Exercice 4"
 date: "`r Sys.Date()`"
 output:
   gouvdown::html_gouv:

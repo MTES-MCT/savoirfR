@@ -1,5 +1,6 @@
 ---
 title: "Infographie de fromagerie, camemberts interdits !!"
+subtitle: "Exercice 1"
 author: "Nicolas Torterotot"
 date: "`r Sys.Date()`"
 output:

@@ -1,5 +1,5 @@
 ---
-title: "Exercices parcours R module 6 : Rapport reproductible avec Rmarkdown"
+title: "Exercices parcours R module 6 : rapports reproductibles avec R Markdown"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Exercices parcours R module 6 : Rapport reproductible avec Rmarkdown}
@@ -20,35 +20,35 @@ library(savoirfR)
 
 Les résultats des exercice sont à consulter sur <https://mtes-mct.github.io/savoirfR/cheesedown/>.
 
-# Exercice 1 : prise en main
+# Exercice 1 : prise en main (chap 3.2)
 
-```{r mod6_exo1, child=charge_exo("m6", "exo1.rmd"), echo=FALSE}
+```{r mod6_exo1, child=charge_exo("m6", "exo1.rmd"), echo=FALSE, out.height="300px"}
 ```
 
 <!-- TODO : mettre la numeration des chap -->
-# Exercice 2 (chap )
+# Exercice 2 (chap 3.5)
 
-```{r mod6_exo2, child=charge_exo("m6", "exo2.rmd"), echo=FALSE}
+```{r mod6_exo2, child=charge_exo("m6", "exo2.rmd"), echo=FALSE, out.height="620px"}
 ```
 
-# Exercice 3 (chap )
+# Exercice 3 (chap 4.4)
  
-```{r mod6_exo3, child=charge_exo("m6", "exo3.rmd"), echo=FALSE}
+```{r mod6_exo3, child=charge_exo("m6", "exo3.rmd"), echo=FALSE, out.height="1600px"}
 ```
      
 
-# Exercice 4 : multiple format de sortie (chap )
+# Exercice 4 : multiple format de sortie (chap 5.3)
 
-```{r mod6_exo4, child=charge_exo("m6", "exo4.rmd"), echo=FALSE}
+```{r mod6_exo4, child=charge_exo("m6", "exo4.rmd"), echo=FALSE, out.height="1800px"}
 ```
 
 
-# Exercice 5 : paramétrer un raport (chap 6.6)
+# Exercice 5 : paramétrer un rapport (chap 6.5)
 
-```{r mod6_exo5, child=charge_exo("m6", "exo5.rmd"), echo=FALSE}
+```{r mod6_exo5, child=charge_exo("m6", "exo5.rmd"), echo=FALSE, out.height="800px"}
 ```
 
-# Exercice 6 : tester bookdown (facultatif)
+# Exercice 6 : tester bookdown (chap 7.7, facultatif)
 
 ```{r mod6_exo6, child=charge_exo("m6", "exo6.rmd"), echo=FALSE}
 ```
@@ -59,7 +59,7 @@ Les résultats des exercice sont à consulter sur <https://mtes-mct.github.io/sa
 ```
 
 
-## Exercice 8 facultatif : gitlab
+## Exercice 8 facultatif : gitlab (chap 9.3, facultatif)
 
 ```{r mod7_exo7, child=charge_exo("m6", "exo8.rmd"), echo=FALSE}
 ```

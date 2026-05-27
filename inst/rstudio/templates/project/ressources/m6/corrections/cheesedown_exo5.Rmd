@@ -5,6 +5,7 @@ params:
   country: France
 output: html_document
 title: "La texture ne fait pas le gras - `r params$country`"
+subtitle: "Exercice 5"
 ---
 
 ```{r setup, include=FALSE}
