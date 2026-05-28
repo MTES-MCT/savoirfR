@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exercices parcours R module 6 : Rapport reproductible avec Rmarkdown • savoirfR</title>
+<title>Exercices parcours R module 6 : rapports reproductibles avec R Markdown • savoirfR</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -16,7 +16,7 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Exercices parcours R module 6 : Rapport reproductible avec Rmarkdown">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Exercices parcours R module 6 : rapports reproductibles avec R Markdown">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -66,7 +66,7 @@
       <a href="../articles/m05_exercices_module_datavisualisation_R.html">Exercices parcours R module 5 : datavisualisation</a>
     </li>
     <li>
-      <a href="../articles/m06_exercices_module_RMarkdown.html">Exercices parcours R module 6 : Rapport reproductible avec Rmarkdown</a>
+      <a href="../articles/m06_exercices_module_RMarkdown.html">Exercices parcours R module 6 : rapports reproductibles avec R Markdown</a>
     </li>
     <li>
       <a href="../articles/m07_exercices_module_analyse_spatiale_R.html">Exercices parcours R module 7 : analyse spatiale</a>
@@ -97,8 +97,8 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Exercices parcours R module 6 : Rapport
-reproductible avec Rmarkdown</h1>
+      <h1 data-toc-skip>Exercices parcours R module 6 : rapports
+reproductibles avec R Markdown</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/MTES-MCT/savoirfR/blob/8-bascule-exercices-m6/vignettes/m06_exercices_module_RMarkdown.Rmd" class="external-link"><code>vignettes/m06_exercices_module_RMarkdown.Rmd</code></a></small>
@@ -109,12 +109,10 @@ reproductible avec Rmarkdown</h1>
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MTES-MCT/savoirfR" class="external-link">savoirfR</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: replacing previous import 'stats::filter' by 'dplyr::filter' when</span></span>
-<span><span class="co">#&gt; loading 'savoirfR'</span></span></code></pre></div>
-<p>Les résultats des exercice sont à consulter sur <a href="https://mtes-mct.github.io/savoirfR/cheesedown/" class="external-link uri">https://mtes-mct.github.io/savoirfR/cheesedown/</a>.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MTES-MCT/savoirfR" class="external-link">savoirfR</a></span><span class="op">)</span></span></code></pre></div>
+<p>Les résultats des exercices sont à consulter sur <a href="https://mtes-mct.github.io/savoirfR/cheesedown/" class="external-link uri">https://mtes-mct.github.io/savoirfR/cheesedown/</a>.</p>
 <div class="section level2">
-<h2 id="exercice-1-prise-en-main">Exercice 1 : prise en main<a class="anchor" aria-label="anchor" href="#exercice-1-prise-en-main"></a>
+<h2 id="exercice-1-prise-en-main-chap-3-2">Exercice 1 : prise en main (chap 3.2)<a class="anchor" aria-label="anchor" href="#exercice-1-prise-en-main-chap-3-2"></a>
 </h2>
 <ul>
 <li>Ouvrir Rstudio</li>
@@ -126,12 +124,11 @@ reproductible avec Rmarkdown</h1>
 les correspondances entre fichier .Rmd et fichier html</li>
 </ul>
 <p>Résultat attendu :</p>
-<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/index.html" width="700" height="400px" data-external="1">
+<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/index.html" width="100%" height="300" data-external="1">
 </iframe>
-<!-- TODO : mettre la numeration des chap -->
 </div>
 <div class="section level2">
-<h2 id="exercice-2-chap">Exercice 2 (chap )<a class="anchor" aria-label="anchor" href="#exercice-2-chap"></a>
+<h2 id="exercice-2-chap-3-5">Exercice 2 (chap 3.5)<a class="anchor" aria-label="anchor" href="#exercice-2-chap-3-5"></a>
 </h2>
 <p>Nous allons travailler sur les informations du site <a href="https://www.cheese.com/" class="external-link">www.cheese.com</a>. Nous nous appuyons
 pour cela sur l’exemple proposé pour l’évènement <a href="https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-06-04/readme.md" class="external-link">tidytuesday
@@ -147,11 +144,11 @@ markdown.</li>
 final</li>
 </ul>
 <p>Résultat attendu :</p>
-<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo2.html" width="700" height="400px" data-external="1">
+<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo2.html" width="100%" height="620" data-external="1">
 </iframe>
 </div>
 <div class="section level2">
-<h2 id="exercice-3-chap">Exercice 3 (chap )<a class="anchor" aria-label="anchor" href="#exercice-3-chap"></a>
+<h2 id="exercice-3-chap-4-4">Exercice 3 (chap 4.4)<a class="anchor" aria-label="anchor" href="#exercice-3-chap-4-4"></a>
 </h2>
 <ul>
 <li>Poursuivre le fichier .Rmd de l’exercice précédent</li>
@@ -183,11 +180,11 @@ apparaître dans le document final, pas le code pour le créer.</p></li>
 <li><p>Générer le document</p></li>
 </ul>
 <p>Résultat attendu :</p>
-<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo3.html" width="700" height="400px" data-external="1">
+<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo3.html" width="100%" height="1600" data-external="1">
 </iframe>
 </div>
 <div class="section level2">
-<h2 id="exercice-4-multiple-format-de-sortie-chap">Exercice 4 : multiple format de sortie (chap )<a class="anchor" aria-label="anchor" href="#exercice-4-multiple-format-de-sortie-chap"></a>
+<h2 id="exercice-4-multiple-format-de-sortie-chap-5-3">Exercice 4 : multiple format de sortie (chap 5.3)<a class="anchor" aria-label="anchor" href="#exercice-4-multiple-format-de-sortie-chap-5-3"></a>
 </h2>
 <p>En repartant du fichier .Rmd de l’exercice précédent :</p>
 <ul>
@@ -201,15 +198,12 @@ vérifier la compatibilité des éléments produits par le code avec ce
 nouveau format.</li>
 </ul>
 <p>Résultat attendu :</p>
-<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo4.html" width="700" height="400px" data-external="1">
+<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo4.html" width="100%" height="1800" data-external="1">
 </iframe>
 </div>
 <div class="section level2">
-<h2 id="exercice-5-paramétrer-un-raport-chap-6-6">Exercice 5 : paramétrer un raport (chap 6.6)<a class="anchor" aria-label="anchor" href="#exercice-5-param%C3%A9trer-un-raport-chap-6-6"></a>
+<h2 id="exercice-5-paramétrer-un-rapport-chap-6-5">Exercice 5 : paramétrer un rapport (chap 6.5)<a class="anchor" aria-label="anchor" href="#exercice-5-param%C3%A9trer-un-rapport-chap-6-5"></a>
 </h2>
-<div class="section level3">
-<h3 id="exercice-5">Exercice 5<a class="anchor" aria-label="anchor" href="#exercice-5"></a>
-</h3>
 <ul>
 <li>Créer un nouveau .Rmd</li>
 <li>Ajouter comme paramètre dans le YAML le pays (country) en
@@ -255,17 +249,16 @@ partir d’une liste de pays</li>
 France, Italy, United States)</li>
 </ul>
 <p>Résultat attendu :</p>
-<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo5.html" width="700" height="400px" data-external="1">
+<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo5.html" width="100%" height="800" data-external="1">
 </iframe>
 </div>
-</div>
 <div class="section level2">
-<h2 id="exercice-6-tester-bookdown-facultatif">Exercice 6 : tester bookdown (facultatif)<a class="anchor" aria-label="anchor" href="#exercice-6-tester-bookdown-facultatif"></a>
+<h2 id="exercice-6-facultatif-tester-bookdown-chap-7-7">Exercice 6 facultatif : tester bookdown (chap 7.7)<a class="anchor" aria-label="anchor" href="#exercice-6-facultatif-tester-bookdown-chap-7-7"></a>
 </h2>
 <p>Expérimenter bookdown</p>
 </div>
 <div class="section level2">
-<h2 id="exercice-7-tester-linteractivité-chap-8-5-facultatif">Exercice 7 : tester l’interactivité (chap 8.5, facultatif)<a class="anchor" aria-label="anchor" href="#exercice-7-tester-linteractivit%C3%A9-chap-8-5-facultatif"></a>
+<h2 id="exercice-7-facultatif-tester-linteractivité-chap-8-5">Exercice 7 facultatif : tester l’interactivité (chap 8.5)<a class="anchor" aria-label="anchor" href="#exercice-7-facultatif-tester-linteractivit%C3%A9-chap-8-5"></a>
 </h2>
 <ul>
 <li>Repartir du .Rmd de l’exercice 4 au format HTML</li>
@@ -280,13 +273,10 @@ la colonne country</li>
 <li>Créer un widget interactif à partir de cette dataframe partagée</li>
 </ul>
 <p>Résultat attendu :</p>
-<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7.html" width="700" height="400px" data-external="1">
-</iframe>
-<p>Résultat attendu variante :</p>
-<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7bis.html" width="700" height="400px" data-external="1">
+<iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7.html" width="100%" height="2400" data-external="1">
 </iframe>
 <div class="section level3">
-<h3 id="exercice-8-facultatif-gitlab">Exercice 8 facultatif : gitlab<a class="anchor" aria-label="anchor" href="#exercice-8-facultatif-gitlab"></a>
+<h3 id="exercice-8-facultatif-gitlab-chap-9-3">Exercice 8 facultatif : gitlab (chap 9.3)<a class="anchor" aria-label="anchor" href="#exercice-8-facultatif-gitlab-chap-9-3"></a>
 </h3>
 <p>Expérimenter gitlab pages</p>
 </div>

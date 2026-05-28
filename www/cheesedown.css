@@ -1,0 +1,19 @@
+/* Force la navbar à rester toujours collapsée */
+.navbar-collapse.collapse {
+  display: none !important;
+}
+
+.navbar-collapse.collapse.in {
+  display: block !important;
+}
+
+.navbar-header .navbar-toggle {
+  display: block !important;
+}
+
+/* Empêche le menu de se déployer automatiquement sur les grands écrans */
+@media (min-width: 768px) {
+  .navbar-collapse {
+    display: none !important;
+  }
+}
