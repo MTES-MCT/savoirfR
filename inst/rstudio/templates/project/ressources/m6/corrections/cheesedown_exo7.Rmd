@@ -19,15 +19,9 @@ knitr::opts_chunk$set(
 
 <br>
 
-::: {style="display: table; margin: auto;"}
-<img src="img/fromage-automne.webp" width="435"/>
-
-<p style="font-size: 0.75em; color: #666; margin-top: 4px;">
-
-© Olga Yastremska / iStock images
-
-</p>
-:::
+```{r, fig.align='center', fig.cap="© Olga Yastremska / iStock images", out.width='435px'}
+knitr::include_graphics(path = "img/fromage-automne.webp")
+```
 
 <br>
 

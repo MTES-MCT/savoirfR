@@ -11,13 +11,9 @@ Le fichier markdown qui sera créé pendant toute cette formation parlera donc d
 N'hésitez pas à jouer avec la mise en forme du texte en syntaxe markdown.
 -   Appuyer sur `visual` pour avoir un aperçu du rendu final
 
-```{r, setup H exo2, eval=TRUE, echo=FALSE}
-H <- 620
-```
-
 Résultat attendu : 
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo2.html", height = H)
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo2.html", height = "620")
 ```
 

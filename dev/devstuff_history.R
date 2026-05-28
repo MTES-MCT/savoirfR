@@ -55,10 +55,10 @@ usethis::use_github_action("check-release")
 extract_r_files(module = 1)
 extract_r_files(module = 2)
 extract_r_files(module = 5)
-extract_r_files(module = 6)
+extract_r_files(module = 7)
 
 devtools::load_all()
 pkgdown::build_site()
 
-extract_r_files(module = 7)
+extract_r_files(module = 6)
 rmarkdown::render_site(input = "inst/rstudio/templates/project/ressources/m6/corrections/")

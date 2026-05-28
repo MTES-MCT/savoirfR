@@ -42,12 +42,8 @@ ggplot(data_fromage) +
   - Créer dans un nouveau script une fonction qui génère le HTML à partir d'une liste de pays
   - Appliquer cette fonction à une liste restreinte de pays (par exemple France, Italy, United States)
   
-```{r, setup H exo5, eval=TRUE, echo=FALSE}
-H <- 800
-```
-
 Résultat attendu : 
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo5.html", height = H)
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo5.html", height = "800")
 ```

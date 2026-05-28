@@ -24,12 +24,9 @@ data_fromage <- tuesdata$cheeses
 
 - Générer le document
 
-```{r, setup H exo3, eval=TRUE, echo=FALSE}
-H <- 1600
-```
-
 Résultat attendu : 
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo3.html", height = H)
+# savoirfR::eframe_m6(exercice = "exo3", suffixe_page)
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo3.html", height = "1600")
 ```

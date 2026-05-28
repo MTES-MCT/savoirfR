@@ -14,38 +14,39 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+
+```{r setup, message=FALSE, warning=FALSE}
 library(savoirfR)
 ```
 
-Les résultats des exercice sont à consulter sur <https://mtes-mct.github.io/savoirfR/cheesedown/>.
+Les résultats des exercices sont à consulter sur <https://mtes-mct.github.io/savoirfR/cheesedown/>.
 
 # Exercice 1 : prise en main (chap 3.2)
 
-```{r mod6_exo1, child=charge_exo("m6", "exo1.rmd"), echo=FALSE, out.height="300px"}
+```{r mod6_exo1, child=charge_exo("m6", "exo1.rmd"), echo=FALSE}
 ```
 
-<!-- TODO : mettre la numeration des chap -->
+
 # Exercice 2 (chap 3.5)
 
-```{r mod6_exo2, child=charge_exo("m6", "exo2.rmd"), echo=FALSE, out.height="620px"}
+```{r mod6_exo2, child=charge_exo("m6", "exo2.rmd"), echo=FALSE}
 ```
 
 # Exercice 3 (chap 4.4)
  
-```{r mod6_exo3, child=charge_exo("m6", "exo3.rmd"), echo=FALSE, out.height="1600px"}
+```{r mod6_exo3, child=charge_exo("m6", "exo3.rmd"), echo=FALSE}
 ```
      
 
 # Exercice 4 : multiple format de sortie (chap 5.3)
 
-```{r mod6_exo4, child=charge_exo("m6", "exo4.rmd"), echo=FALSE, out.height="1800px"}
+```{r mod6_exo4, child=charge_exo("m6", "exo4.rmd"), echo=FALSE}
 ```
 
 
 # Exercice 5 : paramétrer un rapport (chap 6.5)
 
-```{r mod6_exo5, child=charge_exo("m6", "exo5.rmd"), echo=FALSE, out.height="800px"}
+```{r mod6_exo5, child=charge_exo("m6", "exo5.rmd"), echo=FALSE}
 ```
 
 # Exercice 6 : tester bookdown (chap 7.7, facultatif)

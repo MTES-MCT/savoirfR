@@ -9,12 +9,14 @@ title: "Exercice 1 - module 6"
 -   Rajouter un theme spécifique
 -   Cliquer sur *knit* pour compiler le document et identifier les correspondances entre fichier .Rmd et fichier html
 
-```{r, setup H exo1, eval=TRUE, echo=FALSE}
-H <- 300
-```
 
 Résultat attendu :   
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/index.html", height = H)
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/index.html", height = "300")
 ```
+
+
+
+
+
