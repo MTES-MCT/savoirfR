@@ -28,6 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages("remotes")
+          remotes::install_github("hughjonesd/santoku")
           remotes::install_deps(dependencies = TRUE)
           install.packages("rcmdcheck")
         shell: Rscript {0}

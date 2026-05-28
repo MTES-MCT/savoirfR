@@ -9,7 +9,8 @@ exo_modules_skeleton(path, ...)
 \arguments{
 \item{path}{path where the project is create}
 
-\item{...}{params define by the user a the project creation}
+\item{...}{params define by the user a the project creation, dans notre cas module suivi par le stagiaire 
+(cf liste des parametres possible dans le fichier. dcf de `inst/rstudio/templates/project`)}
 }
 \value{
 create a project

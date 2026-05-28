@@ -12,5 +12,5 @@ rmd_to_enonce(module, rmdfile)
 \item{rmdfile}{"exo1.rmd"}
 }
 \description{
-rmd_to_enonce
+Mise en place d'un script de consignes à partir de l'exercice Rmd saisi dans `inst/vignettes`
 }

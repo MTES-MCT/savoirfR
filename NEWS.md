@@ -1,3 +1,11 @@
+# savoirfR 0.0.0.9011
+* Intégration exercices M6
+* Amélioration de la doc à l'intention des développeurs : + d'aide sur fonctions et enrichissement de la vignette "how to dev"
+* Adaptation des fonctions savoirFr aux spécificités du M6 (les rmd de corrections font l'objet d'un site à part cheesdown)
+
+# savoirfR 0.0.0.9010
+* Maintenance M7
+
 # savoirfR 0.0.0.9009
 * Maintenance M5
 

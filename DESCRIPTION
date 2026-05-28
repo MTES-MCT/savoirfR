@@ -1,6 +1,6 @@
 Package: savoirfR
 Title: Exercices for mtes-mctrct r course modules
-Version: 0.0.0.9010
+Version: 0.0.0.9011
 Authors@R: c(
     person(given = "Murielle",
            family = "Lethrosne",
@@ -47,10 +47,12 @@ Suggests:
     class,
     COGiter,
     cowplot,
+    crosstalk,
     forcats,
     gganimate,
     ggiraph,
     gifski,
+    ggpattern,
     ggplot2,
     gouvdown,
     gouvdown.fonts,
@@ -59,19 +61,23 @@ Suggests:
     jsonlite,
     kableExtra,
     lubridate,
+    magick,
     mapfactory,
+    plotly,
     RcppRoll,
     readxl,
     rmarkdown,
     sf,
+    shiny,
     systemfonts,
     tidyr,
     tidyverse,
+    tidytuesdayR,
+    tinytex,
     units,
     variousdata
 VignetteBuilder: knitr
 Remotes: 
-    hrbrmstr/hrbrthemes,
     maeltheuliere/COGiter,
     MaelTheuliere/variousdata,
     spyrales/gouvdown,

@@ -1,0 +1,99 @@
+---
+title: "Infographie de fromagerie, camemberts interdits !!"
+subtitle: "Exercice 3"
+author: "Nicolas Torterotot"
+date: "`r Sys.Date()`"
+output:
+  html_document :
+    theme: flatly
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+
+library(gouvdown)
+library(ggpattern)
+library(magick)
+```
+
+<br>
+
+```{r, fig.align='center', fig.cap="© Olga Yastremska / iStock images", out.width='435px'}
+knitr::include_graphics(path = "img/fromage-automne.webp")
+```
+
+
+<br>
+
+La présente infographie se veut être un exemple parfaitement inutile de ce qu'on peut produire à l'aide du format Rmarkdown.
+
+On y présentera :
+
+- les possibilités rédactionnelles et de mise en page pour mettre en valeur le ***fromage*** ;
+- l'intégration d'images, graphiques et cartes pour mieux voir le ![](img/small_cheese.png){width="30" height="24"} ;
+- les possibilité de génération automatique à partir d'une série de paramètres pour toujours plus de fromage ;
+- un peu d'interactivité pour du fromage 2.0.
+
+### 1. Au début était le lait
+
+Pour commencer, il nous faut récupérer de la donnée. Nous allons travailler sur les informations du site [www.cheese.com](https://www.cheese.com/). Nous nous appuyons pour cela sur l'exemple proposé pour l'évènement [tidytuesday du 4 juin 2024](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-06-04/readme.md).
+
+```{r read_data_exo3, include=FALSE}
+
+library(tidyverse)
+library(tidytuesdayR)
+
+tuesdata <- tidytuesdayR::tt_load('2024-06-04')
+
+data_fromage <- tuesdata$cheeses
+
+```
+
+### 2. Premières observations
+
+Notre jeu de données contient des informations sur **`r nrow(data_fromage)` fromages**.
+
+On constate tout de suite une grande infamie, **un biais terrible**, [**un crime de lèse fromajesté**]{style="font-size: 2rem;"} :
+
+```{r prep_data_exo3}
+data_FRomage <- data_fromage %>% 
+  mutate(origine = if_else(country == "France", "FR", "non FR")) %>% 
+  filter(!is.na(origine))
+```
+
+```{r plot_data_exo3, fig.align = 'center'}
+
+ggplot(data_FRomage) +
+  geom_bar(aes(x = origine, fill = origine)) +
+  geom_bar_pattern(data = data_FRomage[data_FRomage$origine == "FR",],
+                   aes(x = origine),
+                   pattern = 'image',
+                   pattern_filename = 'img/Flag_of_France.svg',
+                   fill = 'gold',
+                   width = 0.8,
+                   height = 0.8) +
+  geom_hline(yintercept = 1200, color = 'red') +
+  annotate('label', x = 'non FR', y = 1280,
+           label = "Nombre de fromages français selon le Centre\n National Interprofessionnel de l'Économie Laitière",
+           color = 'red',
+           size = 3) +
+  scale_fill_manual(values = c("FR" = 'gold', "non FR" = '#AB8763', 'NA' = 'darkgrey'))+
+  scale_y_continuous(breaks = seq(0, 1200, 200))+
+  labs(title = "Nombre de fromages référencés sur cheese.com par origine") +
+  theme_gouv(plot_title_size = 12) +
+  theme(legend.position = 'none',
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major.y = element_blank())+
+  coord_cartesian(clip = 'off')
+
+
+```
+
+
+

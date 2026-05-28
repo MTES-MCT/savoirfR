@@ -1,0 +1,47 @@
+---
+title: "Exercice 5 -  module 6"
+---  
+
+  - Créer un nouveau .Rmd
+  - Ajouter comme paramètre dans le YAML le pays (country) en choisissant "France" comme valeur par défaut
+  - Ajouter un titre pour qu'il dépende de ce paramètre
+  - Filtrer la dataframe en fonction de ce paramètre
+  - Ajouter un graphique construit à partir de cette dataframe filtrée. Son titre peut également dépendre du paramètre country. (voir la [page dédiée à la réalisation de graphique avec ggplot dans le module 5 du parcours R](https://mtes-mct.github.io/parcours_r_module_datavisualisation/package-ggplot2.html), ou réutiliser le code ci-dessous) 
+
+Par exemple, on peut regrouper les fromages par type simplifié et représenter le pourcentage de matières grasses par type.
+C'est l'occasion de découvrir ou re-découvrir certaines nouvelles fonctions de dplyr apparues en 2026 :
+
+```{r setup M6_exo5, eval=FALSE, echo=TRUE}
+data_fromage <- tuesdata$cheeses %>% 
+  filter_out(when_any(is.na(fat_content),
+                      is.na(type))) %>% 
+  mutate(type = replace_when(type,
+                             str_detect(type, 'soft') ~ 'molle',
+                             str_detect(type, 'firm') ~ 'ferme',
+                             str_detect(type, 'hard') ~ 'dure')) %>%
+  mutate(fat_content = as.numeric(str_extract(fat_content, "^\\d+(\\.\\d+)?"))) %>% 
+  filter(country==params$country)
+
+
+ggplot(data_fromage) +
+  geom_violin(aes(x = type, y = fat_content, fill = type)) +
+  scale_fill_manual(values = c("dure" = "#EEDC82", "ferme" = "#FFFACD", "molle" = "#FFFAF0")) +
+  theme_gouv(plot_title_size = 12,
+             subtitle_size = 12) +
+  labs(title = "% de matière grasse par type de pâte de fromage",
+       subtitle = params$country,
+       x = "Type de pâte",
+       y = "% de matière grasse") +
+  theme(legend.position = 'none')
+
+```
+
+  - Générer ce HTML à l'aide du bouton knit
+  - Créer dans un nouveau script une fonction qui génère le HTML à partir d'une liste de pays
+  - Appliquer cette fonction à une liste restreinte de pays (par exemple France, Italy, United States)
+  
+Résultat attendu : 
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo5.html", height = "800")
+```

@@ -12,5 +12,5 @@ rmd_to_correction(module, rmdfile)
 \item{rmdfile}{"exo1.rmd"}
 }
 \description{
-rmd_to_correction
+Mise en place d'un script de correction à partir de l'exercice Rmd saisi dans `inst/vignettes`
 }

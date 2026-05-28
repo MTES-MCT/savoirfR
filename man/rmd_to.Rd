@@ -2,7 +2,7 @@
 % Please edit documentation in R/rmd_to.R
 \name{rmd_to}
 \alias{rmd_to}
-\title{rmd_to}
+\title{rmd_to : fonction d'extraction Rmd primitive}
 \usage{
 rmd_to(module, rmdfile, folder = "corrections", purl = TRUE)
 }
@@ -16,11 +16,16 @@ rmd_to(module, rmdfile, folder = "corrections", purl = TRUE)
 \item{purl}{TRUE (pour extraire le code R) ou FALSE pour ignorer le code R}
 }
 \description{
-rmd_to
+Principe : la fonction `rmd_to()` extrait le code R de l'exercice saisi au format Rmd dans `inst/vignettes`, grâce à knitr::purl(), 
+puis l'injecte dans un script R qu'elle enregistre dans le projet mis a disposition du stagiaire (soit corrections, soit enonces).
+En fonction du paramètre `purl` on conserve ou non le code de la correction (TRUE pour le conserver, cas des scripts de correction)
+Les lignes de texte du Rmd initial sont passées en commentaires de script (débutant par #').
 }
 \examples{
 \dontrun{
 rmd_to(module = "m7", rmdfile = "exo2.rmd")
 }
-
+}
+\seealso{
+[knitr::purl()]
 }

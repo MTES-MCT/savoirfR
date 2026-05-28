@@ -7,6 +7,6 @@ Icon: m1.png
 Parameter: module
 Widget: SelectInput
 Label: Selectionner le module
-Fields: m1,m2,m3,m4,m5,m6,m7
+Fields: m1,m2,m3,m5,m6,m7
 Default: m1
 Position: left

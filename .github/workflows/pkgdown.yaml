@@ -13,14 +13,15 @@ name: pkgdown
 
 jobs:
   pkgdown:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04 # repasser en ubuntu-22.04 quand le package {magick} sera compatible avec la version ImageMagick 7 + libmagick++‑7.q16‑dev délivré par la dernière version de ubuntu
     # Only restrict concurrency for non-PR jobs
     concurrency:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -28,20 +29,55 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Install av on Linux
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update -y && sudo apt-get install -y libavfilter-dev libudunits2-dev libgdal-dev libgeos-dev libproj-dev
-          sudo snap install gifski
+      # deps 1 : packages système Linux - cache APT
+      - name: Cache deps linux (deps 1)
+        uses: actions/cache@v4
+        with:
+          path: /var/cache/apt/archives
+          key: ${{ runner.os }}-apt-${{ hashFiles('**/apt-packages.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-apt-   
 
-      - name: Install dependencies
+      # deps 2 : packages système Linux - installation
+      - name: Install linux libraries (deps 2)
         run: |
-          install.packages("remotes")
-          remotes::install_deps(dependencies = TRUE)
-          install.packages("pkgdown")
-        shell: Rscript {0}
+          sudo apt-get update
+          sudo apt-get install -y $(cat apt-packages.txt)  
+          
+      # deps 3 : packages système Linux - Cache TinyTeX et cargo
+      - name: Cache TinyTeX et cargo (deps 3)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.TinyTeX
+            ~/.cargo
+          key: ${{ runner.os }}-tex-cargo 
+          restore-keys: |
+            ${{ runner.os }}-tex-
 
-      - name: Install police Marianne
+      # deps 4 packages R - installation et cache 
+      # Note : installation de magick depuis github, le temps que magick version CRAN soit compatible avec ubuntu 24.04 qui fournit ImageMagick 7
+      # Note : installation de santoku temporaire, le temps que santoku retourne sur le CRAN 			
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 2
+          extra-packages: |
+            pkgdown
+            remotes
+            tinytex
+            ropensci/magick     
+            hughjonesd/santoku  
+          needs: website	  
+
+      # deps 5 packages système Linux autre qu'APT, installation 
+      - name: Install gifski et tinytex (deps 4)
+        run: |
+          cargo install gifski
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH  # écrit le chemin ~/.cargo/bin dans la variable d’environnement PATH du runner.
+          Rscript -e 'if(length(tinytex::tinytex_root(error = FALSE)) == 0) tinytex::install_tinytex()'
+      
+      # deps 6  installation Marianne
+      - name: Install police Marianne (deps 5)
         run: |
           systemfonts::register_font(name = "Marianne extrabold", system.file("resources/fonts/marianne/truetype/Marianne-ExtraBold.ttf", package = "gouvdown.fonts")) 
           systemfonts::register_font(name = "Marianne", system.file("resources/fonts/marianne/truetype/Marianne-Regular.ttf", package = "gouvdown.fonts")) 
@@ -55,6 +91,9 @@ jobs:
         
       - name: Build site
         run: |
+          cat("rendu specifique pour le M6 R Markdown")
+          rmarkdown::render_site(input = "inst/rstudio/templates/project/ressources/m6/corrections/")
+          cat("rendu site pkgdown principal")
           pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
           cat("correction du bug d'affichage dans avec gganimate, cf https://github.com/r-lib/pkgdown/issues/2334")
           vignette_m5 <- readLines("docs/articles/m05_exercices_module_datavisualisation_R.html")
@@ -62,6 +101,12 @@ jobs:
           writeLines(vignette_m5_cor, "docs/articles/m05_exercices_module_datavisualisation_R.html")
           cat("Mise du rmd du chap 5 dans l'artifact pour comprendre pourquoi le resultat attendu est NULL")
           file.copy("vignettes/m05_exercices_module_datavisualisation_R.Rmd", to = "docs/articles/vign_M5.Rmd")
+          cat("Site de corrections du M6 R Markdown : deplacement des dossiers ressources à la racine")
+          fs::dir_copy(path = "inst/rstudio/templates/project/ressources/m6/corrections/cheesedown", "docs/cheesedown", overwrite = TRUE)
+          fs::dir_copy(path = "docs/cheesedown/img", "docs/img", overwrite = TRUE)
+          fs::dir_copy(path = "docs/cheesedown/site_libs/", "docs/site_libs", overwrite = TRUE)
+          fs::dir_copy(path = "docs/cheesedown/www/", "docs/www", overwrite = TRUE)
+          list.files("docs/cheesedown", recursive = TRUE)
         shell: Rscript {0}
 
       - name: Deploy to GitHub pages 🚀

@@ -1,0 +1,11 @@
+libavfilter-dev
+libudunits2-dev
+libgdal-dev
+libgeos-dev
+libproj-dev
+libmagick++-6.q16-dev
+cargo
+libavif-dev
+libpng-dev
+.TinyTeX
+pkg-config

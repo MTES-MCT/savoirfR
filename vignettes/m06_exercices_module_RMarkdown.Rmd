@@ -1,0 +1,67 @@
+---
+title: "Exercices parcours R module 6 : rapports reproductibles avec R Markdown"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Exercices parcours R module 6 : Rapport reproductible avec Rmarkdown}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+```{r setup, message=FALSE, warning=FALSE}
+library(savoirfR)
+```
+
+Les résultats des exercices sont à consulter sur <https://mtes-mct.github.io/savoirfR/cheesedown/>.
+
+# Exercice 1 : prise en main (chap 3.2)
+
+```{r mod6_exo1, child=charge_exo("m6", "exo1.rmd"), echo=FALSE}
+```
+
+
+# Exercice 2 (chap 3.5)
+
+```{r mod6_exo2, child=charge_exo("m6", "exo2.rmd"), echo=FALSE}
+```
+
+# Exercice 3 (chap 4.4)
+ 
+```{r mod6_exo3, child=charge_exo("m6", "exo3.rmd"), echo=FALSE}
+```
+     
+
+# Exercice 4 : multiple format de sortie (chap 5.3)
+
+```{r mod6_exo4, child=charge_exo("m6", "exo4.rmd"), echo=FALSE}
+```
+
+
+# Exercice 5 : paramétrer un rapport (chap 6.5)
+
+```{r mod6_exo5, child=charge_exo("m6", "exo5.rmd"), echo=FALSE}
+```
+
+# Exercice 6 facultatif : tester bookdown (chap 7.7)
+
+```{r mod6_exo6, child=charge_exo("m6", "exo6.rmd"), echo=FALSE}
+```
+
+# Exercice 7 facultatif : tester l'interactivité (chap 8.5)
+
+```{r mod6_exo7, child=charge_exo("m6", "exo7.rmd"), echo=FALSE}
+```
+
+
+## Exercice 8 facultatif : gitlab (chap 9.3)
+
+```{r mod7_exo7, child=charge_exo("m6", "exo8.rmd"), echo=FALSE}
+```
+

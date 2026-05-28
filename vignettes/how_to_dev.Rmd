@@ -48,10 +48,16 @@ Ce chunk est nommé 'modY_exo1_solution'; par exemple :
 
 \ ```{r mod5_exo1_solution, message=FALSE, warning=FALSE}         
 
-
 Knitter la vignette pour vérifier qu'elle compile.
 
 N'oubliez pas de simuler l'installation du package avec `devtools::load_all(".")` ou lancez un `Install et Restart` pour que les fonctions `system.file()` puissent trouver les fichiers que vous venez d'ajouter dans `inst`.
+
+**Exception** : les corrections du module 6 Publications avec Rmarkdown sont des fichiers .Rmd entiers, on ne peut pas suivre le même process. 
+Les Rmd de correction sont à placer directement dans `inst/rstudio/templates/project/ressources/m6/corrections`. 
+Le résultat est présenté dans le support de cours ou dans le site de savoirfR par e-frame depuis <https://mtes-mct.github.io/savoirfR/cheesedown/>.  
+
+Dans le dossier qui centralise la saisie des exercices (inst/vignettes/m6), on ne met que la consigne de l'exercice + l'e-frame. 
+
 
 ## Propagation des exercices (consignes et solutions) aux différents endroits requis
 
@@ -64,13 +70,15 @@ Chaque énoncé/corrigé d'exercice doit figurer :
 La procédure proposée permet de tenir les différents supports cohérents entre eux au cours du temps et évite les multiples manipulations de mise à jour.
 
 ### Projet d'exercices du stagiaire
-Pour propager les vignettes d'exercice écrites précédemment vers le projet du stagiaire, exécuter `extract_r_files(module = Y)` et consignez le dans le devstuff_history.R s'il n'est pas déjà inscrit. 
+Pour propager les vignettes d'exercice écrites précédemment dans `inst/vignettes/nom_du_module/` vers le projet du stagiaire, exécuter `extract_r_files(module = Y)` et consignez-le dans le fichier `devstuff_history.R` du dossier `dev` s'il n'est pas déjà inscrit. 
 
 Vérifier que les fichiers R ont bien été extraits dans les dossiers :
 
 * `inst/rstudio/templates/project/ressources/mY/enonces`
 
 * `inst/rstudio/templates/project/ressources/mY/corrections`
+
+Les ajuster à la main au besoin.
 
 ### Créer ou modifier la vignette du module.  
 

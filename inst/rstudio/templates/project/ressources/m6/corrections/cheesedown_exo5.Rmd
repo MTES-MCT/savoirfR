@@ -1,0 +1,72 @@
+---
+author: "Nicolas Torterotot"
+date: "`r Sys.Date()`"
+params:
+  country: France
+output: html_document
+title: "La texture ne fait pas le gras - `r params$country`"
+subtitle: "Exercice 5"
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+
+```{r, include=FALSE}
+
+library(tidyverse)
+library(tidytuesdayR)
+library(gouvdown)
+
+tuesdata <- tidytuesdayR::tt_load('2024-06-04')
+
+data_fromage <- tuesdata$cheeses %>% 
+  filter_out(when_any(is.na(fat_content),
+                      is.na(type))) %>% 
+  mutate(type = replace_when(type,
+                             str_detect(type, 'soft') ~ 'molle',
+                             str_detect(type, 'firm') ~ 'ferme',
+                             str_detect(type, 'hard') ~ 'dure')) %>%
+  mutate(fat_content = as.numeric(str_extract(fat_content, "^\\d+(\\.\\d+)?"))) %>% 
+  filter(country==params$country)
+
+```
+
+```{r, fig.align='center'}
+
+ggplot(data_fromage) +
+  geom_violin(aes(x = type, y = fat_content, fill = type)) +
+  scale_fill_manual(values = c("dure" = "#EEDC82", "ferme" = "#FFFACD", "molle" = "#FFFAF0")) +
+  theme_gouv(plot_title_size = 12,
+             subtitle_size = 12) +
+  labs(title = "% de matière grasse par type de pâte de fromage",
+       subtitle = params$country,
+       x = "Type de pâte",
+       y = "% de matière grasse") +
+  theme(legend.position = 'none')
+
+```
+
+exécution pour plusieurs pays
+
+```{r plusieurs rapport, eval=FALSE}
+
+render_mg_pays <- function(pays){
+  rmarkdown::render("cheesedown_exo5_params.Rmd", 
+                    params = list(country = pays),
+                    output_file = paste0("mat-gr_", pays, ".html"))
+}
+
+
+list('France', 'Italy', 'United States') %>% 
+  map(render_mg_pays)
+```
+
+
+

@@ -2,7 +2,7 @@
 % Please edit documentation in R/rmd_to.R
 \name{clean_r}
 \alias{clean_r}
-\title{Clean R correction file}
+\title{Clean R file}
 \usage{
 clean_r(rfile)
 }
@@ -11,5 +11,5 @@ clean_r(rfile)
 "inst/rstudio/templates/project/ressources/m7/corrections/exo2.R"}
 }
 \description{
-Clean R correction file
+Nettoyage des scripts R préparés par la fonction `rmd_to()`
 }

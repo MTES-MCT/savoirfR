@@ -10,3 +10,4 @@
 ^\.github$
 ^README\.Rmd$
 ^dev$
+^apt-packages.txt$

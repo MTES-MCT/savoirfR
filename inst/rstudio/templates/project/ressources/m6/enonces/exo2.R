@@ -1,0 +1,11 @@
+# ---
+# title: "Exercice 2 -  module 6"
+# ---  
+# Nous allons travailler sur les informations du site [www.cheese.com](https://www.cheese.com/). Nous nous appuyons pour cela sur l'exemple proposé pour l'évènement [tidytuesday du 4 juin 2024](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-06-04/readme.md).
+# Le fichier markdown qui sera créé pendant toute cette formation parlera donc de fromage !
+# -   Partir du fichier .Rmd de l'exercice précédent
+# -   Saisir un titre, un paragraphe, une liste d'item, un encart et un lien.
+# N'hésitez pas à jouer avec la mise en forme du texte en syntaxe markdown.
+# -   Appuyer sur `visual` pour avoir un aperçu du rendu final
+# Résultat visible sur https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo2.html
+

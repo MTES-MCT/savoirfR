@@ -46,13 +46,19 @@ usethis::use_dev_package('COGiter', type = "Suggests")
 usethis::use_package('gouvdown')
 usethis::use_package('gouvdown.fonts')
 usethis::use_package('mapfactory')
+usethis::use_package('tinytex', type = "Suggests")
 
 usethis::use_build_ignore("dev/")
 usethis::use_logo(img = "~/Mes images/savoirfR/hex-savoirfR2.png")
+usethis::use_github_action("check-release")
 
 extract_r_files(module = 1)
 extract_r_files(module = 2)
 extract_r_files(module = 5)
 extract_r_files(module = 7)
 
-usethis::use_github_action("check-release")
+devtools::load_all()
+pkgdown::build_site()
+
+extract_r_files(module = 6)
+rmarkdown::render_site(input = "inst/rstudio/templates/project/ressources/m6/corrections/")
