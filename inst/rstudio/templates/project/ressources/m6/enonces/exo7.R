@@ -7,4 +7,6 @@
 #   - Créer une dataframe partagée à l'aide du package crosstalk
 #   - Utiliser cette dataframe partagée pour créer un filtre crosstalk sur la colonne country
 #   - Créer un widget interactif à partir de cette dataframe partagée
+#   
+# Résultat visible sur https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7.html", height = 2400)
 

@@ -17,8 +17,3 @@ knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesed
 ```
 
 
-Résultat attendu variante : 
-
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7bis.html", height = 2400)
-```

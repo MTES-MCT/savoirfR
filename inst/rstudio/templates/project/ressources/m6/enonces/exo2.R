@@ -7,4 +7,5 @@
 # -   Saisir un titre, un paragraphe, une liste d'item, un encart et un lien.
 # N'hésitez pas à jouer avec la mise en forme du texte en syntaxe markdown.
 # -   Appuyer sur `visual` pour avoir un aperçu du rendu final
+# Résultat visible sur https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo2.html
 

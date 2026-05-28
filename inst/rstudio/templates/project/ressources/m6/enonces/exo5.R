@@ -10,7 +10,31 @@
 # Par exemple, on peut regrouper les fromages par type simplifié et représenter le pourcentage de matières grasses par type.
 # C'est l'occasion de découvrir ou re-découvrir certaines nouvelles fonctions de dplyr apparues en 2026 :
 
+data_fromage <- tuesdata$cheeses %>%
+  filter_out(when_any(is.na(fat_content),
+                      is.na(type))) %>%
+  mutate(type = replace_when(type,
+                             str_detect(type, 'soft') ~ 'molle',
+                             str_detect(type, 'firm') ~ 'ferme',
+                             str_detect(type, 'hard') ~ 'dure')) %>%
+  mutate(fat_content = as.numeric(str_extract(fat_content, "^\\d+(\\.\\d+)?"))) %>%
+  filter(country==params$country)
+
+
+ggplot(data_fromage) +
+  geom_violin(aes(x = type, y = fat_content, fill = type)) +
+  scale_fill_manual(values = c("dure" = "#EEDC82", "ferme" = "#FFFACD", "molle" = "#FFFAF0")) +
+  theme_gouv(plot_title_size = 12,
+             subtitle_size = 12) +
+  labs(title = "% de matière grasse par type de pâte de fromage",
+       subtitle = params$country,
+       x = "Type de pâte",
+       y = "% de matière grasse") +
+  theme(legend.position = 'none')
+
 #   - Générer ce HTML à l'aide du bouton knit
 #   - Créer dans un nouveau script une fonction qui génère le HTML à partir d'une liste de pays
 #   - Appliquer cette fonction à une liste restreinte de pays (par exemple France, Italy, United States)
 #   
+# Résultat visible sur https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo5.html
+

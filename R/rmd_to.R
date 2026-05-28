@@ -70,9 +70,9 @@ clean_r <- function(rfile) {
     dplyr::mutate(value = gsub('system.file("extdata", "', '"extdata/', .data$value, fixed = TRUE)) %>%
     dplyr::mutate(value = gsub(', package = "savoirfR")', '', .data$value, fixed = TRUE)) %>%
     # specifique M6 : remplacer les knit d'e-frame par un lien vers le resultat compile 1/2
-    dplyr::mutate(value = gsub('knitr::include_url(url = "', "# resultat visible sur ", .data$value, fixed = TRUE)) %>%
+    dplyr::mutate(value = gsub('knitr::include_url(url = "', "# R\u00e9sultat visible sur ", .data$value, fixed = TRUE)) %>%
     # specifique M6 : remplacer les knit d'e-frame par un lien vers le resultat compile 2/2
-    dplyr::mutate(value = gsub('html")', 'html', .data$value, fixed = TRUE)) %>%
+    dplyr::mutate(value = gsub('html", height = ".*")', 'html', .data$value, fixed = FALSE)) %>%
     dplyr::pull() %>%
     writeLines(con = rfile)
 }
@@ -111,10 +111,11 @@ rmd_to_correction <- function(module, rmdfile) {
 #'
 #' @export
 rmd_to_enonce <- function(module, rmdfile) {
+  charger_code <- module == "m6" 
   out <- rmd_to(module = module,
                 rmdfile = rmdfile,
                 folder = "enonces",
-                purl = FALSE)
+                purl = charger_code)
   clean_r(rfile = out)
   out
 }

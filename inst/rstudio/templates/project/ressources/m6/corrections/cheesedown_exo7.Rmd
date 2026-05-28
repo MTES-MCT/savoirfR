@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 <br>
 
 ```{r, fig.align='center', fig.cap="© Olga Yastremska / iStock images", out.width='435px'}
-knitr::include_graphics(path = "img/fromage-automne.webp")
+knitr::include_graphics(path = "https://raw.githubusercontent.com/MTES-MCT/savoirfR/refs/heads/8-bascule-exercices-m6/inst/rstudio/templates/project/ressources/m6/corrections/img/fromage-automne.webp")
 ```
 
 <br>

@@ -7,4 +7,5 @@
 #   - Générer le document 
 #   - Ajouter un format de sortie à l'entête pour qu'il génère un document PDF et un document odt en plus du HTML. Rappel : il est important de vérifier la compatibilité des éléments produits par le code avec ce nouveau format.  
 #   
+# Résultat visible sur https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo4.html
 
