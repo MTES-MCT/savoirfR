@@ -78,6 +78,8 @@ Vérifier que les fichiers R ont bien été extraits dans les dossiers :
 
 * `inst/rstudio/templates/project/ressources/mY/corrections`
 
+Les ajuster à la main au besoin.
+
 ### Créer ou modifier la vignette du module.  
 
 Chaque vignette de module rassemble les consignes des différents exercices et visualise le résultat à obtenir, sans dévoiler la correction.

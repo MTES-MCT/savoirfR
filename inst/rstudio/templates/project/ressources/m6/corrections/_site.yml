@@ -2,7 +2,7 @@ name: "cheesedown"
 output_dir: cheesedown
 navbar:
   title: "Cheesedown - Rendu des exercices M6 savoirfR"
-  right:
+  left:
     - text: "Exercice 1"
       href: index.html
     - text: "Exercice 2"
@@ -27,4 +27,4 @@ navbar:
           href: cheesedown_exo7bis.html  
 output:
   html_document:
-    css: cheesedown.css
+    css: www/cheesedown.css

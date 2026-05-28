@@ -101,7 +101,11 @@ jobs:
           writeLines(vignette_m5_cor, "docs/articles/m05_exercices_module_datavisualisation_R.html")
           cat("Mise du rmd du chap 5 dans l'artifact pour comprendre pourquoi le resultat attendu est NULL")
           file.copy("vignettes/m05_exercices_module_datavisualisation_R.Rmd", to = "docs/articles/vign_M5.Rmd")
-          fs::dir_copy(path = "inst/rstudio/templates/project/ressources/m6/corrections/cheesedown", "docs/cheesedown")
+          cat("Site de corrections du M6 R Markdown : deplacement des dossiers ressources à la racine")
+          fs::dir_copy(path = "inst/rstudio/templates/project/ressources/m6/corrections/cheesedown", "docs/cheesedown", overwrite = TRUE)
+          fs::dir_copy(path = "docs/cheesedown/img", "docs/img", overwrite = TRUE)
+          fs::dir_copy(path = "docs/cheesedown/site_libs/", "docs/site_libs", overwrite = TRUE)
+          fs::dir_copy(path = "docs/cheesedown/www/", "docs/www", overwrite = TRUE)
         shell: Rscript {0}
 
       - name: Deploy to GitHub pages 🚀
