@@ -49,18 +49,18 @@ Les résultats des exercices sont à consulter sur <https://mtes-mct.github.io/s
 ```{r mod6_exo5, child=charge_exo("m6", "exo5.rmd"), echo=FALSE}
 ```
 
-# Exercice 6 : tester bookdown (chap 7.7, facultatif)
+# Exercice 6 facultatif : tester bookdown (chap 7.7)
 
 ```{r mod6_exo6, child=charge_exo("m6", "exo6.rmd"), echo=FALSE}
 ```
 
-# Exercice 7 : tester l'interactivité  (chap 8.5, facultatif)
+# Exercice 7 facultatif : tester l'interactivité (chap 8.5)
 
 ```{r mod6_exo7, child=charge_exo("m6", "exo7.rmd"), echo=FALSE}
 ```
 
 
-## Exercice 8 facultatif : gitlab (chap 9.3, facultatif)
+## Exercice 8 facultatif : gitlab (chap 9.3)
 
 ```{r mod7_exo7, child=charge_exo("m6", "exo8.rmd"), echo=FALSE}
 ```

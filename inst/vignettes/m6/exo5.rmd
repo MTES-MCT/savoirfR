@@ -2,8 +2,6 @@
 title: "Exercice 5 -  module 6"
 ---  
 
-## Exercice 5
-
   - Créer un nouveau .Rmd
   - Ajouter comme paramètre dans le YAML le pays (country) en choisissant "France" comme valeur par défaut
   - Ajouter un titre pour qu'il dépende de ce paramètre
