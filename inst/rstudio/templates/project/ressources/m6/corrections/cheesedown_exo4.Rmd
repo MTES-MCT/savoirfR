@@ -23,7 +23,7 @@ options(tinytex.verbose = TRUE)
 <br>
 
 ```{r, fig.align='center', fig.cap="© Olga Yastremska / iStock images", out.width='435px'}
-knitr::include_graphics(path = "img/fromage-automne.png")
+knitr::include_graphics(path = "img/fromage_automne.png")
 ```
 
 
