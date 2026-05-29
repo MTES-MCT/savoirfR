@@ -61,15 +61,18 @@ exo_modules_skeleton = function(path, ...) {
 
   # copy 'corrections' folder
   ressources = pkg_file('rstudio', 'templates', 'project', 'ressources', m, 'corrections')
-  files = list.files(ressources, recursive = TRUE, include.dirs = FALSE, pattern = ".Rmd$|.R$")
+  files = list.files(ressources, recursive = TRUE, include.dirs = FALSE)
   source = file.path(ressources, files)
   target = file.path(path, 'corrections', files)
   file.copy(source, target)
   
   # M6 corrections are special, need to be rendered as a website
   # so we need to rename ex1 file from index.Rmd to cheesedown_exo1.Rmd
-  file.rename(from = file.path(path, 'corrections', "index.Rmd"), 
-              to =   file.path(path, 'corrections', "cheesedown_exo1.Rmd"))
+  if(m == 'm6') {
+    file.rename(from = file.path(path, 'corrections', "index.Rmd"), 
+                to =   file.path(path, 'corrections', "cheesedown_exo1.Rmd"))    
+  }
+
   
   TRUE
 }
