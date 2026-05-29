@@ -13,7 +13,7 @@ title: "Exercice 7 -  module 6"
 Résultat attendu : 
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7.html", height = 2400)
+knitr::include_url(url = "https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo7.html", height = 3200)
 ```
 
 
