@@ -103,9 +103,6 @@ jobs:
           file.copy("vignettes/m05_exercices_module_datavisualisation_R.Rmd", to = "docs/articles/vign_M5.Rmd")
           cat("Site de corrections du M6 R Markdown : deplacement des dossiers ressources à la racine")
           fs::dir_copy(path = "inst/rstudio/templates/project/ressources/m6/corrections/cheesedown", "docs/cheesedown", overwrite = TRUE)
-          fs::dir_copy(path = "docs/cheesedown/img", "docs/img", overwrite = TRUE)
-          fs::dir_copy(path = "docs/cheesedown/site_libs/", "docs/site_libs", overwrite = TRUE)
-          fs::dir_copy(path = "docs/cheesedown/www/", "docs/www", overwrite = TRUE)
           list.files("docs/cheesedown", recursive = TRUE)
         shell: Rscript {0}
 
