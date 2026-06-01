@@ -36,6 +36,10 @@ exo_modules_skeleton = function(path, ...) {
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
   dir.create(file.path(path, 'scripts'), recursive = TRUE, showWarnings = FALSE)
   dir.create(file.path(path, 'corrections'), recursive = TRUE, showWarnings = FALSE)
+  if(m == 'm6') {
+    dir.create(file.path(path, 'corrections/img'), recursive = TRUE, showWarnings = FALSE)
+    dir.create(file.path(path, 'corrections/www'), recursive = TRUE, showWarnings = FALSE)
+  }
 
   # get module selected
 
@@ -48,7 +52,7 @@ exo_modules_skeleton = function(path, ...) {
     dir.create(file.path(path, 'extdata'), recursive = TRUE, showWarnings = FALSE)
     extdata <- pkg_file('extdata')
     source <- file.path(extdata, files)
-    target = file.path(path, 'extdata')    
+    target = file.path(path, 'extdata')   
     file.copy(source, target, recursive = TRUE) 
   }
 
@@ -70,9 +74,7 @@ exo_modules_skeleton = function(path, ...) {
   # so we need to rename ex1 file from index.Rmd to cheesedown_exo1.Rmd
   if(m == 'm6') {
     file.rename(from = file.path(path, 'corrections', "index.Rmd"), 
-                to =   file.path(path, 'corrections', "cheesedown_exo1.Rmd"))    
+                to =   file.path(path, 'corrections', "cheesedown_exo1.Rmd"))   
   }
-
-  
   TRUE
 }
