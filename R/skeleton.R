@@ -32,6 +32,10 @@ module_data <- function(m) {
 #' 
 exo_modules_skeleton = function(path, ...) {
 
+  # get module selected
+  dots <- list(...)
+  m <- dots[[1]]
+
   # ensure directory exists
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
   dir.create(file.path(path, 'scripts'), recursive = TRUE, showWarnings = FALSE)
@@ -40,11 +44,6 @@ exo_modules_skeleton = function(path, ...) {
     dir.create(file.path(path, 'corrections/img'), recursive = TRUE, showWarnings = FALSE)
     dir.create(file.path(path, 'corrections/www'), recursive = TRUE, showWarnings = FALSE)
   }
-
-  # get module selected
-
-  dots <- list(...)
-  m <- dots[[1]]
 
   # copy 'extdata' folder to path if needed
   files = module_data(m)
