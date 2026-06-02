@@ -6,12 +6,10 @@ title: "Exercice 3 -  module 6"
 - Créer un chunk pour définir des options générales, il ne doit pas être visible dans le document final
 - Créer un chunk pour charger les packages nécessaires, il ne doit pas être visible dans le document final
 - Créer un nouveau chapitre qui aura pour objet la présentation de quelques observations du jeu de données
-- Ajouter un chunk pour stocker les données utilisées dans une dataframe. Ni la dataframe, ni le code ne doivent s'afficher dans le document final. Pour récupérer les données tidytuesday :
+- Ajouter un chunk pour lire les données fromage . Le code ne doit pas s'afficher dans le document final. Pour récupérer les données tidytuesday : `load("extdata/data_fromage_tidytuesday.Data")` depuis votre projet d'exercices créé avec savoirfR ou `tidytuesdayR::tt_load('2024-06-04')` (prérequis : avoir installé le package tidytuesdayR et configuré votre .Renviron avec un token github d'accès personnel, ie créé une variable `GITHUB_PAT`)
 
 ```{r setup m6exo3, eval=FALSE, echo=TRUE}
-tuesdata <- tidytuesdayR::tt_load('2024-06-04')
-
-data_fromage <- tuesdata$cheeses
+load("extdata/data_fromage_tidytuesday.Data")
 ```
 
 - Ajouter une ligne de texte qui indique le nombre de fromages disponibles dans la dataframe (cette valeur doit être calculée automatiquement)

@@ -44,14 +44,8 @@ On y présentera :
 Pour commencer, il nous faut récupérer de la donnée. Nous allons travailler sur les informations du site [www.cheese.com](https://www.cheese.com/). Nous nous appuyons pour cela sur l'exemple proposé pour l'évènement [tidytuesday du 4 juin 2024](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-06-04/readme.md).
 
 ```{r read_data_exo3, include=FALSE}
-
 library(tidyverse)
-library(tidytuesdayR)
-
-tuesdata <- tidytuesdayR::tt_load('2024-06-04')
-
-data_fromage <- tuesdata$cheeses
-
+load("extdata/data_fromage_tidytuesday.Data")
 ```
 
 ### 2. Premières observations

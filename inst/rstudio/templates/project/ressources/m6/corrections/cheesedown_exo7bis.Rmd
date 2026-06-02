@@ -41,14 +41,8 @@ On y présentera :
 Pour commencer, il nous faut récupérer de la donnée. Nous allons travailler sur les informations du site [www.cheese.com](https://www.cheese.com/). Nous nous appuyons pour cela sur l'exemple proposé pour l'évènement [tidytuesday du 4 juin 2024](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-06-04/readme.md).
 
 ```{r, include=FALSE}
-
 library(tidyverse)
-library(tidytuesdayR)
-
-tuesdata <- tidytuesdayR::tt_load('2024-06-04')
-
-data_fromage <- tuesdata$cheeses
-
+load("extdata/data_fromage_tidytuesday.Data")
 ```
 
 ### 2. Premières observations
@@ -99,7 +93,7 @@ ggplot(data_FRomage) +
 #### a - Widget html
 
 ```{r}
-fata_fromage <- tuesdata$cheeses %>% 
+fata_fromage <- data_fromage %>% 
   filter_out(when_any(is.na(fat_content),
                       is.na(type))) %>% 
   mutate(type = replace_when(type,

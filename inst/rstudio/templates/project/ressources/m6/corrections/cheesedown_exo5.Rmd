@@ -21,12 +21,11 @@ knitr::opts_chunk$set(
 ```{r, include=FALSE}
 
 library(tidyverse)
-library(tidytuesdayR)
 library(gouvdown)
 
-tuesdata <- tidytuesdayR::tt_load('2024-06-04')
+load("extdata/data_fromage_tidytuesday.Data")
 
-data_fromage <- tuesdata$cheeses %>% 
+data_fromage_1 <- data_fromage %>% 
   filter_out(when_any(is.na(fat_content),
                       is.na(type))) %>% 
   mutate(type = replace_when(type,
@@ -40,7 +39,7 @@ data_fromage <- tuesdata$cheeses %>%
 
 ```{r, fig.align='center'}
 
-ggplot(data_fromage) +
+ggplot(data_fromage_1) +
   geom_violin(aes(x = type, y = fat_content, fill = type)) +
   scale_fill_manual(values = c("dure" = "#EEDC82", "ferme" = "#FFFACD", "molle" = "#FFFAF0")) +
   theme_gouv(plot_title_size = 12,
