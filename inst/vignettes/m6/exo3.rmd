@@ -2,16 +2,29 @@
 title: "Exercice 3 -  module 6"
 ---  
 
+```{r setup m6exo3, message=FALSE, warning=FALSE, include=FALSE}
+load(file = system.file("extdata", "data_fromage.RData", package = "savoirfR"))
+
+```
+
 - Poursuivre le fichier .Rmd de l'exercice précédent
 - Créer un chunk pour définir des options générales, il ne doit pas être visible dans le document final
 - Créer un chunk pour charger les packages nécessaires, il ne doit pas être visible dans le document final
 - Créer un nouveau chapitre qui aura pour objet la présentation de quelques observations du jeu de données
 - Ajouter un chunk pour stocker les données utilisées dans une dataframe. Ni la dataframe, ni le code ne doivent s'afficher dans le document final. Pour récupérer les données tidytuesday :
 
+Option 1, si vous avez un token github paramétré sur votre machine vous pouvez récupérer les données en ligne avec le package tidytuesdayR
+
 ```{r setup m6exo3, eval=FALSE, echo=TRUE}
 tuesdata <- tidytuesdayR::tt_load('2024-06-04')
 
 data_fromage <- tuesdata$cheeses
+```
+
+Option 2, les données sont disponibles dans le dossier extdata du projet créé avec savoirfR
+
+```{r setup m6exo3, eval=FALSE, echo=TRUE}
+data_fromage <- load('extdata/data_fromage.RData')
 ```
 
 - Ajouter une ligne de texte qui indique le nombre de fromages disponibles dans la dataframe (cette valeur doit être calculée automatiquement)

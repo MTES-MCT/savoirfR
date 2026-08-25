@@ -53,7 +53,7 @@ ggplot(data_fromage) +
 
 ```
 
-exécution pour plusieurs pays
+Code d'exécution pour plusieurs pays, à faire dans un script à part.
 
 ```{r plusieurs rapport, eval=FALSE}
 

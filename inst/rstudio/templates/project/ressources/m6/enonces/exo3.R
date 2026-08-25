@@ -7,8 +7,12 @@
 # - Créer un nouveau chapitre qui aura pour objet la présentation de quelques observations du jeu de données
 # - Ajouter un chunk pour stocker les données utilisées dans une dataframe. Ni la dataframe, ni le code ne doivent s'afficher dans le document final. Pour récupérer les données tidytuesday :
 
+# - Option 1, si vous avez un token github paramétré sur votre machine vous pouvez récupérer les données en ligne avec le package tidytuesdayR
 tuesdata <- tidytuesdayR::tt_load('2024-06-04')
 data_fromage <- tuesdata$cheeses
+
+# - Option 2, les données sont disponibles dans le dossier extdata du projet créé avec savoirfR
+data_fromage <- load('extdata/data_fromage.RData')
 
 # - Ajouter une ligne de texte qui indique le nombre de fromages disponibles dans la dataframe (cette valeur doit être calculée automatiquement)
 # - Créer une variable dans cette dataframe pour indiquer si l'origine des fromages (colonne `country`) est française ou non

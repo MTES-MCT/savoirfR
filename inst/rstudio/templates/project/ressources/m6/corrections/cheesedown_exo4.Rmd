@@ -68,6 +68,7 @@ data_FRomage <- data_fromage %>%
 ```{r, fig.align = 'center'}
 library(gouvdown)
 library(ggpattern)
+library(magick)
 
 ggplot(data_FRomage) +
   geom_bar(aes(x = origine, fill = origine)) +

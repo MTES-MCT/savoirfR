@@ -52,6 +52,9 @@ tuesdata <- tidytuesdayR::tt_load('2024-06-04')
 
 data_fromage <- tuesdata$cheeses
 
+# data_fromage <- load('extdata/data_fromage.RData')
+
+
 ```
 
 ### 2. Premières observations
