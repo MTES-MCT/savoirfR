@@ -4,11 +4,11 @@ author: "Nicolas Torterotot"
 subtitle: "Exercice 4"
 date: "`r Sys.Date()`"
 output:
-  pdf_document:
-    toc: true
+  odt_document: default
   gouvdown::html_gouv:
     toc: true
-  odt_document: default
+  pdf_document:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -30,7 +30,7 @@ load(here("extdata/data_fromage_tidytuesday.RData"))
 <br>
 
 ```{r, fig.align='center', fig.cap="© Olga Yastremska / iStock images", out.width='435px'}
-knitr::include_graphics(path = "img/fromage_automne.webp")
+knitr::include_graphics(path = "img/fromage_automne.jpg")
 ```
 
 
