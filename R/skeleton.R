@@ -29,15 +29,18 @@ module_data <- function(m) {
 #' 
 exo_modules_skeleton = function(path, ...) {
 
+  # get module selected
+  dots <- list(...)
+  m <- dots[[1]]
+
   # ensure directory exists
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
   dir.create(file.path(path, 'scripts'), recursive = TRUE, showWarnings = FALSE)
   dir.create(file.path(path, 'corrections'), recursive = TRUE, showWarnings = FALSE)
-
-  # get module selected
-
-  dots <- list(...)
-  m <- dots[[1]]
+  if(m == 'm6') {
+    dir.create(file.path(path, 'corrections/img'), recursive = TRUE, showWarnings = FALSE)
+    dir.create(file.path(path, 'corrections/www'), recursive = TRUE, showWarnings = FALSE)
+  }
 
   # copy 'extdata' folder to path if needed
   files = module_data(m)
@@ -45,7 +48,7 @@ exo_modules_skeleton = function(path, ...) {
     dir.create(file.path(path, 'extdata'), recursive = TRUE, showWarnings = FALSE)
     extdata <- pkg_file('extdata')
     source <- file.path(extdata, files)
-    target = file.path(path, 'extdata')    
+    target = file.path(path, 'extdata')   
     file.copy(source, target, recursive = TRUE) 
   }
 
@@ -76,7 +79,5 @@ exo_modules_skeleton = function(path, ...) {
     file.copy(extra_files_source, extra_files_dest, recursive = TRUE)
     unlink(file.path(path, 'corrections', "_site.yml"))
   }
-
-  
   TRUE
 }
