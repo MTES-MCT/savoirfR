@@ -9,21 +9,20 @@ subtitle: "Exercice 5"
 ---
 
 ```{r setup, include=FALSE}
-
 knitr::opts_chunk$set(
-	echo = FALSE,
-	message = FALSE,
-	warning = FALSE
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
 )
+library(gouvdown)
+library(ggpattern)
+library(tidyverse)
+library(here)
 ```
 
 
 ```{r, include=FALSE}
-
-library(tidyverse)
-library(gouvdown)
-
-load("extdata/data_fromage_tidytuesday.Data")
+load(here("extdata/data_fromage_tidytuesday.RData"))
 
 data_fromage_1 <- data_fromage %>% 
   filter_out(when_any(is.na(fat_content),
@@ -57,7 +56,7 @@ exécution pour plusieurs pays
 ```{r plusieurs rapport, eval=FALSE}
 
 render_mg_pays <- function(pays){
-  rmarkdown::render("cheesedown_exo5_params.Rmd", 
+  rmarkdown::render(here("cheesedown_exo5_params.Rmd"), 
                     params = list(country = pays),
                     output_file = paste0("mat-gr_", pays, ".html"))
 }
