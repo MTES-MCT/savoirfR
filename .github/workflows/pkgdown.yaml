@@ -91,9 +91,12 @@ jobs:
         
       - name: Build site
         run: |
-          cat("rendu specifique pour le M6 R Markdown")
+          cat("rendu specifique pour le M6 R Markdown : ")
+          system("mkdir extdata") ; system("cp inst/extdata/data_fromage_tidytuesday.RData extdata/data_fromage_tidytuesday.RData")
+          system("cp -r inst/rstudio/templates/project/ressources/m6/corrections/img inst/rstudio/templates/project/ressources/m6/corrections/www .")
           rmarkdown::render_site(input = "inst/rstudio/templates/project/ressources/m6/corrections/")
-          cat("rendu site pkgdown principal")
+          system("rm -r img/ www/ extdata/")
+          cat("rendu site pkgdown principal : ")
           pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
           cat("correction du bug d'affichage dans avec gganimate, cf https://github.com/r-lib/pkgdown/issues/2334")
           vignette_m5 <- readLines("docs/articles/m05_exercices_module_datavisualisation_R.html")

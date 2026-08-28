@@ -28,7 +28,7 @@ library(shiny)
 <br>
 
 ```{r, fig.align='center', fig.cap="© Olga Yastremska / iStock images", out.width='435px'}
-knitr::include_graphics(path = here("img/fromage_automne.webp"))
+knitr::include_graphics(path = "img/fromage_automne.webp")
 ```
 
 

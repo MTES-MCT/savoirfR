@@ -1,6 +1,5 @@
 #' get files from the exercices package
 #' @param ... other params from the systeme.file fonction
-#' @import stats utils
 #' @keywords internal
 pkg_file <- function(...) {
   system.file(..., package = 'savoirfR', mustWork = TRUE)

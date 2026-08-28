@@ -30,7 +30,7 @@ load(here("extdata/data_fromage_tidytuesday.RData"))
 <br>
 
 ```{r, fig.align='center', fig.cap="© Olga Yastremska / iStock images", out.width='435px'}
-knitr::include_graphics(path = here("img/fromage_automne.png"))
+knitr::include_graphics(path = "img/fromage_automne.webp")
 ```
 
 
