@@ -158,14 +158,19 @@ final</li>
 être visible dans le document final</li>
 <li>Créer un nouveau chapitre qui aura pour objet la présentation de
 quelques observations du jeu de données</li>
-<li>Ajouter un chunk pour stocker les données utilisées dans une
-dataframe. Ni la dataframe, ni le code ne doivent s’afficher dans le
-document final. Pour récupérer les données tidytuesday :</li>
+<li>Ajouter un chunk pour lire les données fromage . Le code ne doit pas
+s’afficher dans le document final.</li>
 </ul>
+<p>Pour récupérer les données tidytuesday :
+<code>load("extdata/data_fromage_tidytuesday.RData")</code> depuis votre
+projet d’exercices<br>
+créé avec savoirfR ou
+<code>tidytuesdayR::tt_load('2024-06-04')</code><br>
+(prérequis : avoir installé le package tidytuesdayR et configuré votre
+.Renviron avec un token github d’accès personnel,<br>
+ie créé une variable <code>GITHUB_PAT</code>)</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tuesdata</span> <span class="op">&lt;-</span> <span class="fu">tidytuesdayR</span><span class="fu">::</span><span class="fu"><a href="https://dslc-io.github.io/tidytuesdayR/reference/tt_load.html" class="external-link">tt_load</a></span><span class="op">(</span><span class="st">'2024-06-04'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">data_fromage</span> <span class="op">&lt;-</span> <span class="va">tuesdata</span><span class="op">$</span><span class="va">cheeses</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"extdata/data_fromage_tidytuesday.RData"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li><p>Ajouter une ligne de texte qui indique le nombre de fromages
 disponibles dans la dataframe (cette valeur doit être calculée
@@ -220,7 +225,7 @@ représenter le pourcentage de matières grasses par type. C’est
 l’occasion de découvrir ou re-découvrir certaines nouvelles fonctions de
 dplyr apparues en 2026 :</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data_fromage</span> <span class="op">&lt;-</span> <span class="va">tuesdata</span><span class="op">$</span><span class="va">cheeses</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="va">data_fromage_1</span> <span class="op">&lt;-</span> <span class="va">data_fromage</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">filter_out</span><span class="op">(</span><span class="fu">when_any</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">fat_content</span><span class="op">)</span>,</span>
 <span>                      <span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">type</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>type <span class="op">=</span> <span class="fu">replace_when</span><span class="op">(</span><span class="va">type</span>,</span>
@@ -231,7 +236,7 @@ dplyr apparues en 2026 :</p>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">country</span><span class="op">==</span><span class="va">params</span><span class="op">$</span><span class="va">country</span><span class="op">)</span></span>
 <span></span>
 <span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">data_fromage</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">data_fromage_1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_violin</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">type</span>, y <span class="op">=</span> <span class="va">fat_content</span>, fill <span class="op">=</span> <span class="va">type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_fill_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dure"</span> <span class="op">=</span> <span class="st">"#EEDC82"</span>, <span class="st">"ferme"</span> <span class="op">=</span> <span class="st">"#FFFACD"</span>, <span class="st">"molle"</span> <span class="op">=</span> <span class="st">"#FFFAF0"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_gouv</span><span class="op">(</span>plot_title_size <span class="op">=</span> <span class="fl">12</span>,</span>
@@ -298,7 +303,7 @@ la colonne country</li>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer>
