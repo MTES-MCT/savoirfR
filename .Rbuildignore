@@ -11,3 +11,5 @@
 ^README\.Rmd$
 ^dev$
 ^apt-packages.txt$
+^inst/rstudio/templates/project/ressources/m6/corrections/cheesedown/
+^inst/rstudio/templates/project/ressources/m6/corrections/cheesedown.*/

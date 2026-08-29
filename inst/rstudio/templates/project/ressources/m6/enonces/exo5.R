@@ -1,7 +1,6 @@
 # ---
 # title: "Exercice 5 -  module 6"
 # ---  
-# ## Exercice 5
 #   - Créer un nouveau .Rmd
 #   - Ajouter comme paramètre dans le YAML le pays (country) en choisissant "France" comme valeur par défaut
 #   - Ajouter un titre pour qu'il dépende de ce paramètre
@@ -10,7 +9,7 @@
 # Par exemple, on peut regrouper les fromages par type simplifié et représenter le pourcentage de matières grasses par type.
 # C'est l'occasion de découvrir ou re-découvrir certaines nouvelles fonctions de dplyr apparues en 2026 :
 
-data_fromage <- tuesdata$cheeses %>%
+data_fromage_1 <- data_fromage %>%
   filter_out(when_any(is.na(fat_content),
                       is.na(type))) %>%
   mutate(type = replace_when(type,
@@ -21,7 +20,7 @@ data_fromage <- tuesdata$cheeses %>%
   filter(country==params$country)
 
 
-ggplot(data_fromage) +
+ggplot(data_fromage_1) +
   geom_violin(aes(x = type, y = fat_content, fill = type)) +
   scale_fill_manual(values = c("dure" = "#EEDC82", "ferme" = "#FFFACD", "molle" = "#FFFAF0")) +
   theme_gouv(plot_title_size = 12,

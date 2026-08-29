@@ -1,6 +1,5 @@
 #' get files from the exercices package
 #' @param ... other params from the systeme.file fonction
-#' @import stats utils
 #' @keywords internal
 pkg_file <- function(...) {
   system.file(..., package = 'savoirfR', mustWork = TRUE)
@@ -12,9 +11,6 @@ pkg_file <- function(...) {
 #' @return a list of files
 #' @keywords internal
 module_data <- function(m) {
-  # if (m=='m1'){
-  #   files <- list("Base_synth_territoires.csv","rp_2012.csv")
-  # }
   list_data <- file.path(pkg_file('extdata'), 'list_data_module.csv')
   data <- read.csv2(list_data, colClasses = c("character"))
   files <- as.list(data[data$module == m, ]$file)
@@ -40,10 +36,6 @@ exo_modules_skeleton = function(path, ...) {
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
   dir.create(file.path(path, 'scripts'), recursive = TRUE, showWarnings = FALSE)
   dir.create(file.path(path, 'corrections'), recursive = TRUE, showWarnings = FALSE)
-  if(m == 'm6') {
-    dir.create(file.path(path, 'corrections/img'), recursive = TRUE, showWarnings = FALSE)
-    dir.create(file.path(path, 'corrections/www'), recursive = TRUE, showWarnings = FALSE)
-  }
 
   # copy 'extdata' folder to path if needed
   files = module_data(m)
@@ -71,9 +63,16 @@ exo_modules_skeleton = function(path, ...) {
   
   # M6 corrections are special, need to be rendered as a website
   # so we need to rename ex1 file from index.Rmd to cheesedown_exo1.Rmd
+  # and to get extra files as images, css...
   if(m == 'm6') {
     file.rename(from = file.path(path, 'corrections', "index.Rmd"), 
-                to =   file.path(path, 'corrections', "cheesedown_exo1.Rmd"))   
+                to =   file.path(path, 'corrections', "cheesedown_exo1.Rmd"))  
+    extra_files_source = list.files(paste(ressources, c("img", "www"), sep = "/"), recursive = TRUE, full.names = TRUE) 
+    extra_files_dest = file.path(path, gsub(".*corrections/", "", extra_files_source))
+    dir.create(file.path(path, "img"))
+    dir.create(file.path(path, "www"))
+    file.copy(extra_files_source, extra_files_dest, recursive = TRUE)
+    unlink(file.path(path, 'corrections', "_site.yml"))
   }
   TRUE
 }

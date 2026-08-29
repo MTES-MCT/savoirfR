@@ -9,24 +9,22 @@ subtitle: "Exercice 5"
 ---
 
 ```{r setup, include=FALSE}
-
 knitr::opts_chunk$set(
-	echo = FALSE,
-	message = FALSE,
-	warning = FALSE
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
 )
+library(gouvdown)
+library(ggpattern)
+library(tidyverse)
+library(here)
 ```
 
 
 ```{r, include=FALSE}
+load(here("extdata/data_fromage_tidytuesday.RData"))
 
-library(tidyverse)
-library(tidytuesdayR)
-library(gouvdown)
-
-tuesdata <- tidytuesdayR::tt_load('2024-06-04')
-
-data_fromage <- tuesdata$cheeses %>% 
+data_fromage_1 <- data_fromage %>% 
   filter_out(when_any(is.na(fat_content),
                       is.na(type))) %>% 
   mutate(type = replace_when(type,
@@ -40,7 +38,7 @@ data_fromage <- tuesdata$cheeses %>%
 
 ```{r, fig.align='center'}
 
-ggplot(data_fromage) +
+ggplot(data_fromage_1) +
   geom_violin(aes(x = type, y = fat_content, fill = type)) +
   scale_fill_manual(values = c("dure" = "#EEDC82", "ferme" = "#FFFACD", "molle" = "#FFFAF0")) +
   theme_gouv(plot_title_size = 12,
@@ -58,7 +56,7 @@ exécution pour plusieurs pays
 ```{r plusieurs rapport, eval=FALSE}
 
 render_mg_pays <- function(pays){
-  rmarkdown::render("cheesedown_exo5_params.Rmd", 
+  rmarkdown::render(here("cheesedown_exo5_params.Rmd"), 
                     params = list(country = pays),
                     output_file = paste0("mat-gr_", pays, ".html"))
 }

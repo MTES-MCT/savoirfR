@@ -4,11 +4,11 @@ author: "Nicolas Torterotot"
 subtitle: "Exercice 4"
 date: "`r Sys.Date()`"
 output:
-  pdf_document:
-    toc: true
+  odt_document: default
   gouvdown::html_gouv:
     toc: true
-  odt_document: default
+  pdf_document:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -18,12 +18,19 @@ knitr::opts_chunk$set(
 	warning = FALSE
 )
 options(tinytex.verbose = TRUE)
+
+library(tidyverse)
+library(gouvdown)
+library(ggpattern)
+library(here)
+load(here("extdata/data_fromage_tidytuesday.RData"))
+
 ```
 
 <br>
 
 ```{r, fig.align='center', fig.cap="© Olga Yastremska / iStock images", out.width='435px'}
-knitr::include_graphics(path = "img/fromage_automne.png")
+knitr::include_graphics(path = "img/fromage_automne.jpg")
 ```
 
 
@@ -35,23 +42,15 @@ On y présentera :
 
 - les possibilités rédactionnelles et de mise en page pour mettre en valeur le ***fromage*** ;
 - l'intégration d'images, graphiques et cartes pour mieux voir le ![](img/small_cheese.png){width="30" height="24"} ;
-- les possibilité de génération automatique à partir d'une série de paramètres pour toujours plus de fromage ;
+- les possibilités de génération automatique à partir d'une série de paramètres pour toujours plus de fromage ;
 - un peu d'interactivité pour du fromage 2.0.
 
 ### 1. Au début était le lait
 
-Pour commencer, il nous faut récupérer de la donnée. Nous allons travailler sur les informations du site [www.cheese.com](https://www.cheese.com/). Nous nous appuyons pour cela sur l'exemple proposé pour l'évènement [tidytuesday du 4 juin 2024](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-06-04/readme.md).
+Pour commencer, il nous faut récupérer de la donnée. 
+Nous allons travailler sur les informations du site [www.cheese.com](https://www.cheese.com/). 
+Nous nous appuyons pour cela sur l'exemple proposé pour l'évènement [tidytuesday du 4 juin 2024](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-06-04/readme.md).
 
-```{r, include=FALSE}
-
-library(tidyverse)
-library(tidytuesdayR)
-
-tuesdata <- tidytuesdayR::tt_load('2024-06-04')
-
-data_fromage <- tuesdata$cheeses
-
-```
 
 ### 2. Premières observations
 
@@ -66,15 +65,14 @@ data_FRomage <- data_fromage %>%
 ```
 
 ```{r, fig.align = 'center'}
-library(gouvdown)
-library(ggpattern)
+
 
 ggplot(data_FRomage) +
   geom_bar(aes(x = origine, fill = origine)) +
   geom_bar_pattern(data = data_FRomage[data_FRomage$origine == "FR",],
                    aes(x = origine),
                    pattern = 'image',
-                   pattern_filename = 'img/Flag_of_France.svg',
+                   pattern_filename = here('img/Flag_of_France.svg'),
                    fill = 'gold',
                    width = 0.8,
                    height = 0.8) +
