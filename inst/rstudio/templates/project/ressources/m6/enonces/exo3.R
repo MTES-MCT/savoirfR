@@ -14,7 +14,9 @@
 
 # - Ajouter une ligne de texte qui indique le nombre de fromages disponibles dans la dataframe (cette valeur doit être calculée automatiquement)
 # - Créer une variable dans cette dataframe pour indiquer si l'origine des fromages (colonne `country`) est française ou non
-# - Ajouter un chunk créant un graphique en barres qui indique le nombre de fromage par origine (FR ou non-FR). Le graphique devra apparaître dans le document final, pas le code pour le créer.
+# - Ajouter un chunk créant un graphique en barres qui indique le nombre de fromage par origine (FR ou non-FR).
+# - Ajouter une ligne horizontale qui montre le nombre de fromages français référencés par le Centre National Interprofessionnel de l'Économie Laitière (1280).
+# - Le graphique devra apparaître dans le document final, pas le code pour le créer.
 # - Ajouter une image d'illustration en tête d'article
 # - Générer le document
 # Résultat visible sur https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo3.html
