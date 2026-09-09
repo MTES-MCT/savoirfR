@@ -1,23 +1,22 @@
 # ---
 # title: "Exercice 3 -  module 6"
-# ---  
-# - Poursuivre le fichier .Rmd de l'exercice précédent
-# - Créer un chunk pour définir des options générales, il ne doit pas être visible dans le document final
-# - Créer un chunk pour charger les packages nécessaires, il ne doit pas être visible dans le document final
-# - Créer un nouveau chapitre qui aura pour objet la présentation de quelques observations du jeu de données
-# - Ajouter un chunk pour lire les données fromage . Le code ne doit pas s'afficher dans le document final.  
-# Pour récupérer les données tidytuesday : `load("extdata/data_fromage_tidytuesday.RData")` depuis votre projet d'exercices     
-# créé avec savoirfR ou `tidytuesdayR::tt_load('2024-06-04')`   
-# (prérequis : avoir installé le package tidytuesdayR et configuré votre .Renviron avec un token github d'accès personnel,  
-# ie créé une variable `GITHUB_PAT`)  
-# load("extdata/data_fromage_tidytuesday.RData")
+# ---
+# -   Poursuivre le fichier .Rmd de l'exercice précédent
+# -   Créer un chunk pour définir des options générales, il ne doit pas être visible dans le document final
+# -   Créer un chunk pour charger les packages nécessaires, il ne doit pas être visible dans le document final
+# -   Créer un nouveau chapitre qui aura pour objet la présentation de quelques observations du jeu de données
+# -   Ajouter un chunk pour lire les données fromage, le code ne doit pas s'afficher dans le document final. Pour récupérer les données tidytuesday :
+#     -   `load("extdata/data_fromage_tidytuesday.RData")` depuis votre projet d'exercices créé avec savoirfR
+#     -   ou `tidytuesdayR::tt_load('2024-06-04')` (prérequis : avoir installé le package tidytuesdayR et configuré votre .Renviron avec un token github d'accès personnel, ie créé une variable `GITHUB_PAT`).
 
-# - Ajouter une ligne de texte qui indique le nombre de fromages disponibles dans la dataframe (cette valeur doit être calculée automatiquement)
-# - Créer une variable dans cette dataframe pour indiquer si l'origine des fromages (colonne `country`) est française ou non
-# - Ajouter un chunk créant un graphique en barres qui indique le nombre de fromage par origine (FR ou non-FR).
-# - Ajouter une ligne horizontale qui montre le nombre de fromages français référencés par le Centre National Interprofessionnel de l'Économie Laitière (1280).
-# - Le graphique devra apparaître dans le document final, pas le code pour le créer.
-# - Ajouter une image d'illustration en tête d'article
-# - Générer le document
+load("extdata/data_fromage_tidytuesday.RData")
+
+# -   Ajouter une ligne de texte qui indique le nombre de fromages disponibles dans la dataframe (cette valeur doit être calculée automatiquement)
+# -   Créer une variable dans cette dataframe pour indiquer si l'origine des fromages (colonne `country`) est française ou non
+# -   Ajouter un chunk créant un graphique en barres qui indique le nombre de fromage par origine (FR ou non-FR).
+# -   Ajouter une ligne horizontale qui montre le nombre de fromages français référencés par le Centre National Interprofessionnel de l'Économie Laitière (1280).
+# -   Le graphique devra apparaître dans le document final, pas le code pour le créer.
+# -   Ajouter une image d'illustration en tête d'article
+# -   Générer le document
 # Résultat visible sur https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo3.html
 
