@@ -158,17 +158,20 @@ final</li>
 être visible dans le document final</li>
 <li>Créer un nouveau chapitre qui aura pour objet la présentation de
 quelques observations du jeu de données</li>
-<li>Ajouter un chunk pour lire les données fromage . Le code ne doit pas
-s’afficher dans le document final.</li>
+<li>Ajouter un chunk pour lire les données fromage, le code ne doit pas
+s’afficher dans le document final. Pour récupérer les données
+tidytuesday :
+<ul>
+<li>
+<code>load("extdata/data_fromage_tidytuesday.RData")</code> depuis
+votre projet d’exercices créé avec savoirfR</li>
+<li>ou <code>tidytuesdayR::tt_load('2024-06-04')</code> (prérequis :
+avoir installé le package tidytuesdayR et configuré votre .Renviron avec
+un token github d’accès personnel, ie créé une variable
+<code>GITHUB_PAT</code>).</li>
 </ul>
-<p>Pour récupérer les données tidytuesday :
-<code>load("extdata/data_fromage_tidytuesday.RData")</code> depuis votre
-projet d’exercices<br>
-créé avec savoirfR ou
-<code>tidytuesdayR::tt_load('2024-06-04')</code><br>
-(prérequis : avoir installé le package tidytuesdayR et configuré votre
-.Renviron avec un token github d’accès personnel,<br>
-ie créé une variable <code>GITHUB_PAT</code>)</p>
+</li>
+</ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"extdata/data_fromage_tidytuesday.RData"</span><span class="op">)</span></span></code></pre></div>
 <ul>
@@ -179,8 +182,12 @@ automatiquement)</p></li>
 l’origine des fromages (colonne <code>country</code>) est française ou
 non</p></li>
 <li><p>Ajouter un chunk créant un graphique en barres qui indique le
-nombre de fromage par origine (FR ou non-FR). Le graphique devra
-apparaître dans le document final, pas le code pour le créer.</p></li>
+nombre de fromage par origine (FR ou non-FR).</p></li>
+<li><p>Ajouter une ligne horizontale qui montre le nombre de fromages
+français référencés par le Centre National Interprofessionnel de
+l’Économie Laitière (1280).</p></li>
+<li><p>Le graphique devra apparaître dans le document final, pas le code
+pour le créer.</p></li>
 <li><p>Ajouter une image d’illustration en tête d’article</p></li>
 <li><p>Générer le document</p></li>
 </ul>
