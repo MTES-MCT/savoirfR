@@ -7,7 +7,7 @@ Nous allons travailler sur les informations du site [www.cheese.com](https://www
 Le fichier markdown qui sera créé pendant toute cette formation parlera donc de fromage !
 
 -   Partir du fichier .Rmd de l'exercice précédent
--   Saisir un titre, un paragraphe, une liste d'item, un encart et un lien.
+-   Saisir un titre, un paragraphe, une liste d'item et un lien.
 N'hésitez pas à jouer avec la mise en forme du texte en syntaxe markdown.
 -   Appuyer sur `visual` pour avoir un aperçu du rendu final
 
