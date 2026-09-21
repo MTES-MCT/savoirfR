@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">savoirfR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9011</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9012</span>
       </span>
     </div>
 
@@ -117,8 +117,8 @@ reproductibles avec R Markdown</h1>
 <ul>
 <li>Ouvrir Rstudio</li>
 <li>Créer un fichier Rmarkdown, format html</li>
-<li>prévisualiser le document avant toutes modifications</li>
 <li>Se mettre en auteur du document</li>
+<li>prévisualiser le document avant toutes modifications</li>
 <li>Rajouter un theme spécifique</li>
 <li>Cliquer sur <em>knit</em> pour compiler le document et identifier
 les correspondances entre fichier .Rmd et fichier html</li>
@@ -137,8 +137,8 @@ du 4 juin 2024</a>.</p>
 parlera donc de fromage !</p>
 <ul>
 <li>Partir du fichier .Rmd de l’exercice précédent</li>
-<li>Saisir un titre, un paragraphe, une liste d’item, un encart et un
-lien. N’hésitez pas à jouer avec la mise en forme du texte en syntaxe
+<li>Saisir un titre, un paragraphe, une liste d’item et un lien.
+N’hésitez pas à jouer avec la mise en forme du texte en syntaxe
 markdown.</li>
 <li>Appuyer sur <code>visual</code> pour avoir un aperçu du rendu
 final</li>
@@ -151,16 +151,18 @@ final</li>
 <h2 id="exercice-3-chap-4-4">Exercice 3 (chap 4.4)<a class="anchor" aria-label="anchor" href="#exercice-3-chap-4-4"></a>
 </h2>
 <ul>
-<li>Poursuivre le fichier .Rmd de l’exercice précédent</li>
-<li>Créer un chunk pour définir des options générales, il ne doit pas
-être visible dans le document final</li>
-<li>Créer un chunk pour charger les packages nécessaires, il ne doit pas
-être visible dans le document final</li>
-<li>Créer un nouveau chapitre qui aura pour objet la présentation de
-quelques observations du jeu de données</li>
-<li>Ajouter un chunk pour lire les données fromage, le code ne doit pas
-s’afficher dans le document final. Pour récupérer les données
-tidytuesday :
+<li><p>Poursuivre le fichier .Rmd de l’exercice précédent</p></li>
+<li><p>Créer un chunk pour définir des options générales, il ne doit pas
+être visible dans le document final</p></li>
+<li><p>Créer un chunk pour charger les packages nécessaires
+(<code><a href="https://tidyverse.tidyverse.org" class="external-link">library(tidyverse)</a></code> pour démarrer), il ne doit pas être
+visible dans le document final</p></li>
+<li><p>Créer un nouveau chapitre qui aura pour objet la présentation de
+quelques observations du jeu de données</p></li>
+<li>
+<p>Ajouter un chunk pour lire les données fromage, le code ne doit
+pas s’afficher dans le document final. Pour récupérer les données
+tidytuesday :</p>
 <ul>
 <li>
 <code>load("extdata/data_fromage_tidytuesday.RData")</code> depuis
@@ -171,10 +173,6 @@ un token github d’accès personnel, ie créé une variable
 <code>GITHUB_PAT</code>).</li>
 </ul>
 </li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"extdata/data_fromage_tidytuesday.RData"</span><span class="op">)</span></span></code></pre></div>
-<ul>
 <li><p>Ajouter une ligne de texte qui indique le nombre de fromages
 disponibles dans la dataframe (cette valeur doit être calculée
 automatiquement)</p></li>
@@ -183,14 +181,24 @@ l’origine des fromages (colonne <code>country</code>) est française ou
 non</p></li>
 <li><p>Ajouter un chunk créant un graphique en barres qui indique le
 nombre de fromage par origine (FR ou non-FR).</p></li>
-<li><p>Ajouter une ligne horizontale qui montre le nombre de fromages
-français référencés par le Centre National Interprofessionnel de
-l’Économie Laitière (1280).</p></li>
+<li><p>Ajouter dans le graphique une ligne horizontale qui montre le
+nombre de fromages français référencés par le Centre National
+Interprofessionnel de l’Économie Laitière (= 1280 fromages).</p></li>
 <li><p>Le graphique devra apparaître dans le document final, pas le code
 pour le créer.</p></li>
 <li><p>Ajouter une image d’illustration en tête d’article</p></li>
 <li><p>Générer le document</p></li>
 </ul>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"extdata/data_fromage_tidytuesday.RData"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">data_FRomage</span> <span class="op">&lt;-</span> <span class="va">data_fromage</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>origine <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"France"</span>, <span class="st">"FR"</span>, <span class="st">"non FR"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">origine</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">data_FRomage</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_bar</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">origine</span>, fill <span class="op">=</span> <span class="va">origine</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">1280</span>, color <span class="op">=</span> <span class="st">'#666666'</span><span class="op">)</span></span></code></pre></div>
 <p>Résultat attendu :</p>
 <iframe src="https://mtes-mct.github.io/savoirfR/cheesedown/cheesedown_exo3.html" width="100%" height="1600" data-external="1">
 </iframe>
