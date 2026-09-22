@@ -3,7 +3,7 @@ title: "Exercice 3 -  module 6"
 ---
 
 -   Poursuivre le fichier .Rmd de l'exercice précédent
--   Créer un chunk pour définir des options générales, il ne doit pas être visible dans le document final
+-   Créer un chunk pour définir des options générales (par exemple pour masquer les warnings dans le document produit), il ne doit pas être visible dans le document final. 
 -   Créer un chunk pour charger les packages nécessaires (`library(tidyverse)` pour démarrer), il ne doit pas être visible dans le document final
 -   Créer un nouveau chapitre qui aura pour objet la présentation de quelques observations du jeu de données
 -   Ajouter un chunk pour lire les données fromage, le code ne doit pas s'afficher dans le document final. Pour récupérer les données tidytuesday :

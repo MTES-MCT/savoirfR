@@ -61,4 +61,8 @@ devtools::load_all()
 pkgdown::build_site()
 
 extract_r_files(module = 6)
+
+system("mkdir extdata") ; system("cp inst/extdata/data_fromage_tidytuesday.RData extdata/data_fromage_tidytuesday.RData")
+system("cp -r inst/rstudio/templates/project/ressources/m6/corrections/img inst/rstudio/templates/project/ressources/m6/corrections/www .")
 rmarkdown::render_site(input = "inst/rstudio/templates/project/ressources/m6/corrections/")
+system("rm -r img/ www/ extdata/")
